@@ -3,61 +3,146 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PC Wizards Inc | Memory Repository</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <title>Chadick.org</title>
+    <meta name="description" content="Lots of YouTube Videos on the Tilting Motor Works TRIO enabled Honda Goldwing. It's a terrific freeway machine - it's also a form of trike that is totally misunderstood.">
+    
+    <meta property="og:title" content="Chadick.org">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.chadick.org/">
+    <meta property="og:description" content="Lots of YouTube Videos on the Tilting Motor Works TRIO enabled Honda Goldwing. It's a terrific freeway machine - it's also a form of trike that is totally misunderstood.">
+    <meta property="og:image" content="https://lh3.googleusercontent.com/sitesv/AA5AbUBnAiXn1NyldmQG2aWE2ArJbQrlgqCj4a9haexZ6S7h5Zd6GHCmxLRCovfsFA38NfPXqsB31NFSlqDKYgHEb_pVdwRphgETxT-4nradTIWr880FQmMMUDhS4v601nKYlNxE8gKDkGkbfRCexJP7NNeOvZh-rpiT_AA-KjunvhHKx0S7oHLv-C1hHe8=w16383">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css?family=Roboto%3A100%2C300%2C400%2C700&family=Oswald%3Ai%2Cbi%2C700%2C400&family=Lato%3Ai%2Cbi%2C700%2C400&display=swap" rel="stylesheet">
+
     <style>
+        /* Modern CSS Resets and Inferred Theme Palette */
+        :root {
+            --accent-gold: #FFD54F;       /* rgba(255,213,79,1) */
+            --dark-charcoal: #212121;     /* rgba(33,33,33,1) */
+            --deep-plum: #4F474E;         /* rgba(79,71,78,1) */
+            --light-bg: #F5F2F0;          /* rgba(245,242,240,1) */
+            --white: #FFFFFF;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
         body {
-            font-family: 'Open Sans', Roboto, Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f9f9f9;
-            color: #333;
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--light-bg);
+            color: var(--dark-charcoal);
+            line-height: 1.6;
         }
+
+        /* Hero Header Section styling mapping original sizes/colors */
         header {
-            background-color: #4285f4;
-            color: white;
-            padding: 20px 40px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            background-color: var(--accent-gold);
+            color: var(--dark-charcoal);
+            padding: 60px 20px;
+            text-align: center;
+            border-bottom: 10px solid var(--deep-plum);
         }
+
         header h1 {
-            margin: 0;
-            font-size: 24px;
-            font-weight: 400;
+            font-family: 'Oswald', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+            text-transform: uppercase;
         }
-        .container {
-            max-width: 1000px;
+
+        header p {
+            font-size: 1.25rem;
+            max-width: 800px;
+            margin: 0 auto;
+            font-weight: 300;
+        }
+
+        /* Responsive Main Container */
+        main {
+            max-width: 900px;
             margin: 40px auto;
-            padding: 30px;
-            background: white;
+            padding: 0 20px;
+        }
+
+        .content-card {
+            background: var(--white);
+            padding: 40px;
             border-radius: 8px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            margin-bottom: 30px;
         }
-        .container h2 {
-            font-size: 20px;
-            border-bottom: 2px solid #eee;
-            padding-bottom: 10px;
+
+        .content-card h2 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 2rem;
             margin-bottom: 20px;
-            color: #444;
+            color: var(--deep-plum);
+            border-bottom: 3px solid var(--accent-gold);
+            padding-bottom: 8px;
         }
-        ul.post-list {
-            list-style-type: none;
-            padding: 0;
-            margin: 0;
+
+        .featured-text {
+            font-family: 'Lato', sans-serif;
+            font-size: 1.2rem;
+            line-height: 1.8;
+            margin-bottom: 30px;
         }
-        ul.post-list li {
-            margin-bottom: 15px;
-            padding-bottom: 10px;
-            border-bottom: 1px solid #f4f4f4;
+
+        /* Video Showcase Area */
+        .video-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+            margin-top: 20px;
         }
-        ul.post-list li:last-child {
-            border-bottom: none;
+
+        @media (min-width: 768px) {
+            .video-grid {
+                grid-template-columns: 1fr 1fr;
+            }
         }
-        ul.post-list a {
+
+        .video-placeholder {
+            background: #e0e0e0;
+            border: 2px dashed #b0b0b0;
+            border-radius: 6px;
+            padding: 40px 20px;
+            text-align: center;
+            color: #666;
+            transition: all 0.3s ease;
+        }
+
+        .video-placeholder:hover {
+            border-color: var(--deep-plum);
+            background: #d5d5d5;
+        }
+
+        /* Footer styling */
+        footer {
+            background-color: var(--deep-plum);
+            color: var(--white);
+            text-align: center;
+            padding: 30px 20px;
+            font-size: 0.9rem;
+            margin-top: 60px;
+        }
+
+        footer a {
+            color: var(--accent-gold);
             text-decoration: none;
-            color: #1a0dab;
-            font-size: 16px;
-            font-weight: 500;
+            font-weight: 700;
         }
-        ul.post-list a:hover {
+
+        footer a:hover {
             text-decoration: underline;
         }
     </style>
@@ -65,111 +150,34 @@
 <body>
 
     <header>
-        <h1>Pacific Computer Wizards</h1>
+        <h1>Chadick.org</h1>
+        <p>Exploring alternative engineering, custom platforms, and open-road cruisers.</p>
     </header>
 
-    <div class="container">
-        <h2>Memory Repository .. not a typical blog...</h2>
-        
-        <ul class="post-list">
-            <li><a href="2008-r2-service-pack-1-gives-you-0x80246007-error-code.html">2008 R2 Service Pack 1 gives you "0x80246007" error code</a></li>
-            <li><a href="a-fix-to-profile-issues.html">A Fix to Profile Issues</a></li>
-            <li><a href="a-perfect-turkey-starts-with-24-hours-of-a-brine.html">A Perfect Turkey starts with 24 hours of a brine</a></li>
-            <li><a href="amazon-aws-free.html">Amazon AWS Free</a></li>
-            <li><a href="amd-laptop-with-radeon-graphics-integrated-card-in-use.html">AMD Laptop with Radeon Graphics - Integrated Card in use</a></li>
-            <li><a href="annoyed-by-the-default-font-and-size-in-google-docs-change-it.html">Annoyed by the default font and size in Google docs? Change it!</a></li>
-            <li><a href="aol-blocking-your-e-newsletters.html">AOL blocking your e-newsletters?</a></li>
-            <li><a href="astaro-sophos-utm-enabling-ips-cuts-bandwidth-in-half.html">Astaro / Sophos UTM - Enabling IPS - Cuts Bandwidth in Half</a></li>
-            <li><a href="att-apn-settings.html">AT&T APN Settings</a></li>
-            <li><a href="authors-and-books-favorite-audio-books.html">Authors and Books - Favorite Audio Books</a></li>
-            <li><a href="backblaze-b2-business-backup.html">Backblaze B2 - Business Backup</a></li>
-            <li><a href="bcm-firmware-update-takes-hyper-v-vms-offline.html">BCM Firmware Update takes Hyper-V VM's Offline</a></li>
-            <li><a href="burger-and-fries.html">Burger and Fries</a></li>
-            <li><a href="cant-access-smb-file-shares-after-windows-10-updates.html">Can't access SMB file shares after Windows 10 Updates</a></li>
-            <li><a href="check-server-to-discover-what-smb-your-clients-are-connected-under.html">Check Server to discover what SMB your clients are connected under</a></li>
-            <li><a href="checkout-what-google-is-tracking-on-your-account.html">Checkout what Google is tracking on your account</a></li>
-            <li><a href="chrome-open-pdf-files-by-default-in-adobe-or-other-default-pdf-viewer.html">Chrome - Open PDF Files by default in Adobe or other default PDF Viewer</a></li>
-            <li><a href="chrome-crashing-and-holding-on-to-old-data.html">Chrome Crashing and holding on to old data</a></li>
-            <li><a href="chrome-eating-too-many-resources.html">Chrome eating too many resources?</a></li>
-            <li><a href="chrome-plugins.html">Chrome Plugins</a></li>
-            <li><a href="cisco-spa-112-voip-phone-adapter.html">Cisco SPA 112 VOIP Phone Adapter</a></li>
-            <li><a href="clone-your-hard-drive.html">Clone your Hard Drive</a></li>
-            <li><a href="coaching-notes.html">Coaching Notes</a></li>
-            <li><a href="codeweavers-wine.html">Codeweavers / WINE</a></li>
-            <li><a href="command-line-firewall-reference-off.html">Command Line Firewall Reference (Off)</a></li>
-            <li><a href="configure-multipath-io-iscsi.html">Configure MultiPath I/O iSCSI</a></li>
-            <li><a href="constant-contact-and-outlook-20102013.html">Constant Contact and Outlook 2010/2013</a></li>
-            <li><a href="cookies.html">Cookies</a></li>
-            <li><a href="cortana.html">Cortana</a></li>
-            <li><a href="customize-astarosophos-8-x-blocking-messages.html">Customize Astaro/Sophos 8.x Blocking Messages</a></li>
-            <li><a href="cyber-security-month-a-quick-look-at-what-you-can-do-for-your-organization.html">Cyber Security Month - a quick look at what you can do for your organization</a></li>
-            <li><a href="cyber-security-month-staying-on-top-of-the-waterfall.html">Cyber Security Month - Staying on top of the Waterfall</a></li>
-            <li><a href="data-robotics-drobo.html">Data Robotics -DROBO</a></li>
-            <li><a href="demote-2008-domain-controller-dcpromo.html">Demote 2008 Domain Controller - DCPromo</a></li>
-            <li><a href="dev-games-for-xboxkinect.html">Dev Games for Xbox/Kinect</a></li>
-            <li><a href="disable-hardware-acceleration-in-office.html">Disable Hardware Acceleration in Office</a></li>
-            <li><a href="domain-mapping-with-wordpress-and-gmail-backend.html">Domain Mapping with WordPress and Gmail Backend</a></li>
-            <li><a href="drupal-8-on-azure.html">Drupal 8 on Azure</a></li>
-            <li><a href="duty-to-retreat-fyi-washington-state.html">Duty to Retreat - FYI - Washington State</a></li>
-            <li><a href="easy-ftp-install-ubuntu.html">Easy FTP Install - Ubuntu</a></li>
-            <li><a href="ebooks-from-microsoft.html">eBooks from Microsoft</a></li>
-            <li><a href="edge-browser-broken.html">Edge Browser Broken?</a></li>
-            <li><a href="email-and-web-security-in-general.html">Email and Web Security in General</a></li>
-            <li><a href="enable-hibernate-on-ubuntu-12-04-and-12-10-notebooks.html">Enable Hibernate on Ubuntu 12.04 and 12.10 Notebooks</a></li>
-            <li><a href="error-0x8007003b-an-unexpected-network-error-occurred.html">Error 0x8007003B: An unexpected network error occurred".</a></li>
-            <li><a href="error-w-gpg-error-httpppa-launchpad-net.html">error: W: GPG error: http://ppa.launchpad.net</a></li>
-            <li><a href="exchange-2007-mapi-session-for-ios-and-android-clients.html">Exchange 2007 Mapi Session for iOS and Android Clients</a></li>
-            <li><a href="exchange-to-pst-through-exchange-management-shell.html">Exchange to PST through Exchange Management Shell</a></li>
-            <li><a href="fact-checking.html">Fact Checking</a></li>
-            <li><a href="favorite-microsoft-server-knowledge-base.html">Favorite Microsoft Server Knowledge Base</a></li>
-            <li><a href="filemaker-server-12-x.html">FileMaker Server 12.x</a></li>
-            <li><a href="find-and-then-block.html">Find and then Block</a></li>
-            <li><a href="find-your-android-phone.html">Find your Android Phone</a></li>
-            <li><a href="force-time-machine-to-start.html">Force Time Machine to Start</a></li>
-            <li><a href="fresh-install-of-2012-server-or-win-8-wont-allow-product-key-entry.html">Fresh Install of 2012 Server or Win 8 won't allow product key entry</a></li>
-            <li><a href="gasmo-google-apps-sync-tool-troubleshooting.html">GASMO - Google Apps Sync Tool - Troubleshooting</a></li>
-            <li><a href="get-your-mac-10-510-6-or-linux-box-on-the-active-directory-domain.html">Get your Mac 10.5/10.6 or Linux box on the Active Directory Domain</a></li>
-            <li><a href="gingerbread-cookie-recipe.html">Gingerbread Cookie Recipe</a></li>
-            <li><a href="gmail-email-security.html">Gmail Email Security</a></li>
-            <li><a href="gmail-to-comcast-net-or-q-com-spam-filter-issue.html">Gmail to Comcast.net or Q.com - Spam Filter issue</a></li>
-            <li><a href="going-green-with-linux-thin-clients-and-windows-terminal-server.html">Going Green with Linux Thin Clients and Windows Terminal Server</a></li>
-            <li><a href="good-cheap-laptop-for-school.html">Good Cheap Laptop for School?</a></li>
-            <li><a href="google-apps-gmail-inserting-en-dash-or-em-dashes.html">Google Apps / Gmail - inserting en-dash or em-dashes</a></li>
-            <li><a href="google-apps-for-business-ios-mail-app-only-syncs-on-wifi.html">Google Apps for Business & iOS Mail App only syncs on WiFi</a></li>
-            <li><a href="google-apps-for-business-replied-and-forwarded-icons.html">Google Apps for Business: Replied and Forwarded icons</a></li>
-            <li><a href="google-chrome-dns.html">Google Chrome DNS</a></li>
-            <li><a href="google-chromes-offline-game.html">Google Chrome's offline game</a></li>
-            <li><a href="google-drive-as-a-backup-for-all-your-personal-files.html">Google Drive as a Backup for all your personal files</a></li>
-            <li><a href="google-for-work-gsuite-feature-request.html">Google for Work - GSuite - Feature Request</a></li>
-            <li><a href="google-maps-location-sharing-not-working-correctly.html">Google Maps - Location Sharing not working correctly</a></li>
-            <li><a href="google-maps-and-waze.html">Google Maps and Waze</a></li>
-            <li><a href="google-site-templates.html">Google Site Templates</a></li>
-            <li><a href="google-tips-and-tricks.html">Google Tips and Tricks</a></li>
-            <li><a href="gpo-rdp.html">GPO RDP</a></li>
-            <li><a href="holiday-popcorn-crack.html">Holiday Popcorn Crack</a></li>
-            <li><a href="homelessness-societal-problem.html">Homelessness - Societal Problem</a></li>
-            <li><a href="homemade-pizza-dough.html">Homemade Pizza Dough</a></li>
-            <li><a href="hp-mfp-linux-imaging-and-printing.html">HP MFP - Linux Imaging and Printing</a></li>
-            <li><a href="hubsan-h107d-with-landing-gear.html">Hubsan H107D with Landing Gear</a></li>
-            <li><a href="hvac-unit-cooling-coils-leaking-coolant.html">HVAC Unit- cooling coils leaking coolant</a></li>
-            <li><a href="hyper-v-on-your-notebook.html">Hyper V on your Notebook</a></li>
-            <li><a href="installing-an-os-to-volumes-larger-than-2-2-tb.html">Installing an OS to volumes larger than 2.2 TB</a></li>
-            <li><a href="life-sustaining-recipe-john-and-adele-tobe.html">Life Sustaining Recipe - John and Adele Tobe</a></li>
-            <li><a href="likewise-open-join-linux-to-the-active-directory-domain.html">Likewise Open - Join Linux to the Active Directory Domain</a></li>
-            <li><a href="microsoft-server-2012-in-the-datacenter.html">Microsoft Server 2012 in the Datacenter</a></li>
-            <li><a href="microsoft-server-2012-setup-as-ad-domain-controller.html">Microsoft Server 2012 setup as AD Domain Controller</a></li>
-            <li><a href="mxtoolbox.html">MXToolBox</a></li>
-            <li><a href="national-response-framework-esf-6.html">National Response Framework - ESF #6</a></li>
-            <li><a href="natural-disaster-mitigation.html">Natural Disaster Mitigation</a></li>
-            <li><a href="password.html">Password</a></li>
-            <li><a href="remove-guest-login-option-on-ubuntu-14-04-16-04-lts.html">Remove Guest Login Option on Ubuntu 14.04 & 16.04 LTS</a></li>
-            <li><a href="stop-microsoft-2012-server-from-rebooting-after-update.html">Stop Microsoft 2012 Server from Rebooting after Update</a></li>
-            <li><a href="strange-drupal-behavior-7-x-c.html">Strange Drupal Behavior - 7.x {C}</a></li>
-            <li><a href="switching-from-ios-to-android-ios-contact-including-imessage-problem.html">Switching from iOS to Android? (iOS Contact including /iMessage problem)</a></li>
-            <li><a href="visual-foxpro-sql-error-corrupted-indexes.html">Visual Foxpro (SQL Error) Corrupted Indexes</a></li>
-            <li><a href="windows-81020082012-non-standard-listening-port-for-rdp.html">Windows 8/10/2008/2012 - Non-Standard Listening Port for RDP</a></li>
-            <li><a href="work-around-for-windows-update-to-ie-10-fails-with-error-9c59.html">Work-around for: Windows Update to IE 10 - fails with Error 9C59</a></li>
-        </ul>
-    </div>
-</body>
-</html>
+    <main>
+        <section class="content-card">
+            <h2>The Tilting Motor Works TRIO</h2>
+            
+            <p class="featured-text">
+                Lots of YouTube Videos highlight the unique dynamics of the Tilting Motor Works TRIO-enabled Honda Goldwing. 
+                While it serves as a spectacular, rock-solid freeway machine, it remains a heavily misunderstood execution of trike mechanics. 
+                Unlike rigid conversions, it preserves authentic leaning dynamics while adding unmatched front-end stability.
+            </p>
+
+            <h3>Featured Videos Repository</h3>
+            <div class="video-grid">
+                <div class="video-placeholder">
+                    <p><strong>[ YouTube Video Embed 1 ]</strong></p>
+                    <p style="font-size: 0.85rem; margin-top: 5px;">Replace this block with your first iframe embed code.</p>
+                </div>
+                <div class="video-placeholder">
+                    <p><strong>[ YouTube Video Embed 2 ]</strong></p>
+                    <p style="font-size: 0.85rem; margin-top: 5px;">Replace this block with your second iframe embed code.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 <a href="https://www.chadick.org/">Chadick.org</a>. Migrated static asset profile.</p>
+    </footer>
