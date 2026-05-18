@@ -1,3 +1,73 @@
+/* Navigation Menu Styles */
+        .main-nav {
+            background-color: var(--dark-charcoal, #212121);
+            border-bottom: 4px solid var(--accent-gold, #FFD54F);
+            text-align: center;
+        }
+        
+        .main-nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: inline-flex; /* Keeps items centered and horizontal */
+        }
+        
+        .main-nav li {
+            position: relative;
+        }
+        
+        .main-nav a, .dropbtn {
+            display: block;
+            color: #FFFFFF;
+            text-align: center;
+            padding: 16px 24px;
+            text-decoration: none;
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            cursor: pointer;
+        }
+        
+        /* Hover effect for main menu items */
+        .main-nav a:hover, .dropdown:hover .dropbtn {
+            background-color: var(--deep-plum, #4F474E);
+            color: var(--accent-gold, #FFD54F);
+        }
+        
+        /* The Dropdown Box (Hidden by Default) */
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #FFFFFF;
+            min-width: 180px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 100;
+            text-align: left;
+            border-radius: 0 0 8px 8px;
+            overflow: hidden;
+        }
+        
+        /* Links inside the dropdown */
+        .dropdown-content a {
+            color: var(--dark-charcoal, #212121);
+            padding: 12px 16px;
+            text-transform: none;
+            font-family: 'Roboto', sans-serif;
+            border-bottom: 1px solid #eeeeee;
+        }
+        
+        /* Hover effect for dropdown links */
+        .dropdown-content a:hover {
+            background-color: var(--light-bg, #F5F2F0);
+            color: var(--deep-plum, #4F474E);
+            border-left: 4px solid var(--accent-gold, #FFD54F);
+        }
+        
+        /* Show the dropdown menu on hover */
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
 :root {
   --primary: #e63946; /* Racing Red */
   --bg: #1a1a1a;      /* Dark Asphalt */
