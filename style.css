@@ -1,102 +1,91 @@
-<style>
-    /* Self-contained navbar styles to prevent stacking */
-    .pcw-navbar {
-        background-color: #212121 !important; /* Dark Charcoal */
-        border-bottom: 4px solid #FFD54F !important; /* Gold Line */
-        font-family: 'Oswald', 'Arial Black', sans-serif;
-        width: 100% !important;
-        margin: 0 0 20px 0 !important;
-        padding: 0 !important;
-        box-shadow: 0 2px 10px rgba(0,0,0,0.15);
-        display: block !important;
-    }
+/* ==========================================================================
+   PC WIZARDS ULTRA-STABLE NAVIGATION MENU
+   ========================================================================== */
 
-    .pcw-navbar ul {
-        list-style: none !important;
-        margin: 0 !important;
-        padding: 0 !important;
-        display: flex !important; /* Forces items to sit side-by-side */
-        justify-content: center !important; /* Centers the menu on the screen */
-    }
+/* The main horizontal bar */
+.pcw-navbar {
+    background-color: #212121 !important; /* Dark Charcoal */
+    border-bottom: 4px solid #FFD54F !important; /* Gold Line */
+    font-family: 'Oswald', 'Arial Black', sans-serif;
+    width: 100% !important;
+    margin: 0 0 30px 0 !important;
+    padding: 0 !important;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    text-align: center !important; /* Centers the text alignment */
+}
 
-    .pcw-navbar li {
-        position: relative !important;
-        display: block !important;
-    }
+/* The list container */
+.pcw-navbar ul {
+    list-style-type: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    display: block !important; /* Plain block display to prevent vanishing */
+}
 
-    /* Main Menu Buttons */
-    .pcw-navbar a, .pcw-navbar .dropbtn {
-        display: block !important;
-        color: #FFFFFF !important;
-        text-decoration: none !important;
-        padding: 16px 28px !important;
-        font-size: 16px !important;
-        text-transform: uppercase !important;
-        letter-spacing: 1px !important;
-        cursor: pointer !important;
-        transition: background 0.2s ease;
-    }
+/* Individual list items forced side-by-side */
+.pcw-navbar li {
+    display: inline-block !important; /* Forces items side-by-side safely */
+    position: relative !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    vertical-align: top !important;
+}
 
-    /* Hover states for top menu */
-    .pcw-navbar a:hover, .pcw-navbar .dropdown:hover .dropbtn {
-        background-color: #4F474E !important; /* Deep Plum */
-        color: #FFD54F !important; /* Gold text on hover */
-    }
+/* Main Menu Buttons and Dropdown Trigger */
+.pcw-navbar a, .pcw-navbar .dropbtn {
+    display: block !important;
+    color: #FFFFFF !important;
+    text-decoration: none !important;
+    padding: 16px 28px !important;
+    font-size: 16px !important;
+    text-transform: uppercase !important;
+    letter-spacing: 1px !important;
+    cursor: pointer !important;
+}
 
-    /* Dropdown Box (Hidden by default, forces absolute positioning below the bar) */
-    .pcw-navbar .dropdown-content {
-        display: none !important;
-        position: absolute !important;
-        top: 100% !important;
-        left: 0 !important;
-        background-color: #FFFFFF !important;
-        min-width: 180px !important;
-        box-shadow: 0px 8px 16px rgba(0,0,0,0.2) !important;
-        z-index: 9999 !important;
-        border-radius: 0 0 6px 6px !important;
-        border-top: 3px solid #FFD54F !important;
-        overflow: hidden;
-    }
+/* Hover state for main menu links */
+.pcw-navbar a:hover, .pcw-navbar .dropdown:hover .dropbtn {
+    background-color: #4F474E !important; /* Deep Plum */
+    color: #FFD54F !important; /* Gold text */
+}
 
-    /* Dropdown Links */
-    .pcw-navbar .dropdown-content a {
-        color: #212121 !important;
-        padding: 12px 20px !important;
-        text-transform: none !important; /* Normal case for sub-items */
-        font-family: 'Roboto', 'Arial', sans-serif !important;
-        font-size: 15px !important;
-        border-bottom: 1px solid #f0f0f0 !important;
-        letter-spacing: 0 !important;
-        text-align: left !important;
-    }
+/* Dropdown Content Box (Hidden by default) */
+.pcw-navbar .dropdown-content {
+    display: none !important; /* Intentionally hidden until hovered */
+    position: absolute !important;
+    top: 100% !important;
+    left: 0 !important;
+    background-color: #FFFFFF !important;
+    min-width: 180px !important;
+    box-shadow: 0px 8px 16px rgba(0,0,0,0.2) !important;
+    z-index: 99999 !important; /* Keeps it on top of everything */
+    border-radius: 0 0 6px 6px !important;
+    border-top: 3px solid #FFD54F !important;
+}
 
-    .pcw-navbar .dropdown-content a:last-child {
-        border-bottom: none !important;
-    }
+/* Links inside the dropdown box */
+.pcw-navbar .dropdown-content a {
+    color: #212121 !important;
+    padding: 12px 20px !important;
+    text-transform: none !important; /* Lowercase/normal case for sub-items */
+    font-family: 'Roboto', 'Arial', sans-serif !important;
+    font-size: 15px !important;
+    border-bottom: 1px solid #f0f0f0 !important;
+    text-align: left !important;
+    letter-spacing: 0 !important;
+}
 
-    /* Dropdown Hover State */
-    .pcw-navbar .dropdown-content a:hover {
-        background-color: #F5F2F0 !important;
-        color: #4F474E !important;
-        padding-left: 24px !important; /* Subtle shift effect */
-    }
+.pcw-navbar .dropdown-content a:last-child {
+    border-bottom: none !important;
+}
 
-    /* The Secret Sauce: Shows the dropdown box ONLY when hovering over the parent li */
-    .pcw-navbar .dropdown:hover .dropdown-content {
-        display: block !important;
-    }
-</style>
+/* Hovering over a sub-link inside the dropdown */
+.pcw-navbar .dropdown-content a:hover {
+    background-color: #F5F2F0 !important;
+    color: #4F474E !important;
+}
 
-<nav class="pcw-navbar">
-    <ul>
-        <li><a href="index.html">Home</a></li>
-        <li class="dropdown">
-            <a class="dropbtn">The Garage ▾</a>
-            <div class="dropdown-content">
-                <a href="drones.html">Drones</a>
-                <a href="motorcycles.html">Motorcycles</a>
-            </div>
-        </li>
-        <li><a href="services.html">Services</a></li>
-    </ul>
-</nav>
+/* THE TRIGGER: Forces the dropdown container to reveal itself on hover */
+.pcw-navbar .dropdown:hover .dropdown-content {
+    display: block !important; /* Reveals container safely */
+}
