@@ -31,544 +31,315 @@
 </nav>
 
 
-        <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Complete Repository & Technical Services | Pacific Computer Wizards</title>
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>Master Memory Repository | Pacific Computer Wizards</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
-        body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-        }
-        code, pre {
-            font-family: 'JetBrains Mono', monospace;
-        }
-        /* Fluid accordion reveal adjustments */
-        details[open] summary ~ * {
-            animation: slideReveal .2s ease-out;
-        }
-        @keyframes slideReveal {
-            0%    { opacity: 0; transform: translateY(-4px); }
-            100%  { opacity: 1; transform: translateY(0); }
-        }
-        /* Normalize disclosure arrows */
-        details summary::-webkit-details-marker { display: none; }
-        details summary { list-style: none; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+        .topic-content { display: none; }
+        .topic-header { cursor: pointer; }
+        .topic-header.active + .topic-content { display: block; animation: fadeIn 0.3s ease-in-out; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(-5px); } to { opacity: 1; transform: translateY(0); } }
     </style>
 </head>
-<body class="bg-slate-900 text-slate-100 antialiased flex flex-col min-h-screen">
+<body class="bg-gray-50 text-gray-800">
 
-    <header class="sticky top-0 z-50 bg-slate-900/90 backdrop-blur-md border-b border-slate-800">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-            <div class="flex items-center space-x-3">
-                <div class="bg-indigo-600 text-white p-2.5 rounded-xl shadow-lg shadow-indigo-900/40">
-                    <i class="fa-solid fa-box-archive text-lg"></i>
-                </div>
-                <div>
-                    <span class="text-lg font-bold tracking-tight text-white block">Pacific Computer Wizards</span>
-                    <span class="text-xs text-indigo-400 uppercase tracking-widest font-semibold block -mt-0.5">Master Memory Repository</span>
-                </div>
-            </div>
-            
-            <nav class="hidden md:flex items-center space-x-8 font-medium text-sm text-slate-300">
-                <a href="index.html" class="hover:text-indigo-400 transition">Home</a>
-                <a href="services.html" class="text-indigo-400 font-semibold">Knowledge base</a>
-                <a href="https://sites.google.com/a/chadick.org/chadick-org/" target="_blank" class="text-slate-400 hover:text-white transition flex items-center gap-1">
-                    Legacy Portal <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
-                </a>
-            </nav>
+    <header class="bg-blue-900 text-white py-8 shadow-md">
+        <div class="max-w-4xl mx-auto px-6">
+            <h1 class="text-3xl font-bold">Pacific Computer Wizards</h1>
+            <p class="text-blue-200 mt-2 text-sm uppercase tracking-wider">Memory Repository - Consolidated Silo</p>
         </div>
     </header>
 
-    <section class="relative py-12 border-b border-slate-800 bg-slate-950/40">
-        <div class="max-w-5xl mx-auto px-4">
-            <div class="text-center max-w-3xl mx-auto mb-8">
-                <span class="text-xs font-bold text-indigo-400 uppercase tracking-widest bg-indigo-950/60 px-3 py-1.5 rounded-full border border-indigo-900/50">Comprehensive Single-Page System</span>
-                <h1 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-white mt-3">
-                    Systems Engineering Log Archive
-                </h1>
-                <p class="mt-2 text-sm text-slate-400">
-                    Search and inspect deep deployment patterns, server hotfixes, and platform overrides ordered by documentation entry timelines.
-                </p>
-            </div>
-            
-            <div class="bg-slate-900 border border-slate-800 p-4 rounded-2xl shadow-xl max-w-3xl mx-auto space-y-4">
-                <div class="relative">
-                    <i class="fa-solid fa-magnifying-glass absolute left-4 top-3.5 text-slate-500"></i>
-                    <input type="text" id="kbSearch" placeholder="Type key parameters (e.g., 'CredSSP', 'iSCSI', 'Ubuntu', '2015')..." 
-                           class="w-full bg-slate-950 border border-slate-800 rounded-xl pl-11 pr-4 py-3 text-sm text-slate-100 placeholder-slate-500 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition">
-                </div>
-                
-                <div class="flex flex-col sm:flex-row items-center justify-between gap-3 pt-1">
-                    <div class="flex flex-wrap gap-1.5 text-xs font-medium">
-                        <button onclick="filterCategory('all')" id="btn-all" class="px-3 py-1.5 rounded-lg bg-indigo-600 text-white border border-indigo-500 cursor-pointer transition">All Topics</button>
-                        <button onclick="filterCategory('network')" id="btn-network" class="px-3 py-1.5 rounded-lg bg-slate-800 text-slate-400 border border-slate-700 hover:text-white cursor-pointer transition">Networking / UTM</button>
-                        <button onclick="filterCategory('storage')" id="btn-storage" class="px-3 py-1.5 rounded-lg bg-slate-800 text-slate-400 border border-slate-700 hover:text-white cursor-pointer transition">Virtualization & SAN</button>
-                        <button onclick="filterCategory('sysadmin')" id="btn-sysadmin" class="px-3 py-1.5 rounded-lg bg-slate-800 text-slate-400 border border-slate-700 hover:text-white cursor-pointer transition">OS & Core Fixes</button>
-                        <button onclick="filterCategory('cloud')" id="btn-cloud" class="px-3 py-1.5 rounded-lg bg-slate-800 text-slate-400 border border-slate-700 hover:text-white cursor-pointer transition">Cloud & Apps</button>
-                    </div>
-
-                    <div class="flex items-center space-x-2 text-xs font-semibold shrink-0">
-                        <button onclick="toggleAllAccordions(true)" class="text-indigo-400 hover:text-indigo-300 transition bg-indigo-950/40 px-2.5 py-1.5 rounded border border-indigo-900/60 cursor-pointer">
-                            <i class="fa-solid fa-folder-open mr-1"></i> Expand All
-                        </button>
-                        <button onclick="toggleAllAccordions(false)" class="text-slate-400 hover:text-slate-300 transition bg-slate-800 px-2.5 py-1.5 rounded border border-slate-700 cursor-pointer">
-                            <i class="fa-solid fa-folder text-xs mr-1"></i> Collapse All
-                        </button>
-                    </div>
-                </div>
-            </div>
+    <main class="max-w-4xl mx-auto px-6 py-10">
+        <div class="mb-8 flex justify-between items-center bg-white p-4 rounded-lg shadow-sm border border-gray-200">
+            <p class="text-sm text-gray-600">Click any topic below to expand the complete technical documentation.</p>
+            <button onclick="expandAll()" class="bg-blue-600 text-white px-4 py-2 rounded text-sm font-semibold hover:bg-blue-700 transition">Expand All Topics</button>
         </div>
-    </section>
 
-    <main class="max-w-5xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-10 flex-grow space-y-3.5" id="kbContainer">
-        
-        <details class="kb-item group bg-slate-800/40 border border-slate-800 rounded-xl overflow-hidden hover:border-slate-700 transition" data-category="network">
-            <summary class="flex items-center justify-between p-4 cursor-pointer select-none bg-slate-800/20 hover:bg-slate-800/50 transition">
-                <div class="flex items-center space-x-3.5 pr-4">
-                    <span class="text-xs font-bold text-slate-500 tracking-mono bg-slate-950 px-2 py-1 rounded border border-slate-800">LOG-01</span>
-                    <h3 class="text-sm sm:text-base font-bold text-white group-hover:text-indigo-400 transition">Astaro / Sophos UTM - Enabling IPS Cuts Bandwidth in Half</h3>
+        <div class="space-y-4" id="repository-container">
+
+            <div class="bg-white border border-gray-300 rounded-lg shadow-sm overflow-hidden">
+                <div class="topic-header bg-gray-100 px-6 py-4 flex justify-between items-center hover:bg-gray-200 transition" onclick="toggleTopic(this)">
+                    <h2 class="font-bold text-gray-800">Astaro / Sophos UTM - Enabling IPS - Cuts Bandwidth in Half</h2>
+                    <span class="text-sm text-gray-500">▼</span>
                 </div>
-                <div class="flex items-center space-x-4 shrink-0">
-                    <span class="text-xs font-mono text-indigo-400 bg-indigo-950/80 px-2.5 py-1 rounded border border-indigo-900/40"><i class="fa-regular fa-calendar-plus mr-1"></i> Added: Aug 14, 2013</span>
-                    <i class="fa-solid fa-chevron-down text-xs text-slate-500 group-open:rotate-180 transition-transform duration-150"></i>
-                </div>
-            </summary>
-            <div class="p-6 border-t border-slate-800/80 bg-slate-900/60 text-sm space-y-4">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div>
-                        <span class="text-xs font-bold uppercase text-amber-500 block mb-1">[ Symptom & Impact ]</span>
-                        <p class="text-slate-300 text-xs sm:text-sm">Activating the edge appliance Intrusion Prevention System (IPS) instantly triggers a 50% performance drop in interface packet throughput execution across active WAN segments.</p>
-                    </div>
-                    <div>
-                        <span class="text-xs font-bold uppercase text-rose-400 block mb-1">[ System Architecture Bottleneck ]</span>
-                        <p class="text-slate-300 text-xs sm:text-sm">The underlying Snort rules engine relies on single-threaded execution context per stream flow. Processing large collections of non-applicable legacy rules bottlenecks processing pipelines on high-speed lines.</p>
-                    </div>
-                </div>
-                <div class="bg-slate-950 p-4 rounded-lg border border-slate-800">
-                    <span class="text-xs font-bold uppercase text-emerald-400 block mb-2">[ Corrective Sequence ]</span>
-                    <p class="text-slate-300 text-xs mb-2">Navigate to <code class="text-indigo-300 font-mono">Network Protection &rarr; Intrusion Prevention &rarr; Advanced</code>. Deselect operating system validation footprints and rule definitions that do not match assets inside local subnets (e.g., drop Linux signatures if defending an exclusive Windows environment) to reduce CPU overhead.</p>
+                <div class="topic-content px-6 py-6 border-t border-gray-200 bg-white">
+                    <h3 class="text-sm font-bold text-red-600 uppercase mb-2">The Issue</h3>
+                    <p class="mb-4 text-sm">When Intrusion Prevention (IPS) is activated on Sophos UTM / Astaro gateways, WAN throughput speeds drop by approximately 50%. This happens because the Snort IPS engine is single-threaded per connection stream, bottlenecking the CPU on high-speed lines.</p>
+                    <h3 class="text-sm font-bold text-green-600 uppercase mb-2">The Resolution</h3>
+                    <ul class="list-disc pl-5 text-sm space-y-2">
+                        <li>Log into WebAdmin and go to <strong>Network Protection > Intrusion Prevention > Advanced</strong>.</li>
+                        <li>Modify the rule age parameters to drop signatures older than 12-24 months.</li>
+                        <li>Uncheck entire OS categories that do not apply to your local network (e.g., disable Linux or Solaris rules if you only run Windows Servers).</li>
+                        <li>Reducing the active rule count offloads the CPU overhead, restoring standard throughput speeds.</li>
+                    </ul>
                 </div>
             </div>
-        </details>
 
-        <details class="kb-item group bg-slate-800/40 border border-slate-800 rounded-xl overflow-hidden hover:border-slate-700 transition" data-category="storage">
-            <summary class="flex items-center justify-between p-4 cursor-pointer select-none bg-slate-800/20 hover:bg-slate-800/50 transition">
-                <div class="flex items-center space-x-3.5 pr-4">
-                    <span class="text-xs font-bold text-slate-500 tracking-mono bg-slate-950 px-2 py-1 rounded border border-slate-800">LOG-02</span>
-                    <h3 class="text-sm sm:text-base font-bold text-white group-hover:text-indigo-400 transition">Configure MultiPath I/O (MPIO) for High-Availability iSCSI SAN Storage</h3>
+            <div class="bg-white border border-gray-300 rounded-lg shadow-sm overflow-hidden">
+                <div class="topic-header bg-gray-100 px-6 py-4 flex justify-between items-center hover:bg-gray-200 transition" onclick="toggleTopic(this)">
+                    <h2 class="font-bold text-gray-800">Configure MultiPath I/O iSCSI</h2>
+                    <span class="text-sm text-gray-500">▼</span>
                 </div>
-                <div class="flex items-center space-x-4 shrink-0">
-                    <span class="text-xs font-mono text-indigo-400 bg-indigo-950/80 px-2.5 py-1 rounded border border-indigo-900/40"><i class="fa-regular fa-calendar-plus mr-1"></i> Added: Oct 22, 2013</span>
-                    <i class="fa-solid fa-chevron-down text-xs text-slate-500 group-open:rotate-180 transition-transform duration-150"></i>
-                </div>
-            </summary>
-            <div class="p-6 border-t border-slate-800/80 bg-slate-900/60 text-sm space-y-4">
-                <div>
-                    <span class="text-xs font-bold uppercase text-amber-500 block mb-1">[ Operational State ]</span>
-                    <p class="text-slate-300 text-xs sm:text-sm">Windows Server hosts connected to storage area networks via redundant physical network fabrics register duplicate storage target assignments within Disk Management, causing logical drive validation errors.</p>
-                </div>
-                <div class="bg-slate-950 p-4 rounded-lg border border-slate-800">
-                    <span class="text-xs font-bold uppercase text-emerald-400 block mb-2">[ Implementation Commands ]</span>
-                    <pre class="text-xs bg-slate-900 p-2.5 rounded border border-slate-800 text-indigo-300 block overflow-x-auto mb-2">Install-WindowsFeature -Name Multipath-IO</pre>
-                    <p class="text-slate-300 text-xs">Run <code class="text-indigo-400">MPIO.exe</code>, select the <code class="text-slate-300 font-medium">Discover Multi-Paths</code> tab, check the box to <code class="text-slate-300 font-medium">Add support for iSCSI devices</code>, and reboot. Re-establish iSCSI target links and assign the routing matrix to <code class="text-slate-300 font-medium">Round Robin</code> or <code class="text-slate-300 font-medium">Least Queue Depth</code>.</p>
+                <div class="topic-content px-6 py-6 border-t border-gray-200 bg-white">
+                    <h3 class="text-sm font-bold text-red-600 uppercase mb-2">The Issue</h3>
+                    <p class="mb-4 text-sm">When connecting Windows Server to a dual-controller SAN using iSCSI without Multipath I/O, the server sees identical storage volumes as separate, duplicate disks, leading to logical corruption.</p>
+                    <h3 class="text-sm font-bold text-green-600 uppercase mb-2">The Resolution</h3>
+                    <ul class="list-disc pl-5 text-sm space-y-2">
+                        <li>Open PowerShell as Administrator and run: <code>Install-WindowsFeature -Name Multipath-IO</code></li>
+                        <li>Open the MPIO utility (<code>mpiocpl.exe</code>) from the start menu.</li>
+                        <li>Go to the <strong>Discover Multi-Paths</strong> tab.</li>
+                        <li>Check the box for <strong>Add support for iSCSI devices</strong> and click Add.</li>
+                        <li>Reboot the server. Reconnect the iSCSI target and configure the MPIO policy to "Round Robin".</li>
+                    </ul>
                 </div>
             </div>
-        </details>
 
-        <details class="kb-item group bg-slate-800/40 border border-slate-800 rounded-xl overflow-hidden hover:border-slate-700 transition" data-category="storage">
-            <summary class="flex items-center justify-between p-4 cursor-pointer select-none bg-slate-800/20 hover:bg-slate-800/50 transition">
-                <div class="flex items-center space-x-3.5 pr-4">
-                    <span class="text-xs font-bold text-slate-500 tracking-mono bg-slate-950 px-2 py-1 rounded border border-slate-800">LOG-03</span>
-                    <h3 class="text-sm sm:text-base font-bold text-white group-hover:text-indigo-400 transition">Error 0x8007003b - Unexpected Network Error Over VPN / SMB Connections</h3>
+            <div class="bg-white border border-gray-300 rounded-lg shadow-sm overflow-hidden">
+                <div class="topic-header bg-gray-100 px-6 py-4 flex justify-between items-center hover:bg-gray-200 transition" onclick="toggleTopic(this)">
+                    <h2 class="font-bold text-gray-800">Error 0x8007003b - Unexpected Network Error</h2>
+                    <span class="text-sm text-gray-500">▼</span>
                 </div>
-                <div class="flex items-center space-x-4 shrink-0">
-                    <span class="text-xs font-mono text-indigo-400 bg-indigo-950/80 px-2.5 py-1 rounded border border-indigo-900/40"><i class="fa-regular fa-calendar-plus mr-1"></i> Added: Jan 15, 2015</span>
-                    <i class="fa-solid fa-chevron-down text-xs text-slate-500 group-open:rotate-180 transition-transform duration-150"></i>
-                </div>
-            </summary>
-            <div class="p-6 border-t border-slate-800/80 bg-slate-900/60 text-sm space-y-4">
-                <div>
-                    <span class="text-xs font-bold uppercase text-rose-400 block mb-1">[ Root Analysis ]</span>
-                    <p class="text-slate-300 text-xs sm:text-sm">Large data transfers to remote file structures fail during active packet tracking operations. This is caused by a race condition between LanmanWorkstation system services and target storage endpoints when hardware-level Large Send Offload (LSO) configurations mismatch MTU packet bounds.</p>
-                </div>
-                <div class="bg-slate-950 p-4 rounded-lg border border-slate-800">
-                    <span class="text-xs font-bold uppercase text-emerald-400 block mb-2">[ Execution Strategy ]</span>
-                    <p class="text-slate-300 text-xs mb-2">Disable interface segment offloading inside an administrative PowerShell shell window:</p>
-                    <pre class="text-xs bg-slate-900 p-2.5 rounded border border-slate-800 text-indigo-300 block overflow-x-auto">Disable-NetAdapterLso -Name "*" -IPv4</pre>
+                <div class="topic-content px-6 py-6 border-t border-gray-200 bg-white">
+                    <h3 class="text-sm font-bold text-red-600 uppercase mb-2">The Issue</h3>
+                    <p class="mb-4 text-sm">Transferring large files across an SMB network share or VPN fails randomly with error code 0x8007003b. This is typically a symptom of mismatched MTU sizes or aggressive hardware offloading interfering with LanmanWorkstation.</p>
+                    <h3 class="text-sm font-bold text-green-600 uppercase mb-2">The Resolution</h3>
+                    <ul class="list-disc pl-5 text-sm space-y-2">
+                        <li>Open PowerShell as Administrator.</li>
+                        <li>Disable Large Send Offload (LSO) on the network adapter by running: <code>Disable-NetAdapterLso -Name "*" -IPv4</code></li>
+                        <li>If the issue persists, open the Registry Editor (regedit) and navigate to <code>HKLM\SYSTEM\CurrentControlSet\Services\LanmanWorkstation\Parameters</code>.</li>
+                        <li>Increase the <code>SessTimeout</code> and <code>ExtendedSessTimeout</code> DWORD values to extend connection tolerance.</li>
+                    </ul>
                 </div>
             </div>
-        </details>
 
-        <details class="kb-item group bg-slate-800/40 border border-slate-800 rounded-xl overflow-hidden hover:border-slate-700 transition" data-category="cloud">
-            <summary class="flex items-center justify-between p-4 cursor-pointer select-none bg-slate-800/20 hover:bg-slate-800/50 transition">
-                <div class="flex items-center space-x-3.5 pr-4">
-                    <span class="text-xs font-bold text-slate-500 tracking-mono bg-slate-950 px-2 py-1 rounded border border-slate-800">LOG-04</span>
-                    <h3 class="text-sm sm:text-base font-bold text-white group-hover:text-indigo-400 transition">Google Apps / Gmail - Direct en-dash and em-dash Key Mapping</h3>
+            <div class="bg-white border border-gray-300 rounded-lg shadow-sm overflow-hidden">
+                <div class="topic-header bg-gray-100 px-6 py-4 flex justify-between items-center hover:bg-gray-200 transition" onclick="toggleTopic(this)">
+                    <h2 class="font-bold text-gray-800">Google Apps / Gmail - Inserting en-dash or em-dashes</h2>
+                    <span class="text-sm text-gray-500">▼</span>
                 </div>
-                <div class="flex items-center space-x-4 shrink-0">
-                    <span class="text-xs font-mono text-indigo-400 bg-indigo-950/80 px-2.5 py-1 rounded border border-indigo-900/40"><i class="fa-regular fa-calendar-plus mr-1"></i> Added: Mar 04, 2012</span>
-                    <i class="fa-solid fa-chevron-down text-xs text-slate-500 group-open:rotate-180 transition-transform duration-150"></i>
+                <div class="topic-content px-6 py-6 border-t border-gray-200 bg-white">
+                    <p class="mb-4 text-sm">Gmail and Google Docs web interfaces lack direct keyboard keys for standard en-dash and em-dash characters. To insert them efficiently:</p>
+                    <ul class="list-disc pl-5 text-sm space-y-2">
+                        <li><strong>Google Docs automation:</strong> Go to Tools > Preferences > Substitutions. Enter <code>--</code> in the "Replace" field, and paste an actual em-dash (—) into the "With" field.</li>
+                        <li><strong>Windows ALT Codes:</strong> Hold ALT and type <code>0150</code> on the numpad for an en-dash (–), or <code>0151</code> for an em-dash (—).</li>
+                        <li><strong>Mac Shortcuts:</strong> Press <code>Option + Hyphen</code> for an en-dash, or <code>Option + Shift + Hyphen</code> for an em-dash.</li>
+                    </ul>
                 </div>
-            </summary>
-            <div class="p-6 border-t border-slate-800/80 bg-slate-900/60 text-sm space-y-4">
-                <p class="text-slate-300 text-xs sm:text-sm">Web interface communication tools drop structured typographical character injections because standard mechanical layouts isolate basic hyphens. Resolve this inside Google Docs by configuring automated correction maps via <code class="text-slate-300">Tools &rarr; Preferences &rarr; Substitutions</code>. Map the <code class="text-indigo-400">--</code> string payload to output an actual em-dash character glyph.</p>
             </div>
-        </details>
 
-        <details class="kb-item group bg-slate-800/40 border border-slate-800 rounded-xl overflow-hidden hover:border-slate-700 transition" data-category="storage">
-            <summary class="flex items-center justify-between p-4 cursor-pointer select-none bg-slate-800/20 hover:bg-slate-800/50 transition">
-                <div class="flex items-center space-x-3.5 pr-4">
-                    <span class="text-xs font-bold text-slate-500 tracking-mono bg-slate-950 px-2 py-1 rounded border border-slate-800">LOG-05</span>
-                    <h3 class="text-sm sm:text-base font-bold text-white group-hover:text-indigo-400 transition">Hyper-V on Notebooks - Fixing Wi-Fi Dropouts on External Virtual Switches</h3>
+            <div class="bg-white border border-gray-300 rounded-lg shadow-sm overflow-hidden">
+                <div class="topic-header bg-gray-100 px-6 py-4 flex justify-between items-center hover:bg-gray-200 transition" onclick="toggleTopic(this)">
+                    <h2 class="font-bold text-gray-800">Hyper V on your Notebook</h2>
+                    <span class="text-sm text-gray-500">▼</span>
                 </div>
-                <div class="flex items-center space-x-4 shrink-0">
-                    <span class="text-xs font-mono text-indigo-400 bg-indigo-950/80 px-2.5 py-1 rounded border border-indigo-900/40"><i class="fa-regular fa-calendar-plus mr-1"></i> Added: Jun 18, 2014</span>
-                    <i class="fa-solid fa-chevron-down text-xs text-slate-500 group-open:rotate-180 transition-transform duration-150"></i>
+                <div class="topic-content px-6 py-6 border-t border-gray-200 bg-white">
+                    <h3 class="text-sm font-bold text-red-600 uppercase mb-2">The Issue</h3>
+                    <p class="mb-4 text-sm">Running Hyper-V on a laptop and binding an "External" virtual switch directly to the Wi-Fi adapter causes constant wireless dropouts and prevents the laptop from sleeping properly.</p>
+                    <h3 class="text-sm font-bold text-green-600 uppercase mb-2">The Resolution</h3>
+                    <ul class="list-disc pl-5 text-sm space-y-2">
+                        <li>Open the Hyper-V Virtual Switch Manager.</li>
+                        <li>Delete the External switch mapped to your Wi-Fi card.</li>
+                        <li>Create a new switch and set it strictly to <strong>Internal</strong>.</li>
+                        <li>Open Windows Network Connections, right-click your Wi-Fi adapter, go to Properties > Sharing, and enable <strong>Internet Connection Sharing (ICS)</strong>, mapping it to the new Internal vSwitch.</li>
+                    </ul>
                 </div>
-            </summary>
-            <div class="p-6 border-t border-slate-800/80 bg-slate-900/60 text-sm space-y-4">
-                <p class="text-slate-300 text-xs sm:text-sm">Binding an external virtual switch directly to laptop wireless network adapters breaks native hardware power-saving states and interrupts access point roaming handoffs. To stabilize the connection, configure a virtual switch set exclusively to <code class="text-slate-400 font-semibold">Internal</code> mode, and initialize a local NAT routing configuration via PowerShell:</p>
-                <pre class="text-xs bg-slate-950 p-3 rounded border border-slate-800 text-indigo-300 block overflow-x-auto">New-NetNat -Name "InternalNotebookNAT" -InternalIPInterfaceAddressPrefix "192.168.120.0/24"</pre>
             </div>
-        </details>
 
-        <details class="kb-item group bg-slate-800/40 border border-slate-800 rounded-xl overflow-hidden hover:border-slate-700 transition" data-category="cloud">
-            <summary class="flex items-center justify-between p-4 cursor-pointer select-none bg-slate-800/20 hover:bg-slate-800/50 transition">
-                <div class="flex items-center space-x-3.5 pr-4">
-                    <span class="text-xs font-bold text-slate-500 tracking-mono bg-slate-950 px-2 py-1 rounded border border-slate-800">LOG-06</span>
-                    <h3 class="text-sm sm:text-base font-bold text-white group-hover:text-indigo-400 transition">MXToolBox Deployment - Verifying SPF, DKIM, and DMARC Alignments</h3>
+            <div class="bg-white border border-gray-300 rounded-lg shadow-sm overflow-hidden">
+                <div class="topic-header bg-gray-100 px-6 py-4 flex justify-between items-center hover:bg-gray-200 transition" onclick="toggleTopic(this)">
+                    <h2 class="font-bold text-gray-800">MXToolBox Configuration</h2>
+                    <span class="text-sm text-gray-500">▼</span>
                 </div>
-                <div class="flex items-center space-x-4 shrink-0">
-                    <span class="text-xs font-mono text-indigo-400 bg-indigo-950/80 px-2.5 py-1 rounded border border-indigo-900/40"><i class="fa-regular fa-calendar-plus mr-1"></i> Added: Feb 11, 2013</span>
-                    <i class="fa-solid fa-chevron-down text-xs text-slate-500 group-open:rotate-180 transition-transform duration-150"></i>
+                <div class="topic-content px-6 py-6 border-t border-gray-200 bg-white">
+                    <p class="mb-4 text-sm">To prevent your domain's outgoing mail from bouncing or hitting spam folders, use MXToolBox to verify your public DNS records are perfectly aligned:</p>
+                    <ul class="list-disc pl-5 text-sm space-y-2">
+                        <li><strong>SPF (Sender Policy Framework):</strong> Ensure your TXT record lists all sending gateways. Example: <code>v=spf1 include:_spf.google.com ~all</code></li>
+                        <li><strong>DKIM:</strong> Ensure public cryptographic keys are properly pasted into your DNS host to sign outgoing envelopes.</li>
+                        <li><strong>DMARC:</strong> Deploy a DMARC policy (<code>v=DMARC1; p=quarantine;</code>) to instruct receiving servers what to do if SPF or DKIM fails.</li>
+                    </ul>
                 </div>
-            </summary>
-            <div class="p-6 border-t border-slate-800/80 bg-slate-900/60 text-sm space-y-4">
-                <p class="text-slate-300 text-xs sm:text-sm">To prevent outgoing mail from being blocked or sent to quarantine by strict external security filters, configure corporate public DNS zone files with explicit records that allow mail processing nodes to authorize outbound messages:</p>
-                <pre class="text-xs bg-slate-950 p-2.5 rounded border border-slate-800 text-emerald-400 block overflow-x-auto">v=spf1 include:_spf.google.com include:mail.protection.outlook.com ~all</pre>
             </div>
-        </details>
 
-        <details class="kb-item group bg-slate-800/40 border border-slate-800 rounded-xl overflow-hidden hover:border-slate-700 transition" data-category="cloud">
-            <summary class="flex items-center justify-between p-4 cursor-pointer select-none bg-slate-800/20 hover:bg-slate-800/50 transition">
-                <div class="flex items-center space-x-3.5 pr-4">
-                    <span class="text-xs font-bold text-slate-500 tracking-mono bg-slate-950 px-2 py-1 rounded border border-slate-800">LOG-07</span>
-                    <h3 class="text-sm sm:text-base font-bold text-white group-hover:text-indigo-400 transition">Salesforce API Security - Authorizing Whitelisted Trusted IP Ranges</h3>
+            <div class="bg-white border border-gray-300 rounded-lg shadow-sm overflow-hidden">
+                <div class="topic-header bg-gray-100 px-6 py-4 flex justify-between items-center hover:bg-gray-200 transition" onclick="toggleTopic(this)">
+                    <h2 class="font-bold text-gray-800">Salesforce API and Login Blocks</h2>
+                    <span class="text-sm text-gray-500">▼</span>
                 </div>
-                <div class="flex items-center space-x-4 shrink-0">
-                    <span class="text-xs font-mono text-indigo-400 bg-indigo-950/80 px-2.5 py-1 rounded border border-indigo-900/40"><i class="fa-regular fa-calendar-plus mr-1"></i> Added: Sep 29, 2012</span>
-                    <i class="fa-solid fa-chevron-down text-xs text-slate-500 group-open:rotate-180 transition-transform duration-150"></i>
+                <div class="topic-content px-6 py-6 border-t border-gray-200 bg-white">
+                    <p class="mb-4 text-sm">If automated API integrations or remote users are suddenly blocked from Salesforce, it is usually due to restrictive network security profiles.</p>
+                    <ul class="list-disc pl-5 text-sm space-y-2">
+                        <li>Log into Salesforce as an Administrator.</li>
+                        <li>Search for <strong>Network Access</strong> in the Quick Find box.</li>
+                        <li>Add your new corporate static IP addresses or API gateway IPs to the <strong>Trusted IP Ranges</strong>.</li>
+                        <li>Ensure external users append their Security Token to their password if connecting from outside these ranges.</li>
+                    </ul>
                 </div>
-            </summary>
-            <div class="p-6 border-t border-slate-800/80 bg-slate-900/60 text-sm space-y-4">
-                <p class="text-slate-300 text-xs sm:text-sm">Network migration operations can trigger automated API blockages if user traffic moves outside pre-configured corporate boundaries. To fix this, log into the central Security administration workspace, navigate to <code class="text-slate-400">Network Access</code>, and explicitly append your external public IP gateways and netmask ranges to the <code class="text-slate-300 font-medium">Trusted IP Ranges</code> index.</p>
             </div>
-        </details>
 
-        <details class="kb-item group bg-slate-800/40 border border-slate-800 rounded-xl overflow-hidden hover:border-slate-700 transition" data-category="sysadmin">
-            <summary class="flex items-center justify-between p-4 cursor-pointer select-none bg-slate-800/20 hover:bg-slate-800/50 transition">
-                <div class="flex items-center space-x-3.5 pr-4">
-                    <span class="text-xs font-bold text-slate-500 tracking-mono bg-slate-950 px-2 py-1 rounded border border-slate-800">LOG-08</span>
-                    <h3 class="text-sm sm:text-base font-bold text-white group-hover:text-indigo-400 transition">Stuck Windows Print Job - Purging Spooler Cache via Command Line Interface</h3>
+            <div class="bg-white border border-gray-300 rounded-lg shadow-sm overflow-hidden">
+                <div class="topic-header bg-gray-100 px-6 py-4 flex justify-between items-center hover:bg-gray-200 transition" onclick="toggleTopic(this)">
+                    <h2 class="font-bold text-gray-800">Server 2012 RDP no longer working after May 8th Windows Update</h2>
+                    <span class="text-sm text-gray-500">▼</span>
                 </div>
-                <div class="flex items-center space-x-4 shrink-0">
-                    <span class="text-xs font-mono text-indigo-400 bg-indigo-950/80 px-2.5 py-1 rounded border border-indigo-900/40"><i class="fa-regular fa-calendar-plus mr-1"></i> Added: Nov 02, 2011</span>
-                    <i class="fa-solid fa-chevron-down text-xs text-slate-500 group-open:rotate-180 transition-transform duration-150"></i>
+                <div class="topic-content px-6 py-6 border-t border-gray-200 bg-white">
+                    <h3 class="text-sm font-bold text-red-600 uppercase mb-2">The Issue</h3>
+                    <p class="mb-4 text-sm">Clients drop Remote Desktop connections to unpatched host servers, showing a CredSSP encryption oracle remediation error. This was caused by the CVE-2018-0886 security patch.</p>
+                    <h3 class="text-sm font-bold text-green-600 uppercase mb-2">The Resolution</h3>
+                    <ul class="list-disc pl-5 text-sm space-y-2">
+                        <li>Run <code>gpedit.msc</code> on the connecting client machine.</li>
+                        <li>Navigate to: Computer Configuration > Administrative Templates > System > Credentials Delegation.</li>
+                        <li>Open <strong>Encryption Oracle Remediation</strong>.</li>
+                        <li>Enable the policy and set the Protection Level to <strong>Vulnerable</strong>. Apply the setting to regain emergency access, then fully run Windows Update on the target server.</li>
+                    </ul>
                 </div>
-            </summary>
-            <div class="p-6 border-t border-slate-800/80 bg-slate-900/60 text-sm space-y-4">
-                <p class="text-slate-300 text-xs sm:text-sm">When the print manager UI hangs on a corrupt print document and blocks subsequent print jobs, open an elevated Command Prompt window and execute this recovery script to flush the spooler:</p>
-                <pre class="text-xs bg-slate-950 p-3 rounded border border-slate-800 text-indigo-300 block overflow-x-auto">net stop spooler
+            </div>
+
+            <div class="bg-white border border-gray-300 rounded-lg shadow-sm overflow-hidden">
+                <div class="topic-header bg-gray-100 px-6 py-4 flex justify-between items-center hover:bg-gray-200 transition" onclick="toggleTopic(this)">
+                    <h2 class="font-bold text-gray-800">Stuck Print Job? - Reminder</h2>
+                    <span class="text-sm text-gray-500">▼</span>
+                </div>
+                <div class="topic-content px-6 py-6 border-t border-gray-200 bg-white">
+                    <p class="mb-4 text-sm">When a print job corrupts and the print queue refuses to delete it, you must flush the system spooler directly via command line.</p>
+                    <p class="text-sm font-semibold mb-2">Run these commands in an Elevated Command Prompt:</p>
+                    <pre class="bg-gray-800 text-green-400 p-4 rounded text-xs overflow-x-auto">net stop spooler
 del /Q /F /S "%systemroot%\System32\spool\PRINTERS\*.*"
 net start spooler</pre>
+                </div>
             </div>
-        </details>
 
-        <details class="kb-item group bg-slate-800/40 border border-slate-800 rounded-xl overflow-hidden hover:border-slate-700 transition" data-category="network">
-            <summary class="flex items-center justify-between p-4 cursor-pointer select-none bg-slate-800/20 hover:bg-slate-800/50 transition">
-                <div class="flex items-center space-x-3.5 pr-4">
-                    <span class="text-xs font-bold text-slate-500 tracking-mono bg-slate-950 px-2 py-1 rounded border border-slate-800">LOG-09</span>
-                    <h3 class="text-sm sm:text-base font-bold text-white group-hover:text-indigo-400 transition">Windows Server RDP Crash - Resolving May 8th CredSSP Oracle Remediation</h3>
+            <div class="bg-white border border-gray-300 rounded-lg shadow-sm overflow-hidden">
+                <div class="topic-header bg-gray-100 px-6 py-4 flex justify-between items-center hover:bg-gray-200 transition" onclick="toggleTopic(this)">
+                    <h2 class="font-bold text-gray-800">Office 365 / Edit Public Website</h2>
+                    <span class="text-sm text-gray-500">▼</span>
                 </div>
-                <div class="flex items-center space-x-4 shrink-0">
-                    <span class="text-xs font-mono text-indigo-400 bg-indigo-950/80 px-2.5 py-1 rounded border border-indigo-900/40"><i class="fa-regular fa-calendar-plus mr-1"></i> Added: May 10, 2018</span>
-                    <i class="fa-solid fa-chevron-down text-xs text-slate-500 group-open:rotate-180 transition-transform duration-150"></i>
+                <div class="topic-content px-6 py-6 border-t border-gray-200 bg-white">
+                    <h3 class="text-sm font-bold text-red-600 uppercase mb-2">The Issue</h3>
+                    <p class="mb-4 text-sm">Microsoft deprecated the public website hosting feature in SharePoint Online, rendering legacy public websites uneditable and eventually taking them offline.</p>
+                    <h3 class="text-sm font-bold text-green-600 uppercase mb-2">The Resolution</h3>
+                    <ul class="list-disc pl-5 text-sm space-y-2">
+                        <li>Migrate the front-end HTML/CSS assets to a modern static host like Cloudflare Pages, AWS S3, or GitHub Pages.</li>
+                        <li>Access your domain's public DNS records.</li>
+                        <li>Point the A Record and WWW CNAME to the new web host provider.</li>
+                        <li><strong>Crucial:</strong> Leave your MX records pointing to <code>yourdomain-com.mail.protection.outlook.com</code> to ensure email delivery is not interrupted by the web migration.</li>
+                    </ul>
                 </div>
-            </summary>
-            <div class="p-6 border-t border-slate-800/80 bg-slate-900/60 text-sm space-y-4">
-                <p class="text-slate-300 text-xs sm:text-sm">Workstations updated against security flaw <code class="text-slate-400 font-mono">CVE-2018-0886</code> will drop connections to unpatched legacy host servers during the initial RDP handshake. While the permanent solution requires patching the target host server, you can apply an emergency client-side policy override using <code class="text-slate-400 font-mono">gpedit.msc</code>:</p>
-                <p class="text-slate-400 text-xs pl-4 border-l-2 border-slate-700">Navigate to: <code class="text-slate-400">Computer Configuration &rarr; Administrative Templates &rarr; System &rarr; Credentials Delegation</code>. Set <code class="text-slate-300 font-medium">Encryption Oracle Remediation</code> to **Enabled**, and change the protection level to **Vulnerable**.</p>
             </div>
-        </details>
 
-        <details class="kb-item group bg-slate-800/40 border border-slate-800 rounded-xl overflow-hidden hover:border-slate-700 transition" data-category="cloud">
-            <summary class="flex items-center justify-between p-4 cursor-pointer select-none bg-slate-800/20 hover:bg-slate-800/50 transition">
-                <div class="flex items-center space-x-3.5 pr-4">
-                    <span class="text-xs font-bold text-slate-500 tracking-mono bg-slate-950 px-2 py-1 rounded border border-slate-800">LOG-10</span>
-                    <h3 class="text-sm sm:text-base font-bold text-white group-hover:text-indigo-400 transition">eBooks from Microsoft - Centralized Infrastructure Systems Engineering Reference Folders</h3>
+            <div class="bg-white border border-gray-300 rounded-lg shadow-sm overflow-hidden">
+                <div class="topic-header bg-gray-100 px-6 py-4 flex justify-between items-center hover:bg-gray-200 transition" onclick="toggleTopic(this)">
+                    <h2 class="font-bold text-gray-800">Force Time Machine to Start</h2>
+                    <span class="text-sm text-gray-500">▼</span>
                 </div>
-                <div class="flex items-center space-x-4 shrink-0">
-                    <span class="text-xs font-mono text-indigo-400 bg-indigo-950/80 px-2.5 py-1 rounded border border-indigo-900/40"><i class="fa-regular fa-calendar-plus mr-1"></i> Added: Apr 20, 2015</span>
-                    <i class="fa-solid fa-chevron-down text-xs text-slate-500 group-open:rotate-180 transition-transform duration-150"></i>
+                <div class="topic-content px-6 py-6 border-t border-gray-200 bg-white">
+                    <h3 class="text-sm font-bold text-red-600 uppercase mb-2">The Issue</h3>
+                    <p class="mb-4 text-sm">macOS backups get stuck on "Preparing backup..." when backing up to network drives due to stale state locks left over from sudden disconnections.</p>
+                    <h3 class="text-sm font-bold text-green-600 uppercase mb-2">The Resolution</h3>
+                    <ul class="list-disc pl-5 text-sm space-y-2">
+                        <li>Open Terminal and stop the stuck process: <code>sudo tmutil stopbackup</code></li>
+                        <li>Mount the network backup drive via Finder.</li>
+                        <li>Open the <code>.sparsebundle</code> directory and find any file or folder ending in <code>.inProgress</code>. Delete it.</li>
+                        <li>Force a clean start: <code>tmutil startbackup</code></li>
+                    </ul>
                 </div>
-            </summary>
-            <div class="p-6 border-t border-slate-800/80 bg-slate-900/60 text-sm space-y-4">
-                <p class="text-slate-300 text-xs sm:text-sm">To prevent configuration drift during system rollouts, maintain a curated repository of deployment documentation. This helps standardize design rules for Windows Server virtualization matrices, Azure landing zone structural setups, and security architecture baselines.</p>
             </div>
-        </details>
 
-        <details class="kb-item group bg-slate-800/40 border border-slate-800 rounded-xl overflow-hidden hover:border-slate-700 transition" data-category="cloud">
-            <summary class="flex items-center justify-between p-4 cursor-pointer select-none bg-slate-800/20 hover:bg-slate-800/50 transition">
-                <div class="flex items-center space-x-3.5 pr-4">
-                    <span class="text-xs font-bold text-slate-500 tracking-mono bg-slate-950 px-2 py-1 rounded border border-slate-800">LOG-11</span>
-                    <h3 class="text-sm sm:text-base font-bold text-white group-hover:text-indigo-400 transition">Office 365 Transition - Migrating Deprecated SharePoint Public Websites</h3>
+            <div class="bg-white border border-gray-300 rounded-lg shadow-sm overflow-hidden">
+                <div class="topic-header bg-gray-100 px-6 py-4 flex justify-between items-center hover:bg-gray-200 transition" onclick="toggleTopic(this)">
+                    <h2 class="font-bold text-gray-800">Microsoft Server 2012 Setup as AD Domain Controller</h2>
+                    <span class="text-sm text-gray-500">▼</span>
                 </div>
-                <div class="flex items-center space-x-4 shrink-0">
-                    <span class="text-xs font-mono text-indigo-400 bg-indigo-950/80 px-2.5 py-1 rounded border border-indigo-900/40"><i class="fa-regular fa-calendar-plus mr-1"></i> Added: Jan 30, 2015</span>
-                    <i class="fa-solid fa-chevron-down text-xs text-slate-500 group-open:rotate-180 transition-transform duration-150"></i>
+                <div class="topic-content px-6 py-6 border-t border-gray-200 bg-white">
+                    <p class="mb-4 text-sm">To convert a standalone Server 2012 environment into a central identity hub:</p>
+                    <ul class="list-disc pl-5 text-sm space-y-2">
+                        <li>Open Server Manager and click <strong>Add Roles and Features</strong>.</li>
+                        <li>Check the box for <strong>Active Directory Domain Services</strong> and install.</li>
+                        <li>Once installed, click the yellow warning flag at the top of Server Manager and select <strong>Promote this server to a domain controller</strong>.</li>
+                        <li>Select <strong>Add a new forest</strong>, name your Root Domain (e.g., corp.local), set your DSRM password, and click Next through the prerequisite checks to install.</li>
+                    </ul>
                 </div>
-            </summary>
-            <div class="p-6 border-t border-slate-800/80 bg-slate-900/60 text-sm space-y-4">
-                <p class="text-slate-300 text-xs sm:text-sm">When Microsoft deprecated public SharePoint-backed website features, existing public web layouts became uneditable. To resolve this without disrupting corporate mailboxes, migrate public asset payloads to an independent hosting infrastructure (such as Cloudflare Pages). Keep mail routing intact by pointing MX records directly to Microsoft 365 edge endpoints, while updating root A and CNAME paths to point to the new hosting platform.</p>
             </div>
-        </details>
 
-        <details class="kb-item group bg-slate-800/40 border border-slate-800 rounded-xl overflow-hidden hover:border-slate-700 transition" data-category="sysadmin">
-            <summary class="flex items-center justify-between p-4 cursor-pointer select-none bg-slate-800/20 hover:bg-slate-800/50 transition">
-                <div class="flex items-center space-x-3.5 pr-4">
-                    <span class="text-xs font-bold text-slate-500 tracking-mono bg-slate-950 px-2 py-1 rounded border border-slate-800">LOG-12</span>
-                    <h3 class="text-sm sm:text-base font-bold text-white group-hover:text-indigo-400 transition">macOS Time Machine - Clearing '.inProgress' Locks on Network Targets</h3>
+            <div class="bg-white border border-gray-300 rounded-lg shadow-sm overflow-hidden">
+                <div class="topic-header bg-gray-100 px-6 py-4 flex justify-between items-center hover:bg-gray-200 transition" onclick="toggleTopic(this)">
+                    <h2 class="font-bold text-gray-800">Ubuntu 10.04 - Unable to Update</h2>
+                    <span class="text-sm text-gray-500">▼</span>
                 </div>
-                <div class="flex items-center space-x-4 shrink-0">
-                    <span class="text-xs font-mono text-indigo-400 bg-indigo-950/80 px-2.5 py-1 rounded border border-indigo-900/40"><i class="fa-regular fa-calendar-plus mr-1"></i> Added: Jul 07, 2016</span>
-                    <i class="fa-solid fa-chevron-down text-xs text-slate-500 group-open:rotate-180 transition-transform duration-150"></i>
+                <div class="topic-content px-6 py-6 border-t border-gray-200 bg-white">
+                    <h3 class="text-sm font-bold text-red-600 uppercase mb-2">The Issue</h3>
+                    <p class="mb-4 text-sm">Running <code>apt-get update</code> returns 404 Not Found errors because the Lucid Lynx distribution has reached End-Of-Life and its packages were moved off the main servers.</p>
+                    <h3 class="text-sm font-bold text-green-600 uppercase mb-2">The Resolution</h3>
+                    <ul class="list-disc pl-5 text-sm space-y-2">
+                        <li>Open your sources list: <code>sudo nano /etc/apt/sources.list</code></li>
+                        <li>Find all references to <code>us.archive.ubuntu.com</code> and <code>security.ubuntu.com</code>.</li>
+                        <li>Replace those URLs entirely with <code>http://old-releases.ubuntu.com/ubuntu/</code>.</li>
+                        <li>Save the file and run <code>sudo apt-get update</code> to restore repository access.</li>
+                    </ul>
                 </div>
-            </summary>
-            <div class="p-6 border-t border-slate-800/80 bg-slate-900/60 text-sm space-y-4">
-                <p class="text-slate-300 text-xs sm:text-sm">Abrupt connection drops over network shares can leave stale state flags behind, causing backups to hang on the message &ldquo;Preparing backup...&rdquo; To fix this, open the terminal utility on the macOS device, stop the stuck process, and clear the lock file:</p>
-                <pre class="text-xs bg-slate-950 p-3 rounded border border-slate-800 text-indigo-300 block overflow-x-auto">sudo tmutil stopbackup</pre>
-                <p class="text-slate-300 text-xs mt-2">Mount the storage volume, open the backup container directory, and delete any hidden tracking folders appended with an active <code class="text-rose-400 font-mono">.inProgress</code> extension before restarting the backup engine.</p>
             </div>
-        </details>
 
-        <details class="kb-item group bg-slate-800/40 border border-slate-800 rounded-xl overflow-hidden hover:border-slate-700 transition" data-category="storage">
-            <summary class="flex items-center justify-between p-4 cursor-pointer select-none bg-slate-800/20 hover:bg-slate-800/50 transition">
-                <div class="flex items-center space-x-3.5 pr-4">
-                    <span class="text-xs font-bold text-slate-500 tracking-mono bg-slate-950 px-2 py-1 rounded border border-slate-800">LOG-13</span>
-                    <h3 class="text-sm sm:text-base font-bold text-white group-hover:text-indigo-400 transition">Windows Server 2012 R2 - Active Directory Domain Controller Forest Promotion</h3>
+            <div class="bg-white border border-gray-300 rounded-lg shadow-sm overflow-hidden">
+                <div class="topic-header bg-gray-100 px-6 py-4 flex justify-between items-center hover:bg-gray-200 transition" onclick="toggleTopic(this)">
+                    <h2 class="font-bold text-gray-800">Windows 10 Insider Preview - Run Apps with GPU</h2>
+                    <span class="text-sm text-gray-500">▼</span>
                 </div>
-                <div class="flex items-center space-x-4 shrink-0">
-                    <span class="text-xs font-mono text-indigo-400 bg-indigo-950/80 px-2.5 py-1 rounded border border-indigo-900/40"><i class="fa-regular fa-calendar-plus mr-1"></i> Added: Sep 12, 2013</span>
-                    <i class="fa-solid fa-chevron-down text-xs text-slate-500 group-open:rotate-180 transition-transform duration-150"></i>
+                <div class="topic-content px-6 py-6 border-t border-gray-200 bg-white">
+                    <p class="mb-4 text-sm">On multi-GPU systems (like laptops with integrated graphics + dedicated Nvidia/AMD chips), you can force a specific app to use the high-performance GPU natively through the OS rather than relying on driver control panels.</p>
+                    <ul class="list-disc pl-5 text-sm space-y-2">
+                        <li>Open Windows Settings > System > Display.</li>
+                        <li>Scroll down and click <strong>Graphics settings</strong>.</li>
+                        <li>Select "Classic app" (or Desktop app), browse to the executable file of the software.</li>
+                        <li>Once added to the list, click the app, select <strong>Options</strong>, and choose <strong>High performance</strong> to bind it to the dedicated GPU.</li>
+                    </ul>
                 </div>
-            </summary>
-            <div class="p-6 border-t border-slate-800/80 bg-slate-900/60 text-sm space-y-4">
-                <p class="text-slate-300 text-xs sm:text-sm">To provision a new corporate network with a centralized identity framework, open Server Manager, select <code class="text-slate-300 font-medium">Add Roles and Features</code>, and add the <code class="text-indigo-400 font-mono">Active Directory Domain Services (AD DS)</code> binary package. Once installed, select the notification flag, choose <code class="text-slate-300 font-medium">Promote this server to a domain controller</code>, create a new forest layout, and assign an integrated DNS zone infrastructure.</p>
             </div>
-        </details>
 
-        <details class="kb-item group bg-slate-800/40 border border-slate-800 rounded-xl overflow-hidden hover:border-slate-700 transition" data-category="sysadmin">
-            <summary class="flex items-center justify-between p-4 cursor-pointer select-none bg-slate-800/20 hover:bg-slate-800/50 transition">
-                <div class="flex items-center space-x-3.5 pr-4">
-                    <span class="text-xs font-bold text-slate-500 tracking-mono bg-slate-950 px-2 py-1 rounded border border-slate-800">LOG-14</span>
-                    <h3 class="text-sm sm:text-base font-bold text-white group-hover:text-indigo-400 transition">Ubuntu 10.04 (Lucid Lynx) - Updating EOL Sources to Old-Releases Mirrors</h3>
+            <div class="bg-white border border-gray-300 rounded-lg shadow-sm overflow-hidden">
+                <div class="topic-header bg-gray-100 px-6 py-4 flex justify-between items-center hover:bg-gray-200 transition" onclick="toggleTopic(this)">
+                    <h2 class="font-bold text-gray-800">eBooks from Microsoft</h2>
+                    <span class="text-sm text-gray-500">▼</span>
                 </div>
-                <div class="flex items-center space-x-4 shrink-0">
-                    <span class="text-xs font-mono text-indigo-400 bg-indigo-950/80 px-2.5 py-1 rounded border border-indigo-900/40"><i class="fa-regular fa-calendar-plus mr-1"></i> Added: May 18, 2015</span>
-                    <i class="fa-solid fa-chevron-down text-xs text-slate-500 group-open:rotate-180 transition-transform duration-150"></i>
+                <div class="topic-content px-6 py-6 border-t border-gray-200 bg-white">
+                    <p class="mb-4 text-sm">Maintain central engineering folders for official Microsoft documentation to prevent configuration drift during deployments. Keep local copies of reference guides concerning Windows Server virtualization matrices, Azure landing zone structural setups, and security architecture baselines.</p>
                 </div>
-            </summary>
-            <div class="p-6 border-t border-slate-800/80 bg-slate-900/60 text-sm space-y-4">
-                <p class="text-slate-300 text-xs sm:text-sm">Running <code class="text-slate-400 font-mono">apt-get update</code> on End-of-Life (EOL) legacy Linux distributions returns 404 HTTP errors because the active packages have been moved off standard mirror chains. To restore package operations, edit <code class="text-slate-300 font-mono">/etc/apt/sources.list</code>, remove references to <code class="text-rose-400 font-mono">archive.ubuntu.com</code>, and point the target configuration lines to the legacy archive repository index:</p>
-                <pre class="text-xs bg-slate-950 p-2.5 rounded border border-slate-800 text-emerald-400 block overflow-x-auto">http://old-releases.ubuntu.com/ubuntu/</pre>
             </div>
-        </details>
 
-        <details class="kb-item group bg-slate-800/40 border border-slate-800 rounded-xl overflow-hidden hover:border-slate-700 transition" data-category="sysadmin">
-            <summary class="flex items-center justify-between p-4 cursor-pointer select-none bg-slate-800/20 hover:bg-slate-800/50 transition">
-                <div class="flex items-center space-x-3.5 pr-4">
-                    <span class="text-xs font-bold text-slate-500 tracking-mono bg-slate-950 px-2 py-1 rounded border border-slate-800">LOG-15</span>
-                    <h3 class="text-sm sm:text-base font-bold text-white group-hover:text-indigo-400 transition">SonicWALL NetExtender - Resolving 'Damaged Driver' Flag Faults on Client OS</h3>
-                </div>
-                <div class="flex items-center space-x-4 shrink-0">
-                    <span class="text-xs font-mono text-indigo-400 bg-indigo-950/80 px-2.5 py-1 rounded border border-indigo-900/40"><i class="fa-regular fa-calendar-plus mr-1"></i> Added: Oct 14, 2016</span>
-                    <i class="fa-solid fa-chevron-down text-xs text-slate-500 group-open:rotate-180 transition-transform duration-150"></i>
-                </div>
-            </summary>
-            <div class="p-6 border-t border-slate-800/80 bg-slate-900/60 text-sm space-y-4">
-                <p class="text-slate-300 text-xs sm:text-sm">Operating system patch cycles can flag the SSL-VPN virtual adapter driver as damaged, blocking remote connections. To resolve this driver signature conflict, uninstall NetExtender from the machine, launch Device Manager, delete the lingering <code class="text-slate-400 font-mono">SonicWALL Virtual NIC</code> adapter, clear out old encryption keys found in the system registry, and reinstall the latest client package.</p>
-            </div>
-        </details>
-
-        <details class="kb-item group bg-slate-800/40 border border-slate-800 rounded-xl overflow-hidden hover:border-slate-700 transition" data-category="network">
-            <summary class="flex items-center justify-between p-4 cursor-pointer select-none bg-slate-800/20 hover:bg-slate-800/50 transition">
-                <div class="flex items-center space-x-3.5 pr-4">
-                    <span class="text-xs font-bold text-slate-500 tracking-mono bg-slate-950 px-2 py-1 rounded border border-slate-800">LOG-16</span>
-                    <h3 class="text-sm sm:text-base font-bold text-white group-hover:text-indigo-400 transition">Ubiquiti UniFi Access Points - Troubleshooting 'Isolated' Status on Wireless Uplinks</h3>
-                </div>
-                <div class="flex items-center space-x-4 shrink-0">
-                    <span class="text-xs font-mono text-indigo-400 bg-indigo-950/80 px-2.5 py-1 rounded border border-indigo-900/40"><i class="fa-regular fa-calendar-plus mr-1"></i> Added: Mar 23, 2017</span>
-                    <i class="fa-solid fa-chevron-down text-xs text-slate-500 group-open:rotate-180 transition-transform duration-150"></i>
-                </div>
-            </summary>
-            <div class="p-6 border-t border-slate-800/80 bg-slate-900/60 text-sm space-y-4">
-                <p class="text-slate-300 text-xs sm:text-sm">Downstream access points can lose connection and switch to an "Isolated" state if local gateway monitoring metrics fail. To restore connectivity, log into the controller software dashboard, enable <code class="text-slate-300 font-medium">Uplink Connectivity Monitor</code>, and set a static IP monitoring target (such as your core gateway switch) rather than relying on DHCP indicators.</p>
-            </div>
-        </details>
-
-        <details class="kb-item group bg-slate-800/40 border border-slate-800 rounded-xl overflow-hidden hover:border-slate-700 transition" data-category="storage">
-            <summary class="flex items-center justify-between p-4 cursor-pointer select-none bg-slate-800/20 hover:bg-slate-800/50 transition">
-                <div class="flex items-center space-x-3.5 pr-4">
-                    <span class="text-xs font-bold text-slate-500 tracking-mono bg-slate-950 px-2 py-1 rounded border border-slate-800">LOG-17</span>
-                    <h3 class="text-sm sm:text-base font-bold text-white group-hover:text-indigo-400 transition">Dell iDRAC 7/8 Out-of-Band Management - Bypassing Java Runtime Security Blockers</h3>
-                </div>
-                <div class="flex items-center space-x-4 shrink-0">
-                    <span class="text-xs font-mono text-indigo-400 bg-indigo-950/80 px-2.5 py-1 rounded border border-indigo-900/40"><i class="fa-regular fa-calendar-plus mr-1"></i> Added: Dec 05, 2015</span>
-                    <i class="fa-solid fa-chevron-down text-xs text-slate-500 group-open:rotate-180 transition-transform duration-150"></i>
-                </div>
-            </summary>
-            <div class="p-6 border-t border-slate-800/80 bg-slate-900/60 text-sm space-y-4">
-                <p class="text-slate-300 text-xs sm:text-sm">Modern Java runtime environments block virtual console connections to legacy server management cards because of outdated cryptographic requirements. To restore access without compromising your primary machine's security, open the Java Control Panel interface, navigate to the <code class="text-slate-300">Security</code> tab, open the **Exception Site List**, and add the exact management URL of the target array (e.g., <code class="text-indigo-400">https://10.0.4.50</code>).</p>
-            </div>
-        </details>
-
-        <details class="kb-item group bg-slate-800/40 border border-slate-800 rounded-xl overflow-hidden hover:border-slate-700 transition" data-category="sysadmin">
-            <summary class="flex items-center justify-between p-4 cursor-pointer select-none bg-slate-800/20 hover:bg-slate-800/50 transition">
-                <div class="flex items-center space-x-3.5 pr-4">
-                    <span class="text-xs font-bold text-slate-500 tracking-mono bg-slate-950 px-2 py-1 rounded border border-slate-800">LOG-18</span>
-                    <h3 class="text-sm sm:text-base font-bold text-white group-hover:text-indigo-400 transition">Let's Encrypt SSL Certificates - Automating IIS Engine Renewals via Win-ACME</h3>
-                </div>
-                <div class="flex items-center space-x-4 shrink-0">
-                    <span class="text-xs font-mono text-indigo-400 bg-indigo-950/80 px-2.5 py-1 rounded border border-indigo-900/40"><i class="fa-regular fa-calendar-plus mr-1"></i> Added: Apr 19, 2018</span>
-                    <i class="fa-solid fa-chevron-down text-xs text-slate-500 group-open:rotate-180 transition-transform duration-150"></i>
-                </div>
-            </summary>
-            <div class="p-6 border-t border-slate-800/80 bg-slate-900/60 text-sm space-y-4">
-                <p class="text-slate-300 text-xs sm:text-sm">To stop manually managing 90-day web certificates on Windows Server platforms, download the open-source <code class="text-slate-400 font-mono">win-acme</code> client package. Run the utility from an elevated command prompt to scan active IIS site bindings, generate domain validation tokens via public HTTP verification loops, and automatically configure a recurrent Windows Task Scheduler script to handle updates.</p>
-            </div>
-        </details>
-
-        <details class="kb-item group bg-slate-800/40 border border-slate-800 rounded-xl overflow-hidden hover:border-slate-700 transition" data-category="cloud">
-            <summary class="flex items-center justify-between p-4 cursor-pointer select-none bg-slate-800/20 hover:bg-slate-800/50 transition">
-                <div class="flex items-center space-x-3.5 pr-4">
-                    <span class="text-xs font-bold text-slate-500 tracking-mono bg-slate-950 px-2 py-1 rounded border border-slate-800">LOG-19</span>
-                    <h3 class="text-sm sm:text-base font-bold text-white group-hover:text-indigo-400 transition">Microsoft Outlook Client - Bypassing Constant Password Prompts via Modern Auth Registry Keys</h3>
-                </div>
-                <div class="flex items-center space-x-4 shrink-0">
-                    <span class="text-xs font-mono text-indigo-400 bg-indigo-950/80 px-2.5 py-1 rounded border border-indigo-900/40"><i class="fa-regular fa-calendar-plus mr-1"></i> Added: Nov 14, 2019</span>
-                    <i class="fa-solid fa-chevron-down text-xs text-slate-500 group-open:rotate-180 transition-transform duration-150"></i>
-                </div>
-            </summary>
-            <div class="p-6 border-t border-slate-800/80 bg-slate-900/60 text-sm space-y-4">
-                <p class="text-slate-300 text-xs sm:text-sm">Legacy mail client installations can get stuck in continuous login loops when connecting to upgraded Office 365 tenants. To fix this behavior, open the local registry editor (<code class="text-slate-300 font-mono">regedit</code>) and navigate to the target path:</p>
-                <code class="text-xs bg-slate-950 p-2 rounded border border-slate-800 text-indigo-400 block overflow-x-auto">HKCU\Software\Microsoft\Office\16.0\Common\Identity</code>
-                <p class="text-slate-300 text-xs mt-2">Create a new DWORD key named <code class="text-slate-300 font-semibold">EnableADAL</code> and set its value to <code class="text-indigo-400 font-mono">1</code> to force modern OAuth authentication behavior.</p>
-            </div>
-        </details>
-
-        <details class="kb-item group bg-slate-800/40 border border-slate-800 rounded-xl overflow-hidden hover:border-slate-700 transition" data-category="storage">
-            <summary class="flex items-center justify-between p-4 cursor-pointer select-none bg-slate-800/20 hover:bg-slate-800/50 transition">
-                <div class="flex items-center space-x-3.5 pr-4">
-                    <span class="text-xs font-bold text-slate-500 tracking-mono bg-slate-950 px-2 py-1 rounded border border-slate-800">LOG-20</span>
-                    <h3 class="text-sm sm:text-base font-bold text-white group-hover:text-indigo-400 transition">VMware ESXi - Resolving Missing System Scratch Partition Errors on SD Card Boot Deployments</h3>
-                </div>
-                <div class="flex items-center space-x-4 shrink-0">
-                    <span class="text-xs font-mono text-indigo-400 bg-indigo-950/80 px-2.5 py-1 rounded border border-indigo-900/40"><i class="fa-regular fa-calendar-plus mr-1"></i> Added: Feb 08, 2016</span>
-                    <i class="fa-solid fa-chevron-down text-xs text-slate-500 group-open:rotate-180 transition-transform duration-150"></i>
-                </div>
-            </summary>
-            <div class="p-6 border-t border-slate-800/80 bg-slate-900/60 text-sm space-y-4">
-                <p class="text-slate-300 text-xs sm:text-sm">When installing bare-metal hypervisors on internal flash media, the kernel avoids automatically creating a system scratch space to protect the card's write endurance. This can lead to system log loss and monitoring alert failures over time. To resolve this, create a dedicated directory on an external mechanical storage tier, navigate to the hypervisor's advanced configuration parameters, search for <code class="text-slate-300 font-mono">ScratchConfig.ConfiguredScratchLocation</code>, and enter the exact path to the new directory.</p>
-            </div>
-        </details>
-
+        </div>
     </main>
 
-    <section class="bg-slate-950 text-slate-400 text-xs py-5 border-t border-slate-800/80">
-        <div class="max-w-5xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left">
-            <div class="flex flex-wrap justify-center sm:justify-start gap-4">
-                <span><i class="fa-solid fa-database text-indigo-500 mr-1.5"></i> Total Documented Entries: <strong class="text-slate-200" id="totalCount">20</strong></span>
-                <span><i class="fa-solid fa-circle-check text-emerald-500 mr-1.5"></i> Status: Production Verified</span>
-            </div>
-            <div class="text-slate-500 font-mono">Index Compiled &bull; 2026 Edition</div>
-        </div>
-    </section>
-
-    <footer class="bg-slate-900 text-slate-600 text-[11px] py-6 border-t border-slate-800/50">
-        <div class="max-w-5xl mx-auto px-4 text-center">
-            <p>&copy; 2026 Pacific Computer Wizards. All engineering log assets are held inside verified state repositories.</p>
-        </div>
+    <footer class="bg-gray-900 text-gray-400 py-6 text-center text-sm">
+        <p>&copy; Pacific Computer Wizards. Document Silo.</p>
     </footer>
 
     <script>
-        const searchInput = document.getElementById('kbSearch');
-        const items = document.querySelectorAll('.kb-item');
-        const countDisplay = document.getElementById('totalCount');
-
-        // Main Evaluation Filtering Loop
-        function evaluateInterfaceFilters() {
-            const query = searchInput.value.toLowerCase().trim();
-            const activeCategory = window.currentCategoryFilter || 'all';
-            let visibleCounter = 0;
-
-            items.forEach(item => {
-                const itemCategory = item.getAttribute('data-category');
-                // Scan against titles, summary text strings, and internal structural code fragments
-                const textContent = item.textContent.toLowerCase();
-                
-                const matchesCategory = (activeCategory === 'all' || itemCategory === activeCategory);
-                const matchesSearch = (query === '' || textContent.includes(query));
-
-                if (matchesCategory && matchesSearch) {
-                    item.classList.remove('hidden');
-                    visibleCounter++;
-                } else {
-                    item.classList.add('hidden');
-                    item.removeAttribute('open'); // Auto-collapse matches moving out of bounds
-                }
-            });
-            
-            countDisplay.textContent = visibleCounter;
+        function toggleTopic(element) {
+            element.classList.toggle('active');
+            const content = element.nextElementSibling;
+            if (content.style.display === "block") {
+                content.style.display = "none";
+                element.querySelector('span').innerText = '▼';
+            } else {
+                content.style.display = "block";
+                element.querySelector('span').innerText = '▲';
+            }
         }
 
-        // Global Accordion Controller
-        function toggleAllAccordions(shouldOpen) {
-            items.forEach(item => {
-                // Ignore elements hidden by active search parameters
-                if (!item.classList.contains('hidden')) {
-                    if (shouldOpen) {
-                        item.setAttribute('open', '');
-                    } else {
-                        item.removeAttribute('open');
-                    }
+        function expandAll() {
+            const headers = document.querySelectorAll('.topic-header');
+            headers.forEach(header => {
+                if (!header.classList.contains('active')) {
+                    header.classList.add('active');
+                    header.nextElementSibling.style.display = 'block';
+                    header.querySelector('span').innerText = '▲';
                 }
             });
         }
-
-        // Category Action Routing
-        function filterCategory(catId) {
-            window.currentCategoryFilter = catId;
-            
-            // Standardize button states
-            const buttons = document.querySelectorAll('button[id^="btn-"]');
-            buttons.forEach(btn => {
-                btn.className = "px-3 py-1.5 rounded-lg bg-slate-800 text-slate-400 border border-slate-700 hover:text-white cursor-pointer transition";
-            });
-            // Apply active accent color to the selected filter
-            document.getElementById(`btn-${catId}`).className = "px-3 py-1.5 rounded-lg bg-indigo-600 text-white border border-indigo-500 cursor-pointer transition";
-            
-            evaluateInterfaceFilters();
-        }
-
-        // Event Binding initialization
-        searchInput.addEventListener('input', evaluateInterfaceFilters);
-        window.currentCategoryFilter = 'all';
     </script>
-
 </body>
-</html>
+</html>       
