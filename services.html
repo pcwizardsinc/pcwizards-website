@@ -1,9 +1,157 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="stylesheet" href="style.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
     <title>Knowledge Base & Technical Discussion Archive</title>
+    <meta name="description" content="Personal experience, tips, and service notes for riding a Honda Goldwing with the Tilting Motor Works TRIO Front End (TRIO with Tilt-Lock).">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700&family=Oswald:400,700&family=Lato:400,700&display=swap" rel="stylesheet">
+
+    <style>
+        /* Cloudflare Pages Optimized CSS */
+        :root {
+            --accent-gold: #FFD54F;
+            --dark-charcoal: #212121;
+            --deep-plum: #4F474E;
+            --light-bg: #F5F2F0;
+            --link-blue: #1a0dab;
+            --white: #FFFFFF;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--light-bg);
+            color: var(--dark-charcoal);
+            line-height: 1.7;
+            font-size: 16px;
+        }
+
+        header {
+            background-color: var(--accent-gold);
+            color: var(--dark-charcoal);
+            padding: 50px 20px;
+            text-align: center;
+            border-bottom: 8px solid var(--deep-plum);
+        }
+
+        header h1 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 2.5rem;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        header p { font-family: 'Lato', sans-serif; font-size: 1.2rem; }
+
+        main {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .content-card {
+            background: var(--white);
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+            margin-bottom: 40px;
+        }
+
+        h2 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.8rem;
+            color: var(--deep-plum);
+            margin-top: 40px;
+            margin-bottom: 15px;
+            border-bottom: 3px solid var(--accent-gold);
+            padding-bottom: 5px;
+        }
+
+        h3 {
+            font-family: 'Lato', sans-serif;
+            font-size: 1.3rem;
+            margin-top: 30px;
+            margin-bottom: 10px;
+            color: var(--dark-charcoal);
+        }
+
+        p { margin-bottom: 20px; }
+
+        a { color: var(--link-blue); text-decoration: none; font-weight: bold; }
+        a:hover { text-decoration: underline; color: var(--deep-plum); }
+
+        .disclaimer {
+            background-color: #fff9e6;
+            border-left: 5px solid var(--accent-gold);
+            padding: 15px 20px;
+            font-style: italic;
+            margin-bottom: 30px;
+        }
+
+        hr {
+            border: 0;
+            height: 1px;
+            background: #ddd;
+            margin: 40px 0;
+        }
+
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            height: 0;
+            overflow: hidden;
+            margin-bottom: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        footer {
+            background-color: var(--deep-plum);
+            color: var(--white);
+            text-align: center;
+            padding: 30px 20px;
+            font-size: 0.9rem;
+        }
+
+        footer a { color: var(--accent-gold); }
+    </style>
+</head>
+<body>
+
+
+<nav class="pcw-navbar">
+    <ul>
+        <li><a href="index.html">Home</a></li>
+        <li class="dropdown">
+            <a class="dropbtn">The Garage ▾</a>
+            <div class="dropdown-content">
+                <a href="drones.html">Drones</a>
+                <a href="motorcycles.html">Motorcycles</a>
+            </div>
+        </li>
+        <li><a href="services.html">Computer Stuff</a></li>
+    </ul>
+</nav>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
