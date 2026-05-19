@@ -31,315 +31,740 @@
 </nav>
 
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Master Memory Repository | Pacific Computer Wizards</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
-        .topic-content { display: none; }
-        .topic-header { cursor: pointer; }
-        .topic-header.active + .topic-content { display: block; animation: fadeIn 0.3s ease-in-out; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(-5px); } to { opacity: 1; transform: translateY(0); } }
-    </style>
-</head>
-<body class="bg-gray-50 text-gray-800">
 
-    <header class="bg-blue-900 text-white py-8 shadow-md">
-        <div class="max-w-4xl mx-auto px-6">
-            <h1 class="text-3xl font-bold">Pacific Computer Wizards</h1>
-            <p class="text-blue-200 mt-2 text-sm uppercase tracking-wider">Memory Repository - Consolidated Silo</p>
+
+
+        
+<body class="bg-gray-50 text-gray-800 antialiased">
+
+    <header class="bg-indigo-900 text-white py-10 shadow-lg border-b-4 border-indigo-500 sticky top-0 z-50">
+        <div class="max-w-5xl mx-auto px-6 flex justify-between items-center">
+            <div>
+                <h1 class="text-3xl font-extrabold tracking-tight">Pacific Computer Wizards</h1>
+                <p class="text-indigo-200 mt-1 text-xs uppercase tracking-widest font-semibold">Master Memory Repository - Complete Archive</p>
+            </div>
+            <div class="space-x-3">
+                <button onclick="toggleAll(true)" class="bg-indigo-700 hover:bg-indigo-600 text-white px-4 py-2 rounded text-sm font-semibold transition border border-indigo-500 shadow-sm">Expand All</button>
+                <button onclick="toggleAll(false)" class="bg-indigo-950 hover:bg-indigo-800 text-white px-4 py-2 rounded text-sm font-semibold transition border border-indigo-700 shadow-sm">Collapse All</button>
+            </div>
         </div>
     </header>
 
-    <main class="max-w-4xl mx-auto px-6 py-10">
-        <div class="mb-8 flex justify-between items-center bg-white p-4 rounded-lg shadow-sm border border-gray-200">
-            <p class="text-sm text-gray-600">Click any topic below to expand the complete technical documentation.</p>
-            <button onclick="expandAll()" class="bg-blue-600 text-white px-4 py-2 rounded text-sm font-semibold hover:bg-blue-700 transition">Expand All Topics</button>
-        </div>
-
-        <div class="space-y-4" id="repository-container">
-
-            <div class="bg-white border border-gray-300 rounded-lg shadow-sm overflow-hidden">
-                <div class="topic-header bg-gray-100 px-6 py-4 flex justify-between items-center hover:bg-gray-200 transition" onclick="toggleTopic(this)">
-                    <h2 class="font-bold text-gray-800">Astaro / Sophos UTM - Enabling IPS - Cuts Bandwidth in Half</h2>
-                    <span class="text-sm text-gray-500">▼</span>
+    <main class="max-w-5xl mx-auto px-6 py-10 space-y-4" id="repository-container">
+        
+        <details class="group bg-white border border-gray-300 rounded-lg shadow-sm overflow-hidden">
+            <summary class="px-6 py-4 flex justify-between items-center hover:bg-gray-50 transition bg-gray-100/50">
+                <div>
+                    <h2 class="font-bold text-gray-900 text-lg">2008 R2 Service Pack 1 gives you "0x80246007" error code</h2>
+                    <p class="text-xs font-mono text-indigo-600 mt-1">Post date: May 10, 2012 3:32:29 PM</p>
                 </div>
-                <div class="topic-content px-6 py-6 border-t border-gray-200 bg-white">
-                    <h3 class="text-sm font-bold text-red-600 uppercase mb-2">The Issue</h3>
-                    <p class="mb-4 text-sm">When Intrusion Prevention (IPS) is activated on Sophos UTM / Astaro gateways, WAN throughput speeds drop by approximately 50%. This happens because the Snort IPS engine is single-threaded per connection stream, bottlenecking the CPU on high-speed lines.</p>
-                    <h3 class="text-sm font-bold text-green-600 uppercase mb-2">The Resolution</h3>
-                    <ul class="list-disc pl-5 text-sm space-y-2">
-                        <li>Log into WebAdmin and go to <strong>Network Protection > Intrusion Prevention > Advanced</strong>.</li>
-                        <li>Modify the rule age parameters to drop signatures older than 12-24 months.</li>
-                        <li>Uncheck entire OS categories that do not apply to your local network (e.g., disable Linux or Solaris rules if you only run Windows Servers).</li>
-                        <li>Reducing the active rule count offloads the CPU overhead, restoring standard throughput speeds.</li>
-                    </ul>
-                </div>
+                <span class="chevron text-gray-400">▼</span>
+            </summary>
+            <div class="px-6 py-6 border-t border-gray-200 bg-white text-sm text-gray-700 space-y-3">
+                <p>On my 2008 Server, I run Hyper-V, and for whatever reason, this error code reared its ugly head while trying to update it.</p>
+                <p>To Resolve this error code, do the following:<br>Open Notepad and type in the following:</p>
+                <pre class="bg-gray-900 text-green-400 p-3 rounded font-mono text-xs overflow-x-auto">net stop wuauserv
+cd %systemroot%\SoftwareDistribution
+ren Download Download.old
+net start wuauserv
+net stop bits
+net start bits</pre>
+                <p>* Save the file as Repair.bat and place on the Desktop of your 2008 R2 Server.</p>
+                <p>Run the batch file. After running the batch file, you will have to run the Service Pack again. It should go through this time! (Good Luck!)</p>
             </div>
+        </details>
 
-            <div class="bg-white border border-gray-300 rounded-lg shadow-sm overflow-hidden">
-                <div class="topic-header bg-gray-100 px-6 py-4 flex justify-between items-center hover:bg-gray-200 transition" onclick="toggleTopic(this)">
-                    <h2 class="font-bold text-gray-800">Configure MultiPath I/O iSCSI</h2>
-                    <span class="text-sm text-gray-500">▼</span>
+        <details class="group bg-white border border-gray-300 rounded-lg shadow-sm overflow-hidden">
+            <summary class="px-6 py-4 flex justify-between items-center hover:bg-gray-50 transition bg-gray-100/50">
+                <div>
+                    <h2 class="font-bold text-gray-900 text-lg">A Fix to Profile Issues</h2>
+                    <p class="text-xs font-mono text-indigo-600 mt-1">Post date: Sep 26, 2016 2:28:28 PM</p>
                 </div>
-                <div class="topic-content px-6 py-6 border-t border-gray-200 bg-white">
-                    <h3 class="text-sm font-bold text-red-600 uppercase mb-2">The Issue</h3>
-                    <p class="mb-4 text-sm">When connecting Windows Server to a dual-controller SAN using iSCSI without Multipath I/O, the server sees identical storage volumes as separate, duplicate disks, leading to logical corruption.</p>
-                    <h3 class="text-sm font-bold text-green-600 uppercase mb-2">The Resolution</h3>
-                    <ul class="list-disc pl-5 text-sm space-y-2">
-                        <li>Open PowerShell as Administrator and run: <code>Install-WindowsFeature -Name Multipath-IO</code></li>
-                        <li>Open the MPIO utility (<code>mpiocpl.exe</code>) from the start menu.</li>
-                        <li>Go to the <strong>Discover Multi-Paths</strong> tab.</li>
-                        <li>Check the box for <strong>Add support for iSCSI devices</strong> and click Add.</li>
-                        <li>Reboot the server. Reconnect the iSCSI target and configure the MPIO policy to "Round Robin".</li>
-                    </ul>
-                </div>
+                <span class="chevron text-gray-400">▼</span>
+            </summary>
+            <div class="px-6 py-6 border-t border-gray-200 bg-white text-sm text-gray-700 space-y-3">
+                <p>Regedit<br><code class="bg-gray-100 px-2 py-1 rounded text-red-600">HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\ProfileList</code></p>
             </div>
+        </details>
 
-            <div class="bg-white border border-gray-300 rounded-lg shadow-sm overflow-hidden">
-                <div class="topic-header bg-gray-100 px-6 py-4 flex justify-between items-center hover:bg-gray-200 transition" onclick="toggleTopic(this)">
-                    <h2 class="font-bold text-gray-800">Error 0x8007003b - Unexpected Network Error</h2>
-                    <span class="text-sm text-gray-500">▼</span>
+        <details class="group bg-white border border-gray-300 rounded-lg shadow-sm overflow-hidden">
+            <summary class="px-6 py-4 flex justify-between items-center hover:bg-gray-50 transition bg-gray-100/50">
+                <div>
+                    <h2 class="font-bold text-gray-900 text-lg">A Perfect Turkey starts with 24 hours of a brine</h2>
+                    <p class="text-xs font-mono text-indigo-600 mt-1">Post date: Nov 30, 2015 3:17:58 PM</p>
                 </div>
-                <div class="topic-content px-6 py-6 border-t border-gray-200 bg-white">
-                    <h3 class="text-sm font-bold text-red-600 uppercase mb-2">The Issue</h3>
-                    <p class="mb-4 text-sm">Transferring large files across an SMB network share or VPN fails randomly with error code 0x8007003b. This is typically a symptom of mismatched MTU sizes or aggressive hardware offloading interfering with LanmanWorkstation.</p>
-                    <h3 class="text-sm font-bold text-green-600 uppercase mb-2">The Resolution</h3>
-                    <ul class="list-disc pl-5 text-sm space-y-2">
-                        <li>Open PowerShell as Administrator.</li>
-                        <li>Disable Large Send Offload (LSO) on the network adapter by running: <code>Disable-NetAdapterLso -Name "*" -IPv4</code></li>
-                        <li>If the issue persists, open the Registry Editor (regedit) and navigate to <code>HKLM\SYSTEM\CurrentControlSet\Services\LanmanWorkstation\Parameters</code>.</li>
-                        <li>Increase the <code>SessTimeout</code> and <code>ExtendedSessTimeout</code> DWORD values to extend connection tolerance.</li>
-                    </ul>
-                </div>
+                <span class="chevron text-gray-400">▼</span>
+            </summary>
+            <div class="px-6 py-6 border-t border-gray-200 bg-white text-sm text-gray-700 space-y-3">
+                <p>Course Kosher Salt, Brown Sugar, Dried Cranberries, Allspice, Dried Apple Slices, Crushed Dried Garlic, Orange Peels, Whole Black Pepper, Rosemary, Green Peppercorns, Thyme, Bay Leaf, Sage, and a Vanilla Bean.</p>
             </div>
+        </details>
 
-            <div class="bg-white border border-gray-300 rounded-lg shadow-sm overflow-hidden">
-                <div class="topic-header bg-gray-100 px-6 py-4 flex justify-between items-center hover:bg-gray-200 transition" onclick="toggleTopic(this)">
-                    <h2 class="font-bold text-gray-800">Google Apps / Gmail - Inserting en-dash or em-dashes</h2>
-                    <span class="text-sm text-gray-500">▼</span>
+        <details class="group bg-white border border-gray-300 rounded-lg shadow-sm overflow-hidden">
+            <summary class="px-6 py-4 flex justify-between items-center hover:bg-gray-50 transition bg-gray-100/50">
+                <div>
+                    <h2 class="font-bold text-gray-900 text-lg">Amazon AWS Free</h2>
+                    <p class="text-xs font-mono text-indigo-600 mt-1">Post date: May 10, 2012 3:22:59 PM</p>
                 </div>
-                <div class="topic-content px-6 py-6 border-t border-gray-200 bg-white">
-                    <p class="mb-4 text-sm">Gmail and Google Docs web interfaces lack direct keyboard keys for standard en-dash and em-dash characters. To insert them efficiently:</p>
-                    <ul class="list-disc pl-5 text-sm space-y-2">
-                        <li><strong>Google Docs automation:</strong> Go to Tools > Preferences > Substitutions. Enter <code>--</code> in the "Replace" field, and paste an actual em-dash (—) into the "With" field.</li>
-                        <li><strong>Windows ALT Codes:</strong> Hold ALT and type <code>0150</code> on the numpad for an en-dash (–), or <code>0151</code> for an em-dash (—).</li>
-                        <li><strong>Mac Shortcuts:</strong> Press <code>Option + Hyphen</code> for an en-dash, or <code>Option + Shift + Hyphen</code> for an em-dash.</li>
-                    </ul>
-                </div>
+                <span class="chevron text-gray-400">▼</span>
+            </summary>
+            <div class="px-6 py-6 border-t border-gray-200 bg-white text-sm text-gray-700 space-y-3">
+                <p>Amazon is offering essentially a free linux virtual server online with a new AWS sign up. The server has some limited specs for the free service, but really cool tech regardless.</p>
+                <p><a href="http://aws.amazon.com/free/" class="text-blue-600 hover:underline">Http://aws.amazon.com/free/</a></p>
             </div>
+        </details>
 
-            <div class="bg-white border border-gray-300 rounded-lg shadow-sm overflow-hidden">
-                <div class="topic-header bg-gray-100 px-6 py-4 flex justify-between items-center hover:bg-gray-200 transition" onclick="toggleTopic(this)">
-                    <h2 class="font-bold text-gray-800">Hyper V on your Notebook</h2>
-                    <span class="text-sm text-gray-500">▼</span>
+        <details class="group bg-white border border-gray-300 rounded-lg shadow-sm overflow-hidden">
+            <summary class="px-6 py-4 flex justify-between items-center hover:bg-gray-50 transition bg-gray-100/50">
+                <div>
+                    <h2 class="font-bold text-gray-900 text-lg">AMD Laptop with Radeon Graphics - Integrated Card in use</h2>
+                    <p class="text-xs font-mono text-indigo-600 mt-1">Post date: Oct 24, 2017 7:29:38 PM</p>
                 </div>
-                <div class="topic-content px-6 py-6 border-t border-gray-200 bg-white">
-                    <h3 class="text-sm font-bold text-red-600 uppercase mb-2">The Issue</h3>
-                    <p class="mb-4 text-sm">Running Hyper-V on a laptop and binding an "External" virtual switch directly to the Wi-Fi adapter causes constant wireless dropouts and prevents the laptop from sleeping properly.</p>
-                    <h3 class="text-sm font-bold text-green-600 uppercase mb-2">The Resolution</h3>
-                    <ul class="list-disc pl-5 text-sm space-y-2">
-                        <li>Open the Hyper-V Virtual Switch Manager.</li>
-                        <li>Delete the External switch mapped to your Wi-Fi card.</li>
-                        <li>Create a new switch and set it strictly to <strong>Internal</strong>.</li>
-                        <li>Open Windows Network Connections, right-click your Wi-Fi adapter, go to Properties > Sharing, and enable <strong>Internet Connection Sharing (ICS)</strong>, mapping it to the new Internal vSwitch.</li>
-                    </ul>
-                </div>
+                <span class="chevron text-gray-400">▼</span>
+            </summary>
+            <div class="px-6 py-6 border-t border-gray-200 bg-white text-sm text-gray-700 space-y-3">
+                <h3 class="font-bold text-gray-800">What is Switchable Graphics Technology?</h3>
+                <p>Switchable Graphics is a laptop technology that utilizes both the graphical processing capabilities of a discrete graphics adapter and the power efficiency of an integrated graphics adapter. Switchable Graphics technology engages discrete graphics only when it is needed for 3D applications, and uses energy-efficient integrated graphics capabilities the rest of the time.</p>
+                
+                <h3 class="font-bold text-gray-800 mt-4">How to Enable Switchable Graphics?</h3>
+                <p>To ensure full compatibility it is recommended to use the latest graphics driver for the integrated and high performance AMD graphics processor (GPU) provided by the laptop manufacturer. Switchable Graphics will not function if the power saving GPU does not have any display drivers installed.</p>
+                <ul class="list-disc pl-5 space-y-1">
+                    <li>Install the latest Intel graphics driver from the Intel or laptop manufacturer's website</li>
+                    <li>Install the latest AMD graphics driver from the AMD or laptop manufacturer's website</li>
+                </ul>
+                <p><em>Note! Before installing the display drivers, check windows device manager to see if the GPUs are listed under Display Adapters. The high performance GPU may appear under other devices as a generic video controller.</em></p>
+
+                <h3 class="font-bold text-gray-800 mt-4">Configuring Switchable Graphics</h3>
+                <ul class="list-decimal pl-5 space-y-1">
+                    <li>Right-click the Desktop and select AMD Radeon Settings from the menu.</li>
+                    <li>Select Preferences.</li>
+                    <li>Select Radeon Additional Settings.</li>
+                    <li>Navigate to Power and select Switchable Graphics Application Settings to see a list of recent applications and which GPU they are using.</li>
+                    <li>Select Switchable Graphics Global Settings to adjust your GPU settings for longer battery life or higher performance.</li>
+                </ul>
+                <p><em>Note! The high performance GPU may not be available when the laptop is running on battery power.</em></p>
+
+                <h3 class="font-bold text-gray-800 mt-4">Assigning Applications to GPUs</h3>
+                <ul class="list-decimal pl-5 space-y-1">
+                    <li>Navigate to Radeon Settings > Preferences > Additional Settings > Power > Switchable Graphics Application Settings and the click Add Application.</li>
+                    <li>Select the application you want to add and click Open.</li>
+                    <li>Under Graphic Settings choose High Performance and click apply.</li>
+                </ul>
+
+                <h3 class="font-bold text-gray-800 mt-4">Switchable Graphics Application Monitor</h3>
+                <p>Navigate to Radeon Settings > Preferences > Additional Settings > Power > Switchable Graphics Application Monitor and click Start Monitoring. An application executed whilst monitoring is enabled will appear in the list below and will show which applications are running on the high performance AMD GPU.</p>
             </div>
+        </details>
 
-            <div class="bg-white border border-gray-300 rounded-lg shadow-sm overflow-hidden">
-                <div class="topic-header bg-gray-100 px-6 py-4 flex justify-between items-center hover:bg-gray-200 transition" onclick="toggleTopic(this)">
-                    <h2 class="font-bold text-gray-800">MXToolBox Configuration</h2>
-                    <span class="text-sm text-gray-500">▼</span>
+        <details class="group bg-white border border-gray-300 rounded-lg shadow-sm overflow-hidden">
+            <summary class="px-6 py-4 flex justify-between items-center hover:bg-gray-50 transition bg-gray-100/50">
+                <div>
+                    <h2 class="font-bold text-gray-900 text-lg">Annoyed by the default font and size in Google docs? Change it!</h2>
+                    <p class="text-xs font-mono text-indigo-600 mt-1">Post date: Jun 20, 2014 4:55:23 PM</p>
                 </div>
-                <div class="topic-content px-6 py-6 border-t border-gray-200 bg-white">
-                    <p class="mb-4 text-sm">To prevent your domain's outgoing mail from bouncing or hitting spam folders, use MXToolBox to verify your public DNS records are perfectly aligned:</p>
-                    <ul class="list-disc pl-5 text-sm space-y-2">
-                        <li><strong>SPF (Sender Policy Framework):</strong> Ensure your TXT record lists all sending gateways. Example: <code>v=spf1 include:_spf.google.com ~all</code></li>
-                        <li><strong>DKIM:</strong> Ensure public cryptographic keys are properly pasted into your DNS host to sign outgoing envelopes.</li>
-                        <li><strong>DMARC:</strong> Deploy a DMARC policy (<code>v=DMARC1; p=quarantine;</code>) to instruct receiving servers what to do if SPF or DKIM fails.</li>
-                    </ul>
-                </div>
+                <span class="chevron text-gray-400">▼</span>
+            </summary>
+            <div class="px-6 py-6 border-t border-gray-200 bg-white text-sm text-gray-700 space-y-3">
+                <p>Change the default Font and Size of your Google Docs-</p>
+                <ul class="list-decimal pl-5 space-y-1">
+                    <li>Highlight a select portion of your document text</li>
+                    <li>In the menu bar, click on the drop-down next to Arial and choose your new font, Georgia for instance, Size 12</li>
+                    <li>In the menu bar, click on the drop-down next to Normal text and click the arrow next to Normal Text ></li>
+                    <li>Click "Update ‘Normal text’ to match"</li>
+                    <li>With the text still highlighted, click on the drop-down next to Normal text, click the arrow next to Normal Text > and then select "Apply ‘Normal text’ "</li>
+                </ul>
+                <p class="font-bold mt-2">To save it as the default going forward:</p>
+                <ul class="list-decimal pl-5 space-y-1">
+                    <li>Click Format, Paragraph styles and then the "Options >" at the bottom of the list</li>
+                    <li>Click "save as my default styles"</li>
+                </ul>
             </div>
+        </details>
 
-            <div class="bg-white border border-gray-300 rounded-lg shadow-sm overflow-hidden">
-                <div class="topic-header bg-gray-100 px-6 py-4 flex justify-between items-center hover:bg-gray-200 transition" onclick="toggleTopic(this)">
-                    <h2 class="font-bold text-gray-800">Salesforce API and Login Blocks</h2>
-                    <span class="text-sm text-gray-500">▼</span>
+        <details class="group bg-white border border-gray-300 rounded-lg shadow-sm overflow-hidden">
+            <summary class="px-6 py-4 flex justify-between items-center hover:bg-gray-50 transition bg-gray-100/50">
+                <div>
+                    <h2 class="font-bold text-gray-900 text-lg">AOL blocking your e-newsletters?</h2>
+                    <p class="text-xs font-mono text-indigo-600 mt-1">Post date: Dec 01, 2016 6:21:16 PM</p>
                 </div>
-                <div class="topic-content px-6 py-6 border-t border-gray-200 bg-white">
-                    <p class="mb-4 text-sm">If automated API integrations or remote users are suddenly blocked from Salesforce, it is usually due to restrictive network security profiles.</p>
-                    <ul class="list-disc pl-5 text-sm space-y-2">
-                        <li>Log into Salesforce as an Administrator.</li>
-                        <li>Search for <strong>Network Access</strong> in the Quick Find box.</li>
-                        <li>Add your new corporate static IP addresses or API gateway IPs to the <strong>Trusted IP Ranges</strong>.</li>
-                        <li>Ensure external users append their Security Token to their password if connecting from outside these ranges.</li>
-                    </ul>
-                </div>
+                <span class="chevron text-gray-400">▼</span>
+            </summary>
+            <div class="px-6 py-6 border-t border-gray-200 bg-white text-sm text-gray-700 space-y-3">
+                <p>Request a review: <a href="https://postmaster.aol.com/gen-ticket" class="text-blue-600 hover:underline">https://postmaster.aol.com/gen-ticket</a></p>
             </div>
+        </details>
 
-            <div class="bg-white border border-gray-300 rounded-lg shadow-sm overflow-hidden">
-                <div class="topic-header bg-gray-100 px-6 py-4 flex justify-between items-center hover:bg-gray-200 transition" onclick="toggleTopic(this)">
-                    <h2 class="font-bold text-gray-800">Server 2012 RDP no longer working after May 8th Windows Update</h2>
-                    <span class="text-sm text-gray-500">▼</span>
+        <details class="group bg-white border border-gray-300 rounded-lg shadow-sm overflow-hidden">
+            <summary class="px-6 py-4 flex justify-between items-center hover:bg-gray-50 transition bg-gray-100/50">
+                <div>
+                    <h2 class="font-bold text-gray-900 text-lg">Astaro / Sophos UTM - Enabling IPS - Cuts Bandwidth in Half</h2>
+                    <p class="text-xs font-mono text-indigo-600 mt-1">Post date: Nov 07, 2016 3:4:48 PM</p>
                 </div>
-                <div class="topic-content px-6 py-6 border-t border-gray-200 bg-white">
-                    <h3 class="text-sm font-bold text-red-600 uppercase mb-2">The Issue</h3>
-                    <p class="mb-4 text-sm">Clients drop Remote Desktop connections to unpatched host servers, showing a CredSSP encryption oracle remediation error. This was caused by the CVE-2018-0886 security patch.</p>
-                    <h3 class="text-sm font-bold text-green-600 uppercase mb-2">The Resolution</h3>
-                    <ul class="list-disc pl-5 text-sm space-y-2">
-                        <li>Run <code>gpedit.msc</code> on the connecting client machine.</li>
-                        <li>Navigate to: Computer Configuration > Administrative Templates > System > Credentials Delegation.</li>
-                        <li>Open <strong>Encryption Oracle Remediation</strong>.</li>
-                        <li>Enable the policy and set the Protection Level to <strong>Vulnerable</strong>. Apply the setting to regain emergency access, then fully run Windows Update on the target server.</li>
-                    </ul>
-                </div>
+                <span class="chevron text-gray-400">▼</span>
+            </summary>
+            <div class="px-6 py-6 border-t border-gray-200 bg-white text-sm text-gray-700 space-y-3">
+                <p>Astaro Security linux / Sophos UTM - Enabling IPS - Cuts Available Bandwidth in Half - Reason? It's not self aware! It doesn't have logic in the installation routing to understand how many cores are available to it.</p>
+                <p>You need to manually look at how many cores you are running, then increase the number of "IPS instances" to reflect that number of cores, otherwise your firewall will not only bog down, but it won't show you why!</p>
+                <p>You will need to enable shell access. SSH in using "loginuser". Then sudo su to root. Once root:</p>
+                <pre class="bg-gray-900 text-green-400 p-3 rounded font-mono text-xs overflow-x-auto">cat /proc/cpuinfo (this confirms the number of installed CPUs).
+cc get ips num_instances (this confirms the current setting).
+cc set ips num_instances x (where x is the number of CPUs installed in your UTM).
+/var/mdw/scripts/snort restart (the command to restart Snort)</pre>
             </div>
+        </details>
 
-            <div class="bg-white border border-gray-300 rounded-lg shadow-sm overflow-hidden">
-                <div class="topic-header bg-gray-100 px-6 py-4 flex justify-between items-center hover:bg-gray-200 transition" onclick="toggleTopic(this)">
-                    <h2 class="font-bold text-gray-800">Stuck Print Job? - Reminder</h2>
-                    <span class="text-sm text-gray-500">▼</span>
+        <details class="group bg-white border border-gray-300 rounded-lg shadow-sm overflow-hidden">
+            <summary class="px-6 py-4 flex justify-between items-center hover:bg-gray-50 transition bg-gray-100/50">
+                <div>
+                    <h2 class="font-bold text-gray-900 text-lg">AT&T APN Settings</h2>
+                    <p class="text-xs font-mono text-indigo-600 mt-1">Post date: Jan 03, 2018 10:51:8 PM</p>
                 </div>
-                <div class="topic-content px-6 py-6 border-t border-gray-200 bg-white">
-                    <p class="mb-4 text-sm">When a print job corrupts and the print queue refuses to delete it, you must flush the system spooler directly via command line.</p>
-                    <p class="text-sm font-semibold mb-2">Run these commands in an Elevated Command Prompt:</p>
-                    <pre class="bg-gray-800 text-green-400 p-4 rounded text-xs overflow-x-auto">net stop spooler
-del /Q /F /S "%systemroot%\System32\spool\PRINTERS\*.*"
-net start spooler</pre>
-                </div>
+                <span class="chevron text-gray-400">▼</span>
+            </summary>
+            <div class="px-6 py-6 border-t border-gray-200 bg-white text-sm text-gray-700 space-y-3">
+                <ul class="list-none space-y-1 font-mono text-xs">
+                    <li>Name: ATT LTE</li>
+                    <li>APN: pta</li>
+                    <li>PROXY: Not set</li>
+                    <li>PORT: Not set</li>
+                    <li>Username: Not set</li>
+                    <li>Password: Not set</li>
+                    <li>Server: Not set</li>
+                    <li>MMSC: http://mmsc.mobile.att.net</li>
+                    <li>MMS Proxy: proxy.mobile.att.net</li>
+                    <li>MMS Port: 80</li>
+                    <li>MCC: 310</li>
+                    <li>MNC: 410</li>
+                    <li>Authentication type: none</li>
+                    <li>APN type: default,admin,fota,mms,supl,hipri (make sure NO spaces after commas)</li>
+                    <li>APN protocol: IPv4/IPv6</li>
+                    <li>APN roaming protocol: IPv4/IPv6</li>
+                    <li>BEARER: SPRS,HSUPA,IS95B,HSPA,HSDPA,LTE,EDGE,eHRPD,EVDO_A,1xRTT,HSPAP,EVDO_B,EVDO_0IS95A,UMTS</li>
+                    <li>MVNO type: None</li>
+                </ul>
+                <p>CLICK MENU (...) soft button and SAVE settings.</p>
             </div>
+        </details>
 
-            <div class="bg-white border border-gray-300 rounded-lg shadow-sm overflow-hidden">
-                <div class="topic-header bg-gray-100 px-6 py-4 flex justify-between items-center hover:bg-gray-200 transition" onclick="toggleTopic(this)">
-                    <h2 class="font-bold text-gray-800">Office 365 / Edit Public Website</h2>
-                    <span class="text-sm text-gray-500">▼</span>
+        <details class="group bg-white border border-gray-300 rounded-lg shadow-sm overflow-hidden">
+            <summary class="px-6 py-4 flex justify-between items-center hover:bg-gray-50 transition bg-gray-100/50">
+                <div>
+                    <h2 class="font-bold text-gray-900 text-lg">Authors and Books - Favorite Audio Books</h2>
+                    <p class="text-xs font-mono text-indigo-600 mt-1">Post date: Feb 03, 2018 6:15:12 PM</p>
                 </div>
-                <div class="topic-content px-6 py-6 border-t border-gray-200 bg-white">
-                    <h3 class="text-sm font-bold text-red-600 uppercase mb-2">The Issue</h3>
-                    <p class="mb-4 text-sm">Microsoft deprecated the public website hosting feature in SharePoint Online, rendering legacy public websites uneditable and eventually taking them offline.</p>
-                    <h3 class="text-sm font-bold text-green-600 uppercase mb-2">The Resolution</h3>
-                    <ul class="list-disc pl-5 text-sm space-y-2">
-                        <li>Migrate the front-end HTML/CSS assets to a modern static host like Cloudflare Pages, AWS S3, or GitHub Pages.</li>
-                        <li>Access your domain's public DNS records.</li>
-                        <li>Point the A Record and WWW CNAME to the new web host provider.</li>
-                        <li><strong>Crucial:</strong> Leave your MX records pointing to <code>yourdomain-com.mail.protection.outlook.com</code> to ensure email delivery is not interrupted by the web migration.</li>
-                    </ul>
-                </div>
+                <span class="chevron text-gray-400">▼</span>
+            </summary>
+            <div class="px-6 py-6 border-t border-gray-200 bg-white text-sm text-gray-700 space-y-3">
+                <p>This is a range of styles and types of books, from ones geared for little ones, to very adult. (All are of a supernatural bent and are not in any particular order)</p>
+                <ul class="list-disc pl-5 grid grid-cols-1 md:grid-cols-2 gap-x-4">
+                    <li>Matt Dinnimin - Dungeon Crawler Carl</li>
+                    <li>Shirtaloon and Travis Deverell - He who fights with monsters</li>
+                    <li>Patricia Briggs - Mercedes Thompson</li>
+                    <li>Chloe Neill - Chicagoland Vampires</li>
+                    <li>Dannika Dark - Mageri</li>
+                    <li>Kalayna Price - Alex Craft</li>
+                    <li>Carrie Vaughn - Kitty Norville</li>
+                    <li>Allyson James - Stormwalker</li>
+                    <li>Ilona Andrews - Kate Daniels</li>
+                    <li>Laurell K Hamilton - Anita Blake</li>
+                    <li>Rachel Caine - The Morganville Vampires</li>
+                    <li>Lynsay Sands - Argeneau</li>
+                    <li>Jeaniene Frost - Night Huntress</li>
+                    <li>Christopher Farnsworth - Nathaniel Cade</li>
+                    <li>Jim Butcher - Dresden Files</li>
+                    <li>Eoin Colfer - Artemis Fowl</li>
+                    <li>JD Tyler - Alpha Pack</li>
+                    <li>Tamora Pierce - Song of the Lioness</li>
+                    <li>Jonathan Stroud - Bartimaeus</li>
+                    <li>JK Rowling - Harry Potter</li>
+                    <li>Orson Scott Card - Ender's Game</li>
+                    <li>Stephanie Meyer - Twilight</li>
+                    <li>Robin Hobb - Farseer Trilogy</li>
+                    <li>Terry Goodkind - Sword of Truth</li>
+                    <li>Ally Carter - Gallagher Girls</li>
+                    <li>Cassandra Clare - Draco Trilogy</li>
+                    <li>Neal Stephenson - Snow Crash</li>
+                    <li>Brom - Krampus: The Yule Lord</li>
+                    <li>Helen Harper - Slouch Witch</li>
+                    <li>Zogarth - Primal Hunter</li>
+                    <li>J.M. Clarke - Mark of the Fool Series</li>
+                    <li>Pirateaba - Wandering Inn Series</li>
+                    <li>CasualFarmer - Beware of Chicken series</li>
+                    <li>Rhaegar - Azarinth Healer series</li>
+                    <li>House Wolf - The Grand Game series</li>
+                    <li>Danielle L. Jensen - The Bridge Kingdom</li>
+                    <li>Sean Oswald - Induction: Welcome to the Multiverse</li>
+                    <li>Travis Baldree - Legends & Lattes</li>
+                </ul>
             </div>
+        </details>
 
-            <div class="bg-white border border-gray-300 rounded-lg shadow-sm overflow-hidden">
-                <div class="topic-header bg-gray-100 px-6 py-4 flex justify-between items-center hover:bg-gray-200 transition" onclick="toggleTopic(this)">
-                    <h2 class="font-bold text-gray-800">Force Time Machine to Start</h2>
-                    <span class="text-sm text-gray-500">▼</span>
+        <details class="group bg-white border border-gray-300 rounded-lg shadow-sm overflow-hidden">
+            <summary class="px-6 py-4 flex justify-between items-center hover:bg-gray-50 transition bg-gray-100/50">
+                <div>
+                    <h2 class="font-bold text-gray-900 text-lg">Backblaze B2 - Business Backup</h2>
+                    <p class="text-xs font-mono text-indigo-600 mt-1">Post date: Nov 16, 2017 3:33:27 PM</p>
                 </div>
-                <div class="topic-content px-6 py-6 border-t border-gray-200 bg-white">
-                    <h3 class="text-sm font-bold text-red-600 uppercase mb-2">The Issue</h3>
-                    <p class="mb-4 text-sm">macOS backups get stuck on "Preparing backup..." when backing up to network drives due to stale state locks left over from sudden disconnections.</p>
-                    <h3 class="text-sm font-bold text-green-600 uppercase mb-2">The Resolution</h3>
-                    <ul class="list-disc pl-5 text-sm space-y-2">
-                        <li>Open Terminal and stop the stuck process: <code>sudo tmutil stopbackup</code></li>
-                        <li>Mount the network backup drive via Finder.</li>
-                        <li>Open the <code>.sparsebundle</code> directory and find any file or folder ending in <code>.inProgress</code>. Delete it.</li>
-                        <li>Force a clean start: <code>tmutil startbackup</code></li>
-                    </ul>
-                </div>
+                <span class="chevron text-gray-400">▼</span>
+            </summary>
+            <div class="px-6 py-6 border-t border-gray-200 bg-white text-sm text-gray-700 space-y-3">
+                <p>Backblaze Business Backup or B2, has an inexpensive bucket backup available. The cost right now is $0.005 per Gig. Very reasonable. So when configuring your firewall, you may have to make some adjustments to allow data to go to certain networks or specific URL's... below are the networks and URL's you need to allow.</p>
+                <h3 class="font-bold mt-2">Networks:</h3>
+                <ul class="list-none space-y-1 font-mono text-xs bg-gray-100 p-3 rounded">
+                    <li>162.244.56.0/21</li>
+                    <li>162.244.56.0/24</li>
+                    <li>162.244.57.0/24</li>
+                    <li>162.244.58.0/24</li>
+                    <li>162.244.59.0/24</li>
+                    <li>162.244.60.0/24</li>
+                    <li>162.244.61.0/24</li>
+                    <li>162.244.62.0/24</li>
+                    <li>204.11.104.0/30</li>
+                    <li>206.190.208.0/21</li>
+                </ul>
+                <h3 class="font-bold mt-2">URL:</h3>
+                <ul class="list-none space-y-1 font-mono text-xs bg-gray-100 p-3 rounded">
+                    <li>*.backblaze.com</li>
+                    <li>*backblazeb2.com</li>
+                </ul>
             </div>
+        </details>
 
-            <div class="bg-white border border-gray-300 rounded-lg shadow-sm overflow-hidden">
-                <div class="topic-header bg-gray-100 px-6 py-4 flex justify-between items-center hover:bg-gray-200 transition" onclick="toggleTopic(this)">
-                    <h2 class="font-bold text-gray-800">Microsoft Server 2012 Setup as AD Domain Controller</h2>
-                    <span class="text-sm text-gray-500">▼</span>
+        <details class="group bg-white border border-gray-300 rounded-lg shadow-sm overflow-hidden">
+            <summary class="px-6 py-4 flex justify-between items-center hover:bg-gray-50 transition bg-gray-100/50">
+                <div>
+                    <h2 class="font-bold text-gray-900 text-lg">BCM Firmware Update takes Hyper-V VM's Offline</h2>
+                    <p class="text-xs font-mono text-indigo-600 mt-1">Post date: May 10, 2012 3:42:47 PM</p>
                 </div>
-                <div class="topic-content px-6 py-6 border-t border-gray-200 bg-white">
-                    <p class="mb-4 text-sm">To convert a standalone Server 2012 environment into a central identity hub:</p>
-                    <ul class="list-disc pl-5 text-sm space-y-2">
-                        <li>Open Server Manager and click <strong>Add Roles and Features</strong>.</li>
-                        <li>Check the box for <strong>Active Directory Domain Services</strong> and install.</li>
-                        <li>Once installed, click the yellow warning flag at the top of Server Manager and select <strong>Promote this server to a domain controller</strong>.</li>
-                        <li>Select <strong>Add a new forest</strong>, name your Root Domain (e.g., corp.local), set your DSRM password, and click Next through the prerequisite checks to install.</li>
-                    </ul>
-                </div>
+                <span class="chevron text-gray-400">▼</span>
+            </summary>
+            <div class="px-6 py-6 border-t border-gray-200 bg-white text-sm text-gray-700 space-y-3">
+                <p>PowerEdge 2950 BIOS; BCM Firmware Update takes Hyper-V VM's Offline.</p>
+                <p>Today, because of an unrelated issue, it was advised by Dell to upgrade BIOS and the BCM Drivers on a production 2950 running three Hyper-V Virtual Machines. After successful installations, and subsequent reboots the system came up and acted fine as the host machine. What I didn't realize until I started receiving alerts was that my VM's had no network connectivity.</p>
+                <p>First I checked each VM's settings, and verified the MAC Address to my documentation, to make sure everything was otherwise set correctly... it was. Second I looked in to the Host machine's Network connections, and found that they too looked fine, and all the settings were correct.</p>
+                <p>However, when I went to look at the virtual switch, I noticed that the check mark for it was not selected, and upon selecting it, found that it would not stick!</p>
+                <p>So, here is what I did to resolve this problem: I went in to the Hyper-V control panel, and under Actions, selected the Virtual Network Manager. I changed the Local Area Connection Network type to Private, and clicked Apply. This went through fine. Then I went to put it back on External, at first it wouldn't apply and an error occurred. I went in and looked at the adapter settings, and found that the actual Broadcom NIC had applied the Virtual Switch check box by itself. I unchecked it, then tried to reset to External. This time it applied, and the Virtual Switch came back online correctly.</p>
+                <p>Once again, went in and verified all the settings, and everything looked perfect. I booted up the VM's and they came back online immediately.</p>
             </div>
+        </details>
 
-            <div class="bg-white border border-gray-300 rounded-lg shadow-sm overflow-hidden">
-                <div class="topic-header bg-gray-100 px-6 py-4 flex justify-between items-center hover:bg-gray-200 transition" onclick="toggleTopic(this)">
-                    <h2 class="font-bold text-gray-800">Ubuntu 10.04 - Unable to Update</h2>
-                    <span class="text-sm text-gray-500">▼</span>
+        <details class="group bg-white border border-gray-300 rounded-lg shadow-sm overflow-hidden">
+            <summary class="px-6 py-4 flex justify-between items-center hover:bg-gray-50 transition bg-gray-100/50">
+                <div>
+                    <h2 class="font-bold text-gray-900 text-lg">Burger and Fries</h2>
+                    <p class="text-xs font-mono text-indigo-600 mt-1">Post date: Jan 30, 2018 10:19:37 PM</p>
                 </div>
-                <div class="topic-content px-6 py-6 border-t border-gray-200 bg-white">
-                    <h3 class="text-sm font-bold text-red-600 uppercase mb-2">The Issue</h3>
-                    <p class="mb-4 text-sm">Running <code>apt-get update</code> returns 404 Not Found errors because the Lucid Lynx distribution has reached End-Of-Life and its packages were moved off the main servers.</p>
-                    <h3 class="text-sm font-bold text-green-600 uppercase mb-2">The Resolution</h3>
-                    <ul class="list-disc pl-5 text-sm space-y-2">
-                        <li>Open your sources list: <code>sudo nano /etc/apt/sources.list</code></li>
-                        <li>Find all references to <code>us.archive.ubuntu.com</code> and <code>security.ubuntu.com</code>.</li>
-                        <li>Replace those URLs entirely with <code>http://old-releases.ubuntu.com/ubuntu/</code>.</li>
-                        <li>Save the file and run <code>sudo apt-get update</code> to restore repository access.</li>
-                    </ul>
-                </div>
+                <span class="chevron text-gray-400">▼</span>
+            </summary>
+            <div class="px-6 py-6 border-t border-gray-200 bg-white text-sm text-gray-700 space-y-3">
+                <h3 class="font-bold">Fries</h3>
+                <p>Best to do outside; Use an outdoor BBQ side burner. Large 4 quart pan to boil the oil (Infared thermostat to measure the temp). Use basket strainer spoon to lower fries in to oil. (approx 2" of oil.) Use Canola oil for those with allergies, or Duck Fat cut with Peanut Oil for those that aren't allergic.</p>
+                <p>Bring oil to min of 325 degrees with max of 375 degrees and maintain temp while prepping the fries. Use Kenebec potatos. Slice them into home fries, then soak in cold water. Move the fries around to rinse the starch off of the potatos. Then extract them, and pat them dry (this is an important step).</p>
+                <p>Lower fries in to oil with basket strainer/spoon. Cook until golden brown, remove, and then immediately sprinkle kosher salt on to fries. Salt will bond to the surface of the fries. Kosher salt provides an excellent flavor to the fries.</p>
+                
+                <h3 class="font-bold mt-4">Fry Sauce - homemade Thousand Island</h3>
+                <p>Best Foods Mayo, Sweet pickle relish, Barley Malt Vinegar, Worcestershire sauce, Ketchup, sugar, pinch of kosher salt, lemon rind. Whisk to combine.</p>
+                
+                <h3 class="font-bold mt-4">The Burger</h3>
+                <p>Cast iron skillet. 80/20 ground chuck (or as an option- Ground Turkey with finely diced bacon - Turkey patties should be 1/4" thick). Make 4 ounce beef patties - put small amount of canola oil and brush on to plate surface, and back of other plate, put meat between plates and press until 1/2 thick.</p>
+                <p>Remove meat and salt/pepper both sides. Then brush yellow mustard on both sides. Fry on cast iron until that first side is nearly burnt, should be crisp and dark. Flip and add cheese. If you want red onion on the burger, slice thin, then soak slices in cold water until ready to plate. Pat Dry before plating.</p>
+                <p>Iceberg Lettuce notes: Take head of lettuce and pound it, with stem side down on table top, 2 quick thumps. Stem should just pop out. Take lettuce leaves, outer ones, and press flat. Cut them just larger than the bun size, in triangles. 2 leaves per burger.</p>
+                <p>Bun is a brioche bun. After removing burgers, add small amount of oil and turn off the heat. Put bun slices face down on pan and move around a little. Buns will use the oil and the oil will prevent the bun from sticking to surface. Top Bun: ketchup only. Bottom bun: (this order) Mayo, pickle slices, red onion slices, iceberg triangles, then burger with cheese.</p>
+
+                <h3 class="font-bold mt-4">Malted Choc Shake to go with?</h3>
+                <ul class="list-disc pl-5">
+                    <li>2 cups chocolate ice cream</li>
+                    <li>6 tablespoons milk</li>
+                    <li>4 tablespoons malted milk powder</li>
+                </ul>
+                <p>Blend until fully incorporated.</p>
             </div>
+        </details>
 
-            <div class="bg-white border border-gray-300 rounded-lg shadow-sm overflow-hidden">
-                <div class="topic-header bg-gray-100 px-6 py-4 flex justify-between items-center hover:bg-gray-200 transition" onclick="toggleTopic(this)">
-                    <h2 class="font-bold text-gray-800">Windows 10 Insider Preview - Run Apps with GPU</h2>
-                    <span class="text-sm text-gray-500">▼</span>
+        <details class="group bg-white border border-gray-300 rounded-lg shadow-sm overflow-hidden">
+            <summary class="px-6 py-4 flex justify-between items-center hover:bg-gray-50 transition bg-gray-100/50">
+                <div>
+                    <h2 class="font-bold text-gray-900 text-lg">Can't access SMB file shares after Windows 10 Updates</h2>
+                    <p class="text-xs font-mono text-indigo-600 mt-1">Post date: Feb 01, 2018 10:24:15 PM</p>
                 </div>
-                <div class="topic-content px-6 py-6 border-t border-gray-200 bg-white">
-                    <p class="mb-4 text-sm">On multi-GPU systems (like laptops with integrated graphics + dedicated Nvidia/AMD chips), you can force a specific app to use the high-performance GPU natively through the OS rather than relying on driver control panels.</p>
-                    <ul class="list-disc pl-5 text-sm space-y-2">
-                        <li>Open Windows Settings > System > Display.</li>
-                        <li>Scroll down and click <strong>Graphics settings</strong>.</li>
-                        <li>Select "Classic app" (or Desktop app), browse to the executable file of the software.</li>
-                        <li>Once added to the list, click the app, select <strong>Options</strong>, and choose <strong>High performance</strong> to bind it to the dedicated GPU.</li>
-                    </ul>
-                </div>
+                <span class="chevron text-gray-400">▼</span>
+            </summary>
+            <div class="px-6 py-6 border-t border-gray-200 bg-white text-sm text-gray-700 space-y-3">
+                <p>Open Regedit as Administrator. Then Modify the registry on the workstation:</p>
+                <pre class="bg-gray-100 p-3 rounded font-mono text-xs overflow-x-auto text-red-600">
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\services\LanmanServer\Parameters]
+Create DWORD (32 bit) "SMB2" = with value 0
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\services\LanmanWorkstation\Parameters]
+Create DWORD (32 bit) "EnableOpLocks" = with value 0</pre>
+                <p>Reboot, you can then after logging back in, access <code>\\fileserver\share</code> the smb:// shares.</p>
             </div>
+        </details>
 
-            <div class="bg-white border border-gray-300 rounded-lg shadow-sm overflow-hidden">
-                <div class="topic-header bg-gray-100 px-6 py-4 flex justify-between items-center hover:bg-gray-200 transition" onclick="toggleTopic(this)">
-                    <h2 class="font-bold text-gray-800">eBooks from Microsoft</h2>
-                    <span class="text-sm text-gray-500">▼</span>
+        <details class="group bg-white border border-gray-300 rounded-lg shadow-sm overflow-hidden">
+            <summary class="px-6 py-4 flex justify-between items-center hover:bg-gray-50 transition bg-gray-100/50">
+                <div>
+                    <h2 class="font-bold text-gray-900 text-lg">Checkout what Google is tracking on your account</h2>
+                    <p class="text-xs font-mono text-indigo-600 mt-1">Post date: Oct 21, 2013 9:15:4 PM</p>
                 </div>
-                <div class="topic-content px-6 py-6 border-t border-gray-200 bg-white">
-                    <p class="mb-4 text-sm">Maintain central engineering folders for official Microsoft documentation to prevent configuration drift during deployments. Keep local copies of reference guides concerning Windows Server virtualization matrices, Azure landing zone structural setups, and security architecture baselines.</p>
-                </div>
+                <span class="chevron text-gray-400">▼</span>
+            </summary>
+            <div class="px-6 py-6 border-t border-gray-200 bg-white text-sm text-gray-700 space-y-3">
+                <p><a href="https://myactivity.google.com/myactivity" class="text-blue-600 hover:underline">https://myactivity.google.com/myactivity</a></p>
+                <p>Delete it all: <a href="https://myactivity.google.com/delete-activity" class="text-blue-600 hover:underline">https://myactivity.google.com/delete-activity</a></p>
             </div>
+        </details>
 
-        </div>
+        <details class="group bg-white border border-gray-300 rounded-lg shadow-sm overflow-hidden">
+            <summary class="px-6 py-4 flex justify-between items-center hover:bg-gray-50 transition bg-gray-100/50">
+                <div>
+                    <h2 class="font-bold text-gray-900 text-lg">Chrome - Open PDF Files by default in Adobe or other default PDF Viewer</h2>
+                    <p class="text-xs font-mono text-indigo-600 mt-1">Post date: Jan 26, 2017 4:25:40 PM</p>
+                </div>
+                <span class="chevron text-gray-400">▼</span>
+            </summary>
+            <div class="px-6 py-6 border-t border-gray-200 bg-white text-sm text-gray-700 space-y-3">
+                <p>Click Windows Search, type Default, look for Default Apps, in the search box type Adobe, or Chrome, or whatever, and then click that app… Select Set as default for the file type you want that application to open.</p>
+            </div>
+        </details>
+
+        <details class="group bg-white border border-gray-300 rounded-lg shadow-sm overflow-hidden">
+            <summary class="px-6 py-4 flex justify-between items-center hover:bg-gray-50 transition bg-gray-100/50">
+                <div>
+                    <h2 class="font-bold text-gray-900 text-lg">Chrome Crashing and holding on to old data</h2>
+                    <p class="text-xs font-mono text-indigo-600 mt-1">Post date: Dec 14, 2016 7:50:6 PM</p>
+                </div>
+                <span class="chevron text-gray-400">▼</span>
+            </summary>
+            <div class="px-6 py-6 border-t border-gray-200 bg-white text-sm text-gray-700 space-y-3">
+                <p>Every now and again, its a good idea to go in to the advanced settings in Google Chrome and clear some of the built up browsing data.</p>
+                <p>However, there is also a setting most don't know about, that helps to maintain build up of data into the Chrome cache. If you open chrome, then copy/paste the below link, you can enable a setting to help maintain this cache.</p>
+                <p><code class="bg-gray-100 px-2 py-1 rounded font-mono">chrome://net-internals/#capture</code></p>
+            </div>
+        </details>
+
+        <details class="group bg-white border border-gray-300 rounded-lg shadow-sm overflow-hidden">
+            <summary class="px-6 py-4 flex justify-between items-center hover:bg-gray-50 transition bg-gray-100/50">
+                <div>
+                    <h2 class="font-bold text-gray-900 text-lg">Chrome eating too many resources?</h2>
+                    <p class="text-xs font-mono text-indigo-600 mt-1">Post date: Feb 15, 2018 10:55:20 PM</p>
+                </div>
+                <span class="chevron text-gray-400">▼</span>
+            </summary>
+            <div class="px-6 py-6 border-t border-gray-200 bg-white text-sm text-gray-700 space-y-3">
+                <p>I have had a situation over the last few months, where Chrome is opening too many process, eating too much memory, and causing the host system to become unstable.</p>
+                <p>Through experimentation, I found that if you disable the setting "Memory Ablation Experiment" from within <code class="bg-gray-100 px-1 rounded">Chrome://Flags</code> the system becomes a lot more stable. Your mileage may vary, but for me, this is working.</p>
+            </div>
+        </details>
+
+        <details class="group bg-white border border-gray-300 rounded-lg shadow-sm overflow-hidden">
+            <summary class="px-6 py-4 flex justify-between items-center hover:bg-gray-50 transition bg-gray-100/50">
+                <div>
+                    <h2 class="font-bold text-gray-900 text-lg">Chrome Plugins</h2>
+                    <p class="text-xs font-mono text-indigo-600 mt-1">Post date: Jan 30, 2017 10:5:31 PM</p>
+                </div>
+                <span class="chevron text-gray-400">▼</span>
+            </summary>
+            <div class="px-6 py-6 border-t border-gray-200 bg-white text-sm text-gray-700 space-y-3">
+                <p><code class="bg-gray-100 px-2 py-1 rounded font-mono text-blue-600">chrome://plugins</code></p>
+            </div>
+        </details>
+
+        <details class="group bg-white border border-gray-300 rounded-lg shadow-sm overflow-hidden">
+            <summary class="px-6 py-4 flex justify-between items-center hover:bg-gray-50 transition bg-gray-100/50">
+                <div>
+                    <h2 class="font-bold text-gray-900 text-lg">Cisco SPA 112 VOIP Phone Adapter</h2>
+                    <p class="text-xs font-mono text-indigo-600 mt-1">Post date: Dec 01, 2016 8:42:17 PM</p>
+                </div>
+                <span class="chevron text-gray-400">▼</span>
+            </summary>
+            <div class="px-6 py-6 border-t border-gray-200 bg-white text-sm text-gray-700 space-y-3">
+                <p>If you are having trouble hooking up your Cisco SPA 112 phone adapter to your active directory domain, you are not alone. The SPA 112 doesn't play nicely with Microsoft AD. To get around this problem, you have to have an alternate way to assign it an IP address.</p>
+                <p>I hooked it up to a standard off the shelf wireless router by an Ethernet cable, and then logged in to the router and saw the dynamically assigned IP address for the SPA-112. From there, you just plug in your laptop to that same router get an auto-assigned IP address, open a web browser, point to that IP address assigned to the SPA 112, example <code>http://192.168.1.2</code>, and from within the SPA's control panel, assign it a static IP that matches what you want it to be on your AD Domain.</p>
+                <p>Once you have applied the IP, Save, and then close the browser. Take the device off of the wireless router and move it to your AD wired network. Once the SPA boots up, it will be part of the domain using the newly assigned address. Then you can log in to it using the static IP you assigned it and configure it for your hosted VOIP platform.</p>
+                <p>Default admin / pass: <strong>Admin / admin</strong></p>
+                <p>Default user / pass: <strong>Cisco / cisco</strong></p>
+            </div>
+        </details>
+
+        <details class="group bg-white border border-gray-300 rounded-lg shadow-sm overflow-hidden">
+            <summary class="px-6 py-4 flex justify-between items-center hover:bg-gray-50 transition bg-gray-100/50">
+                <div>
+                    <h2 class="font-bold text-gray-900 text-lg">Clone your Hard Drive</h2>
+                    <p class="text-xs font-mono text-indigo-600 mt-1">Post date: May 10, 2012 3:20:54 PM</p>
+                </div>
+                <span class="chevron text-gray-400">▼</span>
+            </summary>
+            <div class="px-6 py-6 border-t border-gray-200 bg-white text-sm text-gray-700 space-y-3">
+                <p>A simple and free way to make an exact copy of your hard drive, no matter what OS is installed on it, is Clonezilla. It's a free tool, that is completely open source.</p>
+                <p>Check it out: <a href="http://clonezilla.org/" class="text-blue-600 hover:underline">http://clonezilla.org/</a></p>
+            </div>
+        </details>
+
+        <details class="group bg-white border border-gray-300 rounded-lg shadow-sm overflow-hidden">
+            <summary class="px-6 py-4 flex justify-between items-center hover:bg-gray-50 transition bg-gray-100/50">
+                <div>
+                    <h2 class="font-bold text-gray-900 text-lg">Coaching Notes</h2>
+                    <p class="text-xs font-mono text-indigo-600 mt-1">Post date: Jul 21, 2017 3:12:41 PM</p>
+                </div>
+                <span class="chevron text-gray-400">▼</span>
+            </summary>
+            <div class="px-6 py-6 border-t border-gray-200 bg-white text-sm text-gray-700 space-y-3">
+                <ul class="list-disc pl-5 space-y-1">
+                    <li>"It's not what you have done that matters, it's what you do next." - Dan</li>
+                    <li>After a meeting or conversation with someone, ask yourself, do I have more energy now than I did or less...?</li>
+                    <li>Who you are, is how you lead.</li>
+                    <li>Be aware of the unintended consequences of inattention to your surroundings. When you walk by an office or set of cubicles lost in thought... are staff members trying to get your attention? Did someone try to talk to you? Your lack of attention can be sending a message that you don't care.</li>
+                    <li>Pay attention, make a concerted effort to look around and be alert when moving through the office, say hello and good morning to everyone.</li>
+                    <li>When you are working with someone that is new at the job, and they appear frustrated, or in a bad temper, do not jump to the conclusion that they have a poor attitude. Assume first that they don't want to do a bad job, and are struggling to do better.</li>
+                    <li>Asking for "help" is a face removing exercise. Be aware.</li>
+                    <li>When someone goes out of their way to help you, overtime, over the top, beyond the 9-5 requirement, thank them, not only with the words thank you, but tell them what you were able to accomplish because they did it, and let them know that because they did it quickly you were able to make your deadlines.</li>
+                    <li>"Help is defined by the person being helped" - Edgar Schein</li>
+                    <li>People want to be a part of something that is meaningful.</li>
+                    <li>What does it mean to coach? Teach, help to learn, help to orient, instruct, give example, assist in learning.</li>
+                    <li>Notice behaviors - Observe, compliment, and thank for their value added.</li>
+                    <li>Q: What feedback is the easiest to give? A: What was asked for!</li>
+                    <li>"It's your life, you might want to get involved" - Kate by way of Dan</li>
+                    <li>Understand the problem - Don't settle for one solution</li>
+                </ul>
+            </div>
+        </details>
+
+        <details class="group bg-white border border-gray-300 rounded-lg shadow-sm overflow-hidden">
+            <summary class="px-6 py-4 flex justify-between items-center hover:bg-gray-50 transition bg-gray-100/50">
+                <div>
+                    <h2 class="font-bold text-gray-900 text-lg">Codeweavers / WINE</h2>
+                    <p class="text-xs font-mono text-indigo-600 mt-1">Post date: May 10, 2012</p>
+                </div>
+                <span class="chevron text-gray-400">▼</span>
+            </summary>
+            <div class="px-6 py-6 border-t border-gray-200 bg-white text-sm text-gray-700 space-y-3">
+                <p><a href="http://www.codeweavers.com/products/" class="text-blue-600 hover:underline">http://www.codeweavers.com/products/</a></p>
+                <p>Now, I'm just going to put this out there to the multi-verse... I would like to see either CodeWeavers, or some other company put out a similar product, but, instead of making Windows apps run on Linux; I would like to see OS X apps run on Linux.</p>
+                <p>You know, Linux and Unix/OS X are closely related. And, now that OS X runs on the Intel platform, it seems to me that it would be much easier to make OS X apps run on Linux versus getting Windows apps to run. The primary reason people want to use CrossOver, or similar WINE type systems, is to get applications that they would otherwise lose by switching to Linux.</p>
+                <p>OS X has made some serious in-roads in the category of getting apps that will draw Windows users to OS X, and has so many developers working full tilt to develop these apps. Even Microsoft has seen the writing on the wall and has knocked out a SilverLight port and developed Microsoft Office 2008/2011 for OS X.</p>
+                <p>I would love to run both Office 2011 and SilverLight (Netflix), and for that matter, the Adobe Creative Suite on my Linux install... Just sayin'... There are those that would pay for this ability... I know I would...</p>
+                <p>Just a word about emulation/WINE, and the possibility of getting OS X apps to run on Linux. If you do use these programs, be certain to buy the windows or OS X applications that you want to run. Make sure that you pay the developer his/her cost to own that program. Don't pirate software, pay for your licenses.</p>
+            </div>
+        </details>
+
+        <details class="group bg-white border border-gray-300 rounded-lg shadow-sm overflow-hidden">
+            <summary class="px-6 py-4 flex justify-between items-center hover:bg-gray-50 transition bg-gray-100/50">
+                <div>
+                    <h2 class="font-bold text-gray-900 text-lg">Command Line Firewall Reference (Off)</h2>
+                    <p class="text-xs font-mono text-indigo-600 mt-1">Post date: May 10, 2012 3:42:18 PM</p>
+                </div>
+                <span class="chevron text-gray-400">▼</span>
+            </summary>
+            <div class="px-6 py-6 border-t border-gray-200 bg-white text-sm text-gray-700 space-y-3">
+                <p>Turn Off Windows Firewall from Command:</p>
+                <pre class="bg-gray-900 text-green-400 p-3 rounded font-mono text-xs overflow-x-auto">Netsh firewall set opmode mode = disable profile = ALL
+Netsh AdvFirewall Set CurrentProfile State Off</pre>
+            </div>
+        </details>
+
+        <details class="group bg-white border border-gray-300 rounded-lg shadow-sm overflow-hidden">
+            <summary class="px-6 py-4 flex justify-between items-center hover:bg-gray-50 transition bg-gray-100/50">
+                <div>
+                    <h2 class="font-bold text-gray-900 text-lg">Configure MultiPath I/O iSCSI</h2>
+                    <p class="text-xs font-mono text-indigo-600 mt-1">Post date: Dec 13, 2016 6:23:33 PM</p>
+                </div>
+                <span class="chevron text-gray-400">▼</span>
+            </summary>
+            <div class="px-6 py-6 border-t border-gray-200 bg-white text-sm text-gray-700 space-y-3">
+                <p>Special thanks to these guys, I was able to get my iSCSI array working again with these instructions.</p>
+                <p><a href="http://cscmblog.blogspot.com/2012/11/windows-2012-how-to-configure-multi_13.html" class="text-blue-600 hover:underline">http://cscmblog.blogspot.com/2012/11/windows-2012-how-to-configure-multi_13.html</a></p>
+            </div>
+        </details>
+
+        <details class="group bg-white border border-gray-300 rounded-lg shadow-sm overflow-hidden">
+            <summary class="px-6 py-4 flex justify-between items-center hover:bg-gray-50 transition bg-gray-100/50">
+                <div>
+                    <h2 class="font-bold text-gray-900 text-lg">Constant Contact and Outlook 2010/2013</h2>
+                    <p class="text-xs font-mono text-indigo-600 mt-1">Post date: Data from document archive</p>
+                </div>
+                <span class="chevron text-gray-400">▼</span>
+            </summary>
+            <div class="px-6 py-6 border-t border-gray-200 bg-white text-sm text-gray-700 space-y-3">
+                <p>If you are trying to send yourself test messages from Constant Contact, and your Outlook email client is refusing to pull the images down and display them correctly, there is a quick way to get this fixed.</p>
+                <p>Internet Explorer has a security setting that, when enabled, prevents Outlook from displaying images with a secure URL. To remedy the situation, you can change the setting in two ways, through control panel or through the IE, the browser itself.</p>
+                <ul class="list-decimal pl-5 space-y-1">
+                    <li>Open Internet Explorer.</li>
+                    <li>Go to Tools > Internet Options.</li>
+                    <li>Click the Advanced tab.</li>
+                    <li>Scroll down to the Security settings list, then uncheck the "Do not save encrypted pages to disk" option.</li>
+                    <li>Click OK.</li>
+                </ul>
+                <p>Before the changes take effect, we may need to also clear the cache in Internet Explorer and then close Outlook (File > Exit to close fully). After re-launching Outlook, send yourself another email with Constant Contact. The email should render properly.</p>
+            </div>
+        </details>
+
+        <details class="group bg-white border border-gray-300 rounded-lg shadow-sm overflow-hidden">
+            <summary class="px-6 py-4 flex justify-between items-center hover:bg-gray-50 transition bg-gray-100/50">
+                <div>
+                    <h2 class="font-bold text-gray-900 text-lg">Cookies</h2>
+                    <p class="text-xs font-mono text-indigo-600 mt-1">Post date: May 10, 2012 3:20:28 PM</p>
+                </div>
+                <span class="chevron text-gray-400">▼</span>
+            </summary>
+            <div class="px-6 py-6 border-t border-gray-200 bg-white text-sm text-gray-700 space-y-3">
+                <pre class="bg-gray-100 p-3 rounded font-mono text-xs overflow-x-auto text-red-600">
+C:\Users\username\AppData\Roaming\Microsoft\Windows\Cookies
+C:\Users\username\AppData\Roaming\Microsoft\Windows\Cookies\Low
+%AppData%\Microsoft\Windows\Cookies\Low
+C:\Users\username\AppData\Roaming\Microsoft\Windows\Cookies\Low
+C:\Users\username\AppData\Roaming\Microsoft\Windows\Cookies</pre>
+            </div>
+        </details>
+
+        <details class="group bg-white border border-gray-300 rounded-lg shadow-sm overflow-hidden">
+            <summary class="px-6 py-4 flex justify-between items-center hover:bg-gray-50 transition bg-gray-100/50">
+                <div>
+                    <h2 class="font-bold text-gray-900 text-lg">Disable Hardware Acceleration in Office</h2>
+                    <p class="text-xs font-mono text-indigo-600 mt-1">Post date: Oct 05, 2016 2:40:18 PM</p>
+                </div>
+                <span class="chevron text-gray-400">▼</span>
+            </summary>
+            <div class="px-6 py-6 border-t border-gray-200 bg-white text-sm text-gray-700 space-y-3">
+                <p>If you find that office 2013 or 2016 is crashing repeatedly on you using Windows 10, you may be suffering from a problem with hardware acceleration being activated from within your office suite.</p>
+                <p>To disable it, open Word or Excel, click on the File Tab, click Options, Then select Advanced from the list on the left. Look for a check box that says "Disable hardware graphics acceleration", click the box, then click OK. Close the program, restart the computer, then you should be good to go.</p>
+                <p>Via Regedit:</p>
+                <pre class="bg-gray-100 p-3 rounded font-mono text-xs overflow-x-auto text-red-600">
+HKEY_CURRENT_USER\Software\Microsoft\Office\15.0\Common
+Click on the Graphics sub folder
+New Key Subkey Graphics, then create DWORD DisableHardwareAcceleration, Hex Value 1, Click Ok.
+Reboot</pre>
+            </div>
+        </details>
+
+        <details class="group bg-white border border-gray-300 rounded-lg shadow-sm overflow-hidden">
+            <summary class="px-6 py-4 flex justify-between items-center hover:bg-gray-50 transition bg-gray-100/50">
+                <div>
+                    <h2 class="font-bold text-gray-900 text-lg">Domain Mapping with WordPress and Gmail Backend</h2>
+                    <p class="text-xs font-mono text-indigo-600 mt-1">Post date: May 10, 2012 3:31:0 PM</p>
+                </div>
+                <span class="chevron text-gray-400">▼</span>
+            </summary>
+            <div class="px-6 py-6 border-t border-gray-200 bg-white text-sm text-gray-700 space-y-3">
+                <p>If you want to have nearly free hosting, the best way to get a website up, and have a robust email/calendaring system is to link WordPress and Gmail.</p>
+                <ul class="list-decimal pl-5 space-y-1">
+                    <li>Step 1, purchase your domain, doesn't really matter where...</li>
+                    <li>Step 2, sign up with WordPress, and purchase Domain Mapping.</li>
+                    <li>Step 3, in Domain mapping on the WordPress Site, it will give specific DNS settings to map on your Domain Site. Point to WordPress.</li>
+                    <li>Step 4, Once the Domain is mapped over to WordPress, Sign up with Google, and open up a GoogleApps Account.</li>
+                    <li>Step 5, Open the GoogleApps control panel, and start the verification process to show ownership of the domain. Complete only the verification as far as Email is concerned.</li>
+                    <li>Step 6, Point the MX records in the WordPress Mapping control panel to GoogleApps.</li>
+                </ul>
+                <p>It is a totally painless procedure... and once up and running... the two work really well together.</p>
+            </div>
+        </details>
+
+        <details class="group bg-white border border-gray-300 rounded-lg shadow-sm overflow-hidden">
+            <summary class="px-6 py-4 flex justify-between items-center hover:bg-gray-50 transition bg-gray-100/50">
+                <div>
+                    <h2 class="font-bold text-gray-900 text-lg">Drupal 8 on Azure</h2>
+                    <p class="text-xs font-mono text-indigo-600 mt-1">Post date: Apr 20, 2016 2:16:4 PM</p>
+                </div>
+                <span class="chevron text-gray-400">▼</span>
+            </summary>
+            <div class="px-6 py-6 border-t border-gray-200 bg-white text-sm text-gray-700 space-y-3">
+                <p>Ubuntu 14.04 Setup</p>
+                <pre class="bg-gray-900 text-green-400 p-3 rounded font-mono text-xs overflow-x-auto">
+sudo apt-get update
+sudo apt-get upgrade
+sudo tasksel LAMP
+set mysql password</pre>
+                <p>Test to make sure apache2 is working by going to www.localhost.com and seeing if the test page loads.</p>
+                <p>Create mysql database:</p>
+                <pre class="bg-gray-900 text-green-400 p-3 rounded font-mono text-xs overflow-x-auto">
+mysql -uroot -p
+CREATE DATABASE drupaldb CHARACTER SET utf8;
+GRANT ALL PRIVILIGES ON drupaldb.* to 'drupaldb'@'localhost' IDENTIFIED BY 'drupaldb';
+flush privileges;
+exit or \q</pre>
+            </div>
+        </details>
+
+        <details class="group bg-white border border-gray-300 rounded-lg shadow-sm overflow-hidden">
+            <summary class="px-6 py-4 flex justify-between items-center hover:bg-gray-50 transition bg-gray-100/50">
+                <div>
+                    <h2 class="font-bold text-gray-900 text-lg">Easy FTP Install - Ubuntu</h2>
+                    <p class="text-xs font-mono text-indigo-600 mt-1">Post date: Data from document archive</p>
+                </div>
+                <span class="chevron text-gray-400">▼</span>
+            </summary>
+            <div class="px-6 py-6 border-t border-gray-200 bg-white text-sm text-gray-700 space-y-3">
+                <p>Step 1 - Start: <code>apt-get update</code> Then install vsftpd and required packages: <code>apt-get -y install vsftpd</code></p>
+                <p>Step 2: Configure vsftpd. Edit the configuration file for vsftpd: <code>sudo nano /etc/vsftpd.conf</code></p>
+                <p>Remove anonymous access, unidentified users to FTP; change the anonymous_enable setting to NO: <code>anonymous_enable=NO</code>. Allow local uses to login by changing the local_enable setting to YES: <code>local_enable=YES</code>.</p>
+                <p>Want local user to be able to write to a directory? Then change the write_enable setting to YES: <code>write_enable=YES</code>. Local users will be ‘chroot jailed’ and they will be denied access to any other part of the server; change the chroot_local_user setting to YES: <code>chroot_local_user=YES</code>.</p>
+                <p>Exit and save using Cntrl +X then Y, then Enter. Restart the vsftpd service: <code>service vsftpd restart</code></p>
+            </div>
+        </details>
+
+        <details class="group bg-white border border-gray-300 rounded-lg shadow-sm overflow-hidden">
+            <summary class="px-6 py-4 flex justify-between items-center hover:bg-gray-50 transition bg-gray-100/50">
+                <div>
+                    <h2 class="font-bold text-gray-900 text-lg">eBooks from Microsoft</h2>
+                    <p class="text-xs font-mono text-indigo-600 mt-1">Post date: Jul 17, 2017 5:5:53 PM</p>
+                </div>
+                <span class="chevron text-gray-400">▼</span>
+            </summary>
+            <div class="px-6 py-6 border-t border-gray-200 bg-white text-sm text-gray-700 space-y-3">
+                <p>Free eBooks!</p>
+                <p><a href="https://blogs.msdn.microsoft.com/mssmallbiz/2017/07/11/largest-free-microsoft-ebook-giveaway-im-giving-away-millions-of-free-microsoft-ebooks-again-including-windows-10-office-365-office-2016-power-bi-azure-windows-8-1-office-2013-sharepo/" class="text-blue-600 hover:underline">Download Link for Millions of Free Microsoft eBooks</a></p>
+            </div>
+        </details>
+
+        <details class="group bg-white border border-gray-300 rounded-lg shadow-sm overflow-hidden">
+            <summary class="px-6 py-4 flex justify-between items-center hover:bg-gray-50 transition bg-gray-100/50">
+                <div>
+                    <h2 class="font-bold text-gray-900 text-lg">The operating system is not presently configured to run this application.</h2>
+                    <p class="text-xs font-mono text-indigo-600 mt-1">Post date: Mar 29, 2016 7:41:12 PM</p>
+                </div>
+                <span class="chevron text-gray-400">▼</span>
+            </summary>
+            <div class="px-6 py-6 border-t border-gray-200 bg-white text-sm text-gray-700 space-y-3">
+                <p>For those that encounter this message, here is how to resolve it. The error for me occurred on Outlook 2016 when trying to run the application.</p>
+                <p>There are a number of workarounds online but the fix is straight forward - Insert the Microsoft Office 2016 Install DVD in to your PC, and then Run the Office 2016 repair option. The repair takes a few minutes. Reboot the computer when it finishes. Then simply open Outlook when back on the desktop.</p>
+            </div>
+        </details>
+
+        <details class="group bg-white border border-gray-300 rounded-lg shadow-sm overflow-hidden">
+            <summary class="px-6 py-4 flex justify-between items-center hover:bg-gray-50 transition bg-gray-100/50">
+                <div>
+                    <h2 class="font-bold text-gray-900 text-lg">Ubuntu Privacy</h2>
+                    <p class="text-xs font-mono text-indigo-600 mt-1">Post date: Nov 14, 2013 2:25:58 PM</p>
+                </div>
+                <span class="chevron text-gray-400">▼</span>
+            </summary>
+            <div class="px-6 py-6 border-t border-gray-200 bg-white text-sm text-gray-700 space-y-3">
+                <p>Copy code below. Open a terminal (Ctrl-Alt-T). Paste code, press enter. Type your password, press enter.</p>
+                <pre class="bg-gray-900 text-green-400 p-3 rounded font-mono text-xs overflow-x-auto">
+V=`/usr/bin/lsb_release -rs`;
+if [ $V \< 12.10 ]; then echo "Good news! Your version of Ubuntu doesn't invade your privacy.";
+else gsettings set com.canonical.Unity.Lenses remote-content-search none; if [ $V \< 13.10 ]; then sudo apt-get remove -y unity-lens-shopping;
+else gsettings set com.canonical.Unity.Lenses disabled-scopes "['more_suggestions-amazon.scope', 'more_suggestions-u1ms.scope', 'more_suggestions-populartracks.scope']"</pre>
+            </div>
+        </details>
+
     </main>
 
-    <footer class="bg-gray-900 text-gray-400 py-6 text-center text-sm">
-        <p>&copy; Pacific Computer Wizards. Document Silo.</p>
+    <footer class="bg-indigo-950 text-indigo-300 py-8 text-center text-sm border-t border-indigo-900 mt-10">
+        <p>&copy; Pacific Computer Wizards. All Documented Configurations Stored in Archive Format.</p>
     </footer>
 
     <script>
-        function toggleTopic(element) {
-            element.classList.toggle('active');
-            const content = element.nextElementSibling;
-            if (content.style.display === "block") {
-                content.style.display = "none";
-                element.querySelector('span').innerText = '▼';
-            } else {
-                content.style.display = "block";
-                element.querySelector('span').innerText = '▲';
-            }
-        }
-
-        function expandAll() {
-            const headers = document.querySelectorAll('.topic-header');
-            headers.forEach(header => {
-                if (!header.classList.contains('active')) {
-                    header.classList.add('active');
-                    header.nextElementSibling.style.display = 'block';
-                    header.querySelector('span').innerText = '▲';
+        function toggleAll(expand) {
+            const detailsList = document.querySelectorAll('details');
+            detailsList.forEach(detail => {
+                if (expand) {
+                    detail.setAttribute('open', '');
+                } else {
+                    detail.removeAttribute('open');
                 }
             });
         }
     </script>
 </body>
-</html>       
+</html>
