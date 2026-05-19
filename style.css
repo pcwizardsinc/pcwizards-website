@@ -1,140 +1,91 @@
 /* ==========================================================================
-   PC WIZARDS BASE LAYOUT & COLOR PALETTE
+   PC WIZARDS ULTRA-STABLE NAVIGATION MENU
    ========================================================================== */
-:root {
-    --dark-charcoal: #212121;
-    --accent-gold: #FFD54F;
-    --deep-plum: #4F474E;
-    --light-bg: #F5F2F0;
-    --pure-white: #FFFFFF;
+
+/* The main horizontal bar */
+.pcw-navbar {
+    background-color: #212121 !important; /* Dark Charcoal */
+    border-bottom: 4px solid #FFD54F !important; /* Gold Line */
+    font-family: 'Oswald', 'Arial Black', sans-serif;
+    width: 100% !important;
+    margin: 0 0 30px 0 !important;
+    padding: 0 !important;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    text-align: center !important; /* Centers the text alignment */
 }
 
-body {
-    margin: 0;
-    padding: 0;
-    background-color: var(--light-bg);
-    font-family: 'Roboto', sans-serif;
-    color: var(--dark-charcoal);
-    line-height: 1.6;
+/* The list container */
+.pcw-navbar ul {
+    list-style-type: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    display: block !important; /* Plain block display to prevent vanishing */
 }
 
-/* Hero Banner */
-.pcw-hero {
-    background-color: var(--deep-plum);
-    color: var(--pure-white);
-    padding: 60px 20px;
-    text-align: center;
-    border-bottom: 5px solid var(--accent-gold);
+/* Individual list items forced side-by-side */
+.pcw-navbar li {
+    display: inline-block !important; /* Forces items side-by-side safely */
+    position: relative !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    vertical-align: top !important;
 }
 
-.pcw-hero h1 {
-    font-family: 'Oswald', sans-serif;
-    font-size: 3rem;
-    margin: 0;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--accent-gold);
+/* Main Menu Buttons and Dropdown Trigger */
+.pcw-navbar a, .pcw-navbar .dropbtn {
+    display: block !important;
+    color: #FFFFFF !important;
+    text-decoration: none !important;
+    padding: 16px 28px !important;
+    font-size: 16px !important;
+    text-transform: uppercase !important;
+    letter-spacing: 1px !important;
+    cursor: pointer !important;
 }
 
-.pcw-hero .subtitle {
-    font-size: 1.2rem;
-    margin: 15px 0 0 0;
-    font-weight: 300;
-    opacity: 0.9;
+/* Hover state for main menu links */
+.pcw-navbar a:hover, .pcw-navbar .dropdown:hover .dropbtn {
+    background-color: #4F474E !important; /* Deep Plum */
+    color: #FFD54F !important; /* Gold text */
 }
 
-/* Main Container */
-.pcw-main-container {
-    max-width: 1100px;
-    margin: 40px auto;
-    padding: 0 20px;
+/* Dropdown Content Box (Hidden by default) */
+.pcw-navbar .dropdown-content {
+    display: none !important; /* Intentionally hidden until hovered */
+    position: absolute !important;
+    top: 100% !important;
+    left: 0 !important;
+    background-color: #FFFFFF !important;
+    min-width: 180px !important;
+    box-shadow: 0px 8px 16px rgba(0,0,0,0.2) !important;
+    z-index: 99999 !important; /* Keeps it on top of everything */
+    border-radius: 0 0 6px 6px !important;
+    border-top: 3px solid #FFD54F !important;
 }
 
-/* Welcome Box */
-.welcome-box {
-    background-color: var(--pure-white);
-    padding: 30px;
-    border-radius: 8px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-    margin-bottom: 40px;
-    border-left: 5px solid var(--deep-plum);
+/* Links inside the dropdown box */
+.pcw-navbar .dropdown-content a {
+    color: #212121 !important;
+    padding: 12px 20px !important;
+    text-transform: none !important; /* Lowercase/normal case for sub-items */
+    font-family: 'Roboto', 'Arial', sans-serif !important;
+    font-size: 15px !important;
+    border-bottom: 1px solid #f0f0f0 !important;
+    text-align: left !important;
+    letter-spacing: 0 !important;
 }
 
-.welcome-box h2 {
-    font-family: 'Oswald', sans-serif;
-    margin-top: 0;
-    color: var(--dark-charcoal);
+.pcw-navbar .dropdown-content a:last-child {
+    border-bottom: none !important;
 }
 
-/* Three-Column Feature Grid */
-.feature-grid {
-    display: flex;
-    gap: 25px;
-    flex-wrap: wrap; /* Allows wrap-around on smaller screens */
+/* Hovering over a sub-link inside the dropdown */
+.pcw-navbar .dropdown-content a:hover {
+    background-color: #F5F2F0 !important;
+    color: #4F474E !important;
 }
 
-.feature-card {
-    background-color: var(--pure-white);
-    flex: 1;
-    min-width: 280px; /* Forces stack on mobile screens safely */
-    padding: 30px 20px;
-    border-radius: 8px;
-    text-align: center;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-    border-top: 4px solid var(--dark-charcoal);
-}
-
-.feature-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
-}
-
-.card-icon {
-    font-size: 3rem;
-    margin-bottom: 15px;
-}
-
-.feature-card h3 {
-    font-family: 'Oswald', sans-serif;
-    font-size: 1.4rem;
-    margin: 10px 0;
-    text-transform: uppercase;
-}
-
-.feature-card p {
-    font-size: 0.95rem;
-    color: #555;
-    margin-bottom: 25px;
-    min-height: 70px; /* Keeps buttons aligned horizontally */
-}
-
-/* Action Buttons */
-.card-btn {
-    display: inline-block;
-    background-color: var(--dark-charcoal);
-    color: var(--pure-white);
-    text-decoration: none;
-    padding: 10px 24px;
-    border-radius: 4px;
-    font-family: 'Oswald', sans-serif;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    transition: background 0.2s ease;
-}
-
-.card-btn:hover {
-    background-color: var(--accent-gold);
-    color: var(--dark-charcoal);
-}
-
-/* Footer Styling */
-.pcw-footer {
-    text-align: center;
-    padding: 30px 20px;
-    background-color: var(--dark-charcoal);
-    color: #999;
-    font-size: 0.85rem;
-    margin-top: 60px;
-    border-top: 4px solid var(--accent-gold);
+/* THE TRIGGER: Forces the dropdown container to reveal itself on hover */
+.pcw-navbar .dropdown:hover .dropdown-content {
+    display: block !important; /* Reveals container safely */
 }
