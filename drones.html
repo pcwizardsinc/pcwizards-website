@@ -1,41 +1,302 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="h-full bg-slate-900">
 <head>
-    <link rel="stylesheet" href="style.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     
-    <title>TRIO with Tilt-Lock | Chadick.org</title>
-    <meta name="description" content="Personal experience, tips, and service notes for riding a Honda Goldwing with the Tilting Motor Works TRIO Front End (TRIO with Tilt-Lock).">
+    <title>Drones | The Garage | Chadick.org</title>
+    <meta name="description" content="Personal experience, custom builds, hardware modifications, and flight log notes for micro quadcopters and drones in The Garage at Chadick.org.">
 
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700&family=Oswald:400,700&family=Lato:400,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Oswald:wght@400;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
 
     <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+        }
+        .heading-font {
+            font-family: 'Oswald', sans-serif;
+        }
+        /* Custom Tailwind Hover Menu Logic */
+        .dropdown:hover .dropdown-content {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
 </head>
-        
-<nav class="pcw-navbar">
-    <ul>
-        <li><a href="index.html">Home</a></li>
-        <li class="dropdown">
-            <a class="dropbtn">The Garage ▾</a>
-            <div class="dropdown-content">
-                <a href="drones.html">Drones</a>
-                <a href="motorcycles.html">Motorcycles</a>
-            </div>
-        </li>
-        <li><a href="services.html">Computer Stuff</a></li>
-    </ul>
-</nav>
+<body class="flex flex-col min-h-screen text-slate-100 antialiased selection:bg-indigo-500 selection:text-white">
 
-Hubsan H107D with Landing Gear<BR>Post date: Nov 05, 2016 1:16:42 AM
-<BR>
-        <BR>
-        I was watching this video: (https://www.youtube.com/watch?v=jN68hbcbjYg)  the other day, and saw the use of a cable tie to help point the antenna down instead of straight out like it comes from the factory to gain extra range.
-On a spur of the moment decision, I decided to give it a try. I for the most part followed the directions in the video, and then just kept going, adding ties to each arm. Then, using the short leg where the antenna was tied, I clipped the rest to match. Using the remainder of two of the ties I created skids, and using two more, I made them more stable by adding wide cross bars. I enhanced the visibility of the rear red LED's, red propellers by adding red cable ties to the back end.
-What you see here are cable ties, and bonding by hot glue.<BR>
-        You can see it Fly here: https://youtu.be/a3BzYTm1uT4 (this is with the landing gear installed.)
-Note: It's also got a 500 Lipo battery in it from Drone Pit Stop.  The added weight makes it a bit sluggish, but it's still quite fast and maneuverable, and can still do flips quite easily.
-        <BR>
+    <nav class="bg-slate-950 border-b border-slate-800 sticky top-0 z-50 shadow-md">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex-shrink-0 flex items-center">
+                    <a href="index.html" class="heading-font text-2xl font-bold tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-cyan-400 hover:from-indigo-300 hover:to-cyan-300 transition duration-300">
+                        CHADICK.ORG
+                    </a>
+                </div>
+                
+                <div class="hidden md:block">
+                    <ul class="flex space-x-8 items-center">
+                        <li>
+                            <a href="index.html" class="text-slate-300 hover:text-white px-3 py-2 text-sm font-medium transition duration-200">
+                                <i class="fa-solid fa-house mr-1.5 text-slate-400"></i>Home
+                            </a>
+                        </li>
+                        <li class="relative dropdown">
+                            <button class="text-white bg-slate-800 border border-slate-700 px-4 py-2 rounded-md text-sm font-medium inline-flex items-center transition duration-200 focus:outline-none">
+                                <i class="fa-solid fa-warehouse mr-1.5 text-indigo-400"></i>The Garage
+                                <i class="fa-solid fa-chevron-down ml-2 text-xs text-slate-400"></i>
+                            </button>
+                            <div class="dropdown-content hidden absolute left-0 mt-1 w-48 rounded-md shadow-xl bg-slate-800 border border-slate-700 divide-y divide-slate-700/50 opacity-0 transform -translate-y-2 transition-all duration-200 origin-top-left z-50">
+                                <a href="drones.html" class="block px-4 py-3 text-sm text-indigo-300 bg-slate-900/60 rounded-t-md font-semibold">
+                                    <i class="fa-solid fa-drone mr-2 text-indigo-400"></i>Drones
+                                </a>
+                                <a href="motorcycles.html" class="block px-4 py-3 text-sm text-slate-300 hover:bg-slate-700 hover:text-white rounded-b-md transition duration-150">
+                                    <i class="fa-solid fa-motorcycle mr-2 text-slate-400"></i>Motorcycles
+                                </a>
+                            </div>
+                        </li>
+                        <li>
+                            <a href="services.html" class="text-slate-300 hover:text-white px-3 py-2 text-sm font-medium transition duration-200">
+                                <i class="fa-solid fa-laptop-code mr-1.5 text-slate-400"></i>Computer Stuff
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="inline-flex items-center justify-center p-2 rounded-md text-slate-400 hover:text-white hover:bg-slate-800 focus:outline-none transition duration-200">
+                        <i class="fa-solid fa-bars text-xl" id="menu-icon"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div id="mobile-menu" class="hidden md:hidden bg-slate-950 border-b border-slate-800 px-4 pt-2 pb-4 space-y-2">
+            <a href="index.html" class="block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:bg-slate-800 hover:text-white">
+                <i class="fa-solid fa-house w-6 text-slate-400"></i>Home
+            </a>
+            <div class="border-t border-slate-800 my-1"></div>
+            <div class="px-3 py-1 text-xs font-semibold text-slate-500 uppercase tracking-wider">The Garage</div>
+            <a href="drones.html" class="block px-3 py-2 rounded-md text-base font-medium text-indigo-400 bg-slate-900">
+                <i class="fa-solid fa-drone w-6 text-indigo-400"></i>Drones
+            </a>
+            <a href="motorcycles.html" class="block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:bg-slate-800 hover:text-white">
+                <i class="fa-solid fa-motorcycle w-6 text-slate-400"></i>Motorcycles
+            </a>
+            <div class="border-t border-slate-800 my-1"></div>
+            <a href="services.html" class="block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:bg-slate-800 hover:text-white">
+                <i class="fa-solid fa-laptop-code w-6 text-slate-400"></i>Computer Stuff
+            </a>
+        </div>
+    </nav>
+
+    <main class="flex-grow max-w-4xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-10">
+        
+        <div class="mb-10 text-center md:text-left border-b border-slate-800 pb-6">
+            <div class="inline-flex items-center justify-center space-x-3 mb-3 bg-indigo-500/10 border border-indigo-500/20 px-4 py-1.5 rounded-full">
+                <i class="fa-solid fa-drone text-indigo-400 animate-pulse"></i>
+                <span class="text-xs font-semibold tracking-wider text-indigo-300 uppercase">Hardware Repository</span>
+            </div>
+            <h1 class="heading-font text-4xl md:text-5xl font-bold tracking-tight text-white mb-3">
+                Drone Workshop Logs & Mods
+            </h1>
+            <p class="text-slate-400 text-lg max-w-2xl">
+                Diagnostic notes, functional component updates, custom airframe enhancements, and micro-UAV hardware performance evaluation data.
+            </p>
+        </div>
+
+        <div class="bg-slate-800/80 backdrop-blur border border-slate-700/60 rounded-xl p-5 mb-8 shadow-lg flex flex-col md:flex-row items-center justify-between gap-4">
+            <div class="relative w-full md:max-w-md">
+                <span class="absolute inset-y-0 left-0 flex items-center pl-3.5 pointer-events-none text-slate-400">
+                    <i class="fa-solid fa-magnifying-glass text-sm"></i>
+                </span>
+                <input type="text" id="searchInput" placeholder="Search mod updates, batteries, hardware components..." 
+                       class="w-full bg-slate-900 border border-slate-700 rounded-lg pl-10 pr-4 py-2.5 text-sm text-slate-100 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition duration-150">
+            </div>
+            <div class="flex items-center space-x-3 shrink-0">
+                <span class="text-xs font-medium text-slate-400 uppercase tracking-wider">Status Index:</span>
+                <span id="resultsCount" class="bg-indigo-900/60 text-indigo-300 border border-indigo-700 px-3 py-1 rounded-full text-xs font-semibold">
+                    Showing 1 Drone Log
+                </span>
+            </div>
+        </div>
+
+        <div id="noResults" class="hidden text-center py-16 bg-slate-800/30 border border-dashed border-slate-700 rounded-xl p-6">
+            <div class="w-16 h-16 bg-slate-800 rounded-full flex items-center justify-center mx-auto mb-4 text-slate-500">
+                <i class="fa-solid fa-box-open text-2xl"></i>
+            </div>
+            <h3 class="text-lg font-semibold text-slate-300 heading-font">No workshop files match your search query</h3>
+            <p class="text-slate-500 text-sm mt-1">Refine your look-up string or confirm hardware catalog keywords.</p>
+        </div>
+
+        <div class="space-y-4" id="logsContainer">
+            
+            <div class="log-card bg-slate-800 border border-slate-700/70 rounded-xl shadow-md overflow-hidden transition-all duration-200 hover:border-slate-600" data-keywords="hubsan h107d landing gear antenna cable tie mod quadcopter lipo drone pit stop flight video">
+                <button class="w-full text-left px-5 py-4 md:px-6 md:py-5 flex items-start justify-between gap-4 focus:outline-none focus:bg-slate-750 transition" onclick="toggleAccordion('log-1')">
+                    <div class="space-y-1">
+                        <div class="flex flex-wrap items-center gap-2 mb-1.5">
+                            <span class="bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 text-[10px] font-bold tracking-widest uppercase px-2 py-0.5 rounded">
+                                Micro Quadcopter
+                            </span>
+                            <span class="bg-amber-500/10 text-amber-400 border border-amber-500/20 text-[10px] font-bold tracking-widest uppercase px-2 py-0.5 rounded">
+                                Antenna Modifications
+                            </span>
+                        </div>
+                        <h2 class="heading-font text-xl font-bold text-white tracking-wide group-hover:text-indigo-400 transition">
+                            Hubsan H107D with Landing Gear
+                        </h2>
+                        <div class="flex items-center text-xs text-slate-400 space-x-2">
+                            <i class="fa-regular fa-calendar text-slate-500"></i>
+                            <span>Nov 05, 2016 1:16:42 AM</span>
+                        </div>
+                    </div>
+                    <div class="flex items-center space-x-3 pt-1">
+                        <button onclick="event.stopPropagation(); copyLogLink('log-1')" title="Copy specific log anchor URL" class="p-1.5 text-slate-400 hover:text-white bg-slate-900 border border-slate-700 rounded-md hover:bg-slate-700 transition">
+                            <i class="fa-regular fa-copy text-sm"></i>
+                        </button>
+                        <div class="w-8 h-8 rounded-full bg-slate-900 border border-slate-700 flex items-center justify-center text-slate-400" id="chevron-log-1">
+                            <i class="fa-solid fa-chevron-down text-xs transition-transform duration-200"></i>
+                        </div>
+                    </div>
+                </button>
+
+                <div id="content-log-1" class="hidden border-t border-slate-700/60 bg-slate-850/50 px-5 py-5 md:px-6 md:py-6 text-slate-300 text-sm leading-relaxed space-y-4">
+                    <p>
+                        I was watching this video: 
+                        <a href="https://www.youtube.com/watch?v=jN68hbcbjYg" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-indigo-400 hover:text-indigo-300 font-medium underline underline-offset-4 decoration-indigo-400/40 hover:decoration-indigo-300 transition mx-1">
+                            <i class="fa-brands fa-youtube text-red-500 mr-1"></i>Antenna Mod Tutorial <i class="fa-solid fa-arrow-up-right-from-square text-[10px] ml-1 opacity-70"></i>
+                        </a> 
+                        the other day, and saw the use of a cable tie to help point the antenna down instead of straight out like it comes from the factory to gain extra range.
+                    </p>
+                    
+                    <p>
+                        On a spur of the moment decision, I decided to give it a try. I for the most part followed the directions in the video, and then just kept going, adding ties to each arm. Then, using the short leg where the antenna was tied, I clipped the rest to match. Using the remainder of two of the ties I created skids, and using two more, I made them more stable by adding wide cross bars. I enhanced the visibility of the rear red LED's, red propellers by adding red cable ties to the back end.
+                    </p>
+
+                    <div class="bg-slate-900/60 border border-slate-700 rounded-lg p-3.5 my-3 flex items-start space-x-3">
+                        <i class="fa-solid fa-circle-info text-cyan-400 text-base mt-0.5 shrink-0"></i>
+                        <span class="text-xs text-slate-400 leading-normal">
+                            <strong>Assembly Note:</strong> Content relies heavily on secure cable ties, structurally bound by hot glue joints.
+                        </span>
+                    </div>
+
+                    <div class="flex flex-wrap gap-3 pt-2">
+                        <a href="https://youtu.be/a3BzYTm1uT4" target="_blank" rel="noopener noreferrer" class="inline-flex items-center px-4 py-2 bg-red-600 hover:bg-red-500 text-white rounded-lg text-xs font-semibold tracking-wider uppercase transition shadow-md shadow-red-900/20">
+                            <i class="fa-brands fa-youtube mr-2 text-base"></i> Watch Installed Flight Clip
+                        </a>
+                    </div>
+
+                    <div class="mt-4 border-t border-slate-700/50 pt-3 flex flex-col sm:flex-row sm:items-center gap-3">
+                        <span class="inline-flex items-center self-start px-2 py-0.5 bg-slate-900 border border-slate-700 rounded text-xs font-mono text-amber-400 whitespace-nowrap">
+                            <i class="fa-solid fa-battery-three-quarters mr-1.5 text-slate-500"></i>500 mAh Drone Pit Stop LiPo
+                        </span>
+                        <p class="text-xs text-slate-400 italic">
+                            The added weight makes it a bit sluggish, but it's still quite fast and maneuverable, and can still perform aerial flips easily.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="bg-slate-950 border-t border-slate-800 text-slate-500 text-xs py-6 mt-auto">
+        <div class="max-w-6xl mx-auto px-4 text-center space-y-2">
+            <p>&copy; 2026 Chadick.org — Workshop Hub. All rights reserved.</p>
+            <p class="text-slate-600">Unified with responsive Tailwind styling and client side sorting logic loops.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Hamburger Drawer Interactivity Core Logic
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIcon = document.getElementById('menu-icon');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            if (mobileMenu.classList.contains('hidden')) {
+                menuIcon.className = 'fa-solid fa-bars text-xl';
+            } else {
+                menuIcon.className = 'fa-solid fa-xmark text-xl';
+            }
+        });
+
+        // Expand/Collapse Accordion Rows Layout Engine
+        function toggleAccordion(id) {
+            const contentBox = document.getElementById(`content-${id}`);
+            const chevronWrapper = document.getElementById(`chevron-${id}`);
+            const icon = chevronWrapper.querySelector('i');
+            
+            if (contentBox.classList.contains('hidden')) {
+                contentBox.classList.remove('hidden');
+                icon.classList.add('rotate-180');
+                chevronWrapper.classList.add('bg-indigo-600/20', 'border-indigo-500');
+            } else {
+                contentBox.classList.add('hidden');
+                icon.classList.remove('rotate-180');
+                chevronWrapper.className = 'w-8 h-8 rounded-full bg-slate-900 border border-slate-700 flex items-center justify-center text-slate-400';
+            }
+        }
+
+        // Live DOM Text Filtering Query Lookup Loop
+        const searchInput = document.getElementById('searchInput');
+        const logCards = document.querySelectorAll('.log-card');
+        const resultsCountBadge = document.getElementById('resultsCount');
+        const noResultsDiv = document.getElementById('noResults');
+
+        searchInput.addEventListener('input', (e) => {
+            const query = e.target.value.toLowerCase().trim();
+            let matchedCount = 0;
+
+            logCards.forEach(card => {
+                const keywordString = card.getAttribute('data-keywords') || '';
+                if (keywordString.includes(query)) {
+                    card.classList.remove('hidden');
+                    matchedCount++;
+                } else {
+                    card.classList.add('hidden');
+                }
+            });
+
+            // Re-render UI Index and Empty States context indicators
+            resultsCountBadge.textContent = `Showing ${matchedCount} Drone Log${matchedCount === 1 ? '' : 's'}`;
+            if (matchedCount === 0) {
+                noResultsDiv.classList.remove('hidden');
+            } else {
+                noResultsDiv.classList.add('hidden');
+            }
+        });
+
+        // Clipboard Link Sharing Tool Method
+        function copyLogLink(id) {
+            const cleanUrl = window.location.href.split('#')[0] + '#' + id;
+            navigator.clipboard.writeText(cleanUrl).then(() => {
+                alert('Direct anchor link to this workshop log has been saved to your clipboard.');
+            }).catch(err => {
+                console.error('Clipboard copy transaction failure: ', err);
+            });
+        }
+
+        // Deep Link Dynamic Auto-Expansion Entry Routine
+        window.addEventListener('DOMContentLoaded', () => {
+            const hash = window.location.hash;
+            if (hash) {
+                const targetingId = hash.replace('#', '');
+                const targetContent = document.getElementById(`content-${targetingId}`);
+                if (targetContent) {
+                    toggleAccordion(targetingId);
+                    document.getElementById(`content-${targetingId}`).scrollIntoView({ behavior: 'smooth' });
+                }
+            }
+        });
+    </script>
+</body>
+</html>
