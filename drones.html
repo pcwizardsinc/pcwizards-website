@@ -1,194 +1,170 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="stylesheet" href="style.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     
-    <title>Drones | PC WizardsInc.com</title>
-    <meta name="description" content="Personal experience, modifications, and flight notes for quadcopters and drones in The Garage at PCWizardsInc.com.">
+    <title>HOME | PCWizardsInc.com</title>
+    <meta name="description" content="Personal experience, tips, and tricks.">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700&family=Oswald:400,700&family=Lato:400,700&display=swap" rel="stylesheet">
 
     <style>
-        .kb-container {
-            max-width: 1000px;
+        /* Cloudflare Pages Optimized CSS */
+        :root {
+            --accent-gold: #FFD54F;
+            --dark-charcoal: #212121;
+            --deep-plum: #4F474E;
+            --light-bg: #F5F2F0;
+            --link-blue: #1a0dab;
+            --white: #FFFFFF;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--light-bg);
+            color: var(--dark-charcoal);
+            line-height: 1.7;
+            font-size: 16px;
+        }
+
+        header {
+            background-color: var(--accent-gold);
+            color: var(--dark-charcoal);
+            padding: 50px 20px;
+            text-align: center;
+            border-bottom: 8px solid var(--deep-plum);
+        }
+
+        header h1 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 2.5rem;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        header p { font-family: 'Lato', sans-serif; font-size: 1.2rem; }
+
+        main {
+            max-width: 900px;
             margin: 40px auto;
             padding: 0 20px;
-            font-family: 'Roboto', sans-serif;
         }
 
-        .kb-intro {
-            background-color: #ffffff;
-            padding: 25px;
-            border-radius: 6px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        .content-card {
+            background: var(--white);
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+            margin-bottom: 40px;
+        }
+
+        h2 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.8rem;
+            color: var(--deep-plum);
+            margin-top: 40px;
+            margin-bottom: 15px;
+            border-bottom: 3px solid var(--accent-gold);
+            padding-bottom: 5px;
+        }
+
+        h3 {
+            font-family: 'Lato', sans-serif;
+            font-size: 1.3rem;
+            margin-top: 30px;
+            margin-bottom: 10px;
+            color: var(--dark-charcoal);
+        }
+
+        p { margin-bottom: 20px; }
+
+        a { color: var(--link-blue); text-decoration: none; font-weight: bold; }
+        a:hover { text-decoration: underline; color: var(--deep-plum); }
+
+        .disclaimer {
+            background-color: #fff9e6;
+            border-left: 5px solid var(--accent-gold);
+            padding: 15px 20px;
+            font-style: italic;
             margin-bottom: 30px;
-            border-left: 5px solid #0056b3;
         }
 
-        .kb-intro h2 {
-            font-family: 'Oswald', sans-serif;
-            margin-top: 0;
-            color: #212121;
-        }
-        
-        .kb-intro p {
-            color: #4F474E;
-            line-height: 1.6;
+        hr {
+            border: 0;
+            height: 1px;
+            background: #ddd;
+            margin: 40px 0;
         }
 
-        /* The Accordion Component Wrapper */
-        .accordion-item {
-            margin-bottom: 12px;
-            border: 1px solid #dcdcdc;
-            border-radius: 6px;
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            height: 0;
             overflow: hidden;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.03);
+            margin-bottom: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
 
-        /* Clickable Bar */
-        .accordion-header {
-            background-color: #0056b3;
-            color: #ffffff;
-            padding: 16px 20px;
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            user-select: none;
-            transition: background-color 0.2s ease;
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
         }
 
-        .accordion-header:hover {
-            background-color: #004085;
+        footer {
+            background-color: var(--deep-plum);
+            color: var(--white);
+            text-align: center;
+            padding: 30px 20px;
+            font-size: 0.9rem;
         }
 
-        .accordion-title-block {
-            display: flex;
-            flex-direction: column;
-            gap: 4px;
-        }
-
-        .accordion-headline {
-            font-family: 'Oswald', sans-serif;
-            font-size: 1.2rem;
-            letter-spacing: 0.5px;
-            margin: 0;
-            text-transform: uppercase;
-        }
-
-        .accordion-date {
-            font-size: 0.85rem;
-            color: #e2e8f0;
-            font-weight: normal;
-        }
-
-        .accordion-icon {
-            font-size: 1.2rem;
-            transition: transform 0.2s ease;
-        }
-
-        /* Expanded Area */
-        .accordion-content {
-            background-color: #ffffff;
-            color: #000000;
-            padding: 0 25px;
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease-out, padding 0.3s ease-out;
-        }
-
-        .accordion-item.active .accordion-content {
-            padding: 25px;
-            max-height: 2000px;
-            border-top: 1px solid #e5e7eb;
-        }
-
-        .accordion-item.active .accordion-icon {
-            transform: rotate(180deg);
-        }
-
-        /* Search Bar Addition for Drones Page */
-        .search-container {
-            margin-bottom: 20px;
-            display: flex;
-            gap: 10px;
-        }
-        .search-container input {
-            flex-grow: 1;
-            padding: 10px;
-            border: 1px solid #dcdcdc;
-            border-radius: 4px;
-            font-family: 'Roboto', sans-serif;
-        }
+        footer a { color: var(--accent-gold); }
     </style>
 </head>
+
 <body>
 
-    <nav class="pcw-navbar">
-        <ul>
-            <li class="dropdown">
-                <a class="dropbtn" style="cursor: pointer;">The Garage ▾</a>
-                <div class="dropdown-content">
-                    <a href="index.html">Home</a>
-                    <a href="drones.html">Drones</a>
-                    <a href="motorcycles.html">Motorcycles</a>
-                    <a href="services.html">Computer Stuff</a>
-                </div>
-            </li>
-        </ul>
-    </nav>
+ <nav class="pcw-navbar">
+    <ul>
+        <li class="dropdown">
+            <a class="dropbtn" style="cursor: pointer;">The Garage ▾</a>
+            
+            <div class="dropdown-content">
+                <a href="index.html">Home</a>
+                <a href="drones.html">Drones</a>
+                <a href="motorcycles.html">Motorcycles</a>
+                <a href="services.html">Computer Stuff</a>
+            </div>
+        </li>
+    </ul>
+</nav>
 
-
-                        <a href="https://www.youtube.com/watch?v=R3LKqAIaoCc" target="_blank" rel="noopener noreferrer" class="inline-flex items-center px-4 py-2 bg-red-600 hover:bg-red-500 text-white rounded-lg text-xs font-semibold tracking-wider uppercase transition shadow-md shadow-red-900/20">
-
-
- <header class="pcw-hero">
+    <header class="pcw-hero">
         <div class="hero-container">
             <h1>PC Wizards Inc.</h1>
-            <p class="subtitle">Pacific Computer Wizards - Memory Repository .... 
-not a typical blog...</p>
+            <p class="subtitle">Pacific Computer Wizards | Drone Page .... </p>
         </div>
     </header>
 
     <main class="pcw-main-container">
         
         <section class="welcome-box">
-            <h2>Welcome to the PCWizard's</h2><BR>
-            <p>An informational repository of … thoughts, data, sharing, and ideas, posted.<BR>
-    – Use the information in these posts at your own risk.      <BR>
-                                The ideas, thoughts, and expressions posted here are for my own use.</p><BR>
+            <h2>Welcome to the PCWizard's | Drones</h2><BR>
+           ><BR>
         </section>
 
-        <div class="feature-grid">
-            
-            <div class="feature-card">
-                <div class="card-icon">💻</div>
-                <h3>Computer Stuff</h3>
-                <p></p>
-                <a href="services.html" class="card-btn">Computers, Systems Admin, Hacks and Cool Stuff</a>
-            </div>
-
-            <div class="feature-card">
-                <div class="card-icon">🛸</div>
-                <h3>UAS & Drones</h3>                 <p>Drone Stuff</p>
-                <a href="drones.html" class="card-btn"> Fun with Drones </a>
-            </div>
-
-            <div class="feature-card">
-                <div class="card-icon">🏍️</div>
-                <h3>The Garage</h3>
-                <p>Trio, Motorcycles, and other fun.</p>
-                <a href="motorcycles.html" class="card-btn">The TRIO Garage</a>
-            </div>
-
-        </div>
+      <p> Drones: https://www.youtube.com/watch?v=R3LKqAIaoCc</p>
 
     </main>
 
@@ -197,4 +173,6 @@ not a typical blog...</p>
     </footer>
 
 </body>
-</html>                            
+</html>
+    
+   
