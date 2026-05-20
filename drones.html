@@ -6,9 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     
-    <section class="welcome-box">
-    <h2>Welcome to the PCWizard's | Drones</h2><BR>
-    ><BR>  </section>
+    <title>Drones | PCWizardsInc.com</title>
     <meta name="description" content="Personal experience, tips, and tricks.">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -54,35 +52,68 @@
         header p { font-family: 'Lato', sans-serif; font-size: 1.2rem; }
 
         main {
-            max-width: 900px;
+            max-width: 1100px;
             margin: 40px auto;
             padding: 0 20px;
         }
 
-        .content-card {
+        .welcome-box {
             background: var(--white);
-            padding: 40px;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            margin-bottom: 40px;
+            border-left: 6px solid var(--accent-gold);
+        }
+
+        /* Responsive Grid for Video Launchers */
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 35px;
+            margin-top: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .video-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .video-card {
+            background: var(--white);
+            padding: 20px;
             border-radius: 8px;
             box-shadow: 0 4px 10px rgba(0,0,0,0.08);
-            margin-bottom: 40px;
+            display: flex;
+            flex-direction: column;
         }
 
         h2 {
             font-family: 'Oswald', sans-serif;
             font-size: 1.8rem;
             color: var(--deep-plum);
-            margin-top: 40px;
             margin-bottom: 15px;
-            border-bottom: 3px solid var(--accent-gold);
-            padding-bottom: 5px;
         }
 
         h3 {
-            font-family: 'Lato', sans-serif;
+            font-family: 'Oswald', sans-serif;
             font-size: 1.3rem;
-            margin-top: 30px;
-            margin-bottom: 10px;
+            margin-top: 10px;
+            margin-bottom: 8px;
             color: var(--dark-charcoal);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border-bottom: 2px solid var(--accent-gold);
+            padding-bottom: 4px;
+        }
+
+        .video-description {
+            font-family: 'Lato', sans-serif;
+            font-size: 0.95rem;
+            color: #555555;
+            line-height: 1.5;
+            margin-top: 5px;
         }
 
         p { margin-bottom: 20px; }
@@ -90,29 +121,14 @@
         a { color: var(--link-blue); text-decoration: none; font-weight: bold; }
         a:hover { text-decoration: underline; color: var(--deep-plum); }
 
-        .disclaimer {
-            background-color: #fff9e6;
-            border-left: 5px solid var(--accent-gold);
-            padding: 15px 20px;
-            font-style: italic;
-            margin-bottom: 30px;
-        }
-
-        hr {
-            border: 0;
-            height: 1px;
-            background: #ddd;
-            margin: 40px 0;
-        }
-
         .video-container {
             position: relative;
             padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
             height: 0;
             overflow: hidden;
-            margin-bottom: 30px;
-            border-radius: 8px;
+            border-radius: 6px;
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            background: #000;
         }
 
         .video-container iframe {
@@ -121,6 +137,7 @@
             left: 0;
             width: 100%;
             height: 100%;
+            border: 0;
         }
 
         footer {
@@ -129,6 +146,7 @@
             text-align: center;
             padding: 30px 20px;
             font-size: 0.9rem;
+            margin-top: 60px;
         }
 
         footer a { color: var(--accent-gold); }
@@ -137,11 +155,10 @@
 
 <body>
 
- <nav class="pcw-navbar">
+<nav class="pcw-navbar">
     <ul>
         <li class="dropdown">
             <a class="dropbtn" style="cursor: pointer;">The Garage ▾</a>
-            
             <div class="dropdown-content">
                 <a href="index.html">Home</a>
                 <a href="drones.html">Drones</a>
@@ -155,18 +172,100 @@
     <header class="pcw-hero">
         <div class="hero-container">
             <h1>PC Wizards Inc.</h1>
-            <p class="subtitle">Pacific Computer Wizards | Drone Page .... </p>
+            <p class="subtitle">Pacific Computer Wizards | Drone Page</p>
         </div>
     </header>
 
     <main class="pcw-main-container">
         
         <section class="welcome-box">
-            <h2>Welcome to the PCWizard's | Drones</h2><BR>
-           ><BR>
+            <h2>Welcome to the PCWizard's | Drones</h2>
+            <p>Check out our compilation of technical drone demonstrations, build footage, flight testing records, and diagnostic benchmarks below.</p>
         </section>
 
-      <p> Drones: https://www.youtube.com/watch?v=R3LKqAIaoCc</p>
+        <div class="video-grid">
+
+            <div class="video-card">
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/E4dHoHhF7Tw" allowfullscreen></iframe>
+                </div>
+                <h3>Drone Build &amp; Flight Setup #1</h3>
+                <p class="video-description">Enter your custom video page description here. Write details about parts, hardware specs, flight notes, or configuration steps.</p>
+            </div>
+
+            <div class="video-card">
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/KOfOMjt8HeI" allowfullscreen></iframe>
+                </div>
+                <h3>Drone Performance Bench Testing</h3>
+                <p class="video-description">Enter your custom video page description here. Write details about parts, hardware specs, flight notes, or configuration steps.</p>
+            </div>
+
+            <div class="video-card">
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/CDilCeEhZ78" allowfullscreen></iframe>
+                </div>
+                <h3>Field Test Log &amp; Calibration</h3>
+                <p class="video-description">Enter your custom video page description here. Write details about parts, hardware specs, flight notes, or configuration steps.</p>
+            </div>
+
+            <div class="video-card">
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/8M39z-xcqeE" allowfullscreen></iframe>
+                </div>
+                <h3>UAV Electronics Installation</h3>
+                <p class="video-description">Enter your custom video page description here. Write details about parts, hardware specs, flight notes, or configuration steps.</p>
+            </div>
+
+            <div class="video-card">
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/AErVxqBgvEs" allowfullscreen></iframe>
+                </div>
+                <h3>FPV Flight Diagnostics Overview</h3>
+                <p class="video-description">Enter your custom video page description here. Write details about parts, hardware specs, flight notes, or configuration steps.</p>
+            </div>
+
+            <div class="video-card">
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/Nt69pxBnCBw" allowfullscreen></iframe>
+                </div>
+                <h3>Custom Quadcopter Modifications</h3>
+                <p class="video-description">Enter your custom video page description here. Write details about parts, hardware specs, flight notes, or configuration steps.</p>
+            </div>
+
+            <div class="video-card">
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/xNMEy02BkTs" allowfullscreen></iframe>
+                </div>
+                <h3>Telemetry Systems Check</h3>
+                <p class="video-description">Enter your custom video page description here. Write details about parts, hardware specs, flight notes, or configuration steps.</p>
+            </div>
+
+            <div class="video-card">
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/hta6ivA1IaI" allowfullscreen></iframe>
+                </div>
+                <h3>Receiver &amp; Controller Settings</h3>
+                <p class="video-description">Enter your custom video page description here. Write details about parts, hardware specs, flight notes, or configuration steps.</p>
+            </div>
+
+            <div class="video-card">
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/bfKoGto5T14" allowfullscreen></iframe>
+                </div>
+                <h3>Airframe Structural Integrity Mod</h3>
+                <p class="video-description">Enter your custom video page description here. Write details about parts, hardware specs, flight notes, or configuration steps.</p>
+            </div>
+
+            <div class="video-card">
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/w8DrTCad8IM" allowfullscreen></iframe>
+                </div>
+                <h3>Flight Performance Retrospective</h3>
+                <p class="video-description">Enter your custom video page description here. Write details about parts, hardware specs, flight notes, or configuration steps.</p>
+            </div>
+
+        </div>
 
     </main>
 
@@ -176,5 +275,3 @@
 
 </body>
 </html>
-    
-   
