@@ -57,7 +57,7 @@
             padding: 0 20px;
         }
 
-        .content-card {
+        .welcome-box {
             background: var(--white);
             padding: 40px;
             border-radius: 8px;
@@ -69,57 +69,110 @@
             font-family: 'Oswald', sans-serif;
             font-size: 1.8rem;
             color: var(--deep-plum);
-            margin-top: 40px;
             margin-bottom: 15px;
             border-bottom: 3px solid var(--accent-gold);
             padding-bottom: 5px;
         }
 
-        h3 {
-            font-family: 'Lato', sans-serif;
-            font-size: 1.3rem;
-            margin-top: 30px;
-            margin-bottom: 10px;
-            color: var(--dark-charcoal);
-        }
-
         p { margin-bottom: 20px; }
 
-        a { color: var(--link-blue); text-decoration: none; font-weight: bold; }
-        a:hover { text-decoration: underline; color: var(--deep-plum); }
-
-        .disclaimer {
-            background-color: #fff9e6;
-            border-left: 5px solid var(--accent-gold);
-            padding: 15px 20px;
-            font-style: italic;
-            margin-bottom: 30px;
-        }
-
-        hr {
-            border: 0;
-            height: 1px;
-            background: #ddd;
-            margin: 40px 0;
-        }
-
-        .video-container {
+        /* ==========================================================================
+           AUTO-FADE PHOTO CAROUSEL STYLING
+           ========================================================================== */
+        .carousel-section {
+            max-width: 900px;
+            margin: 0 auto 40px auto;
             position: relative;
-            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
-            height: 0;
-            overflow: hidden;
-            margin-bottom: 30px;
+            background: #000000;
             border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+            overflow: hidden;
         }
 
-        .video-container iframe {
+        .carousel-container {
+            position: relative;
+            width: 100%;
+            height: 450px; /* Adjust scale height for your bench/garage project photos */
+        }
+
+        @media (max-width: 768px) {
+            .carousel-container { height: 280px; }
+        }
+
+        .carousel-slide {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out; /* Fast, clean crossfade sequence */
+            z-index: 1;
         }
+
+        .carousel-slide.active {
+            opacity: 1;
+            z-index: 2;
+        }
+
+        .carousel-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Prevents awkward photo stretching */
+            display: block;
+        }
+
+        .carousel-caption {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: rgba(33, 33, 33, 0.85);
+            color: #FFFFFF;
+            padding: 8px 20px;
+            border-radius: 4px;
+            font-family: 'Lato', sans-serif;
+            font-size: 1rem;
+            text-align: center;
+            border-bottom: 3px solid var(--accent-gold);
+            z-index: 3;
+            pointer-events: none;
+            white-space: nowrap;
+        }
+
+        /* Feature Grid Styles */
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .feature-card {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            text-align: center;
+            border-top: 4px solid var(--deep-plum);
+        }
+
+        .card-icon { font-size: 2.5rem; margin-bottom: 15px; }
+        .feature-card h3 { font-family: 'Oswald', sans-serif; margin-bottom: 10px; }
+        
+        .card-btn {
+            display: inline-block;
+            margin-top: 15px;
+            background-color: var(--accent-gold);
+            color: var(--dark-charcoal);
+            padding: 10px 15px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: bold;
+            font-family: 'Lato', sans-serif;
+            font-size: 0.9rem;
+            transition: background 0.2s;
+        }
+        .card-btn:hover { background-color: var(--deep-plum); color: var(--white); }
 
         footer {
             background-color: var(--deep-plum);
@@ -127,34 +180,31 @@
             text-align: center;
             padding: 30px 20px;
             font-size: 0.9rem;
+            margin-top: 40px;
         }
-
-        footer a { color: var(--accent-gold); }
     </style>
 </head>
 
 <body>
 
- <nav class="pcw-navbar">
-    <ul>
-        <li class="dropdown">
-            <a class="dropbtn" style="cursor: pointer;">The Garage ▾</a>
-            
-            <div class="dropdown-content">
-                <a href="index.html">Home</a>
-                <a href="drones.html">Drones</a>
-                <a href="motorcycles.html">Motorcycles</a>
-                <a href="services.html">Computer Stuff</a>
-            </div>
-        </li>
-    </ul>
-</nav>
+    <nav class="pcw-navbar">
+        <ul>
+            <li class="dropdown">
+                <a class="dropbtn" style="cursor: pointer;">The Garage ▾</a>
+                <div class="dropdown-content">
+                    <a href="index.html">Home</a>
+                    <a href="drones.html">Drones</a>
+                    <a href="motorcycles.html">Motorcycles</a>
+                    <a href="services.html">Computer Stuff</a>
+                </div>
+            </li>
+        </ul>
+    </nav>
 
     <header class="pcw-hero">
         <div class="hero-container">
             <h1>PC Wizards Inc.</h1>
-            <p class="subtitle">Pacific Computer Wizards - Memory Repository .... 
-not a typical blog...</p>
+            <p class="subtitle">Pacific Computer Wizards | Personal Project Log &amp; Blog</p>
         </div>
     </header>
 
@@ -163,11 +213,87 @@ not a typical blog...</p>
         <section class="welcome-box">
             <h2>Welcome to the PCWizard's</h2><BR>
             <p>An informational repository of … thoughts, data, sharing, and ideas, posted.<BR>
-    – Use the information in these posts at your own risk.      <BR>
-                                The ideas, thoughts, and expressions posted here are for my own use.</p><BR>
+            – Use the information in these posts at your own risk.<BR>
+            The ideas, thoughts, and expressions posted here are for my own use.</p>
         </section>
 
-      
+        <section class="carousel-section">
+            <div class="carousel-container">
+                
+                <div class="carousel-slide active">
+                    <img src="20260217_124750.jpg" alt="Garage Workbench Project Log">
+                    <div class="carousel-caption">The Garage | Project Update Log</div>
+                </div>
+
+                <div class="carousel-slide">
+                    <img src="20260419_183310.jpg" alt="Garage Project Photo">
+                    <div class="carousel-caption">The Garage | Workshop Build Series</div>
+                </div>
+
+                <div class="carousel-slide">
+                    <img src="20260502_163101.jpg" alt="Garage Project Photo">
+                    <div class="carousel-caption">The Garage | Engineering &amp; Adjustments</div>
+                </div>
+
+                <div class="carousel-slide">
+                    <img src="20260512_160721.jpg" alt="Garage Project Photo">
+                    <div class="carousel-caption">The Garage | Hardware Modifications</div>
+                </div>
+
+                <div class="carousel-slide">
+                    <img src="292447822535333.jpg" alt="Garage Project Photo">
+                    <div class="carousel-caption">The Garage | Hardware Analysis</div>
+                </div>
+
+                <div class="carousel-slide">
+                    <img src="371492667062136.jpg" alt="Garage Project Photo">
+                    <div class="carousel-caption">The Garage | Bench Assembly Layout</div>
+                </div>
+
+                <div class="carousel-slide">
+                    <img src="2618941938126180.jpg" alt="Garage Project Photo">
+                    <div class="carousel-caption">The Garage | Operational Run Tests</div>
+                </div>
+
+                <div class="carousel-slide">
+                    <img src="10213758491555289.jpg" alt="Garage Project Photo">
+                    <div class="carousel-caption">The Garage | Electronics Configurations</div>
+                </div>
+
+                <div class="carousel-slide">
+                    <img src="10215187405037233.jpg" alt="Garage Project Photo">
+                    <div class="carousel-caption">The Garage | System Calibrations</div>
+                </div>
+
+                <div class="carousel-slide">
+                    <img src="10216465089498546.jpg" alt="Garage Project Photo">
+                    <div class="carousel-caption">The Garage | Final Inspections</div>
+                </div>
+
+            </div>
+        </section>
+
+        <div class="feature-grid">
+            
+            <div class="feature-card">
+                <div class="card-icon">💻</div>
+                <h3>Computer Stuff</h3>
+                <a href="services.html" class="card-btn">Computers, Systems Admin, Hacks and Cool Stuff</a>
+            </div>
+
+            <div class="feature-card">
+                <div class="card-icon">🛸</div>
+                <h3>UAS &amp; Drones</h3>
+                <a href="drones.html" class="card-btn">Fun with Drones</a>
+            </div>
+
+            <div class="feature-card">
+                <div class="card-icon">🏍️</div>
+                <h3>The Garage</h3>
+                <a href="motorcycles.html" class="card-btn">The TRIO Garage</a>
+            </div>
+
+        </div>
 
     </main>
 
@@ -175,7 +301,23 @@ not a typical blog...</p>
         <p>&copy; 2026 PC Wizards Inc. All Rights Reserved.</p>
     </footer>
 
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const slides = document.querySelectorAll('.carousel-slide');
+            let currentIndex = 0;
+            
+            if (slides.length === 0) return;
+
+            function rotateSlides() {
+                slides[currentIndex].classList.remove('active');
+                currentIndex = (currentIndex + 1) % slides.length;
+                slides[currentIndex].classList.add('active');
+            }
+
+            // Runs exactly every 1000ms (1 second loop execution)
+            setInterval(rotateSlides, 1000);
+        });
+    </script>
+
 </body>
 </html>
-    
-   
