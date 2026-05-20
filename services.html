@@ -1,160 +1,152 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="style.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    
-    <title>Knowledge Base & Memory Repository</title>
-    <meta name="description" content="Personal experience, tips, and tricks.">
-
+    <title>PC Wizards Inc. | Technical Knowledgebase</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700&family=Oswald:400,700&family=Lato:400,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css">
 
     <style>
-        /* Cloudflare Pages Optimized CSS */
-        :root {
-            --accent-gold: #FFD54F;
-            --dark-charcoal: #212121;
-            --deep-plum: #4F474E;
-            --light-bg: #F5F2F0;
-            --link-blue: #1a0dab;
-            --white: #FFFFFF;
-        }
-
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-
-        body {
-            font-family: 'Roboto', sans-serif;
-            background-color: var(--light-bg);
-            color: var(--dark-charcoal);
-            line-height: 1.7;
-            font-size: 16px;
-        }
-
-        header {
-            background-color: var(--accent-gold);
-            color: var(--dark-charcoal);
-            padding: 50px 20px;
-            text-align: center;
-            border-bottom: 8px solid var(--deep-plum);
-        }
-
-        header h1 {
-            font-family: 'Oswald', sans-serif;
-            font-size: 2.5rem;
-            text-transform: uppercase;
-            margin-bottom: 10px;
-        }
-
-        header p { font-family: 'Lato', sans-serif; font-size: 1.2rem; }
-
-        main {
-            max-width: 900px;
+        /* ==========================================================================
+           SERVICES PAGE ACCORDION CUSTOM STYLING
+           ========================================================================== */
+        .kb-container {
+            max-width: 1000px;
             margin: 40px auto;
             padding: 0 20px;
+            font-family: 'Roboto', sans-serif;
         }
 
-        .content-card {
-            background: var(--white);
-            padding: 40px;
-            border-radius: 8px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
-            margin-bottom: 40px;
+        .kb-intro {
+            background-color: #ffffff;
+            padding: 25px;
+            border-radius: 6px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            margin-bottom: 30px;
+            border-left: 5px solid #0056b3;
         }
 
-        h2 {
+        .kb-intro h2 {
             font-family: 'Oswald', sans-serif;
-            font-size: 1.8rem;
-            color: var(--deep-plum);
-            margin-top: 40px;
-            margin-bottom: 15px;
-            border-bottom: 3px solid var(--accent-gold);
-            padding-bottom: 5px;
+            margin-top: 0;
+            color: #212121;
         }
 
-        h3 {
-            font-family: 'Lato', sans-serif;
-            font-size: 1.3rem;
-            margin-top: 30px;
-            margin-bottom: 10px;
-            color: var(--dark-charcoal);
-        }
-
-        p { margin-bottom: 20px; }
-
-        a { color: var(--link-blue); text-decoration: none; font-weight: bold; }
-        a:hover { text-decoration: underline; color: var(--deep-plum); }
-
-        .disclaimer {
-            background-color: #fff9e6;
-            border-left: 5px solid var(--accent-gold);
-            padding: 15px 20px;
-            font-style: italic;
-            margin-bottom: 30px;
-        }
-
-        hr {
-            border: 0;
-            height: 1px;
-            background: #ddd;
-            margin: 40px 0;
-        }
-
-        .video-container {
-            position: relative;
-            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
-            height: 0;
+        /* The Accordion Component Wrapper */
+        .accordion-item {
+            margin-bottom: 12px;
+            border: 1px solid #dcdcdc;
+            border-radius: 6px;
             overflow: hidden;
-            margin-bottom: 30px;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.03);
         }
 
-        .video-container iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+        /* 1. Clickable Bar: Blue Background, White Text */
+        .accordion-header {
+            background-color: #0056b3;
+            color: #ffffff;
+            padding: 16px 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            user-select: none;
+            transition: background-color 0.2s ease;
         }
 
-        footer {
-            background-color: var(--deep-plum);
-            color: var(--white);
-            text-align: center;
-            padding: 30px 20px;
-            font-size: 0.9rem;
+        .accordion-header:hover {
+            background-color: #004085; /* Darker blue on hover */
         }
 
-        footer a { color: var(--accent-gold); }
+        .accordion-title-block {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .accordion-headline {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.2rem;
+            letter-spacing: 0.5px;
+            margin: 0;
+            text-transform: uppercase;
+        }
+
+        .accordion-date {
+            font-size: 0.85rem;
+            color: #e2e8f0;
+            font-weight: normal;
+        }
+
+        /* Dynamic Expand Indicator Icon */
+        .accordion-icon {
+            font-size: 1.2rem;
+            transition: transform 0.2s ease;
+        }
+
+        /* 2. Expanded Area: White Background, Black Text */
+        .accordion-content {
+            background-color: #ffffff;
+            color: #000000;
+            padding: 0 25px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out, padding 0.3s ease-out;
+        }
+
+        /* Active Toggle State controlled via JS */
+        .accordion-item.active .accordion-content {
+            padding: 25px;
+            max-height: 2000px; /* Allows spacious text boxes to render fully */
+            border-top: 1px solid #e5e7eb;
+        }
+
+        .accordion-item.active .accordion-icon {
+            transform: rotate(180deg);
+        }
+
+        /* Text formatting within the expanded area */
+        .accordion-content p {
+            margin-top: 0;
+            margin-bottom: 15px;
+            line-height: 1.6;
+            font-size: 1rem;
+        }
+
+        .accordion-content ul, .accordion-content ol {
+            margin-top: 0;
+            margin-bottom: 15px;
+            padding-left: 20px;
+        }
+
+        .accordion-content li {
+            margin-bottom: 6px;
+        }
+
+        /* Monospace Code Styling for Terminal / Registry configurations */
+        code, pre {
+            font-family: 'Courier New', Courier, monospace;
+            background-color: #f4f4f6;
+            color: #b91c1c;
+            padding: 3px 6px;
+            border-radius: 4px;
+            font-size: 0.95rem;
+        }
+
+        pre {
+            display: block;
+            padding: 15px;
+            margin: 15px 0;
+            overflow-x: auto;
+            color: #111827;
+            border-left: 4px solid #9ca3af;
+        }
     </style>
 </head>
-<body>
-
-
-<nav class="pcw-navbar">
-    <ul>
-        <li><a href="index.html">Home</a></li>
-        <li class="dropdown">
-            <a class="dropbtn">The Garage ▾</a>
-            <div class="dropdown-content">
-                <a href="drones.html">Drones</a>
-                <a href="motorcycles.html">Motorcycles</a>
-            </div>
-        </li>
-        <li><a href="services.html">Computer Stuff</a></li>
-    </ul>
-</nav>
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-
-
-
 <body>
 
     <nav class="pcw-navbar">
