@@ -152,776 +152,552 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        .accordion-content {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease-out, padding 0.3s ease-out;
-        }
-        .accordion-item.active .accordion-content {
-            max-height: 2000px; /* Accommodates long logs */
-            padding-bottom: 1.5rem;
-        }
-        .accordion-item.active .toggle-icon {
-            transform: rotate(180deg);
-        }
-    </style>
-</head>
-<body class="bg-slate-50 font-sans text-slate-800 antialiased min-h-screen pb-12">
 
-    <header class="bg-gradient-to-r from-blue-700 to-indigo-800 text-white shadow-md py-8 mb-8">
-        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h1 class="text-3xl font-extrabold tracking-tight sm:text-4xl">
-                <i class="fa-solid fa-book-bookmark mr-3 text-blue-300"></i>Memory / Knowledgebase
-            </h1>
-            <center>
-            <p class="mt-2 text-blue-100 max-w-2xl">
-                A repository for systems administration, development workarounds, configuration guides, and some personal notes.
-            </p>
-            
-            <div class="mt-6 max-w-md relative">
-                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                    <i class="fa-solid fa-magnifying-glass text-slate-400"></i>
+
+
+<body>
+
+    <nav class="pcw-navbar">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="computers.html">Computers</a></li>
+            <li class="dropdown">
+                <a class="dropbtn">The Garage ▾</a>
+                <div class="dropdown-content">
+                    <a href="drones.html">Drones</a>
+                    <a href="motorcycles.html">Motorcycles</a>
                 </div>
-                <input type="text" id="searchBar" onkeyup="filterTopics()" placeholder="Search discussion topics or keywords..." 
-                    class="block w-full pl-10 pr-4 py-2 border border-transparent rounded-lg bg-white text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent shadow-sm text-sm">
-            </div>
-            </center>  
+            </li>
+            <li><a href="services.html">Services</a></li>
+        </ul>
+    </nav>
+
+    <main class="kb-container">
+        
+        <div class="kb-intro">
+            <h2>Wizard's Troubleshooting Hub & Archive</h2>
+            <p>Welcome to our comprehensive technical knowledgebase. Click any blue highlight bar below to instantly expand historical configurations, administrative batch fixes, structural guides, and workshop formulas.</p>
         </div>
-    </header>
 
-    <main class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="space-y-4" id="accordionContainer">
+        <div class="accordion-group">
 
-            <div class="accordion-item bg-white border border-slate-200 rounded-xl shadow-xs overflow-hidden transition-all duration-200 hover:border-slate-300">
-                <button class="w-full text-left px-6 py-4 flex items-center justify-between focus:outline-none bg-slate-50/50 hover:bg-slate-50 transition-colors" onclick="toggleAccordion(this)">
-                    <div class="pr-4">
-                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800 mb-1">Windows Server</span>
-                        <h3 class="text-lg font-semibold text-slate-900 tracking-tight">2008 R2 Service Pack 1 gives you "0x80246007" error code</h3>
-                        <p class="text-xs text-slate-500 mt-1"><i class="fa-regular fa-calendar-days mr-1"></i>Post date: May 10, 2012 3:32:29 PM</p>
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <div class="accordion-title-block">
+                        <h3 class="accordion-headline">2008 R2 Service Pack 1 gives you "0x80246007" error code</h3>
+                        <span class="accordion-date">Post date: May 10, 2012 3:32:29 PM</span>
                     </div>
-                    <i class="fa-solid fa-chevron-down text-slate-400 toggle-icon transition-transform duration-200"></i>
-                </button>
-                <div class="accordion-content px-6 border-t border-slate-100">
-                    <div class="prose max-w-none pt-4 text-slate-600 text-sm leading-relaxed space-y-3">
-                        <p>On my 2008 Server, I run Hyper-V, and for whatever reason, this error code reared its ugly head while trying to update it.</p>
-                        <p class="font-medium text-slate-800">To Resolve this error code, do the following:</p>
-                        <p>Open Notepad and type in the following lines:</p>
-                        <div class="relative group my-2">
-                            <pre class="bg-slate-900 text-slate-100 p-4 rounded-lg overflow-x-auto text-xs font-mono">net stop wuauserv
+                    <span class="accordion-icon">▼</span>
+                </div>
+                <div class="accordion-content">
+                    <p>On my 2008 Server, I run Hyper-V, and for whatever reason, this error code reared its ugly head while trying to update it.</p>
+                    <p>To Resolve this error code, do the following:</p>
+                    <p>Open Notepad and type in the following:</p>
+                    <pre>net stop wuauserv
 cd %systemroot%\SoftwareDistribution
 ren Download Download.old
 net start wuauserv
 net stop bits
 net start bits</pre>
-                            <button onclick="copyCode(this)" class="absolute top-2 right-2 bg-slate-800 hover:bg-slate-700 text-slate-300 px-2 py-1 rounded text-2xs transition-colors"><i class="fa-regular fa-copy mr-1"></i>Copy</button>
-                        </div>
-                        <ul class="list-disc pl-5 space-y-1">
-                            <li>Save the file as <code class="bg-slate-100 text-slate-800 px-1 py-0.5 rounded font-mono text-xs">Repair.bat</code> and place on the Desktop of your 2008 R2 Server.</li>
-                            <li>Run the batch file.</li>
-                            <li>After running the batch file, you will have to run the Service Pack again. It should go through this time! (Good Luck!)</li>
-                        </ul>
-                    </div>
+                    <p><strong>*</strong> Save the file as <code>Repair.bat</code> and place on the Desktop of your 2008 R2 Server.</p>
+                    <p>Run the batch file. After running the batch file, you will have to run the Service Pack again. It should go through this time! (Good Luck!)</p>
                 </div>
             </div>
 
-            <div class="accordion-item bg-white border border-slate-200 rounded-xl shadow-xs overflow-hidden transition-all duration-200 hover:border-slate-300">
-                <button class="w-full text-left px-6 py-4 flex items-center justify-between focus:outline-none bg-slate-50/50 hover:bg-slate-50 transition-colors" onclick="toggleAccordion(this)">
-                    <div class="pr-4">
-                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800 mb-1">Windows OS</span>
-                        <h3 class="text-lg font-semibold text-slate-900 tracking-tight">A Fix to Profile Issues</h3>
-                        <p class="text-xs text-slate-500 mt-1"><i class="fa-regular fa-calendar-days mr-1"></i>Post date: Sep 26, 2016 2:28:28 PM</p>
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <div class="accordion-title-block">
+                        <h3 class="accordion-headline">A Fix to Profile Issues</h3>
+                        <span class="accordion-date">Post date: Sep 26, 2016 2:28:28 PM</span>
                     </div>
-                    <i class="fa-solid fa-chevron-down text-slate-400 toggle-icon transition-transform duration-200"></i>
-                </button>
-                <div class="accordion-content px-6 border-t border-slate-100">
-                    <div class="prose max-w-none pt-4 text-slate-600 text-sm space-y-2">
-                        <p>Locate and correct corrupt profiles via the Windows Registry Editor:</p>
-                        <div class="relative group my-2">
-                            <pre class="bg-slate-900 text-slate-100 p-4 rounded-lg overflow-x-auto text-xs font-mono">Regedit
-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\ProfileList</pre>
-                            <button onclick="copyCode(this)" class="absolute top-2 right-2 bg-slate-800 hover:bg-slate-700 text-slate-300 px-2 py-1 rounded text-2xs transition-colors"><i class="fa-regular fa-copy mr-1"></i>Copy</button>
-                        </div>
-                    </div>
+                    <span class="accordion-icon">▼</span>
+                </div>
+                <div class="accordion-content">
+                    <p>Open <code>Regedit</code> and navigate to the following path to clear or adjust corrupted profiles:</p>
+                    <pre>HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\ProfileList</pre>
                 </div>
             </div>
 
-            <div class="accordion-item bg-white border border-slate-200 rounded-xl shadow-xs overflow-hidden transition-all duration-200 hover:border-slate-300">
-                <button class="w-full text-left px-6 py-4 flex items-center justify-between focus:outline-none bg-slate-50/50 hover:bg-slate-50 transition-colors" onclick="toggleAccordion(this)">
-                    <div class="pr-4">
-                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-amber-100 text-amber-800 mb-1">Culinary / Recipes</span>
-                        <h3 class="text-lg font-semibold text-slate-900 tracking-tight">A Perfect Turkey starts with 24 hours of a brine</h3>
-                        <p class="text-xs text-slate-500 mt-1"><i class="fa-regular fa-calendar-days mr-1"></i>Post date: Nov 30, 2015 3:17:58 PM</p>
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <div class="accordion-title-block">
+                        <h3 class="accordion-headline">A Perfect Turkey starts with 24 hours of a brine</h3>
+                        <span class="accordion-date">Post date: Nov 30, 2015 3:17:58 PM</span>
                     </div>
-                    <i class="fa-solid fa-chevron-down text-slate-400 toggle-icon transition-transform duration-200"></i>
-                </button>
-                <div class="accordion-content px-6 border-t border-slate-100">
-                    <div class="prose max-w-none pt-4 text-slate-600 text-sm space-y-2">
-                        <p class="font-medium text-slate-800">Brine Blend Composition Ingredients:</p>
-                        <p class="bg-amber-50/50 p-4 border border-amber-200 rounded-lg text-slate-700 italic">
-                            Course Kosher Salt, Brown Sugar, Dried Cranberries, Allspice, Dried Apple Slices, Crushed Dried Garlic, Orange Peels, Whole Black Pepper, Rosemary, Green Peppercorns, Thyme, Bay Leaf, Sage, and a Vanilla Bean.
-                        </p>
-                    </div>
+                    <span class="accordion-icon">▼</span>
+                </div>
+                <div class="accordion-content">
+                    <p><strong>Ingredients:</strong></p>
+                    <p>Coarse Kosher Salt, Brown Sugar, Dried Cranberries, Allspice, Dried Apple Slices, Crushed Dried Garlic, Orange Peels, Whole Black Pepper, Rosemary, Green Peppercorns, Thyme, Bay Leaf, Sage, and a Vanilla Bean.</p>
                 </div>
             </div>
 
-            <div class="accordion-item bg-white border border-slate-200 rounded-xl shadow-xs overflow-hidden transition-all duration-200 hover:border-slate-300">
-                <button class="w-full text-left px-6 py-4 flex items-center justify-between focus:outline-none bg-slate-50/50 hover:bg-slate-50 transition-colors" onclick="toggleAccordion(this)">
-                    <div class="pr-4">
-                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-orange-100 text-orange-800 mb-1">Cloud Computing</span>
-                        <h3 class="text-lg font-semibold text-slate-900 tracking-tight">Amazon AWS Free Tier Infrastructure</h3>
-                        <p class="text-xs text-slate-500 mt-1"><i class="fa-regular fa-calendar-days mr-1"></i>Post date: May 10, 2012 3:22:59 PM</p>
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <div class="accordion-title-block">
+                        <h3 class="accordion-headline">Amazon AWS Free</h3>
+                        <span class="accordion-date">Post date: May 10, 2012 3:22:59 PM</span>
                     </div>
-                    <i class="fa-solid fa-chevron-down text-slate-400 toggle-icon transition-transform duration-200"></i>
-                </button>
-                <div class="accordion-content px-6 border-t border-slate-100">
-                    <div class="prose max-w-none pt-4 text-slate-600 text-sm space-y-3">
-                        <p>Amazon is offering essentially a free linux virtual server online with a new AWS sign up. The server has some limited specs for the free service, but really cool tech regardless.</p>
-                        <p><a href="http://aws.amazon.com/free/" target="_blank" class="text-blue-600 hover:underline font-medium"><i class="fa-solid fa-arrow-up-right-from-square mr-1"></i>Http://aws.amazon.com/free/</a></p>
-                    </div>
+                    <span class="accordion-icon">▼</span>
+                </div>
+                <div class="accordion-content">
+                    <p>Amazon is offering essentially a free linux virtual server online with a new AWS sign up. The server has some limited specs for the free service, but really cool tech regardless.</p>
+                    <p>Check out the official program documentation page here: <a href="http://aws.amazon.com/free/" target="_blank">http://aws.amazon.com/free/</a></p>
                 </div>
             </div>
 
-            <div class="accordion-item bg-white border border-slate-200 rounded-xl shadow-xs overflow-hidden transition-all duration-200 hover:border-slate-300">
-                <button class="w-full text-left px-6 py-4 flex items-center justify-between focus:outline-none bg-slate-50/50 hover:bg-slate-50 transition-colors" onclick="toggleAccordion(this)">
-                    <div class="pr-4">
-                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-purple-100 text-purple-800 mb-1">Hardware / Drivers</span>
-                        <h3 class="text-lg font-semibold text-slate-900 tracking-tight">AMD Laptop with Radeon Graphics - Integrated Card in use</h3>
-                        <p class="text-xs text-slate-500 mt-1"><i class="fa-regular fa-calendar-days mr-1"></i>Post date: Oct 24, 2017 7:29:38 PM</p>
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <div class="accordion-title-block">
+                        <h3 class="accordion-headline">AMD Laptop with Radeon Graphics - Integrated Card in use</h3>
+                        <span class="accordion-date">Post date: Oct 24, 2017 7:29:38 PM</span>
                     </div>
-                    <i class="fa-solid fa-chevron-down text-slate-400 toggle-icon transition-transform duration-200"></i>
-                </button>
-                <div class="accordion-content px-6 border-t border-slate-100">
-                    <div class="prose max-w-none pt-4 text-slate-600 text-sm space-y-4">
-                        <div>
-                            <h4 class="font-semibold text-slate-800 text-base">What is Switchable Graphics Technology?</h4>
-                            <p>Switchable Graphics is a laptop technology that utilizes both the graphical processing capabilities of a discrete graphics adapter and the power efficiency of an integrated graphics adapter. It engages discrete graphics only when it is needed for 3D applications, and uses energy-efficient integrated graphics capabilities the rest of the time.</p>
-                        </div>
-                        <div>
-                            <h4 class="font-semibold text-slate-800 text-base">How to Enable Switchable Graphics?</h4>
-                            <p>To ensure full compatibility it is recommended to use the latest graphics driver for the integrated and high performance AMD graphics processor (GPU) provided by the laptop manufacturer. Switchable Graphics will not function if the power saving GPU does not have display drivers installed.</p>
-                            <p class="mt-2 font-medium">To use the most recent original driver, execute in exact sequence:</p>
-                            <ol class="list-decimal pl-5 space-y-1">
-                                <li>Install the latest Intel graphics driver from the Intel or laptop manufacturer's website.</li>
-                                <li>Install the latest AMD graphics driver from the AMD or laptop manufacturer's website.</li>
-                            </ol>
-                            <p class="text-amber-700 bg-amber-50 p-3 rounded-lg border border-amber-200 mt-2 text-xs font-medium"><i class="fa-solid fa-circle-exclamation mr-1"></i>Note: Before installing display drivers, check windows device manager to see if the GPUs are listed under Display Adapters. The high performance GPU may appear under other devices as a generic video controller.</p>
-                        </div>
-                        <div>
-                            <h4 class="font-semibold text-slate-800 text-base">Configuring Settings</h4>
-                            <ol class="list-decimal pl-5 space-y-1">
-                                <li>Right-click the Desktop and select <strong>AMD Radeon Settings</strong> from the menu.</li>
-                                <li>Select <strong>Preferences</strong>.</li>
-                                <li>Select <strong>Radeon Additional Settings</strong>.</li>
-                                <li>Navigate to <strong>Power</strong> and select <strong>Switchable Graphics Application Settings</strong> to inspect application mapping.</li>
-                                <li>Select <strong>Switchable Graphics Global Settings</strong> to adjust profiles for battery deployment.</li>
-                            </ol>
-                        </div>
-                        <div>
-                            <h4 class="font-semibold text-slate-800 text-base">Assigning Applications to High-Performance GPUs</h4>
-                            <p>Navigate to <em>Radeon Settings > Preferences > Additional Settings > Power > Switchable Graphics Application Settings</em>, then click <strong>Add Application</strong>. Select the targeted binary file and choose <strong>High Performance</strong> under Graphic Settings, then apply.</p>
-                        </div>
-                        <p class="text-xs text-slate-400">Source Link: <a href="https://community.amd.com/docs/DOC-1581" target="_blank" class="hover:underline text-blue-500">https://community.amd.com/docs/DOC-1581</a></p>
-                    </div>
+                    <span class="accordion-icon">▼</span>
+                </div>
+                <div class="accordion-content">
+                    <p><strong>How to Configure Laptop Switchable Graphics</strong></p>
+                    <p><em>What is Switchable Graphics Technology?</em><br>
+                    Switchable Graphics is a laptop technology that utilizes both the graphical processing capabilities of a discrete graphics adapter and the power efficiency of an integrated graphics adapter. Switchable Graphics technology engages discrete graphics only when it is needed for 3D applications, and uses energy-efficient integrated graphics capabilities the rest of the time.</p>
+                    
+                    <p><em>How to Enable Switchable Graphics?</em><br>
+                    To ensure full compatibility it is recommended to use the latest graphics driver for the integrated and high performance AMD graphics processor (GPU) provided by the laptop manufacturer. Switchable Graphics will not function if the power saving GPU does not have any display drivers installed. If you would like to use the most recent driver offered by the graphics manufacturer to support the latest games and applications, follow the steps below in exact order:</p>
+                    <ol>
+                        <li>Install the latest Intel graphics driver from the Intel or laptop manufacturer's website.</li>
+                        <li>Install the latest AMD graphics driver from the AMD or laptop manufacturer's website.</li>
+                    </ol>
+                    <p><strong>Note!</strong> Before installing the display drivers, check windows device manager to see if the GPUs are listed under Display Adapters. The high performance GPU may appear under other devices as a generic video controller.</p>
+                    
+                    <p><em>Configuring Switchable Graphics:</em><br>
+                    Choose whether to run applications on the high performance or power saving graphics processor, or to assign the GPU based on the current power source.</p>
+                    <ol>
+                        <li>Right-click the Desktop and select <strong>AMD Radeon Settings</strong> from the menu.</li>
+                        <li>Select <strong>Preferences</strong>.</li>
+                        <li>Select <strong>Radeon Additional Settings</strong>.</li>
+                        <li>Navigate to <strong>Power</strong> and select <strong>Switchable Graphics Application Settings</strong> to see a list of recent applications and which GPU they are using.</li>
+                        <li>Select <strong>Switchable Graphics Global Settings</strong> to adjust your GPU settings for longer battery life or higher performance.</li>
+                    </ol>
+                    <p><strong>Note!</strong> The high performance GPU may not be available when the laptop is running on battery power.</p>
+
+                    <p><em>Assigning Applications to GPUs:</em><br>
+                    Assigning applications allows the user to specify which graphics processor is best suited for 3D applications. Selecting high performance will engage the discrete GPU and allow the system to increase graphical processing capabilities.</p>
+                    <p><strong>Note!</strong> The operating system may restrict certain applications from using the discrete GPU. For example, Internet browsers and video applications.</p>
+                    <p>To add an application to use the high performance GPU:</p>
+                    <p>Navigate to <code>Radeon Settings</code> > <code>Preferences</code> > <code>Additional Settings</code> > <code>Power</code> > <code>Switchable Graphics Application Settings</code> and click <strong>Add Application</strong>. Select the application you want to add and click <strong>Open</strong>. Under Graphic Settings choose <strong>High Performance</strong> and click apply.</p>
+                    
+                    <p><em>Switchable Graphics Application Monitor:</em><br>
+                    The Switchable Graphics Application Monitor allows the user to check which GPU is assigned for each application used on the system. Navigate to <code>Radeon Settings</code> > <code>Preferences</code> > <code>Additional Settings</code> > <code>Power</code> > <code>Switchable Graphics Application Monitor</code> and click <strong>Start Monitoring</strong>.</p>
+                    <p>An application executed whilst monitoring is enabled will appear in the list below and will show which applications are running on the high performance AMD GPU.</p>
+                    <p><em>Source: https://community.amd.com/docs/DOC-1581</em></p>
                 </div>
             </div>
 
-            <div class="accordion-item bg-white border border-slate-200 rounded-xl shadow-xs overflow-hidden transition-all duration-200 hover:border-slate-300">
-                <button class="w-full text-left px-6 py-4 flex items-center justify-between focus:outline-none bg-slate-50/50 hover:bg-slate-50 transition-colors" onclick="toggleAccordion(this)">
-                    <div class="pr-4">
-                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800 mb-1">Productivity / Apps</span>
-                        <h3 class="text-lg font-semibold text-slate-900 tracking-tight">Annoyed by the default font and size in Google docs? Change it!</h3>
-                        <p class="text-xs text-slate-500 mt-1"><i class="fa-regular fa-calendar-days mr-1"></i>Post date: Jun 20, 2014 4:55:23 PM</p>
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <div class="accordion-title-block">
+                        <h3 class="accordion-headline">Annoyed by the default font and size in Google docs? Change it!</h3>
+                        <span class="accordion-date">Post date: Jun 20, 2014 4:55:23 PM</span>
                     </div>
-                    <i class="fa-solid fa-chevron-down text-slate-400 toggle-icon transition-transform duration-200"></i>
-                </button>
-                <div class="accordion-content px-6 border-t border-slate-100">
-                    <div class="prose max-w-none pt-4 text-slate-600 text-sm space-y-3">
-                        <p class="font-medium text-slate-800">Change the default Font and Size of your Google Docs:</p>
-                        <ol class="list-decimal pl-5 space-y-1">
-                            <li>Highlight a select portion of your document text.</li>
-                            <li>In the menu bar, click on the drop-down next to <em>Arial</em> and choose your new font, <strong>Georgia</strong> for instance, Size <strong>12</strong>.</li>
-                            <li>In the menu bar, click on the drop-down next to <strong>Normal text</strong> and click the arrow next to <em>Normal Text &gt;</em>.</li>
-                            <li>Click <strong>"Update ‘Normal text’ to match"</strong>.</li>
-                            <li>With the text still highlighted, click on the drop-down next to <em>Normal text</em>, click the arrow next to <em>Normal Text &gt;</em> and then select <strong>"Apply ‘Normal text’"</strong>.</li>
-                        </ol>
-                        <p class="font-medium text-slate-800">To save it as your absolute default configuration going forward:</p>
-                        <ol class="list-decimal pl-5 space-y-1" start="1">
-                            <li>Click <strong>Format</strong>, select <strong>Paragraph styles</strong>, then select <strong>"Options &gt;"</strong> at the bottom of the listing context.</li>
-                            <li>Click <strong>"save as my default styles"</strong>.</li>
-                        </ol>
-                    </div>
+                    <span class="accordion-icon">▼</span>
+                </div>
+                <div class="accordion-content">
+                    <p><strong>Change the default Font and Size of your Google Docs:</strong></p>
+                    <ol>
+                        <li>Highlight a select portion of your document text.</li>
+                        <li>In the menu bar, click on the drop-down next to Arial and choose your new font, Georgia for instance, Size 12.</li>
+                        <li>In the menu bar, click on the drop-down next to Normal text and click the arrow next to Normal Text &gt;.</li>
+                        <li>Click <strong>"Update ‘Normal text’ to match"</strong>.</li>
+                        <li>With the text still highlighted, click on the drop-down next to Normal text, click the arrow next to Normal Text &gt; and then select <strong>"Apply ‘Normal text’"</strong>.</li>
+                    </ol>
+                    <p><strong>To save it as the default going forward:</strong></p>
+                    <ol>
+                        <li>Click Format, Paragraph styles and then the <strong>"Options &gt;"</strong> at the bottom of the list.</li>
+                        <li>Click <strong>"save as my default styles"</strong>.</li>
+                    </ol>
                 </div>
             </div>
 
-            <div class="accordion-item bg-white border border-slate-200 rounded-xl shadow-xs overflow-hidden transition-all duration-200 hover:border-slate-300">
-                <button class="w-full text-left px-6 py-4 flex items-center justify-between focus:outline-none bg-slate-50/50 hover:bg-slate-50 transition-colors" onclick="toggleAccordion(this)">
-                    <div class="pr-4">
-                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800 mb-1">Email Administration</span>
-                        <h3 class="text-lg font-semibold text-slate-900 tracking-tight">AOL blocking your e-newsletters?</h3>
-                        <p class="text-xs text-slate-500 mt-1"><i class="fa-regular fa-calendar-days mr-1"></i>Post date: Dec 01, 2016 6:21:16 PM</p>
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <div class="accordion-title-block">
+                        <h3 class="accordion-headline">AOL blocking your e-newsletters?</h3>
+                        <span class="accordion-date">Post date: Dec 01, 2016 6:21:16 PM</span>
                     </div>
-                    <i class="fa-solid fa-chevron-down text-slate-400 toggle-icon transition-transform duration-200"></i>
-                </button>
-                <div class="accordion-content px-6 border-t border-slate-100">
-                    <div class="prose max-w-none pt-4 text-slate-600 text-sm space-y-2">
-                        <p>If outbound marketing or transaction newsletters are hitting structural walls at AOL nodes, request an official postmaster infrastructure review via:</p>
-                        <p><a href="https://postmaster.aol.com/gen-ticket" target="_blank" class="text-blue-600 hover:underline font-semibold font-mono text-xs"><i class="fa-solid fa-link mr-1"></i>https://postmaster.aol.com/gen-ticket</a></p>
-                    </div>
+                    <span class="accordion-icon">▼</span>
+                </div>
+                <div class="accordion-content">
+                    <p>Request a routing and sender evaluation review directly via the automated postmaster interface link:</p>
+                    <p><a href="https://postmaster.aol.com/gen-ticket" target="_blank">https://postmaster.aol.com/gen-ticket</a></p>
                 </div>
             </div>
 
-            <div class="accordion-item bg-white border border-slate-200 rounded-xl shadow-xs overflow-hidden transition-all duration-200 hover:border-slate-300">
-                <button class="w-full text-left px-6 py-4 flex items-center justify-between focus:outline-none bg-slate-50/50 hover:bg-slate-50 transition-colors" onclick="toggleAccordion(this)">
-                    <div class="pr-4">
-                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-emerald-100 text-emerald-800 mb-1">Networking / Security</span>
-                        <h3 class="text-lg font-semibold text-slate-900 tracking-tight">Astaro / Sophos UTM - Enabling IPS Cuts Bandwidth in Half</h3>
-                        <p class="text-xs text-slate-500 mt-1"><i class="fa-regular fa-calendar-days mr-1"></i>Post date: Nov 07, 2016 3:04:48 PM</p>
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <div class="accordion-title-block">
+                        <h3 class="accordion-headline">Astaro / Sophos UTM - Enabling IPS - Cuts Bandwidth in Half</h3>
+                        <span class="accordion-date">Post date: Nov 07, 2016 3:4:48 PM</span>
                     </div>
-                    <i class="fa-solid fa-chevron-down text-slate-400 toggle-icon transition-transform duration-200"></i>
-                </button>
-                <div class="accordion-content px-6 border-t border-slate-100">
-                    <div class="prose max-w-none pt-4 text-slate-600 text-sm space-y-3">
-                        <p><strong>Reason:</strong> The software engine is not natively self-aware! It lacks core installation logic routines to discover and scale automatically to match the available virtualized or bare-metal host cores.</p>
-                        <p>You must manually check core density and scale the configuration parameter mapping out the "IPS instances" to match the actual compute geometry. Otherwise, the firewall will bottle-neck traffic without generating alerts.</p>
-                        <p class="font-medium text-slate-800">Resolution Steps via Console Shell:</p>
-                        <ol class="list-decimal pl-5 space-y-1">
-                            <li>Enable administrative shell access via user interface controls.</li>
-                            <li>SSH down into the appliance using your <code class="bg-slate-100 text-slate-800 px-1 py-0.5 rounded font-mono text-xs">loginuser</code> credentials.</li>
-                            <li>Escalate permissions: run <code class="bg-slate-100 text-slate-800 px-1 py-0.5 rounded font-mono text-xs">sudo su -</code> to verify root access.</li>
-                            <li>Run the following sequential terminal lines to review core count, assess current instances, set properties, and bounce Snort operations:</li>
-                        </ol>
-                        <div class="relative group my-2">
-                            <pre class="bg-slate-900 text-slate-100 p-4 rounded-lg overflow-x-auto text-xs font-mono">cat /proc/cpuinfo                     # confirms the number of installed CPUs
-cc get ips num_instances               # confirms the current engine layout setting
-cc set ips num_instances x             # where x equals the number of physical/vCPUs
-/var/mdw/scripts/snort restart         # the programmatic command to restart Snort</pre>
-                            <button onclick="copyCode(this)" class="absolute top-2 right-2 bg-slate-800 hover:bg-slate-700 text-slate-300 px-2 py-1 rounded text-2xs transition-colors"><i class="fa-regular fa-copy mr-1"></i>Copy</button>
-                        </div>
-                    </div>
+                    <span class="accordion-icon">▼</span>
+                </div>
+                <div class="accordion-content">
+                    <p>Astaro Security Linux / Sophos UTM - Enabling IPS - Cuts Available Bandwidth in Half.</p>
+                    <p><strong>Reason?</strong> It's not system aware! It doesn't have logic in the installation routing to understand how many cores are available to it.</p>
+                    <p>You need to manually look at how many cores you are running, then increase the number of "IPS instances" to reflect that number of cores, otherwise your firewall will not only bog down, but it won't show you why!</p>
+                    <p>You will need to enable shell access. SSH in using <code>loginuser</code>. Then <code>sudo su</code> to root.</p>
+                    <p>Once root, execute the following commands:</p>
+                    <pre>cat /proc/cpuinfo
+cc get ips num_instances
+cc set ips num_instances x
+/var/mdw/scripts/snort restart</pre>
+                    <p><em>(Replace "x" with the actual number of CPU cores installed in your UTM environment to distribute processing loads properly.)</em></p>
                 </div>
             </div>
 
-            <div class="accordion-item bg-white border border-slate-200 rounded-xl shadow-xs overflow-hidden transition-all duration-200 hover:border-slate-300">
-                <button class="w-full text-left px-6 py-4 flex items-center justify-between focus:outline-none bg-slate-50/50 hover:bg-slate-50 transition-colors" onclick="toggleAccordion(this)">
-                    <div class="pr-4">
-                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-indigo-100 text-indigo-800 mb-1">Mobile Systems</span>
-                        <h3 class="text-lg font-semibold text-slate-900 tracking-tight">AT&T Cellular APN Reference Map</h3>
-                        <p class="text-xs text-slate-500 mt-1"><i class="fa-regular fa-calendar-days mr-1"></i>Post date: Jan 03, 2018 10:51:08 PM</p>
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <div class="accordion-title-block">
+                        <h3 class="accordion-headline">AT&T APN Settings</h3>
+                        <span class="accordion-date">Post date: Jan 03, 2018 10:51:8 PM</span>
                     </div>
-                    <i class="fa-solid fa-chevron-down text-slate-400 toggle-icon transition-transform duration-200"></i>
-                </button>
-                <div class="accordion-content px-6 border-t border-slate-100">
-                    <div class="prose max-w-none pt-4 text-slate-600 text-sm overflow-x-auto">
-                        <table class="min-w-full divide-y divide-slate-200 text-xs text-left">
-                            <thead class="bg-slate-100 font-semibold text-slate-700">
-                                <tr>
-                                    <th class="px-4 py-2 rounded-l-md">Parameter Setting Field</th>
-                                    <th class="px-4 py-2 rounded-r-md">Target Values Configuration</th>
-                                </tr>
-                            </thead>
-                            <tbody class="divide-y divide-slate-100 text-slate-600">
-                                <tr><td class="px-4 py-2 font-medium text-slate-900">Name</td><td class="px-4 py-2">ATT LTE</td></tr>
-                                <tr><td class="px-4 py-2 font-medium text-slate-900">APN</td><td class="px-4 py-2">pta</td></tr>
-                                <tr><td class="px-4 py-2 font-medium text-slate-900">MMSC</td><td class="px-4 py-2 font-mono">http://mmsc.mobile.att.net</td></tr>
-                                <tr><td class="px-4 py-2 font-medium text-slate-900">MMS Proxy</td><td class="px-4 py-2 font-mono">proxy.mobile.att.net</td></tr>
-                                <tr><td class="px-4 py-2 font-medium text-slate-900">MMS Port</td><td class="px-4 py-2">80</td></tr>
-                                <tr><td class="px-4 py-2 font-medium text-slate-900">MCC</td><td class="px-4 py-2">310</td></tr>
-                                <tr><td class="px-4 py-2 font-medium text-slate-900">MNC</td><td class="px-4 py-2">410</td></tr>
-                                <tr><td class="px-4 py-2 font-medium text-slate-900">Authentication Type</td><td class="px-4 py-2">none</td></tr>
-                                <tr><td class="px-4 py-2 font-medium text-slate-900">APN Type</td><td class="px-4 py-2 font-mono text-amber-700 font-semibold">default,admin,fota,mms,supl,hipri <span class="text-slate-400 font-normal">(NO spaces after commas)</span></td></tr>
-                                <tr><td class="px-4 py-2 font-medium text-slate-900">APN / Roaming Protocol</td><td class="px-4 py-2">IPv4/IPv6</td></tr>
-                                <tr><td class="px-4 py-2 font-medium text-slate-900">BEARER</td><td class="px-4 py-2 text-2xs font-mono">SPRS,HSUPA,IS95B,HSPA,HSDPA,LTE,EDGE,eHRPD,EVDO_A,1xRTT,HSPAP,EVDO_B,EVDO_0IS95A,UMTS</td></tr>
-                            </tbody>
-                        </table>
-                    </div>
+                    <span class="accordion-icon">▼</span>
+                </div>
+                <div class="accordion-content">
+                    <p><strong>AT&T APN Profiles</strong></p>
+                    <ul>
+                        <li><strong>Name:</strong> ATT LTE</li>
+                        <li><strong>APN:</strong> pta</li>
+                        <li><strong>PROXY:</strong> Not set</li>
+                        <li><strong>PORT:</strong> Not set</li>
+                        <li><strong>Username:</strong> Not set</li>
+                        <li><strong>Password:</strong> Not set</li>
+                        <li><strong>Server:</strong> Not set</li>
+                        <li><strong>MMSC:</strong> http://mmsc.mobile.att.net</li>
+                        <li><strong>MMS Proxy:</strong> proxy.mobile.att.net</li>
+                        <li><strong>MMS Port:</strong> 80</li>
+                        <li><strong>MCC:</strong> 310</li>
+                        <li><strong>MNC:</strong> 410</li>
+                        <li><strong>Authentication type:</strong> none</li>
+                        <li><strong>APN type:</strong> default,admin,fota,mms,supl,hipri <br><span style="color:#b91c1c;">(make sure NO spaces after commas)</span></li>
+                        <li><strong>APN protocol:</strong> IPv4/IPv6</li>
+                        <li><strong>APN roaming protocol:</strong> IPv4/IPv6</li>
+                        <li><strong>BEARER:</strong> SPRS,HSUPA,IS95B,HSPA,HSDPA,LTE,EDGE,eHRPD,EVDO_A,1xRTT,HSPAP,EVDO_B,EVDO_0IS95A,UMTS</li>
+                        <li><strong>MVNO type:</strong> None</li>
+                    </ul>
+                    <p>CLICK MENU (...) soft button and SAVE settings.</p>
+                    <hr>
+                    <p><strong>Glossary & Technical References:</strong></p>
+                    <ul>
+                        <li><strong>GSM</strong> – Global System for Mobile Communications</li>
+                        <li><strong>CDMA</strong> – Code Division Multiple Access</li>
+                        <li><strong>EDGE</strong> – Enhanced Data GSM Environment</li>
+                        <li><strong>HSPA</strong> – High Speed Packet Access</li>
+                        <li><strong>HSUPA</strong> – High Speed Uplink Packet Access</li>
+                        <li><strong>HSDPA</strong> – High Speed Downlink Packet Access</li>
+                        <li><strong>EHRPD</strong> – Evolved High Rate Packet Data</li>
+                        <li><strong>1xRTT</strong> – CDMA Data Mode</li>
+                        <li><strong>EVDO</strong> – Evolution Data Optimized</li>
+                        <li><strong>UMTS</strong> – Universal Mobile Telecommunications System</li>
+                        <li><strong>HSPA+</strong> – Evolved HSPA</li>
+                        <li><strong>LTE</strong> – Long Term Evolution</li>
+                        <li><strong>2G Network Protocols</strong> – GPRS, EDGE, CDMA, IDEN</li>
+                        <li><strong>3G Network Protocols</strong> – HSPA, HSUPA, HSDPA, EHRPD, 1XRTT, EVDO, UMTS, HSPA+</li>
+                        <li><strong>4G Network Protocols</strong> – LTE</li>
+                    </ul>
                 </div>
             </div>
 
-            <div class="accordion-item bg-white border border-slate-200 rounded-xl shadow-xs overflow-hidden transition-all duration-200 hover:border-slate-300">
-                <button class="w-full text-left px-6 py-4 flex items-center justify-between focus:outline-none bg-slate-50/50 hover:bg-slate-50 transition-colors" onclick="toggleAccordion(this)">
-                    <div class="pr-4">
-                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-slate-100 text-slate-800 mb-1">Media / Literature</span>
-                        <h3 class="text-lg font-semibold text-slate-900 tracking-tight">Authors and Books - Favorite Audio Books</h3>
-                        <p class="text-xs text-slate-500 mt-1"><i class="fa-regular fa-calendar-days mr-1"></i>Post date: Feb 03, 2018 6:15:12 PM</p>
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <div class="accordion-title-block">
+                        <h3 class="accordion-headline">Authors and Books - Favorite Audio Books</h3>
+                        <span class="accordion-date">Post date: Feb 03, 2018 6:15:12 PM</span>
                     </div>
-                    <i class="fa-solid fa-chevron-down text-slate-400 toggle-icon transition-transform duration-200"></i>
-                </button>
-                <div class="accordion-content px-6 border-t border-slate-100">
-                    <div class="prose max-w-none pt-4 text-slate-600 text-sm space-y-3">
-                        <p class="italic text-slate-500">Supernatural and LitRPG/Fantasy Curated Audio List (Mixed Audience Ranges):</p>
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-2 text-xs">
-                            <div class="bg-slate-50 p-2 border border-slate-100 rounded"><strong>Matt Dinnimin</strong> - Dungeon Crawler Carl</div>
-                            <div class="bg-slate-50 p-2 border border-slate-100 rounded"><strong>Shirtaloon / T. Deverell</strong> - He Who Fights with Monsters</div>
-                            <div class="bg-slate-50 p-2 border border-slate-100 rounded"><strong>Patricia Briggs</strong> - Mercedes Thompson Series</div>
-                            <div class="bg-slate-50 p-2 border border-slate-100 rounded"><strong>Chloe Neill</strong> - Chicagoland Vampires</div>
-                            <div class="bg-slate-50 p-2 border border-slate-100 rounded"><strong>Jim Butcher</strong> - Dresden Files</div>
-                            <div class="bg-slate-50 p-2 border border-slate-100 rounded"><strong>J.M. Clarke</strong> - Mark of the Fool</div>
-                            <div class="bg-slate-50 p-2 border border-slate-100 rounded"><strong>Travis Baldree</strong> - Legends &amp; Lattes</div>
-                            <div class="bg-slate-50 p-2 border border-slate-100 rounded"><strong>CasualFarmer</strong> - Beware of Chicken</div>
-                        </div>
-                    </div>
+                    <span class="accordion-icon">▼</span>
+                </div>
+                <div class="accordion-content">
+                    <p>This is a range of styles and types of books, from ones geared for little ones, to very adult (All are of a supernatural bent and are not in any particular order):</p>
+                    <ul style="column-count: 2; gap: 20px;">
+                        <li>Matt Dinnimin - Dungeon Crawler Carl</li>
+                        <li>Shirtaloon & Travis Deverell - He who fights with monsters</li>
+                        <li>Patricia Briggs - Mercedes Thompson</li>
+                        <li>Chloe Neill - Chicagoland Vampires</li>
+                        <li>Dannika Dark - Mageri</li>
+                        <li>Kalayna Price - Alex Craft</li>
+                        <li>Carrie Vaughn - Kitty Norville</li>
+                        <li>Allyson James - Stormwalker</li>
+                        <li>Ilona Andrews - Kate Daniels</li>
+                        <li>Laurell K Hamilton - Anita Blake</li>
+                        <li>Rachel Caine - The Morganville Vampires</li>
+                        <li>Lynsay Sands - Argeneau</li>
+                        <li>Jeaniene Frost - Night Huntress</li>
+                        <li>Christopher Farnsworth - Nathaniel Cade</li>
+                        <li>Jim Butcher - Dresden Files</li>
+                        <li>Eoin Colfer - Artemis Fowl</li>
+                        <li>JD Tyler - Alpha Pack</li>
+                        <li>Tamora Pierce - Song of the Lioness</li>
+                        <li>Jonathan Stroud - Bartimaeus</li>
+                        <li>JK Rowling - Harry Potter</li>
+                        <li>Orson Scott Card - Ender's Game</li>
+                        <li>Stephanie Meyer - Twilight</li>
+                        <li>Robin Hobb - Farseer Trilogy</li>
+                        <li>Terry Goodkind - Sword of Truth</li>
+                        <li>Ally Carter - Gallagher Girls</li>
+                        <li>Cassandra Clare - Draco Trilogy</li>
+                        <li>Neal Stephenson - Snow Crash</li>
+                        <li>Brom - Krampus: The Yule Lord</li>
+                        <li>Helen Harper - Slouch Witch</li>
+                        <li>Zogarth - Primal Hunter</li>
+                        <li>J.M. Clarke - Mark of the Fool Series</li>
+                        <li>Pirateaba - Wandering Inn Series</li>
+                        <li>CasualFarmer - Beware of Chicken series</li>
+                        <li>Rhaegar - Azarinth Healer series</li>
+                        <li>House Wolf - The Grand Game Series</li>
+                        <li>Danielle L. Jensen - The Bridge Kingdom</li>
+                        <li>Sean Oswald - Induction: Welcome to the Multiverse</li>
+                        <li>Travis Baldree - Legends & Lattes</li>
+                    </ul>
                 </div>
             </div>
 
-            <div class="accordion-item bg-white border border-slate-200 rounded-xl shadow-xs overflow-hidden transition-all duration-200 hover:border-slate-300">
-                <button class="w-full text-left px-6 py-4 flex items-center justify-between focus:outline-none bg-slate-50/50 hover:bg-slate-50 transition-colors" onclick="toggleAccordion(this)">
-                    <div class="pr-4">
-                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-emerald-100 text-emerald-800 mb-1">Cloud Backup</span>
-                        <h3 class="text-lg font-semibold text-slate-900 tracking-tight">Backblaze B2 - Business Backup Firewall Access Lists</h3>
-                        <p class="text-xs text-slate-500 mt-1"><i class="fa-regular fa-calendar-days mr-1"></i>Post date: Nov 16, 2017 3:33:27 PM</p>
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <div class="accordion-title-block">
+                        <h3 class="accordion-headline">Backblaze B2 - Business Backup</h3>
+                        <span class="accordion-date">Post date: Nov 16, 2017 3:33:27 PM</span>
                     </div>
-                    <i class="fa-solid fa-chevron-down text-slate-400 toggle-icon transition-transform duration-200"></i>
-                </button>
-                <div class="accordion-content px-6 border-t border-slate-100">
-                    <div class="prose max-w-none pt-4 text-slate-600 text-sm space-y-3">
-                        <p>Backblaze Business Backup (B2) features incredibly cost-efficient storage architecture paths ($0.005 per GB base target). To allow storage payloads to traverse enterprise security systems seamlessly, whitelist the following network ranges and endpoints:</p>
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                            <div class="bg-slate-900 text-slate-200 p-3 rounded-lg font-mono text-xs">
-                                <span class="text-emerald-400 block font-semibold mb-1">CIDR Networks Address Ranges:</span>
-                                162.244.56.0/21<br>162.244.56.0/24<br>162.244.57.0/24<br>162.244.58.0/24<br>162.244.59.0/24<br>162.244.60.0/24<br>162.244.61.0/24<br>162.244.62.0/24<br>204.11.104.0/30<br>206.190.208.0/21
-                            </div>
-                            <div class="bg-slate-900 text-slate-200 p-3 rounded-lg font-mono text-xs">
-                                <span class="text-emerald-400 block font-semibold mb-1">Target Endpoint Domains:</span>
-                                *.backblaze.com<br>
-                                *backblazeb2.com
-                            </div>
-                        </div>
-                    </div>
+                    <span class="accordion-icon">▼</span>
+                </div>
+                <div class="accordion-content">
+                    <p>Backblaze Business Backup or B2, has an inexpensive bucket backup available. The cost right now is $0.005 per Gig. Very reasonable.</p>
+                    <p>So when configuring your firewall, you may have to make some adjustments to allow data to go to certain networks or specific URL's... below are the networks and URL's you need to allow.</p>
+                    <p><strong>Networks to Whitelist:</strong></p>
+                    <pre>162.244.56.0/21
+162.244.56.0/24
+162.244.57.0/24
+162.244.58.0/24
+162.244.59.0/24
+162.244.60.0/24
+162.244.61.0/24
+162.244.62.0/24
+204.11.104.0/30
+206.190.208.0/21</pre>
+                    <p><strong>URLs to Whitelist:</strong></p>
+                    <pre>*.backblaze.com
+*backblazeb2.com</pre>
                 </div>
             </div>
 
-            <div class="accordion-item bg-white border border-slate-200 rounded-xl shadow-xs overflow-hidden transition-all duration-200 hover:border-slate-300">
-                <button class="w-full text-left px-6 py-4 flex items-center justify-between focus:outline-none bg-slate-50/50 hover:bg-slate-50 transition-colors" onclick="toggleAccordion(this)">
-                    <div class="pr-4">
-                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800 mb-1">Hypervisors</span>
-                        <h3 class="text-lg font-semibold text-slate-900 tracking-tight">BCM Firmware Update takes Hyper-V VM's Offline</h3>
-                        <p class="text-xs text-slate-500 mt-1"><i class="fa-regular fa-calendar-days mr-1"></i>Post date: May 10, 2012 3:42:47 PM</p>
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <div class="accordion-title-block">
+                        <h3 class="accordion-headline">BCM Firmware Update takes Hyper-V VM's Offline</h3>
+                        <span class="accordion-date">Post date: May 10, 2012 3:42:47 PM</span>
                     </div>
-                    <i class="fa-solid fa-chevron-down text-slate-400 toggle-icon transition-transform duration-200"></i>
-                </button>
-                <div class="accordion-content px-6 border-t border-slate-100">
-                    <div class="prose max-w-none pt-4 text-slate-600 text-sm space-y-3">
-                        <p><strong>Environment Scenario:</strong> Dell PowerEdge 2950 host running three logical guest Hyper-V Virtual Machines. Upgrading systems BIOS and Broadcom (BCM) NIC device drivers can cause virtual machine adapters to lose operational connectivity post-reboot.</p>
-                        <p><strong>Symptom:</strong> The structural bindings on the logical Virtual Switch state unselect themselves inside system administration views and fail to toggle back on natively.</p>
-                        <p class="font-medium text-slate-800">Operational Resolution Flow:</p>
-                        <ol class="list-decimal pl-5 space-y-1">
-                            <li>Launch the <strong>Hyper-V Control Panel</strong>. Open the <strong>Virtual Network Manager</strong> application configuration page.</li>
-                            <li>Toggle the target Local Area Network interface state assignment from <em>External</em> over to <strong>Private</strong>, then commit with <strong>Apply</strong>.</li>
-                            <li>Navigate back out to bare-metal OS adapter settings properties. Locate the physical Broadcom interface; if Windows has applied the virtual binding check box to the hardware adapter properties natively, uncheck it completely.</li>
-                            <li>Return to the Virtual Network Manager interface and set properties safely back to <strong>External</strong>. The Virtual Switch will bind cleanly and VM adapters will regain line sight immediately.</li>
-                        </ol>
-                    </div>
+                    <span class="accordion-icon">▼</span>
+                </div>
+                <div class="accordion-content">
+                    <p><strong>PowerEdge 2950 BIOS; BCM Firmware Update takes Hyper-V VM's Offline</strong></p>
+                    <p>Today, because of an unrelated issue, it was advised by Dell to upgrade BIOS and the BCM Drivers on a production 2950 running three Hyper-V Virtual Machines. After successful installations, and subsequent reboots the system came up and acted fine as the host machine. What I didn't realize until I started receiving alerts was that my VM's had no network connectivity.</p>
+                    <p>First I checked each VM's settings, and verified the MAC Address to my documentation, to make sure everything was otherwise set correctly... it was.</p>
+                    <p>Second I looked in to the Host machine's Network connections, and found that they too looked fine, and all the settings were correct. However, when I went to look at the virtual switch, I noticed that the check mark for it was not selected, and upon selecting it, found that it would not stick!</p>
+                    <p><strong>Resolution:</strong><br>
+                    I went into the Hyper-V control panel, and under Actions, selected the Virtual Network Manager. I changed the Local Area Connection Network type to Private, and clicked Apply. This went through fine. Then I went to put it back on External; at first it wouldn't apply and an error occurred. I went in and looked at the adapter settings, and found that the actual Broadcom NIC had applied the Virtual Switch check box by itself. I unchecked it, then tried to reset to External. This time it applied, and the Virtual Switch came back online correctly.</p>
+                    <p>Once again, went in and verified all the settings, and everything looked perfect. I booted up the VM's and they came back online immediately.</p>
                 </div>
             </div>
 
-            <div class="accordion-item bg-white border border-slate-200 rounded-xl shadow-xs overflow-hidden transition-all duration-200 hover:border-slate-300">
-                <button class="w-full text-left px-6 py-4 flex items-center justify-between focus:outline-none bg-slate-50/50 hover:bg-slate-50 transition-colors" onclick="toggleAccordion(this)">
-                    <div class="pr-4">
-                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-amber-100 text-amber-800 mb-1">Culinary / Recipes</span>
-                        <h3 class="text-lg font-semibold text-slate-900 tracking-tight">Gourmet Burger, Triple-Cooked Fries &amp; Craft Sauces</h3>
-                        <p class="text-xs text-slate-500 mt-1"><i class="fa-regular fa-calendar-days mr-1"></i>Post date: Jan 30, 2018 10:19:37 PM</p>
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <div class="accordion-title-block">
+                        <h3 class="accordion-headline">Burger and Fries</h3>
+                        <span class="accordion-date">Post date: Jan 30, 2018 10:19:37 PM</span>
                     </div>
-                    <i class="fa-solid fa-chevron-down text-slate-400 toggle-icon transition-transform duration-200"></i>
-                </button>
-                <div class="accordion-content px-6 border-t border-slate-100">
-                    <div class="prose max-w-none pt-4 text-slate-600 text-sm grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div class="space-y-2">
-                            <h4 class="font-bold text-slate-900 border-b border-slate-200 pb-1">The Fries &amp; Fry Sauce</h4>
-                            <p class="text-xs">Execute outdoors using an outdoor BBQ burner system and 4-quart pan. Monitor depths with an infrared thermometer target keeping baseline oil ranges at a strict <strong>325°F to 375°F</strong>.</p>
-                            <p class="text-xs">Slice premium <strong>Kennebec potatoes</strong> into standard home fries shape. Soak thoroughly in a cold water path to clear residual starches. Extract and pat dry completely.</p>
-                            <p class="text-xs">Lower down via wire basket into Canola or combined Duck Fat/Peanut oil blends. Drain when golden brown and season immediately with course Kosher salt while hot.</p>
-                            <p class="text-xs"><strong>Fry Sauce (Thousand Island Variant):</strong> Whisk Best Foods Real Mayonnaise, sweet pickle relish, genuine Barley Malt Vinegar, splash of Worcestershire sauce, rich tomato ketchup, touch of pure sugar, pinch of salt, and fine lemon rind zest.</p>
-                        </div>
-                        <div class="space-y-2">
-                            <h4 class="font-bold text-slate-900 border-b border-slate-200 pb-1">The Burger Assembly Order</h4>
-                            <p class="text-xs">Use a seasoned cast iron skillet. Prepare 4 oz balls using premium 80/20 ground chuck beef. Compress down uniformly between flat plates using oiled parchment layers to a 1/2" thickness profile. Season faces with salt/pepper, then brush both sides with fine yellow mustard before hitting hot cast iron.</p>
-                            <p class="text-xs">Sear deep until initial surface achieves a crisp, dark crust before flipping to drop real cheese slices. If deploying red onions, slice thin and submerge down into cold water paths, then dry before mounting to bun.</p>
-                            <p class="text-xs"><strong>Bun Architecture:</strong> Brioche buns toasted face down in pan drippings. Assemble bottom layer upward explicitly via: <em>Toasted Bottom Bun &rarr; Mayo &rarr; Crisp Pickles &rarr; Drained Red Onion &rarr; Iceberg Leaf Triangles &rarr; Cheeseburger Patty &rarr; Top Bun with Ketchup only.</em></p>
-                        </div>
-                    </div>
+                    <span class="accordion-icon">▼</span>
+                </div>
+                <div class="accordion-content">
+                    <p><strong>Fries:</strong><br>
+                    Best to do outside; Use an outdoor BBQ side burner. Large 4 quart pan to boil the oil (Infrared thermostat to measure the temp). Use basket strainer spoon to lower fries into oil (approx 2" of oil). Use Canola oil for those with allergies, or Duck Fat cut with Peanut Oil for those that aren't allergic. Bring oil to min of 325 degrees with max of 375 degrees and maintain temp while prepping the fries. Use Kennebec potatoes. Slice them into home fries, then soak in cold water. Move the fries around to rinse the starch off of the potatoes. Then extract them, and pat them dry (this is an important step). Lower fries into oil with basket strainer/spoon. Cook until golden brown, remove, and then immediately sprinkle kosher salt onto fries. Salt will bond to the surface of the fries. Kosher salt provides an excellent flavor.</p>
+                    
+                    <p><strong>Fry Sauce (Homemade Thousand Island):</strong><br>
+                    Whisk together: Best Foods Mayo, Sweet pickle relish, Barley Malt Vinegar, Worcestershire sauce, Ketchup, sugar, a pinch of kosher salt, and lemon rind.</p>
+                    
+                    <p><strong>Smoked Onion Ketchup Alternative:</strong><br>
+                    Cook sliced onions in beer, and cook down. Then remove onions and put in ketchup; put mix in smoker with apple wood for 1 hour. Take result, and blend until smooth.</p>
+                    
+                    <p><strong>The Burger:</strong><br>
+                    Use a cast iron skillet. Get 80/20 ground chuck (or as an option: Ground Turkey with finely diced bacon - Turkey patties should be 1/4" thick). Make 4 ounce beef patties - brush a small amount of canola oil onto a plate surface and the back of another plate, put meat between plates and press until 1/2" thick. Remove meat and salt/pepper both sides. Then brush yellow mustard on both sides. Fry on cast iron until that first side is nearly burnt; it should be crisp and dark. Flip and add cheese.</p>
+                    <p>If you want red onion on the burger, slice thin, then soak slices in cold water until ready to plate. Pat Dry before staging. For Iceberg Lettuce: thumping the head stem side down pops the core out. Slice triangles slightly larger than the brioche bun. To toast bun, place face down inside remaining burger grease pan.</p>
+                    <p><strong>Plating Order:</strong><br>
+                    Top Bun -> Ketchup only -> Burger/Cheese -> Iceberg leaves -> Red Onion -> Pickle slices -> Mayo -> Bottom Bun.</p>
+                    
+                    <p><strong>Malted Choc Shake:</strong><br>
+                    Blend 2 cups chocolate ice cream, 6 tablespoons milk, and 4 tablespoons malted milk powder until incorporated.</p>
                 </div>
             </div>
 
-            <div class="accordion-item bg-white border border-slate-200 rounded-xl shadow-xs overflow-hidden transition-all duration-200 hover:border-slate-300">
-                <button class="w-full text-left px-6 py-4 flex items-center justify-between focus:outline-none bg-slate-50/50 hover:bg-slate-50 transition-colors" onclick="toggleAccordion(this)">
-                    <div class="pr-4">
-                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800 mb-1">Windows OS</span>
-                        <h3 class="text-lg font-semibold text-slate-900 tracking-tight">Can't access SMB file shares after Windows 10 Updates</h3>
-                        <p class="text-xs text-slate-500 mt-1"><i class="fa-regular fa-calendar-days mr-1"></i>Post date: Feb 01, 2018 10:24:15 PM</p>
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <div class="accordion-title-block">
+                        <h3 class="accordion-headline">Can't access SMB file shares after Windows 10 Updates</h3>
+                        <span class="accordion-date">Post date: Feb 01, 2018 10:24:15 PM</span>
                     </div>
-                    <i class="fa-solid fa-chevron-down text-slate-400 toggle-icon transition-transform duration-200"></i>
-                </button>
-                <div class="accordion-content px-6 border-t border-slate-100">
-                    <div class="prose max-w-none pt-4 text-slate-600 text-sm space-y-3">
-                        <p>If network endpoints throw credential or transport errors trying to resolve local storage file paths via <code class="bg-slate-100 text-slate-800 px-1 py-0.5 rounded font-mono text-xs">\\fileserver\share</code> schemas post Windows Update deployment, modify local registry flags.</p>
-                        <p class="font-medium text-slate-800">Registry Patch Procedure (Run as local Administrator):</p>
-                        <div class="relative group my-2">
-                            <pre class="bg-slate-900 text-slate-100 p-4 rounded-lg overflow-x-auto text-xs font-mono"># Path 1
-[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\services\LanmanServer\Parameters]
-Create DWORD (32 bit): "SMB2" = dword:00000000
-
-# Path 2
-[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\services\LanmanWorkstation\Parameters]
-Create DWORD (32 bit): "EnableOpLocks" = dword:00000000</pre>
-                            <button onclick="copyCode(this)" class="absolute top-2 right-2 bg-slate-800 hover:bg-slate-700 text-slate-300 px-2 py-1 rounded text-2xs transition-colors"><i class="fa-regular fa-copy mr-1"></i>Copy</button>
-                        </div>
-                        <p class="text-xs text-slate-500">Reboot terminal nodes cleanly. Network shares will map accurately on subsequent login cycles.</p>
-                    </div>
+                    <span class="accordion-icon">▼</span>
+                </div>
+                <div class="accordion-content">
+                    <p>Open <code>Regedit</code> as Administrator, then modify the registry on the workstation to disable conflicting parameters:</p>
+                    <p>Path 1:</p>
+                    <pre>[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\services\LanmanServer\Parameters]
+Create DWORD (32 bit) "SMB2" = with value 0</pre>
+                    <p>Path 2:</p>
+                    <pre>[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\services\LanmanWorkstation\Parameters]
+Create DWORD (32 bit) "EnableOpLocks" = with value 0</pre>
+                    <p>Reboot. You can then after logging back in, cleanly access standard <code>\\fileserver\share</code> shares.</p>
+                    <p><strong>Check active server SMB connection dialects:</strong><br>
+                    Run this within an elevated PowerShell terminal window on the Host:</p>
+                    <pre>Get-SmbSession | Select Dialect,ClientComputerName,ClientUserName | Where-Object {$_.Dialect –lt 4.00}</pre>
                 </div>
             </div>
 
-            <div class="accordion-item bg-white border border-slate-200 rounded-xl shadow-xs overflow-hidden transition-all duration-200 hover:border-slate-300">
-                <button class="w-full text-left px-6 py-4 flex items-center justify-between focus:outline-none bg-slate-50/50 hover:bg-slate-50 transition-colors" onclick="toggleAccordion(this)">
-                    <div class="pr-4">
-                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800 mb-1">Windows Server</span>
-                        <h3 class="text-lg font-semibold text-slate-900 tracking-tight">Check Server to discover what SMB your clients are connected under</h3>
-                        <p class="text-xs text-slate-500 mt-1"><i class="fa-solid fa-terminal mr-1"></i>PowerShell Diagnostic Routine</p>
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <div class="accordion-title-block">
+                        <h3 class="accordion-headline">Checkout what Google is tracking on your account</h3>
+                        <span class="accordion-date">Post date: Oct 21, 2013 9:15:4 PM</span>
                     </div>
-                    <i class="fa-solid fa-chevron-down text-slate-400 toggle-icon transition-transform duration-200"></i>
-                </button>
-                <div class="accordion-content px-6 border-t border-slate-100">
-                    <div class="prose max-w-none pt-4 text-slate-600 text-sm space-y-2">
-                        <p>To audit active network connection versions and identify down-level or insecure clients hitting target infrastructure interfaces, open an elevated administrative PowerShell window and execute:</p>
-                        <div class="relative group my-2">
-                            <pre class="bg-slate-900 text-slate-100 p-4 rounded-lg overflow-x-auto text-xs font-mono">Get-SmbSession | Select Dialect,ClientComputerName,ClientUserName | Where-Object {$_.Dialect –lt 4.00}</pre>
-                            <button onclick="copyCode(this)" class="absolute top-2 right-2 bg-slate-800 hover:bg-slate-700 text-slate-300 px-2 py-1 rounded text-2xs transition-colors"><i class="fa-regular fa-copy mr-1"></i>Copy</button>
-                        </div>
-                    </div>
+                    <span class="accordion-icon">▼</span>
+                </div>
+                <div class="accordion-content">
+                    <p>To inspect everything tracked on your profile ecosystem, check out the activity ledger directly:</p>
+                    <p><a href="https://myactivity.google.com/myactivity" target="_blank">https://myactivity.google.com/myactivity</a></p>
+                    <p>To purge the accumulated storage, follow this automated deletion link:</p>
+                    <p><a href="https://myactivity.google.com/delete-activity" target="_blank">https://myactivity.google.com/delete-activity</a></p>
                 </div>
             </div>
 
-            <div class="accordion-item bg-white border border-slate-200 rounded-xl shadow-xs overflow-hidden transition-all duration-200 hover:border-slate-300">
-                <button class="w-full text-left px-6 py-4 flex items-center justify-between focus:outline-none bg-slate-50/50 hover:bg-slate-50 transition-colors" onclick="toggleAccordion(this)">
-                    <div class="pr-4">
-                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800 mb-1">Privacy / Security</span>
-                        <h3 class="text-lg font-semibold text-slate-900 tracking-tight">Checkout what Google is tracking on your account</h3>
-                        <p class="text-xs text-slate-500 mt-1"><i class="fa-regular fa-calendar-days mr-1"></i>Post date: Oct 21, 2013 9:15:04 PM</p>
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <div class="accordion-title-block">
+                        <h3 class="accordion-headline">Chrome - Open PDF Files by default in Adobe or other default PDF Viewer</h3>
+                        <span class="accordion-date">Post date: Jan 26, 2017 4:25:40 PM</span>
                     </div>
-                    <i class="fa-solid fa-chevron-down text-slate-400 toggle-icon transition-transform duration-200"></i>
-                </button>
-                <div class="accordion-content px-6 border-t border-slate-100">
-                    <div class="prose max-w-none pt-4 text-slate-600 text-sm space-y-2">
-                        <p>To inspect, analyze, audit, or completely purge operational timeline histories and data footprints captured on your account interfaces, leverage these tracking dashboard endpoints:</p>
-                        <ul class="list-disc pl-5 space-y-1">
-                            <li><strong>Review Timeline Activity Logs:</strong> <a href="https://myactivity.google.com/myactivity" target="_blank" class="text-blue-600 hover:underline font-mono text-xs">https://myactivity.google.com/myactivity</a></li>
-                            <li><strong>Global History Data Purge Tool:</strong> <a href="https://myactivity.google.com/delete-activity" target="_blank" class="text-red-600 hover:underline font-mono text-xs">https://myactivity.google.com/delete-activity</a></li>
-                        </ul>
-                    </div>
+                    <span class="accordion-icon">▼</span>
+                </div>
+                <div class="accordion-content">
+                    <p>Click Windows Search, type <strong>Default</strong>, look for <strong>Default Apps</strong>. In the application search box, type Adobe (or Chrome), and select the target application tool. Choose "Set as default" for the explicit file extensions matching <code>.pdf</code> files.</p>
                 </div>
             </div>
 
-            <div class="accordion-item bg-white border border-slate-200 rounded-xl shadow-xs overflow-hidden transition-all duration-200 hover:border-slate-300">
-                <button class="w-full text-left px-6 py-4 flex items-center justify-between focus:outline-none bg-slate-50/50 hover:bg-slate-50 transition-colors" onclick="toggleAccordion(this)">
-                    <div class="pr-4">
-                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800 mb-1">Productivity / Apps</span>
-                        <h3 class="text-lg font-semibold text-slate-900 tracking-tight">Chrome - Open PDF Files by default in Adobe or alternative Viewer</h3>
-                        <p class="text-xs text-slate-500 mt-1"><i class="fa-regular fa-calendar-days mr-1"></i>Post date: Jan 26, 2017 4:25:40 PM</p>
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <div class="accordion-title-block">
+                        <h3 class="accordion-headline">Chrome Crashing and holding on to old data</h3>
+                        <span class="accordion-date">Post date: Dec 14, 2016 7:50:6 PM</span>
                     </div>
-                    <i class="fa-solid fa-chevron-down text-slate-400 toggle-icon transition-transform duration-200"></i>
-                </button>
-                <div class="accordion-content px-6 border-t border-slate-100">
-                    <div class="prose max-w-none pt-4 text-slate-600 text-sm space-y-2">
-                        <p>To force the local subsystem layout to avoid launching PDF streams inside the native Chrome browser runtime context, adjust default app associations:</p>
-                        <p class="bg-slate-100 p-3 rounded-md font-normal text-slate-700">
-                            Click Windows Search &rarr; Type <strong>Default Apps</strong> &rarr; Search for your preferred local executable handler binary (e.g., <em>Adobe Acrobat Reader</em>, <em>Foxit</em>, or <em>Chrome</em>) &rarr; Locate the targeted file type association (<strong>.pdf</strong>) and map setting directly to make it your chosen system default application.
-                        </p>
-                    </div>
+                    <span class="accordion-icon">▼</span>
+                </div>
+                <div class="accordion-content">
+                    <p>Every now and again, its a good idea to go into the advanced settings in Google Chrome and clear some of the built up browsing data.</p>
+                    <p>However, there is also an advanced structural control setting most don't know about that helps maintain or clear problematic caching errors. Open Chrome, paste the following system path link, and reset the captures:</p>
+                    <pre>chrome://net-internals/#capture</pre>
                 </div>
             </div>
 
-            <div class="accordion-item bg-white border border-slate-200 rounded-xl shadow-xs overflow-hidden transition-all duration-200 hover:border-slate-300">
-                <button class="w-full text-left px-6 py-4 flex items-center justify-between focus:outline-none bg-slate-50/50 hover:bg-slate-50 transition-colors" onclick="toggleAccordion(this)">
-                    <div class="pr-4">
-                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800 mb-1">Productivity / Apps</span>
-                        <h3 class="text-lg font-semibold text-slate-900 tracking-tight">Chrome Crashing and holding on to old stale data</h3>
-                        <p class="text-xs text-slate-500 mt-1"><i class="fa-regular fa-calendar-days mr-1"></i>Post date: Dec 14, 2016 7:50:06 PM</p>
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <div class="accordion-title-block">
+                        <h3 class="accordion-headline">Chrome eating too many resources?</h3>
+                        <span class="accordion-date">Post date: Feb 15, 2018 10:55:20 PM</span>
                     </div>
-                    <i class="fa-solid fa-chevron-down text-slate-400 toggle-icon transition-transform duration-200"></i>
-                </button>
-                <div class="accordion-content px-6 border-t border-slate-100">
-                    <div class="prose max-w-none pt-4 text-slate-600 text-sm space-y-2">
-                        <p>Every now and again, its a good idea to go in to the advanced settings in Google Chrome and clear some of the built up browsing data. However, there is also an advanced under-the-hood developer property path most don't know about, that helps to maintain structural build up of old data inside the Chrome cache.</p>
-                        <p>Open Google Chrome, copy/paste the following URI parameter line directly into the location search bar context, and execute to configure active capture settings:</p>
-                        <p class="bg-slate-950 text-slate-100 p-2 rounded text-center font-mono text-xs selection:bg-blue-600">chrome://net-internals/#capture</p>
-                    </div>
+                    <span class="accordion-icon">▼</span>
+                </div>
+                <div class="accordion-content">
+                    <p>I have had a situation over the last few months where Chrome is opening too many processes, eating too much memory, and causing the host system to become unstable.</p>
+                    <p>Through experimental isolation testing, I discovered that if you navigate to the internal flags area and search for <strong>"Memory Ablation Experiment"</strong>, changing this configuration entry to disabled resolves the multi-process performance drain immediately.</p>
+                    <pre>chrome://flags</pre>
                 </div>
             </div>
 
-            <div class="accordion-item bg-white border border-slate-200 rounded-xl shadow-xs overflow-hidden transition-all duration-200 hover:border-slate-300">
-                <button class="w-full text-left px-6 py-4 flex items-center justify-between focus:outline-none bg-slate-50/50 hover:bg-slate-50 transition-colors" onclick="toggleAccordion(this)">
-                    <div class="pr-4">
-                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800 mb-1">Productivity / Apps</span>
-                        <h3 class="text-lg font-semibold text-slate-900 tracking-tight">Chrome eating too many resources? Stability Fix</h3>
-                        <p class="text-xs text-slate-500 mt-1"><i class="fa-regular fa-calendar-days mr-1"></i>Post date: Feb 15, 2018 10:55:20 PM</p>
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <div class="accordion-title-block">
+                        <h3 class="accordion-headline">Chrome Plugins</h3>
+                        <span class="accordion-date">Post date: Jan 30, 2017 10:5:31 PM</span>
                     </div>
-                    <i class="fa-solid fa-chevron-down text-slate-400 toggle-icon transition-transform duration-200"></i>
-                </button>
-                <div class="accordion-content px-6 border-t border-slate-100">
-                    <div class="prose max-w-none pt-4 text-slate-600 text-sm space-y-3">
-                        <p><strong>Symptom Context:</strong> Chrome launching an excessive quantity of processing handles, consuming high quantities of system RAM memory pools, and causing host operating environments to degrade or freeze up.</p>
-                        <p>Through active experimentation, I discovered that disabling the specific experimentation engine flag stabilizes host memory footprints immediately. Navigate to your advanced flags management console:</p>
-                        <p class="bg-slate-950 text-slate-100 p-2 rounded text-center font-mono text-xs">chrome://flags</p>
-                        <p>Locate the property flag labeled <strong class="text-slate-800 bg-slate-100 px-1 py-0.5 rounded text-xs font-mono">Memory Ablation Experiment</strong> and modify its runtime state parameter setting to <strong>Disabled</strong>.</p>
-                    </div>
+                    <span class="accordion-icon">▼</span>
+                </div>
+                <div class="accordion-content">
+                    <p>To quickly review, disable, or modify permissions for background utility engines, enter this interface endpoint directly inside the browser URL box:</p>
+                    <pre>chrome://plugins</pre>
                 </div>
             </div>
 
-            <div class="accordion-item bg-white border border-slate-200 rounded-xl shadow-xs overflow-hidden transition-all duration-200 hover:border-slate-300">
-                <button class="w-full text-left px-6 py-4 flex items-center justify-between focus:outline-none bg-slate-50/50 hover:bg-slate-50 transition-colors" onclick="toggleAccordion(this)">
-                    <div class="pr-4">
-                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800 mb-1">Productivity / Apps</span>
-                        <h3 class="text-lg font-semibold text-slate-900 tracking-tight">Chrome Plugins Inspector Panel</h3>
-                        <p class="text-xs text-slate-500 mt-1"><i class="fa-regular fa-calendar-days mr-1"></i>Post date: Jan 30, 2017 10:05:31 PM</p>
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <div class="accordion-title-block">
+                        <h3 class="accordion-headline">Cisco SPA 112 VOIP Phone Adapter</h3>
+                        <span class="accordion-date">Post date: Dec 01, 2016 8:42:17 PM</span>
                     </div>
-                    <i class="fa-solid fa-chevron-down text-slate-400 toggle-icon transition-transform duration-200"></i>
-                </button>
-                <div class="accordion-content px-6 border-t border-slate-100">
-                    <div class="prose max-w-none pt-4 text-slate-600 text-sm space-y-1">
-                        <p>To access, review, disable, or audit architecture plugin extensions directly on downlevel builds, utilize this administrative routing target endpoint:</p>
-                        <p class="bg-slate-950 text-slate-100 p-2 rounded text-center font-mono text-xs">chrome://plugins</p>
-                    </div>
+                    <span class="accordion-icon">▼</span>
+                </div>
+                <div class="accordion-content">
+                    <p>If you are having trouble hooking up your Cisco SPA 112 phone adapter to your active directory domain, you are not alone. The SPA 112 doesn't play nicely with Microsoft AD. To get around this problem, you have to have an alternate way to assign it an IP address.</p>
+                    <p>I hooked it up to a standard off-the-shelf wireless router by an Ethernet cable, and then logged in to the router and saw the dynamically assigned IP address for the SPA-112. From there, you just plug in your laptop to that same router to get an auto-assigned IP address, open a web browser, and point to that IP address assigned to the SPA 112 (example: <code>http://192.168.1.2</code>). From within the SPA's control panel, assign it a static IP that matches what you want it to be on your AD Domain. Once you have applied the IP, click Save, and then close the browser.</p>
+                    <p>Take the device off of the wireless router and move it to your AD wired network. Once the SPA boots up, it will be part of the domain using the newly assigned address. Then you can log in to it using the static IP you assigned it and configure it for your hosted VOIP platform.</p>
+                    <pre>Default admin credentials: admin / admin
+Default user credentials:  Cisco / cisco</pre>
                 </div>
             </div>
 
-            <div class="accordion-item bg-white border border-slate-200 rounded-xl shadow-xs overflow-hidden transition-all duration-200 hover:border-slate-300">
-                <button class="w-full text-left px-6 py-4 flex items-center justify-between focus:outline-none bg-slate-50/50 hover:bg-slate-50 transition-colors" onclick="toggleAccordion(this)">
-                    <div class="pr-4">
-                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-indigo-100 text-indigo-800 mb-1">VoIP Systems</span>
-                        <h3 class="text-lg font-semibold text-slate-900 tracking-tight">Cisco SPA 112 VOIP Phone Adapter Binding Issues</h3>
-                        <p class="text-xs text-slate-500 mt-1"><i class="fa-regular fa-calendar-days mr-1"></i>Post date: Dec 01, 2016 8:42:17 PM</p>
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <div class="accordion-title-block">
+                        <h3 class="accordion-headline">Clone your Hard Drive</h3>
+                        <span class="accordion-date">Post date: May 10, 2012 3:20:54 PM</span>
                     </div>
-                    <i class="fa-solid fa-chevron-down text-slate-400 toggle-icon transition-transform duration-200"></i>
-                </button>
-                <div class="accordion-content px-6 border-t border-slate-100">
-                    <div class="prose max-w-none pt-4 text-slate-600 text-sm space-y-2">
-                        <p>If you are encountering configuration errors trying to hook up or route your Cisco SPA 112 hardware phone adapter systems into active corporate Active Directory domains, review firmware settings and auth profiles.</p>
-                        <p class="text-xs bg-slate-50 border p-3 rounded-md text-slate-500 italic"><i class="fa-solid fa-circle-info mr-1"></i>Note: Ensure specific domain-level proxy paths and standard authentication rules match internal domain specifications exactly.</p>
-                    </div>
+                    <span class="accordion-icon">▼</span>
+                </div>
+                <div class="accordion-content">
+                    <p>A simple and completely free way to make an exact low-level block copy of your hard drive, no matter what operating system is actively installed on it, is <strong>Clonezilla</strong>. It's completely open source.</p>
+                    <p>Download the live boot environment images here: <a href="http://clonezilla.org/" target="_blank">http://clonezilla.org/</a></p>
                 </div>
             </div>
 
-            <div class="accordion-item bg-white border border-slate-200 rounded-xl shadow-xs overflow-hidden transition-all duration-200 hover:border-slate-300">
-                <button class="w-full text-left px-6 py-4 flex items-center justify-between focus:outline-none bg-slate-50/50 hover:bg-slate-50 transition-colors" onclick="toggleAccordion(this)">
-                    <div class="pr-4">
-                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800 mb-1">Office Suites</span>
-                        <h3 class="text-lg font-semibold text-slate-900 tracking-tight">Disable Hardware Graphics Acceleration in Microsoft Office</h3>
-                        <p class="text-xs text-slate-500 mt-1"><i class="fa-regular fa-calendar-days mr-1"></i>Post date: Oct 05, 2016 2:40:18 PM</p>
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <div class="accordion-title-block">
+                        <h3 class="accordion-headline">Coaching Notes</h3>
+                        <span class="accordion-date">Post date: Jul 21, 2017 3:12:41 PM</span>
                     </div>
-                    <i class="fa-solid fa-chevron-down text-slate-400 toggle-icon transition-transform duration-200"></i>
-                </button>
-                <div class="accordion-content px-6 border-t border-slate-100">
-                    <div class="prose max-w-none pt-4 text-slate-600 text-sm space-y-3">
-                        <p>If you discover that Microsoft Office 2013 or 2016 applications are crashing repeatedly under Windows 10, the suite may be experiencing errors related to graphics driver execution hooks.</p>
-                        <p class="font-semibold text-slate-800">Method 1: GUI Settings Configuration</p>
-                        <ol class="list-decimal pl-5 space-y-1">
-                            <li>Open Word or Excel, and click on the main <strong>File</strong> tab.</li>
-                            <li>Select <strong>Options</strong>, then click <strong>Advanced</strong> from the navigation list on the left.</li>
-                            <li>Scroll down to look for the checkbox labeled <strong class="text-slate-900">"Disable hardware graphics acceleration"</strong>. Click to check the box, then click <strong>OK</strong>.</li>
-                            <li>Close the application execution runtimes and restart the host machine.</li>
-                        </ol>
-                        <p class="font-semibold text-slate-800">Method 2: Windows Registry Patch</p>
-                        <div class="relative group my-2">
-                            <pre class="bg-slate-900 text-slate-100 p-4 rounded-lg overflow-x-auto text-xs font-mono">Regedit Path:
-HKEY_CURRENT_USER\Software\Microsoft\Office\15.0\Common
-
-Action:
-Click on the Graphics subfolder. If missing, create a new Subkey named "Graphics".
-Inside "Graphics", create a new DWORD (32-bit) Value named: "DisableHardwareAcceleration"
-Set Hexadecimal Value equal to: 1</pre>
-                            <button onclick="copyCode(this)" class="absolute top-2 right-2 bg-slate-800 hover:bg-slate-700 text-slate-300 px-2 py-1 rounded text-2xs transition-colors"><i class="fa-regular fa-copy mr-1"></i>Copy</button>
-                        </div>
-                    </div>
+                    <span class="accordion-icon">▼</span>
+                </div>
+                <div class="accordion-content">
+                    <p><em>"It's not what you have done that matters, it's what you do next."</em> - Dan</p>
+                    <ul>
+                        <li>After a meeting or conversation with someone, ask yourself: do I have more energy now than I did, or less?</li>
+                        <li>Who you are is how you lead.</li>
+                        <li>Be aware of the unintended consequences of inattention to your surroundings. When you walk by an office or set of cubicles lost in thought, are staff members trying to get your attention? Did someone try to talk to you? Your lack of attention can send a message that you don't care. Pay attention; make a concerted effort to look around and be alert when moving through the office, and say hello and good morning to everyone.</li>
+                        <li>When you are working with someone new at the job and they appear frustrated or in a bad temper, do not jump to the conclusion that they have a poor attitude. Assume first that they don't want to do a bad job and are struggling to do better.</li>
+                        <li>Asking for "help" is a face-removing exercise. Be aware.</li>
+                        <li>When someone goes out of their way to help you overtime, over the top, beyond the 9-to-5 requirement, thank them. Not only with the words "thank you", but tell them exactly what you were able to accomplish because they did it, and let them know that because they did it quickly you were able to meet your deadlines.</li>
+                        <li><em>"Help is defined by the person being helped"</em> - Edgar Schein. People want to be a part of something that is meaningful.</li>
+                        <li>What does it mean to coach? Teach, help to learn, help to orient, instruct, give example, and assist in learning. Notice behaviors: observe, compliment, and thank for their value added.</li>
+                        <li>Understand the problem — don't settle for just one solution.</li>
+                    </ul>
                 </div>
             </div>
 
-            <div class="accordion-item bg-white border border-slate-200 rounded-xl shadow-xs overflow-hidden transition-all duration-200 hover:border-slate-300">
-                <button class="w-full text-left px-6 py-4 flex items-center justify-between focus:outline-none bg-slate-50/50 hover:bg-slate-50 transition-colors" onclick="toggleAccordion(this)">
-                    <div class="pr-4">
-                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800 mb-1">Web Development</span>
-                        <h3 class="text-lg font-semibold text-slate-900 tracking-tight">Domain Mapping with WordPress and Gmail Backend Architecture</h3>
-                        <p class="text-xs text-slate-500 mt-1"><i class="fa-regular fa-calendar-days mr-1"></i>Post date: May 10, 2012 3:31:00 PM</p>
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <div class="accordion-title-block">
+                        <h3 class="accordion-headline">Codeweavers / WINE</h3>
+                        <span class="accordion-date">Post date: May 10, 2012</span>
                     </div>
-                    <i class="fa-solid fa-chevron-down text-slate-400 toggle-icon transition-transform duration-200"></i>
-                </button>
-                <div class="accordion-content px-6 border-t border-slate-100">
-                    <div class="prose max-w-none pt-4 text-slate-600 text-sm space-y-2">
-                        <p>To configure highly cost-effective public facing websites backed by robust enterprise email routing pipelines, map WordPress structures directly to Google Apps MX paths:</p>
-                        <ol class="list-decimal pl-5 space-y-1">
-                            <li>Purchase your targeted custom domain identity through any major domain registrar utility.</li>
-                            <li>Establish a hosting account with WordPress, and purchase the internal <strong>Domain Mapping</strong> feature add-on.</li>
-                            <li>Extract the explicit DNS nameserver records from WordPress and apply them to your registrar entry portals to hand over management.</li>
-                            <li>Once active, navigate to your Google Apps (Workspace) administrative portal control console and initiate domain verification proofs.</li>
-                            <li>Inside your WordPress DNS custom control console area, map corporate <strong>MX records</strong> explicitly to face the Google server clusters. This cleanly bypasses complex webhost mail config requirements.</li>
-                        </ol>
-                    </div>
+                    <span class="accordion-icon">▼</span>
                 </div>
-            </div>
-
-            <div class="accordion-item bg-white border border-slate-200 rounded-xl shadow-xs overflow-hidden transition-all duration-200 hover:border-slate-300">
-                <button class="w-full text-left px-6 py-4 flex items-center justify-between focus:outline-none bg-slate-50/50 hover:bg-slate-50 transition-colors" onclick="toggleAccordion(this)">
-                    <div class="pr-4">
-                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800 mb-1">Linux / CMS</span>
-                        <h3 class="text-lg font-semibold text-slate-900 tracking-tight">Drupal 8 Deployment Architecture on Azure Virtual Machines</h3>
-                        <p class="text-xs text-slate-500 mt-1"><i class="fa-regular fa-calendar-days mr-1"></i>Post date: Apr 20, 2016 2:16:04 PM</p>
-                    </div>
-                    <i class="fa-solid fa-chevron-down text-slate-400 toggle-icon transition-transform duration-200"></i>
-                </button>
-                <div class="accordion-content px-6 border-t border-slate-100">
-                    <div class="prose max-w-none pt-4 text-slate-600 text-sm space-y-3">
-                        <p class="text-red-700 bg-red-50 p-3 rounded border border-red-200 font-medium text-xs"><i class="fa-solid fa-triangle-exclamation mr-1"></i>Production Alert: Standard manual LAMP setups often cause package conflicts under specific default Azure Ubuntu configurations. Review clean virtualization patterns below before deploying.</p>
-                        <p>Core LAMP stack environment sequence used during tracking logs evaluation:</p>
-                        <div class="relative group my-2">
-                            <pre class="bg-slate-900 text-slate-100 p-4 rounded-lg overflow-x-auto text-xs font-mono">sudo apt-get update && sudo apt-get upgrade -y
-sudo tasksel install lamp-server
-# Verify local bindings map securely
-mysql -u root -p -e "CREATE DATABASE drupaldb CHARACTER SET utf8;"
-mysql -u root -p -e "GRANT ALL PRIVILEGES ON drupaldb.* TO 'drupaldb'@'localhost' IDENTIFIED BY 'drupaldb';"</pre>
-                            <button onclick="copyCode(this)" class="absolute top-2 right-2 bg-slate-800 hover:bg-slate-700 text-slate-300 px-2 py-1 rounded text-2xs transition-colors"><i class="fa-regular fa-copy mr-1"></i>Copy</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="accordion-item bg-white border border-slate-200 rounded-xl shadow-xs overflow-hidden transition-all duration-200 hover:border-slate-300">
-                <button class="w-full text-left px-6 py-4 flex items-center justify-between focus:outline-none bg-slate-50/50 hover:bg-slate-50 transition-colors" onclick="toggleAccordion(this)">
-                    <div class="pr-4">
-                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800 mb-1">Windows Server</span>
-                        <h3 class="text-lg font-semibold text-slate-900 tracking-tight">Favorite Microsoft Server Knowledge Base</h3>
-                        <p class="text-xs text-slate-500 mt-1"><i class="fa-regular fa-calendar-days mr-1"></i>Post date: May 10, 2012 3:30:28 PM</p>
-                    </div>
-                    <i class="fa-solid fa-chevron-down text-slate-400 toggle-icon transition-transform duration-200"></i>
-                </button>
-                <div class="accordion-content px-6 border-t border-slate-100">
-                    <div class="prose max-w-none pt-4 text-slate-600 text-sm space-y-2">
-                        <p>The Internet is chock full of places to look for information, and although some sites are valuable resources, others are just hit and miss as an information resource. Maintaining a verified track list of localized solutions bypasses search index clutter during live critical operational incidents.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="accordion-item bg-white border border-slate-200 rounded-xl shadow-xs overflow-hidden transition-all duration-200 hover:border-slate-300">
-                <button class="w-full text-left px-6 py-4 flex items-center justify-between focus:outline-none bg-slate-50/50 hover:bg-slate-50 transition-colors" onclick="toggleAccordion(this)">
-                    <div class="pr-4">
-                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800 mb-1">Email Administration</span>
-                        <h3 class="text-lg font-semibold text-slate-900 tracking-tight">Gmail to Comcast.net or Q.com - Blackhole Spam Filter Issue</h3>
-                        <p class="text-xs text-slate-500 mt-1"><i class="fa-regular fa-calendar-days mr-1"></i>Post date: Jun 19, 2018 9:37:58 PM</p>
-                    </div>
-                    <i class="fa-solid fa-chevron-down text-slate-400 toggle-icon transition-transform duration-200"></i>
-                </button>
-                <div class="accordion-content px-6 border-t border-slate-100">
-                    <div class="prose max-w-none pt-4 text-slate-600 text-sm space-y-3">
-                        <p><strong>Problem Description:</strong> When coordinating email deployment via hosted Google Workspace platforms, messages directed outward to downstream <code class="bg-slate-100 text-slate-800 px-1 py-0.5 rounded font-mono text-xs">@comcast.net</code> address parameters frequently drop entirely into a silent blackhole without appearing inside the user's spam folders.</p>
-                        <p><strong>Root Cause Analysis:</strong> The aggressive upstream Comcast mail filters drop traffic blocks at receipt points without issuing non-delivery reports (NDRs) back to Google nodes.</p>
-                        <p class="font-medium text-slate-800">Remediation Steps for Recipients:</p>
-                        <p>The recipient must log in directly to the native Comcast webmail interface via browser controls, navigate to email settings configurations, and explicitly check the flag option to <strong>save spam messages to a dedicated directory folder</strong> rather than executing permanent immediate drop commands on suspect relays.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="accordion-item bg-white border border-slate-200 rounded-xl shadow-xs overflow-hidden transition-all duration-200 hover:border-slate-300">
-                <button class="w-full text-left px-6 py-4 flex items-center justify-between focus:outline-none bg-slate-50/50 hover:bg-slate-50 transition-colors" onclick="toggleAccordion(this)">
-                    <div class="pr-4">
-                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800 mb-1">Productivity / Apps</span>
-                        <h3 class="text-lg font-semibold text-slate-900 tracking-tight">Google Apps / Gmail - inserting typographic en-dash or em-dashes</h3>
-                        <p class="text-xs text-slate-500 mt-1"><i class="fa-regular fa-calendar-days mr-1"></i>Post date: Jul 31, 2014 10:04:46 PM</p>
-                    </div>
-                    <i class="fa-solid fa-chevron-down text-slate-400 toggle-icon transition-transform duration-200"></i>
-                </button>
-                <div class="accordion-content px-6 border-t border-slate-100">
-                    <div class="prose max-w-none pt-4 text-slate-600 text-sm space-y-2">
-                        <p><strong>The Typographic Dilemma:</strong> Inside Microsoft Word, typing double hyphens natively triggers automatic substitutions rendering formatting characters cleanly into an extended em-dash (—) or an en-dash (–).</p>
-                        <p><strong>Google Apps Behavior:</strong> The cloud interface translates these punctuation marks uniformly back down into basic hyphens ("–"). Since the native character keys are missing on standard hardware layouts, map your standard combinations or copy them manually into system clipboard contexts for reference.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="accordion-item bg-white border border-slate-200 rounded-xl shadow-xs overflow-hidden transition-all duration-200 hover:border-slate-300">
-                <button class="w-full text-left px-6 py-4 flex items-center justify-between focus:outline-none bg-slate-50/50 hover:bg-slate-50 transition-colors" onclick="toggleAccordion(this)">
-                    <div class="pr-4">
-                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800 mb-1">Linux / CMS</span>
-                        <h3 class="text-lg font-semibold text-slate-900 tracking-tight">Install Drupal on Ubuntu Server 14.04 on Azure via Postfix Mail Relay</h3>
-                        <p class="text-xs text-slate-500 mt-1"><i class="fa-regular fa-calendar-days mr-1"></i>Post date: Apr 04, 2016 1:41:24 PM</p>
-                    </div>
-                    <i class="fa-solid fa-chevron-down text-slate-400 toggle-icon transition-transform duration-200"></i>
-                </button>
-                <div class="accordion-content px-6 border-t border-slate-100">
-                    <div class="prose max-w-none pt-4 text-slate-600 text-sm space-y-3">
-                        <p>To establish programmatic notification loops out of an Azure hosting landscape, set up a secure local Postfix engine acting as a smart host relay targeting upstream Google SMTP gateways.</p>
-                        <p class="text-amber-800 bg-amber-50 p-3 rounded text-xs font-medium border border-amber-200"><i class="fa-solid fa-key mr-1"></i>Security Core: You must enforce 2-Factor Authentication on the gateway account layer. Generate an isolated, 16-character <strong>Application Specific Password</strong> to feed into configuration maps below.</p>
-                        
-                        <p class="font-semibold text-slate-800 mb-1">1. Append parameters to main Postfix settings file:</p>
-                        <div class="relative group">
-                            <pre class="bg-slate-900 text-slate-100 p-4 rounded-lg overflow-x-auto text-xs font-mono">sudo nano /etc/postfix/main.cf
-
-# Insert configuration properties:
-relayhost = [smtp.gmail.com]:587
-smtp_sasl_auth_enable = yes
-smtp_sasl_password_maps = hash:/etc/postfix/sasl_passwd
-smtp_sasl_security_options = noanonymous
-smtp_tls_CAfile = /etc/postfix/cacert.pem
-smtp_use_tls = yes</pre>
-                            <button onclick="copyCode(this)" class="absolute top-2 right-2 bg-slate-800 hover:bg-slate-700 text-slate-300 px-2 py-1 rounded text-2xs transition-colors"><i class="fa-regular fa-copy mr-1"></i>Copy</button>
-                        </div>
-
-                        <p class="font-semibold text-slate-800 mb-1">2. Build security map data structures:</p>
-                        <div class="relative group">
-                            <pre class="bg-slate-900 text-slate-100 p-4 rounded-lg overflow-x-auto text-xs font-mono">sudo nano /etc/postfix/sasl_passwd
-# Insert line:
-[smtp.gmail.com]:587 USERNAME@gmail.com:YOUR-APP-SPECIFIC-PASSWORD
-
-# Secure access permissions and compile file map database
-sudo chmod 400 /etc/postfix/sasl_passwd
-sudo postmap /etc/postfix/sasl_passwd</pre>
-                            <button onclick="copyCode(this)" class="absolute top-2 right-2 bg-slate-800 hover:bg-slate-700 text-slate-300 px-2 py-1 rounded text-2xs transition-colors"><i class="fa-regular fa-copy mr-1"></i>Copy</button>
-                        </div>
-
-                        <p class="font-semibold text-slate-800 mb-1">3. Bind authorization certificates and reload operations:</p>
-                        <div class="relative group">
-                            <pre class="bg-slate-900 text-slate-100 p-4 rounded-lg overflow-x-auto text-xs font-mono">sudo cat /etc/ssl/certs/Thawte_Premium_Server_CA.pem | sudo tee -a /etc/postfix/cacert.pem
-sudo /etc/init.d/postfix reload
-
-# Fire programmatic validation pipeline probe
-echo "Test mail from postfix" | mail -s "Test Postfix" user@example.com</pre>
-                            <button onclick="copyCode(this)" class="absolute top-2 right-2 bg-slate-800 hover:bg-slate-700 text-slate-300 px-2 py-1 rounded text-2xs transition-colors"><i class="fa-regular fa-copy mr-1"></i>Copy</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="accordion-item bg-white border border-slate-200 rounded-xl shadow-xs overflow-hidden transition-all duration-200 hover:border-slate-300">
-                <button class="w-full text-left px-6 py-4 flex items-center justify-between focus:outline-none bg-slate-50/50 hover:bg-slate-50 transition-colors" onclick="toggleAccordion(this)">
-                    <div class="pr-4">
-                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-purple-100 text-purple-800 mb-1">Storage / RAID</span>
-                        <h3 class="text-lg font-semibold text-slate-900 tracking-tight">Installing an OS to storage volumes larger than 2TB</h3>
-                        <p class="text-xs text-slate-500 mt-1"><i class="fa-regular fa-calendar-days mr-1"></i>Post date: Apr 10, 2013 1:22:58 PM</p>
-                    </div>
-                    <i class="fa-solid fa-chevron-down text-slate-400 toggle-icon transition-transform duration-200"></i>
-                </button>
-                <div class="accordion-content px-6 border-t border-slate-100">
-                    <div class="prose max-w-none pt-4 text-slate-600 text-sm space-y-2">
-                        <p><strong>Architectural Constraints:</strong> Legacy BIOS interface controllers are bound by absolute storage limits that prevent boots off drives exceeding 2 Terabytes. To leverage high-capacity disk arrays safely, enforce <strong>UEFI</strong> platform properties and structure partition tables explicitly utilizing <strong>GUID Partition Table (GPT)</strong> schemas rather than legacy Master Boot Record (MBR) formats.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="accordion-item bg-white border border-slate-200 rounded-xl shadow-xs overflow-hidden transition-all duration-200 hover:border-slate-300">
-                <button class="w-full text-left px-6 py-4 flex items-center justify-between focus:outline-none bg-slate-50/50 hover:bg-slate-50 transition-colors" onclick="toggleAccordion(this)">
-                    <div class="pr-4">
-                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800 mb-1">Web Development</span>
-                        <h3 class="text-lg font-semibold text-slate-900 tracking-tight">Strange Drupal behavior 7.x - Random ghost "{C}" strings</h3>
-                        <p class="text-xs text-slate-500 mt-1"><i class="fa-regular fa-calendar-days mr-1"></i>Post date: Mar 11, 2014 2:34:56 PM</p>
-                    </div>
-                    <i class="fa-solid fa-chevron-down text-slate-400 toggle-icon transition-transform duration-200"></i>
-                </button>
-                <div class="accordion-content px-6 border-t border-slate-100">
-                    <div class="prose max-w-none pt-4 text-slate-600 text-sm space-y-3">
-                        <p><strong>Bug Profiling:</strong> Content management workflows inside specific Drupal environments may spontaneously inject ghost text sequences resembling <code class="bg-slate-100 text-slate-800 px-1 py-0.5 rounded font-mono text-xs">{C}</code> or grouped iterations like <code class="bg-slate-100 text-slate-800 px-1 py-0.5 rounded font-mono text-xs">{C}{C}{C}</code> into custom webforms blocks.</p>
-                        <p>Even if scrubbed via raw source views directly inside your WYSIWYG database field components, the code returns randomly on page generation cycles.</p>
-                        <p class="font-medium text-slate-800">Root Identification &amp; Fix Actions:</p>
-                        <p>A pattern audit confirms that these specific <code class="bg-slate-100 text-slate-800 px-1 py-0.5 rounded font-mono text-xs">{C}</code> artifacts cluster right before legacy comment lines: <code class="bg-slate-100 text-slate-800 px-1 py-0.5 rounded font-mono text-xs">&lt;!-- Custom Text Here --&gt;</code>. Completely locate and scrub old commented markup artifacts from your block layouts to eliminate the parsing bug permanently.</p>
-                    </div>
+                <div class="accordion-content">
+                    <p>Official Platform Link: <a href="http://www.codeweavers.com/products/" target="_blank">http://www.codeweavers.com/products/</a></p>
+                    <p>Now, I'm just going to put this out there to the multi-verse... I would like to see either CodeWeavers, or some other company put out a similar product, but, instead of making Windows apps run on Linux; I would like to see OS X apps run on Linux. You know, Linux and Unix/OS X are closely related. And, now that OS X runs on the Intel platform, it seems to me that it would be much easier to make OS X apps run on Linux versus getting Windows apps to run. But, that is just me...</p>
+                    <p>The primary reason people want to use CrossOver, or similar WINE type systems, is to get applications that they would otherwise lose by switching to Linux. OS X has made some serious in-roads in the category of getting apps that will draw Windows users to OS X, and has so many developers working full tilt to develop these apps. Even Microsoft has seen the writing on the wall and has knocked out a SilverLight port and developed Microsoft Office 2008/2011 for OS X. I would love to run both Office 2011 and SilverLight (Netflix), and for that matter, the Adobe Creative Suite on my Linux install...</p>
+                    <p>Just a word about emulation/WINE, and the possibility of getting OS X apps to run on Linux. If you do use these programs, be certain to buy the windows or OS X applications that you want to run. Make sure that you pay the developer his/her cost to own that program. The reason you want to run it, is the same reason you should pay for it. Don't pirate software, pay for your licenses.</p>
                 </div>
             </div>
 
@@ -929,65 +705,28 @@ echo "Test mail from postfix" | mail -s "Test Postfix" user@example.com</pre>
     </main>
 
     <script>
-        // Smooth Toggle Accordion Behavior
-        function toggleAccordion(element) {
-            const currentItem = element.parentElement;
-            const container = document.getElementById('accordionContainer');
-            const items = container.getElementsByClassName('accordion-item');
+        document.addEventListener('DOMContentLoaded', function() {
+            // Target all clickable blue bar container headers
+            const headers = document.querySelectorAll('.accordion-header');
             
-            // Toggle active status on chosen element
-            currentItem.classList.toggle('active');
-            
-            // Set dynamic height configurations for smooth transitions
-            const contentPanel = currentItem.querySelector('.accordion-content');
-            if (currentItem.classList.contains('active')) {
-                contentPanel.style.maxHeight = contentPanel.scrollHeight + "px";
-                contentPanel.style.paddingTop = "1rem";
-            } else {
-                contentPanel.style.maxHeight = "0px";
-                contentPanel.style.paddingTop = "0rem";
-            }
-        }
-
-        // Real-Time Search Filter Functionality
-        function filterTopics() {
-            const searchInput = document.getElementById('searchBar').value.toLowerCase();
-            const accordionItems = document.getElementsByClassName('accordion-item');
-
-            for (let i = 0; i < accordionItems.length; i++) {
-                const titleText = accordionItems[i].querySelector('h3').innerText.toLowerCase();
-                const contentText = accordionItems[i].querySelector('.accordion-content').innerText.toLowerCase();
-                const badgeText = accordionItems[i].querySelector('span').innerText.toLowerCase();
-
-                // Check text matches title, category tags, or inner text bodies
-                if (titleText.includes(searchInput) || contentText.includes(searchInput) || badgeText.includes(searchInput)) {
-                    accordionItems[i].style.display = "block";
-                } else {
-                    accordionItems[i].style.display = "none";
-                    // Reset open heights if active item gets hidden during search filtration
-                    accordionItems[i].classList.remove('active');
-                    accordionItems[i].querySelector('.accordion-content').style.maxHeight = "0px";
-                }
-            }
-        }
-
-        // Clipboard Copy Action Handler Helper
-        function copyCode(buttonElement) {
-            const codeBlock = buttonElement.parentElement.querySelector('pre');
-            const originalText = buttonElement.innerHTML;
-            
-            navigator.clipboard.writeText(codeBlock.innerText).then(() => {
-                buttonElement.innerHTML = '<i class="fa-solid fa-check text-emerald-400 mr-1"></i>Copied!';
-                buttonElement.classList.add('bg-slate-700');
-                
-                setTimeout(() => {
-                    buttonElement.innerHTML = originalText;
-                    buttonElement.classList.remove('bg-slate-700');
-                }, 2000);
-            }).catch(err => {
-                console.error('Inbound security permission error restricting clipboard writes: ', err);
+            headers.forEach(header => {
+                header.addEventListener('click', function() {
+                    const item = this.parentElement;
+                    
+                    // Toggle execution on the clicked item block
+                    if (item.classList.contains('active')) {
+                        item.classList.remove('active');
+                    } else {
+                        // Optional checkpoint: If you want other opened bars to close when 
+                        // a new one is selected, uncomment the following two lines:
+                        // document.querySelectorAll('.accordion-item').forEach(i => i.classList.remove('active'));
+                        
+                        item.classList.add('active');
+                    }
+                });
             });
-        }
+        });
     </script>
+
 </body>
 </html>
