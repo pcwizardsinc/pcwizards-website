@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NeoBody Framework | Open-Source Cyborg Movement</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        /* ==========================================================================
+           NEOBODY CYBORG FRAMEWORK ACCORDION & CORE STYLING
+           ========================================================================== */
+        body {
+            background-color: #f3f4f6;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Navbar Styling matching your template pattern */
+        .pcw-navbar {
+            background-color: #212121;
+            padding: 10px 20px;
+            font-family: 'Oswald', sans-serif;
+        }
+
+        .pcw-navbar ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        .pcw-navbar li a {
+            color: #ffffff;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 1.1rem;
+            padding: 10px 15px;
+            display: inline-block;
+        }
+
+        /* Container & Intro Block matching your style guide */
+        .kb-container {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 0 20px;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .kb-intro {
+            background-color: #ffffff;
+            padding: 25px;
+            border-radius: 6px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            margin-bottom: 30px;
+            border-left: 5px solid #0056b3;
+        }
+
+        .kb-intro h2 {
+            font-family: 'Oswald', sans-serif;
+            margin-top: 0;
+            color: #212121;
+            font-size: 2rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .kb-intro p {
+            line-height: 1.6;
+            color: #4b5563;
+            font-size: 1.05rem;
+        }
+
+        /* The Accordion Component Wrapper */
+        .accordion-item {
+            margin-bottom: 12px;
+            border: 1px solid #dcdcdc;
+            border-radius: 6px;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.03);
+        }
+
+        /* Clickable Bar: Blue Background, White Text */
+        .accordion-header {
+            background-color: #0056b3;
+            color: #ffffff;
+            padding: 16px 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            user-select: none;
+            transition: background-color 0.2s ease;
+        }
+
+        .accordion-header:hover {
+            background-color: #004085; /* Darker blue on hover */
+        }
+
+        .accordion-title-block {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .accordion-headline {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.25rem;
+            letter-spacing: 0.5px;
+            margin: 0;
+            text-transform: uppercase;
+        }
+
+        .accordion-date {
+            font-size: 0.85rem;
+            color: #e2e8f0;
+            font-weight: normal;
+        }
+
+        /* Dynamic Expand Indicator Icon */
+        .accordion-icon {
+            font-size: 1.2rem;
+            transition: transform 0.2s ease;
+        }
+
+        /* Expanded Area: White Background, Black Text */
+        .accordion-content {
+            background-color: #ffffff;
+            color: #000000;
+            padding: 0 25px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out, padding 0.3s ease-out;
+        }
+
+        /* Active Toggle State controlled via JS */
+        .accordion-item.active .accordion-content {
+            padding: 25px;
+            max-height: 2500px; /* Expanded capacity for code repositories */
+            border-top: 1px solid #e5e7eb;
+        }
+
+        .accordion-item.active .accordion-icon {
+            transform: rotate(180deg);
+        }
+
+        /* Text formatting within the expanded area */
+        .accordion-content p {
+            margin-top: 0;
+            margin-bottom: 15px;
+            line-height: 1.6;
+            font-size: 1rem;
+        }
+
+        .accordion-content ul, .accordion-content ol {
+            margin-top: 0;
+            margin-bottom: 15px;
+            padding-left: 20px;
+        }
+
+        .accordion-content li {
+            margin-bottom: 6px;
+            line-height: 1.5;
+        }
+
+        /* Custom styling for standard callout lists inside accordions */
+        .tech-tags {
+            font-family: 'Oswald', sans-serif;
+            font-size: 0.9rem;
+            color: #0056b3;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-top: 10px;
+            display: block;
+        }
+
+        /* Monospace Code Styling for Terminal / Microcontroller Configurations */
+        code, .inline-code {
+            font-family: 'Courier New', Courier, monospace;
+            background-color: #f4f4f6;
+            color: #b91c1c;
+            padding: 3px 6px;
+            border-radius: 4px;
+            font-size: 0.95rem;
+            font-weight: bold;
+        }
+
+        pre {
+            font-family: 'Courier New', Courier, monospace;
+            background-color: #f4f4f6;
+            display: block;
+            padding: 15px;
+            margin: 15px 0;
+            overflow-x: auto;
+            color: #111827;
+            border-left: 4px solid #0056b3; /* Blue left bar matching theme accents */
+            border-radius: 0 4px 4px 0;
+            font-size: 0.95rem;
+            line-height: 1.4;
+        }
+
+        /* Action/Sign-up Module */
+        .join-box {
+            background-color: #ffffff;
+            border: 1px solid #dcdcdc;
+            border-radius: 6px;
+            padding: 30px;
+            margin-top: 40px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+
+        .join-box h3 {
+            font-family: 'Oswald', sans-serif;
+            margin-top: 0;
+            text-transform: uppercase;
+            font-size: 1.6rem;
+            color: #212121;
+        }
+
+        .join-form {
+            display: flex;
+            max-width: 500px;
+            margin: 20px auto 0 auto;
+            gap: 10px;
+        }
+
+        .join-input {
+            flex: 1;
+            padding: 12px 15px;
+            border: 1px solid #dcdcdc;
+            border-radius: 4px;
+            font-family: 'Roboto', sans-serif;
+            font-size: 1rem;
+        }
+
+        .join-input:focus {
+            outline: none;
+            border-color: #0056b3;
+        }
+
+        .join-btn {
+            background-color: #0056b3;
+            color: #ffffff;
+            border: none;
+            padding: 0 25px;
+            font-family: 'Oswald', sans-serif;
+            text-transform: uppercase;
+            font-size: 1.1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+
+        .join-btn:hover {
+            background-color: #004085;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="pcw-navbar">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="drones.html">Drones</a></li>
+            <li><a href="motorcycles.html">Motorcycles</a></li>
+            <li><a href="services.html">Computer Stuff</a></li>
+            <li><a href="neobody.html" style="color: #38bdf8; font-weight: bold;">Cyborg Framework</a></li>
+        </ul>
+    </nav>
+
+    <main class="kb-container">
+        
+        <div class="kb-intro">
+            <h2>NeoBody // The Open Cyborg Framework</h2>
+            <p>Welcome to the blueprint directory. Evolution is no longer a passive biological drag—it is an active open-source pipeline. We are integrating off-the-shelf single-board computers, additive 3D manufacturing, and distributed hardware arrays to establish total, non-negotiable morphological freedom.</p>
+            <p>This space hosts functional documentation, base code implementations, and layout instructions for deploying physical augmentation assemblies.</p>
+        </div>
+
+        <div class="accordion-group">
+
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <div class="accordion-title-block">
+                        <h3 class="accordion-headline">Division 01: Microcontrollers & Firmware Architectures</h3>
+                        <span class="accordion-date">Tracking Status: Active Loop Development</span>
+                    </div>
+                    <span class="accordion-icon">▼</span>
+                </div>
+                <div class="accordion-content">
+                    <p>We are actively routing real-time low-latency motor control paths using off-the-shelf development units. The core challenge is syncing sensory feedback with high-torque hardware output to minimize tracking delay.</p>
+                    <p><strong>Deployment Stack:</strong> We utilize the <span class="inline-code">Raspberry Pi Pico 2</span> or an <span class="inline-code">ESP32</span> configuration running a custom real-time loop layer to process muscle contraction data.</p>
+                    <p>The standard "Hello World" active control structure registers input arrays through standard surface or muscle-implantable sensors:</p>
+                    <pre>
+# Example real-time motor assist sequence
+import time
+from machine import Pin, ADC, PWM
+
+muscle_sensor = ADC(Pin(26))
+motor = PWM(Pin(15))
+motor.freq(20000) # Maintain supersonic switching to mitigate audible motor hum
+
+while True:
+    load_factor = muscle_sensor.read_u16()
+    if load_factor > 30000:
+        motor.duty_u16(45000) # Execute hardware torque assist acceleration path
+    else:
+        motor.duty_u16(0)     # Drop into static coast orientation
+    time.sleep_ms(5)</pre>
+                    <span class="tech-tags">Target Disciplines: Raspberry Pi Groups, Python Developers, Embedded C++ Structuralists</span>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <div class="accordion-title-block">
+                        <h3 class="accordion-headline">Division 02: Additive Manufacturing & Mechanical Frameworks</h3>
+                        <span class="accordion-date">Tracking Status: Parametric STL Beta Tests</span>
+                    </div>
+                    <span class="accordion-icon">▼</span>
+                </div>
+                <div class="accordion-content">
+                    <p>Standard printing profiles fail immediately under active load stress. The Structural Forge focuses completely on load-bearing components engineered for field durability during climbing and trail courses.</p>
+                    <p><strong>Slicing & Filament Guidelines:</strong></p>
+                    <ul>
+                        <li><strong>Base Material Choice:</strong> Carbon Fiber-infused Nylon <code>PA-CF</code> or heavy duty <code>PETG</code>. Never deploy components utilizing standard PLA or cosmetic polymers.</li>
+                        <li><strong>Infill Architecture:</strong> Maintain a minimum of 65% Gyroid infill density. Grid and linear infills create systemic shear vulnerabilities under mechanical torsion.</li>
+                        <li><strong>Wall Parameters:</strong> Minimum of 5 structural perimeters/walls to ensure torque distribution across the outer faces of the structural hinges.</li>
+                    </ul>
+                    <p>Parametric files can be found in the asset directory to adjust hinges according to specific femur lengths and structural offsets.</p>
+                    <span class="tech-tags">Target Disciplines: 3D Printing Groups, CAD Modelers, Stress Analysts</span>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <div class="accordion-title-block">
+                        <h3 class="accordion-headline">Division 03: Invasive Systems & Human-Machine Interfaces</h3>
+                        <span class="accordion-date">Tracking Status: Long-Term Horizon Blueprinting</span>
+                    </div>
+                    <span class="accordion-icon">▼</span>
+                </div>
+                <div class="accordion-content">
+                    <p>External harnesses suffer from friction loss, skin compression, and soft tissue shift. True systems performance requires moving past external straps and routing hardware paths beneath the envelope of the skin.</p>
+                    <p><strong>System Interfaces Under Documentation:</strong></p>
+                    <ol>
+                        <li><strong>Subdermal Sensor Integration:</strong> Injecting grain-of-rice-sized ceramic wireless <code>IMES</code> (Implantable Myoelectric Sensors) directly into active muscle tissue beds to read neurological intent with absolute parity.</li>
+                        <li><strong>Osseointegrated Anchoring Arrays:</strong> Utilizing direct titanium skeletal adapters passing through the skin barrier to couple carbon-fiber exoskeleton struts directly to bone. This cuts out fabric friction entirely.</li>
+                    </ol>
+                    <p>We are currently establishing directory logs for safe, body-mod friendly practitioners, and mapping regulatory limitations surrounding non-medical modifications.</p>
+                    <span class="tech-tags">Target Disciplines: Grinder Arrays, Bio-Hackers, Body Modification Technicians</span>
+                </div>
+            </div>
+
+        </div> <div class="join-box">
+            <h3>Initialize Connection Node</h3>
+            <p>Sign up to receive automatic updates on source repositories, hardware assembly coordinates, and structural blueprint drops.</p>
+            <form class="join-form" onsubmit="alert('Node connection registered.'); return false;">
+                <input type="email" class="join-input" placeholder="operator@domain.com" required>
+                <button type="submit" class="join-btn">Connect</button>
+            </form>
+        </div>
+
+    </main>
+
+    <script>
+        document.querySelectorAll('.accordion-header').forEach(header => {
+            header.addEventListener('click', () => {
+                const item = header.parentElement;
+                
+                // Toggle current accordion state
+                item.classList.toggle('active');
+                
+                // Smooth transition management
+                const content = item.querySelector('.accordion-content');
+                if (item.classList.contains('active')) {
+                    content.style.maxHeight = content.scrollHeight + "px";
+                } else {
+                    content.style.maxHeight = "0";
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
