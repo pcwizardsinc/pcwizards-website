@@ -301,13 +301,13 @@
         <div class="kb-intro">
             <img src="NeoBodyCyborg.png" style="width: 75%; height: auto;" alt="Become more than you were born to be">
             <h2>The Flesh is a Prototype // Upgrade Your Chassis</h2>
-            <p>Every tool humanity has ever built has been a compromise—a temporary crutch held in a fragile hand. We design 3D-printed carbon arrays to conquer mountains and compile microcontrollers to bypass fatigue, yet we continue to strap this brilliant engineering to a soft, decaying envelope of skin and fat. We allow clothing, straps, and friction to limit the processing speed of our intent.</p>
+            <p>Every tool humanity has ever built has been a compromise—a temporary crutch held in a fragile hand. Together, let's design 3D-printed carbon arrays to conquer mountains and compile microcontrollers to bypass fatigue, yet we continue to strap this brilliant engineering to a soft, decaying envelope of skin and fat. We allow clothing, straps, and friction to limit the processing speed of our intent.</p>
             
             <p class="highlight-plea">
-                We are looking for more than spectators, code-reviewers, and printers. We are calling for the pioneers willing to cross the threshold. We need operators ready to undergo elective, biocompatible modification—to anchor hardware straight to bone and embed circuits beneath the skin.
+                We are looking for more than spectators, code-reviewers, and 3D printers. We are calling for the pioneers willing to cross the threshold. This isn't Cosplay, this is real world body modification. We need operators ready to undergo elective, biocompatible modification—to anchor hardware straight to bone and embed circuits beneath the skin.
             </p>
 
-            <p>Whether born man or woman, your birth specs are merely a baseline. True evolution doesn't look like millions of years of passive biological drift; it looks like a clean surgical environment, an open-source schematic, and the deliberate courage to transcend what you were born to be capable of. Do not just build the architecture. <strong>Become the framework.</strong></p>
+            <p>Whether born man or woman, your birth specs are merely a baseline. True evolution doesn't look like millions of years of passive biological drift; it looks like a clean surgical environment, an open-source schematic, and the deliberate courage to transcend what you were born to be capable of. Do not just build the architecture. <strong>Become the framework! The new era of humanity.</strong></p>
         </div>
 
         <div class="accordion-group">
@@ -321,8 +321,8 @@
                     <span class="accordion-icon">▼</span>
                 </div>
                 <div class="accordion-content">
-                    <p>We are actively routing real-time low-latency motor control paths using off-the-shelf development units. The core challenge is syncing sensory feedback with high-torque hardware output to minimize tracking delay.</p>
-                    <p><strong>Deployment Stack:</strong> We utilize the <span class="inline-code">Raspberry Pi Pico 2</span> or an <span class="inline-code">ESP32</span> configuration running a custom real-time loop layer to process muscle contraction data.</p>
+                    <p>We need active routing -  real-time low-latency motor control paths using off-the-shelf development units. The core challenge is syncing sensory feedback with high-torque hardware output to minimize tracking delay.</p>
+                    <p><strong>Deployment Stack:</strong> We utilize the <span class="inline-code">Raspberry Pi Pico series</span> or an <span class="inline-code">ESP32</span> configuration running a custom real-time loop layer to process muscle contraction data.</p>
                     <p>The standard active control structure registers input arrays through standard surface or muscle-implantable sensors:</p>
                     <pre>
 # Example real-time motor assist sequence
@@ -331,7 +331,7 @@ from machine import Pin, ADC, PWM
 
 muscle_sensor = ADC(Pin(26))
 motor = PWM(Pin(15))
-motor.freq(20000) # Maintain supersonic switching to mitigate audible motor hum
+motor.freq(20000) # Maintain switching to mitigate audible motor hum
 
 while True:
     load_factor = muscle_sensor.read_u16()
@@ -356,11 +356,11 @@ while True:
                     <p>Standard printing profiles fail immediately under active load stress. The Structural Forge focuses completely on load-bearing components engineered for field durability during climbing and trail courses.</p>
                     <p><strong>Slicing & Filament Guidelines:</strong></p>
                     <ul>
-                        <li><strong>Base Material Choice:</strong> Carbon Fiber-infused Nylon <code>PA-CF</code> or heavy duty <code>PETG</code>. Never deploy components utilizing standard PLA or cosmetic polymers.</li>
-                        <li><strong>Infill Architecture:</strong> Maintain a minimum of 65% Gyroid infill density. Grid and linear infills create systemic shear vulnerabilities under mechanical torsion.</li>
-                        <li><strong>Wall Parameters:</strong> Minimum of 5 structural perimeters/walls to ensure torque distribution across the outer faces of the structural hinges.</li>
+                        <li><strong>Base Material Choice:</strong> Carbon Fiber-infused Epoxy substrate <code>PA-CF</code> or heavy duty <code>PETG</code>. Never deploy components utilizing standard PLA or cosmetic polymers.</li>
+                        <li><strong>Infill Architecture:</strong> 65% infill density. Grid and linear infills create systemic shear vulnerabilities under mechanical torsion.</li>
+                        <li><strong>Wall Parameters:</strong> Alloy walls to ensure torque distribution across the outer faces of the structure.</li>
                     </ul>
-                    <p>Parametric files can be found in the asset directory to adjust hinges according to specific femur lengths and structural offsets.</p>
+                    <p>Files can be found in the asset directory.</p>
                     <span class="tech-tags">Target Disciplines: 3D Printing Groups, CAD Modelers, Stress Analysts</span>
                 </div>
             </div>
@@ -377,18 +377,18 @@ while True:
                     <p>External harnesses suffer from friction loss, skin compression, and soft tissue shift. True systems performance requires moving past external straps and routing hardware paths beneath the envelope of the skin.</p>
                     <p><strong>System Interfaces Under Documentation:</strong></p>
                     <ol>
-                        <li><strong>Subdermal Sensor Integration:</strong> Injecting grain-of-rice-sized ceramic wireless <code>IMES</code> (Implantable Myoelectric Sensors) directly into active muscle tissue beds to read neurological intent with absolute parity.</li>
-                        <li><strong>Osseointegrated Anchoring Arrays:</strong> Utilizing direct titanium skeletal adapters passing through the skin barrier to couple carbon-fiber exoskeleton struts directly to bone. This cuts out fabric friction entirely.</li>
+                        <li><strong>Subdermal Sensor Integration:</strong> Injecting of ceramic harness <code>IMES</code> (Implantable Myoelectric Sensors) TBD.</li>
+                        <li><strong>Anchoring Arrays:</strong> Utilizing direct skeletal adapters passing through the skin barrier to couple carbon-fiber exoskeleton struts directly to bone.</li>
                     </ol>
-                    <p>We are currently establishing directory logs for safe, body-mod friendly practitioners, and mapping regulatory limitations surrounding non-medical modifications.</p>
-                    <span class="tech-tags">Target Disciplines: Grinder Arrays, Bio-Hackers, Body Modification Technicians</span>
+                    <p>Body-mod friendly practitioners, and regulatory limitations surrounding non-medical modifications.</p>
+                    <span class="tech-tags">Target Disciplines: Bio-Hackers, Body Modification Technicians</span>
                 </div>
             </div>
 
         </div> <div class="join-box">
-            <h3>Claim Your Evolution</h3>
+            <h3>Your Evolution</h3>
             <p>
-                The transition from code to flesh requires coordination. We will transmit hardware repositories, firmware loop revisions, and secure development options. 
+                The transition from code to flesh requires coordination. We need to share hardware repositories, software, firmware revisions, and secure development options. 
                 <br><strong>Stop building machines. Become one.</strong>  
                 Let's start by building a community: https://www.reddit.com/r/NeoBody/  
             </p>
