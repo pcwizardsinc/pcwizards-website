@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NeoBody Framework | Open-Source Cyborg Movement</title>
+    <title>NeoBody Framework | Beyond Human Baseline</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
@@ -12,7 +12,7 @@
 
     <style>
         /* ==========================================================================
-           NEOBODY CYBORG FRAMEWORK ACCORDION & CORE STYLING
+           NEOBODY CYBORG FRAMEWORK ACCORDION & TRANSCENDENCE STYLING
            ========================================================================== */
         body {
             background-color: #f3f4f6;
@@ -20,7 +20,6 @@
             padding: 0;
         }
 
-        /* Navbar Styling matching your template pattern */
         .pcw-navbar {
             background-color: #212121;
             padding: 10px 20px;
@@ -43,7 +42,6 @@
             display: inline-block;
         }
 
-        /* Container & Intro Block matching your style guide */
         .kb-container {
             max-width: 1000px;
             margin: 40px auto;
@@ -51,28 +49,40 @@
             font-family: 'Roboto', sans-serif;
         }
 
+        /* Redesigned Call to Transcendence Header Box */
         .kb-intro {
             background-color: #ffffff;
-            padding: 25px;
+            padding: 35px;
             border-radius: 6px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.06);
             margin-bottom: 30px;
-            border-left: 5px solid #0056b3;
+            border-left: 6px solid #0056b3;
         }
 
         .kb-intro h2 {
             font-family: 'Oswald', sans-serif;
             margin-top: 0;
-            color: #212121;
-            font-size: 2rem;
+            color: #111827;
+            font-size: 2.2rem;
             text-transform: uppercase;
             letter-spacing: 0.5px;
+            line-height: 1.1;
         }
 
         .kb-intro p {
             line-height: 1.6;
-            color: #4b5563;
-            font-size: 1.05rem;
+            color: #374151;
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+        }
+
+        .kb-intro p.highlight-plea {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #0056b3;
+            border-left: 3px solid #dcdcdc;
+            padding-left: 15px;
+            margin: 20px 0;
         }
 
         /* The Accordion Component Wrapper */
@@ -98,7 +108,7 @@
         }
 
         .accordion-header:hover {
-            background-color: #004085; /* Darker blue on hover */
+            background-color: #004085;
         }
 
         .accordion-title-block {
@@ -121,7 +131,6 @@
             font-weight: normal;
         }
 
-        /* Dynamic Expand Indicator Icon */
         .accordion-icon {
             font-size: 1.2rem;
             transition: transform 0.2s ease;
@@ -137,10 +146,9 @@
             transition: max-height 0.3s ease-out, padding 0.3s ease-out;
         }
 
-        /* Active Toggle State controlled via JS */
         .accordion-item.active .accordion-content {
             padding: 25px;
-            max-height: 2500px; /* Expanded capacity for code repositories */
+            max-height: 2500px;
             border-top: 1px solid #e5e7eb;
         }
 
@@ -148,7 +156,6 @@
             transform: rotate(180deg);
         }
 
-        /* Text formatting within the expanded area */
         .accordion-content p {
             margin-top: 0;
             margin-bottom: 15px;
@@ -167,7 +174,6 @@
             line-height: 1.5;
         }
 
-        /* Custom styling for standard callout lists inside accordions */
         .tech-tags {
             font-family: 'Oswald', sans-serif;
             font-size: 0.9rem;
@@ -178,7 +184,6 @@
             display: block;
         }
 
-        /* Monospace Code Styling for Terminal / Microcontroller Configurations */
         code, .inline-code {
             font-family: 'Courier New', Courier, monospace;
             background-color: #f4f4f6;
@@ -197,29 +202,43 @@
             margin: 15px 0;
             overflow-x: auto;
             color: #111827;
-            border-left: 4px solid #0056b3; /* Blue left bar matching theme accents */
+            border-left: 4px solid #0056b3;
             border-radius: 0 4px 4px 0;
             font-size: 0.95rem;
             line-height: 1.4;
         }
 
-        /* Action/Sign-up Module */
+        /* Redesigned High-Impact Sign-up Module */
         .join-box {
-            background-color: #ffffff;
-            border: 1px solid #dcdcdc;
+            background-color: #111827;
+            border: 2px solid #0056b3;
             border-radius: 6px;
-            padding: 30px;
+            padding: 40px;
             margin-top: 40px;
             text-align: center;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            box-shadow: 0 10px 25px rgba(0, 86, 179, 0.15);
+            color: #ffffff;
         }
 
         .join-box h3 {
             font-family: 'Oswald', sans-serif;
             margin-top: 0;
             text-transform: uppercase;
-            font-size: 1.6rem;
-            color: #212121;
+            font-size: 2rem;
+            color: #ffffff;
+            letter-spacing: 1px;
+        }
+
+        .join-box p {
+            color: #9ca3af;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            max-width: 700px;
+            margin: 0 auto 25px auto;
+        }
+
+        .join-box p strong {
+            color: #ffffff;
         }
 
         .join-form {
@@ -231,8 +250,10 @@
 
         .join-input {
             flex: 1;
-            padding: 12px 15px;
-            border: 1px solid #dcdcdc;
+            padding: 14px 15px;
+            border: 1px solid #4b5563;
+            background-color: #1f2937;
+            color: #ffffff;
             border-radius: 4px;
             font-family: 'Roboto', sans-serif;
             font-size: 1rem;
@@ -240,24 +261,26 @@
 
         .join-input:focus {
             outline: none;
-            border-color: #0056b3;
+            border-color: #38bdf8;
         }
 
         .join-btn {
             background-color: #0056b3;
             color: #ffffff;
             border: none;
-            padding: 0 25px;
+            padding: 0 30px;
             font-family: 'Oswald', sans-serif;
             text-transform: uppercase;
-            font-size: 1.1rem;
+            font-size: 1.2rem;
+            letter-spacing: 0.5px;
             border-radius: 4px;
             cursor: pointer;
-            transition: background-color 0.2s ease;
+            transition: all 0.2s ease;
         }
 
         .join-btn:hover {
             background-color: #004085;
+            box-shadow: 0 0 15px rgba(0, 86, 179, 0.4);
         }
     </style>
 </head>
@@ -276,9 +299,14 @@
     <main class="kb-container">
         
         <div class="kb-intro">
-            <h2>NeoBody // The Open Cyborg Framework</h2>
-            <p>Welcome to the blueprint directory. Evolution is no longer a passive biological drag—it is an active open-source pipeline. We are integrating off-the-shelf single-board computers, additive 3D manufacturing, and distributed hardware arrays to establish total, non-negotiable morphological freedom.</p>
-            <p>This space hosts functional documentation, base code implementations, and layout instructions for deploying physical augmentation assemblies.</p>
+            <h2>The Flesh is a Prototype // Upgrade Your Chassis</h2>
+            <p>Every tool humanity has ever built has been a compromise—a temporary crutch held in a fragile hand. We design 3D-printed carbon arrays to conquer mountains and compile microcontrollers to bypass fatigue, yet we continue to strap this brilliant engineering to a soft, decaying envelope of skin and fat. We allow clothing, straps, and friction to limit the processing speed of our intent.</p>
+            
+            <p class="highlight-plea">
+                We are looking for more than spectators, code-reviewers, and printers. We are calling for the pioneers willing to cross the threshold. We need operators ready to undergo elective, biocompatible modification—to anchor hardware straight to bone and embed circuits beneath the skin.
+            </p>
+
+            <p>Whether born man or woman, your birth specs are merely a baseline. True evolution doesn't look like millions of years of passive biological drift; it looks like a clean surgical environment, an open-source schematic, and the deliberate courage to transcend what you were born to be capable of. Do not just build the architecture. <strong>Become the framework.</strong></p>
         </div>
 
         <div class="accordion-group">
@@ -357,12 +385,15 @@ while True:
             </div>
 
         </div> <div class="join-box">
-            <h3>Initialize Connection Node</h3>
-            <p>Sign up to receive automatic updates on source repositories, hardware assembly coordinates, and structural blueprint drops.</p>
-            <form class="join-form" onsubmit="alert('Node connection registered.'); return false;">
+            <h3>Claim Your Evolution</h3>
+            <p>
+                The transition from code to flesh requires coordination. We will transmit hardware repositories, firmware loop revisions, and secure development options. 
+                <br><strong>Stop building machines. Become one.</strong>
+            </p>
+            <!-- <form class="join-form" onsubmit="alert('Node connection registered. Baseline cataloged.'); return false;">
                 <input type="email" class="join-input" placeholder="operator@domain.com" required>
-                <button type="submit" class="join-btn">Connect</button>
-            </form>
+                <button type="submit" class="join-btn">Connect Node</button>
+            </form> -->
         </div>
 
     </main>
@@ -372,10 +403,8 @@ while True:
             header.addEventListener('click', () => {
                 const item = header.parentElement;
                 
-                // Toggle current accordion state
                 item.classList.toggle('active');
                 
-                // Smooth transition management
                 const content = item.querySelector('.accordion-content');
                 if (item.classList.contains('active')) {
                     content.style.maxHeight = content.scrollHeight + "px";
