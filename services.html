@@ -318,196 +318,272 @@ Step 2: Paste the Layout Configuration<BR>
 Copy the entire block below and paste it into the file. This script sets up the specific categories (System Info, Desktop, Hardware, Physical Devices, Drive Usage, and Misc.) along with the exact progress bars and ANSI matching color codes: <BR>            
 <BR><BR>
 Code snippet (Everything after this)  <BR>          
-{<BR>   
-  "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",<BR>   
-  "logo": {<BR>   
-    "padding": {<BR>   
-      "top": 2,<BR>   
-      "left": 2,<BR>   
-      "right": 2<BR>   
-    }<BR>   
-  },<BR>   
-  "display": {<BR>   
-    "separator": ": ",<BR>   
-    "key": {<BR>   
-      "width": 22<BR>   
-    },<BR>   
-    "percent": {<BR>   
-      "type": 3<BR>   
-    }<BR>   
-  },<BR>   
-  "modules": [<BR>   
-    // === SYSTEM INFO ===<BR>   
-    {<BR>   
-      "type": "custom",<BR>   
-      "format": "{#35}┌─────────────── System Info ───────────────────────────────────────"<BR>   
-    },<BR>   
-    {<BR>   
-      "type": "os",<BR>   
-      "key": "│ OS",<BR>   
-      "keyColor": "35"<BR>   
-    },<BR>   
-    {<BR>   
-      "type": "title",<BR>   
-      "key": "│ USER/HOST",<BR>   
-      "keyColor": "35",<BR>   
-      "format": "{user-name}@{host-name}"<BR>   
-    },<BR>   
-    {<BR>   
-      "type": "kernel",<BR>   
-      "key": "│ KERNEL",<BR>   
-      "keyColor": "35"<BR>   
-    },<BR>   
-    {<BR>   
-      "type": "packages",<BR>   
-      "key": "│ PACKAGES",<BR>   
-      "keyColor": "35"<BR>   
-    },<BR>   
-    {<BR>   
-      "type": "terminal",<BR>   
-      "key": "│ TERMINAL",<BR>   
-      "keyColor": "35"<BR>   
-    },<BR>   
-    {<BR>   
-      "type": "shell",<BR>   
-      "key": "│ SHELL",<BR>   
-      "keyColor": "35"<BR>   
-    },<BR>   
 <BR>   
-    // === DESKTOP ===<BR>   
-    {<BR>   
-      "type": "custom",<BR>   
-      "format": "{#34}├─────────────── Desktop ───────────────────────────────────────────"<BR>   
-    },<BR>   
-    {<BR>   
-      "type": "de",<BR>   
-      "key": "│ DE",<BR>   
-      "keyColor": "34"<BR>   
-    },<BR>   
-    {<BR>   
-      "type": "lm",<BR>   
-      "key": "│ DISPLAY MANAGER",<BR>   
-      "keyColor": "34"<BR>   
-    },<BR>   
-    {<BR>   
-      "type": "wm",<BR>   
-      "key": "│ WINDOW MANAGER",<BR>   
-      "keyColor": "34"<BR>   
-    },<BR>   
-    {<BR>   
-      "type": "theme",<BR>   
-      "key": "│ THEME",<BR>   
-      "keyColor": "34"<BR>   
-    },<BR>   
-    {<BR>   
-      "type": "icons",<BR>   
-      "key": "│ ICONS",<BR>   
-      "keyColor": "34"<BR>   
-    },<BR>   
-    {<BR>   
-      "type": "font",<BR>   
-      "key": "│ SYSTEM FONT",<BR>   
-      "keyColor": "34"<BR>   
-    },<BR>   
-    {<BR>   
-      "type": "cursor",<BR>   
-      "key": "│ SYSTEM CURSOR",<BR>   
-      "keyColor": "34"<BR>   
-    },<BR>   
-<BR>   
-    // === HARDWARE ===<BR>   
-    {<BR>   
-      "type": "custom",<BR>   
-      "format": "{#32}├─────────────── Hardware ──────────────────────────────────────────"<BR>   
-    },<BR>   
-    {<BR>   
-      "type": "cpu",<BR>   
-      "key": "│ CPU",<BR>   
-      "keyColor": "32"<BR>   
-    },<BR>   
-    {<BR>   
-      "type": "gpu",<BR>   
-      "key": "│ GPU",<BR>   
-      "keyColor": "32"<BR>   
-    },<BR>   
-    {<BR>   
-      "type": "display",<BR>   
-      "key": "│ DISPLAY",<BR>   
-      "keyColor": "32"<BR>   
-    },<BR>   
-    {<BR>   
-      "type": "sound",<BR>   
-      "key": "│ SOUND",<BR>   
-      "keyColor": "32"<BR>   
-    },<BR>   
-    {<BR>   
-      "type": "camera",<BR>   
-      "key": "│ WEBCAM",<BR>   
-      "keyColor": "32"<BR>   
-    },<BR>   
-    {<BR>   
-      "type": "swap",<BR>   
-      "key": "│ SWAP",<BR>   
-      "keyColor": "32"<BR>   
-    },<BR>   
-    {<BR>   
-      "type": "memory",<BR>   
-      "key": "│ MEMORY",<BR>   
-      "keyColor": "32"<BR>   
-    },<BR>   
-<BR>   
-    // === PHYSICAL DEVICES ===<BR>   
-    {<BR>   
-      "type": "custom",<BR>   
-      "format": "{#33}├─────────────── Physical Devices ──────────────────────────────────"<BR>   
-    },<BR>   
-    {<BR>   
-      "type": "physicaldisk",<BR>   
-      "key": "│ Device",<BR>   
-      "keyColor": "33"<BR>   
-    },<BR>   
-<BR>   
-    // === DRIVE USAGE ===<BR>   
-    {<BR>   
-      "type": "custom",<BR>   
-      "format": "{#93}├─────────────── Drive Usage ───────────────────────────────────────"<BR>   
-    },<BR>   
-    {<BR>   
-      "type": "disk",<BR>   
-      "key": "│ SSD/HDD Drive",<BR>   
-      "keyColor": "93"<BR>   
-    },<BR>   
-<BR>   
-    // === MISC ===<BR>   
-    {<BR>   
-      "type": "custom",<BR>   
-      "format": "{#36}├─────────────── Misc. ─────────────────────────────────────────────"<BR>   
-    },<BR>   
-    {<BR>   
-      "type": "uptime",<BR>   
-      "key": "│ Uptime",<BR>   
-      "keyColor": "36"<BR>   
-    },<BR>   
-    {<BR>   
-      "type": "command",<BR>   
-      "key": "│ Login",<BR>   
-      "keyColor": "36",<BR>   
-      "text": "echo \"$USER - login time $(who | awk '{print $3, $4}' | head -n1)\""<BR>   
-    },<BR>   
-    {<BR>   
-      "type": "localip",<BR>   
-      "key": "│ LAN/WAN (wlp3s0)",<BR>   
-      "keyColor": "36",<BR>   
-      "showIpv4": true,<BR>   
-      "showIpv6": false,<BR>   
-      "name": "wlp3s0"<BR>   
-    },<BR>   
-    {<BR>   
-      "type": "custom",<BR>   
-      "format": "{#36}└───────────────────────────────────────────────────────────────────"<BR>   
-    }<BR>   
-  ]<BR>   
-}         <BR>      
+ <div class="code-container">
+  <div class="code-header">
+    <span>config.jsonc</span>
+    <button class="copy-btn" onclick="copyFastfetchConfig(this)">Copy Code</button>
+  </div>
+  <pre><code id="fastfetch-code">{
+  "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
+  "logo": {
+    "padding": {
+      "top": 2,
+      "left": 2,
+      "right": 2
+    }
+  },
+  "display": {
+    "separator": ": ",
+    "key": {
+      "width": 22
+    },
+    "percent": {
+      "type": 3
+    }
+  },
+  "modules": [
+    // === SYSTEM INFO ===
+    {
+      "type": "custom",
+      "format": "{#35}┌─────────────── System Info ───────────────────────────────────────"
+    },
+    {
+      "type": "os",
+      "key": "│ OS",
+      "keyColor": "35"
+    },
+    {
+      "type": "title",
+      "key": "│ USER/HOST",
+      "keyColor": "35",
+      "format": "{user-name}@{host-name}"
+    },
+    {
+      "type": "kernel",
+      "key": "│ KERNEL",
+      "keyColor": "35"
+    },
+    {
+      "type": "packages",
+      "key": "│ PACKAGES",
+      "keyColor": "35"
+    },
+    {
+      "type": "terminal",
+      "key": "│ TERMINAL",
+      "keyColor": "35"
+    },
+    {
+      "type": "shell",
+      "key": "│ SHELL",
+      "keyColor": "35"
+    },
+
+    // === DESKTOP ===
+    {
+      "type": "custom",
+      "format": "{#34}├─────────────── Desktop ───────────────────────────────────────────"
+    },
+    {
+      "type": "de",
+      "key": "│ DE",
+      "keyColor": "34"
+    },
+    {
+      "type": "lm",
+      "key": "│ DISPLAY MANAGER",
+      "keyColor": "34"
+    },
+    {
+      "type": "wm",
+      "key": "│ WINDOW MANAGER",
+      "keyColor": "34"
+    },
+    {
+      "type": "theme",
+      "key": "│ THEME",
+      "keyColor": "34"
+    },
+    {
+      "type": "icons",
+      "key": "│ ICONS",
+      "keyColor": "34"
+    },
+    {
+      "type": "font",
+      "key": "│ SYSTEM FONT",
+      "keyColor": "34"
+    },
+    {
+      "type": "cursor",
+      "key": "│ SYSTEM CURSOR",
+      "keyColor": "34"
+    },
+
+    // === HARDWARE ===
+    {
+      "type": "custom",
+      "format": "{#32}├─────────────── Hardware ──────────────────────────────────────────"
+    },
+    {
+      "type": "cpu",
+      "key": "│ CPU",
+      "keyColor": "32"
+    },
+    {
+      "type": "gpu",
+      "key": "│ GPU",
+      "keyColor": "32"
+    },
+    {
+      "type": "display",
+      "key": "│ DISPLAY",
+      "keyColor": "32"
+    },
+    {
+      "type": "sound",
+      "key": "│ SOUND",
+      "keyColor": "32"
+    },
+    {
+      "type": "camera",
+      "key": "│ WEBCAM",
+      "keyColor": "32"
+    },
+    {
+      "type": "swap",
+      "key": "│ SWAP",
+      "keyColor": "32"
+    },
+    {
+      "type": "memory",
+      "key": "│ MEMORY",
+      "keyColor": "32"
+    },
+
+    // === PHYSICAL DEVICES ===
+    {
+      "type": "custom",
+      "format": "{#33}├─────────────── Physical Devices ──────────────────────────────────"
+    },
+    {
+      "type": "physicaldisk",
+      "key": "│ Device",
+      "keyColor": "33"
+    },
+
+    // === DRIVE USAGE ===
+    {
+      "type": "custom",
+      "format": "{#93}├─────────────── Drive Usage ───────────────────────────────────────"
+    },
+    {
+      "type": "disk",
+      "key": "│ SSD/HDD Drive",
+      "keyColor": "93"
+    },
+
+    // === MISC ===
+    {
+      "type": "custom",
+      "format": "{#36}├─────────────── Misc. ─────────────────────────────────────────────"
+    },
+    {
+      "type": "uptime",
+      "key": "│ Uptime",
+      "keyColor": "36"
+    },
+    {
+      "type": "command",
+      "key": "│ Login",
+      "keyColor": "36",
+      "text": "echo \"$USER - login time $(who | awk '{print $3, $4}' | head -n1)\""
+    },
+    {
+      "type": "localip",
+      "key": "│ LAN/WAN (wlp3s0)",
+      "keyColor": "36",
+      "showIpv4": true,
+      "showIpv6": false,
+      "name": "wlp3s0"
+    },
+    {
+      "type": "custom",
+      "format": "{#36}└───────────────────────────────────────────────────────────────────"
+    }
+  ]
+}</code></pre>
+</div>
+
+<style>
+  .code-container {
+    background-color: #1e1e1e;
+    border: 1px solid #333;
+    border-radius: 6px;
+    font-family: 'Courier New', Courier, monospace;
+    margin: 20px 0;
+    overflow: hidden;
+    max-width: 100%;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  }
+  .code-header {
+    background-color: #2d2d2d;
+    padding: 10px 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #333;
+    color: #a6acb9;
+    font-size: 14px;
+    font-weight: bold;
+  }
+  .code-container pre {
+    margin: 0;
+    padding: 15px;
+    overflow-x: auto;
+    white-space: pre;
+  }
+  .code-container code {
+    color: #dcdcdc;
+    font-size: 13px;
+    line-height: 1.5;
+    background: none;
+    padding: 0;
+  }
+  .copy-btn {
+    background-color: #4a5568;
+    color: #ffffff;
+    border: none;
+    padding: 5px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12px;
+    transition: background-color 0.2s ease;
+  }
+  .copy-btn:hover {
+    background-color: #718096;
+  }
+  .copy-btn.copied {
+    background-color: #38a169;
+  }
+</style>
+
+<script>
+  function copyFastfetchConfig(button) {
+    const codeText = document.getElementById('fastfetch-code').textContent;
+    navigator.clipboard.writeText(codeText).then(() => {
+      button.textContent = 'Copied!';
+      button.classList.add('copied');
+      setTimeout(() => {
+        button.textContent = 'Copy Code';
+        button.classList.remove('copied');
+      }, 2000);
+    }).catch(err => {
+      console.error('Failed to copy text: ', err);
+    });
+  }
+</script>    
 <BR>            
 Then save it (Ctrl+O, Enter, Ctrl+X)<BR>   
                 </div>
