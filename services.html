@@ -224,6 +224,203 @@ ccccccccccccccccccccccccccccc:'.          Terminal: Ptyxis 50.1<BR>
             </div>
 
 
+<div class="accordion-item">
+                <div class="accordion-header">
+                    <div class="accordion-title-block">
+                        <h3 class="accordion-headline">Fedora 44 Post Install Guide by devangshekhawat</h3>
+                        <span class="accordion-date">Post date: May 28, 2026</span>
+                    </div>
+                    <span class="accordion-icon">▼</span>
+                </div>
+                <div class="accordion-content">
+                    <p>Things to do after installing Fedora 44 - RPM Fusion & Terra</p>
+                    <p>Fedora has disabled the repositories for a lot of free and non-free .rpm packages by default. Follow this if you want to use non-free software like Steam, Discord and some multimedia codecs etc. As a general rule of thumb it is advised to do this to get access to many mainstream useful programs.</p>
+                    <p><strong>Guide: </strong></p>
+                    <pre>edora 44 Post Install Guide <BR>
+Things to do after installing Fedora 44<BR>
+<BR>
+RPM Fusion & Terra<BR>
+Source:https://github.com/devangshekhawat/Fedora-44-Post-Install-Guide?fbclid=IwY2xjawSF2ohleHRuA2FlbQIxMABicmlkETFIUUhuTGpnRFFCdjNZMzVxc3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIwMDg5MgABHu_w30Hmh7uaRaOPgkBGOl6z1Bi3Sd_g2AT-KnktYHNs7F8qGmqPCW4RcubX_aem_Az513H3NcBx6h9GLFHr0vQ <BR><BR>
+Scripted: https://pastebin.com/8zXTCAXB?fbclid=IwY2xjawSF2opleHRuA2FlbQIxMABicmlkETFIUUhuTGpnRFFCdjNZMzVxc3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIwMDg5MgABHgrWK_i-_vNcF8XmE22Z5wZGLOlM1WL_XKvxkn1rBblwUUgMrFx17R94eshd_aem_QonNSDj34yg--huOD4uHEQ <BR><BR>
+Fedora has disabled the repositories for a lot of free and non-free .rpm packages by default. Follow this if you want to use non-free software like Steam, Discord and some multimedia codecs etc. As a general rule of thumb it is advised to do this to get access to many mainstream useful programs.
+Enable third party repositories by pasting the following into the terminal:<BR><BR>
+sudo dnf install https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm<BR><BR>
+For Terra:<BR>
+sudo dnf install --nogpgcheck --repofrompath 'terra,https://repos.fyralabs.com/terra$releasever' terra-release<BR><BR>
+also while you're at it, install app-stream metadata by:<BR>
+sudo dnf group upgrade core
+sudo dnf4 group install core<BR><BR>
+Update<BR>
+Go into the software center and click on update. Alternatively, you can do:<BR>
+sudo dnf -y update
+Reboot<BR><BR>
+Firmware<BR>
+If your system supports firmware update delivery through lvfs, update your device firmware by:<BR>
+fwupdmgr refresh --force<BR>
+fwupdmgr get-devices # Lists devices with available updates.<BR>
+fwupdmgr get-updates # Fetches list of available updates.<BR><BR>
+fwupdmgr update<BR>
+Flatpak<BR>
+Fedora doesn't include all non-free flatpaks by default. In-case you forgot to check the "Enable Third Party Repositories" option on initial boot, the command below enables access to all the flathub flatpaks.<BR>
+flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo<BR><BR>
+AppImage<BR>
+For Appimage support install fuse:<BR>
+sudo dnf install fuse-libs<BR>
+You can also install an AppImage manager like Gearlever for neater management. To do so, run the following command:<BR>
+flatpak install it.mijorus.gearlever<BR><BR>
+NVIDIA Drivers<BR>
+sudo dnf update #To make sure you're on the latest kernel and then reboot.<BR>
+Check if you have Secure Boot enabled with: mokutil --sb-state. If enabled, follow number 1 if not then number 2<BR>
+(A) Secure Boot Enabled:<BR>
+(B) Secure Boot Disabled<BR>
+Note (optional): If your disk is encrypted follow the Encrypted Disk section of this guide .<BR>
+Battery Life (Deprecated)<BR>
+Follow this if you have a Laptop and are facing sub optimal battery backup.<BR>
+power-profiles-daemon which come pre-configured on fedora works well on a great majority of systems but still in case you're facing sub-optimal battery backup you try installing tlp by:<BR>
+sudo dnf install tlp tlp-rdw<BR><BR>
+and mask power-profiles-daemon by:<BR>
+sudo systemctl mask power-profiles-daemon<BR>
+Also install powertop by:<BR>
+sudo dnf install powertop<BR>
+sudo powertop --auto-tune<BR>
+Edit: Fedora comes preinstalled with Tuned which works well on its own now and all the aforementioned changes are now unnecessary. Just follow HW video acceleration for better battery backup.<BR><BR>
+Media Codecs<BR>
+Install these to get proper multimedia playback.<BR>
+sudo dnf4 group install multimedia<BR>
+sudo dnf swap 'ffmpeg-free' 'ffmpeg' --allowerasing # Switch to full FFMPEG.<BR>
+sudo dnf update @multimedia --setopt="install_weak_deps=False" --exclude=PackageKit-gstreamer-plugin # Installs gstreamer components. Required if you use Gnome Videos and other dependent applications.<BR>
+sudo dnf group install -y sound-and-video # Installs useful Sound and Video complementary packages.<BR>
+H/W Video Acceleration<BR>
+Helps decrease load on the CPU when watching videos online by alloting the rendering to the dGPU/iGPU. Quite helpful in increasing battery backup on laptops.<BR>
+H/W Video Decoding with VA-API<BR>
+sudo dnf install ffmpeg-libs libva libva-utils<BR>
+Intel<BR>
+AMD<BR>
+OpenH264 for Firefox<BR>
+sudo dnf install -y openh264 gstreamer1-plugin-openh264 mozilla-openh264<BR>
+sudo dnf config-manager setopt fedora-cisco-openh264.enabled=1<BR>
+After this enable the OpenH264 Plugin in Firefox's settings.<BR>
+Set Hostname<BR>
+hostnamectl set-hostname YOUR_HOSTNAME<BR>
+Default Firefox start page<BR>
+The tweak below will make the start page the default firefox start page instead of this, (Note: If you're using Fedora Silverblue and not stock Fedora then click here)<BR>
+sudo rm -f /usr/lib64/firefox/browser/defaults/preferences/firefox-redhat-default-prefs.js<BR>
+Custom DNS Servers<BR>
+For people that want to setup custom DNS servers for better privacy<BR>
+sudo mkdir -p '/etc/systemd/resolved.conf.d' && sudo -e '/etc/systemd/resolved.conf.d/99-dns-over-tls.conf'<BR>
+<BR>
+[Resolve]<BR>
+DNS=1.1.1.2#security.cloudflare-dns.com 1.0.0.2#security.cloudflare-dns.com 2606:4700:4700::1112#security.cloudflare-dns.com<BR> 2606:4700:4700::1002#security.cloudflare-dns.com<BR>
+DNSOverTLS=yes<BR>
+Domains=~.<BR>
+Set UTC Time<BR>
+Used to counter time inconsistencies in dual boot systems<BR>
+sudo timedatectl set-local-rtc '0'<BR>
+Optimizations<BR>
+The tips below can allow you to squeeze out a little bit more performance from your system.<BR>
+Disable NetworkManager-wait-online.service<BR>
+Disabling it can decrease the boot time by at least ~15s-20s:<BR>
+sudo systemctl disable NetworkManager-wait-online.service<BR>
+Disable Gnome Software from Startup Apps<BR>
+Gnome software autostarts on boot for some reason, even though it is not required on every boot unless you want it to do updates in the background, this takes at least 100MB of RAM upto 900MB (as reported anecdotically). You can stop it from autostarting by:<BR>
+sudo rm /etc/xdg/autostart/org.gnome.Software.desktop<BR>
+Gnome Extensions [Optional]<BR>
+Suggestions for good utilities to extend the capabilities of your system<BR>
+Don't install these if you are using a different spin of Fedora.<BR>
+Pop Shell - run sudo dnf install -y gnome-shell-extension-pop-shell xprop to install it.<BR>
+GSconnect - run sudo dnf install nautilus-python for full support. then sudo firewall-cmd --permanent --zone=public --add-service=kdeconnect
+Gesture Improvements<BR>
+Quick Settings Tweaker<BR>
+User Themes<BR>
+Compiz Windows Effect<BR>
+Just Perfection<BR>
+Rounded Windows Corners<BR>
+Dash to Dock<BR>
+Quick Settings Tweaker<BR>
+Blur My Shell<BR>
+Bluetooth Quick Connect<BR>
+App Indicator Support<BR>
+Clipboard Indicator<BR>
+Legacy (GTK3) Theme Scheme Auto Switcher<BR>
+Caffeine<BR>
+Vitals<BR>
+Wireless HID<BR>
+Logo Menu<BR>
+Space Bar<BR>
+Apps [Optional]<BR>
+Packages for Rar and 7z compressed files support: sudo dnf install -y unzip p7zip p7zip-plugins unrar<BR>
+These are Some Packages that I use and would recommend:<BR>
+7zip<BR>
+Amberol<BR>
+Blanket<BR>
+Builder<BR>
+Brave <BR>
+Blender<BR>
+Discord<BR>
+Drawing<BR>
+Deja Dup Backups<BR>
+Endeavour <BR>
+Easyeffects<BR>
+Extension Manager<BR>
+Flatseal<BR>
+Foliate<BR>
+Footage<BR>
+GIMP<BR>
+Gnome Tweaks<BR>
+Gradience<BR>
+Handbrake<BR>
+Iotas<BR>
+Joplin<BR>
+Khronos<BR>
+Krita<BR>
+Logseq<BR>
+lm_sensors<BR>
+Onlyoffice<BR>
+Overskride<BR>
+Parabolic<BR>
+Pcloud<BR>
+PDF Arranger<BR>
+Planify<BR>
+Pika backup <BR>
+Snapshot<BR>
+Solanum<BR>
+Sound Recorder<BR>
+Tangram<BR>
+Transmission<BR>
+Ulauncher<BR>
+Upscaler<BR>
+Video Trimmer<BR>
+VS Codium<BR>
+yt-dlp<BR>
+Theming [Optional]<BR>
+GTK Themes<BR>
+Don't install these if you are using a different spin of Fedora.<BR>
+https://github.com/lassekongo83/adw-gtk3<BR>
+https://github.com/vinceliuice/Colloid-gtk-theme<BR>
+https://github.com/EliverLara/Nordic<BR>
+https://github.com/vinceliuice/Orchis-theme<BR>
+https://github.com/vinceliuice/Graphite-gtk-theme<BR>
+Use themes in Flatpaks<BR>
+sudo flatpak override --filesystem=$HOME/.themes<BR>
+sudo flatpak override --env=GTK_THEME=my-theme<BR>
+Icon Packs<BR>
+https://github.com/vinceliuice/Tela-icon-theme<BR>
+https://github.com/vinceliuice/Colloid-gtk-theme/tree/main/icon-theme<BR>
+Wallpaper<BR>
+https://github.com/manishprivet/dynamic-gnome-wallpapers<BR>
+Firefox Theme<BR>
+Install Firefox Gnome theme by: curl -s -o- https://raw.githubusercontent.com/rafaelmardojai/firefox-gnome-theme/master/scripts/install-by-curl.sh | bash
+Starship (terminal theme)<BR>
+Configure starship to make your terminal look good (refer https://starship.rs)<BR>
+Grub Theme<BR>
+https://github.com/vinceliuice/grub2-themes<BR>
+                    <BR><BR>
+                    <p><strong> Fedora Customization </strong></p>
+                    <pre>  Follow the instructions </pre>
+                </div>
+            </div>
+
+            
             
 
             <div class="accordion-item">
