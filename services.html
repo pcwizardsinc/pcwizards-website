@@ -773,7 +773,7 @@ net start bits</pre>
                     <span class="accordion-icon">▼</span>
                 </div>
                 <div class="accordion-content">
-                    <p>Astaro Security Linux / Sophos UTM - Enabling IPS - Cuts Available Bandwidth in Half.</p>
+                    <p>Astaro Security Gateway (ASG) Linux / acquired by Sophos (UTM9) - Enabling IPS - Cuts Available Bandwidth in Half.</p>
                     <p><strong>Reason?</strong> It's not system aware! It doesn't have logic in the installation routing to understand how many cores are available to it.</p>
                     <p>You need to manually look at how many cores you are running, then increase the number of "IPS instances" to reflect that number of cores, otherwise your firewall will not only bog down, but it won't show you why!</p>
                     <p>You will need to enable shell access. SSH in using <code>loginuser</code>. Then <code>sudo su</code> to root.</p>
@@ -784,6 +784,7 @@ cc set ips num_instances x
 /var/mdw/scripts/snort restart</pre>
                     <p><em>(Replace "x" with the actual number of CPU cores installed in your UTM environment to distribute processing loads properly.)</em></p>
                 Note: I just retired this firewall tonight.  It ran for nearly 2 decades on a PE 2950.  It was an amazing firewall.  RIP ASG UTM9 <BR>
+                Sophos Sunset it June 2026<BR>
                 </div>
             </div>
 
