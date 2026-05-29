@@ -308,8 +308,30 @@ Clean Exit: It terminates the background sudo keep-alive process, reminds you to
                     <p>FastFetch</p>
                     <p>This layout relies on box-drawing characters (┌, ├, │, └) paired with individual section color keys. Here is exactly how to set it up on your system!<BR>
 <BR><BR>
+<div class="fastfetch-image-container">
+  <img src="/FastFetchLayered.png" alt="Custom Layered Fastfetch Layout" class="fastfetch-img">
+</div>
+
+<style>
+  .fastfetch-image-container {
+    width: 100%;
+    max-width: 800px; /* Limits the size on large screens so it doesn't get blurry */
+    margin: 20px auto;
+    display: flex;
+    justify-content: center;
+  }
+  .fastfetch-img {
+    width: 100%;
+    height: auto;
+    border-radius: 6px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); /* Gives it a subtle shadow to pop off the page */
+    display: block;
+  }
+</style>
+                        <BR>
 Step 1: Open or Create your Configuration File<BR>
 Open your terminal and create (or overwrite) your local Fastfetch configuration file using a text editor like nano:</p><BR>
+                    
 Bash<BR><BR>
 nano ~/.config/fastfetch/config.jsonc<BR>
 <BR><BR><BR><BR>
