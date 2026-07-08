@@ -632,11 +632,11 @@ Copy the entire block below and paste it into the file. This script sets up the 
                     <p>To Resolve this error code, do the following:</p>
                     <p>Open Notepad and type in the following:</p>
                     <pre>net stop wuauserv
-cd %systemroot%\SoftwareDistribution
-ren Download Download.old
-net start wuauserv
-net stop bits
-net start bits</pre>
+                    cd %systemroot%\SoftwareDistribution
+                    ren Download Download.old
+                    net start wuauserv
+                    net stop bits
+                    net start bits</pre>
                     <p><strong>*</strong> Save the file as <code>Repair.bat</code> and place on the Desktop of your 2008 R2 Server.</p>
                     <p>Run the batch file. After running the batch file, you will have to run the Service Pack again. It should go through this time! (Good Luck!)</p>
                 </div>
@@ -658,19 +658,32 @@ net start bits</pre>
 
 
             
-            <div class="accordion-item">
-                <div class="accordion-header">
-                    <div class="accordion-title-block">
-                        <h3 class="accordion-headline"> PiHole Project BlockList</h3>
-                        <span class="accordion-date">Post date: June 21, 2026 2:28:28 PM</span>
-                        </div>
-                    <span class="accordion-icon">▼</span>
-                </div>
-                <div class="accordion-content">
- <p> https://github.com/pcwizardsinc/Firewall </p>
-                    <pre> PiHole Project Blocklist - Domain names </pre>
-                </div>
-            </div>
+    <div class="accordion-item">
+    <div class="accordion-header">
+        <div class="accordion-title-block">
+            <h3 class="accordion-headline">PC Wizards Inc - Law Enforcement & Government Cyber Threat Feed</h3>
+            <span class="accordion-date">Post date: June 21, 2026 2:28:28 PM</span>
+        </div>
+        <span class="accordion-icon">▼</span>
+    </div>
+    <div class="accordion-content">
+        <p><strong>Source Type:</strong> Public Sector Cyber Threat Intelligence (CTI)</p>
+        <p>
+            This blocklist is aggregated directly from official law enforcement and government cybersecurity bulletins. It contains active indicators of compromise (IOCs) observed in real-world campaigns targeting public sector networks. 
+        </p>
+        
+        <blockquote>
+            <strong>What's Included:</strong> Active domains participating in ransomware, phishing, browser hijacking, malicious redirects, and advanced adware campaigns.
+        </blockquote>
+
+        <p><strong>How to use this in Pi-hole / AdGuard Home:</strong></p>
+        <p>Copy the raw URL link below and add it to your network's Adlist / Blocklist management console:</p>
+        
+        <pre>https://raw.githubusercontent.com/pcwizardsinc/Firewall/refs/heads/main/domain_blocklist.txt</pre>
+        
+        <p><em>Note: This feed is stripped of raw IP addresses and formatted strictly as a clean, DNS-compatible domain list to ensure network stability.</em></p>
+    </div>
+    </div>
 
 
             
