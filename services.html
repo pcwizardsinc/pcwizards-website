@@ -189,34 +189,40 @@
 
         <div class="accordion-group">
 
-<div class="video-card" style="margin-bottom: 30px;">
-    <h2>Fedora 43 &amp; 44 WS - No Sound on Intel iMacs</h2>
-    <p style="font-size: 0.9rem; color: #777; margin-top: -10px; margin-bottom: 20px;">Post date: May 28, 2026</p>
 
-    <p><strong>Apple iMac - Sound Issue after installing Fedora Linux - Gnome Desktop</strong></p>
-    <p>When you install Fedora WS, and you click your sound icon... and the slider makes no sound... this is what to do...</p>
-    
-    <h3>Drivers and Commands to Use</h3>
-    <p style="font-size: 0.95rem; color: #555; font-style: italic; margin-bottom: 15px;">Tested on Fedora 43 &amp; 44 WS on iMac 18,3</p>
-
-    <div style="background-color: #212121; color: #fff; padding: 15px 20px; border-radius: 6px; font-family: monospace; font-size: 0.95rem; line-height: 1.6; margin-bottom: 20px; border-left: 5px solid var(--accent-gold);">
-        # Commands to run to get sound working:<br>
-        cd ~/snd_hda_macbookpro<br>
-        sudo ./install.cirrus.driver.sh<br>
-        reboot
+            
+<div class="accordion-item">
+    <div class="accordion-header">
+        <div class="accordion-title-block">
+            <h3 class="accordion-headline">Fedora 43 &amp; 44 WS - No Sound on Intel iMac</h3>
+            <span class="accordion-date">Post date: May 28, 2026</span>
+        </div>
+        <span class="accordion-icon">▼</span>
     </div>
+    <div class="accordion-content">
+        <p><strong>Apple iMac - Sound Issue after installing Fedora Linux - Gnome Desktop</strong></p>
+        <p>When you install Fedora WS, and you click your sound icon... and the slider makes no sound... this is what to do...</p>
+        
+        <p><strong>Drivers and command to use</strong></p>
+        <p style="font-size: 0.95rem; color: #555; font-style: italic; margin-bottom: 10px;">Tested on Fedora 43 &amp; 44 WS on iMac 18,3</p>
 
-    <p style="margin-bottom: 10px;">
-        <strong>Mac Sound Drivers:</strong> 
-        <a href="YOUR_ZIP_FILE_LINK_HERE" style="color: var(--link-blue); text-decoration: underline;">Zipped Drivers</a>
-    </p>
-    
-    <p class="video-description" style="margin-bottom: 20px;">Download these Drivers, and expand the zip file.</p>
+        <pre># Commands to run to get sound working:
+cd ~/snd_hda_macbookpro 
+sudo ./install.cirrus.driver.sh 
+reboot</pre> 
+       
+        <p style="margin-top: 20px; margin-bottom: 5px;">
+            <strong>Mac Sound Drivers:</strong>  
+            <a href="https://drive.google.com/file/d/1V5Eu_DBwGLXUsSSq7rIF4kSRhRRRrp9d/view?usp=sharing" target="_blank" style="color: #0056b3; text-decoration: underline;">Zipped Drivers</a>
+        </p>
+        <p style="font-size: 0.95rem; color: #555; margin-bottom: 20px;">Download these Drivers, and expand the zip file.</p>
 
-    <div style="background-color: #fff9e6; border-left: 4px solid #ffa000; padding: 12px 15px; border-radius: 4px; font-size: 0.95rem;">
-        <strong>Note:</strong> After every kernel upgrade, you will need to rerun the commands listed here.
+        <div style="background-color: #f4f4f6; border-left: 4px solid #b91c1c; padding: 12px 15px; border-radius: 4px; font-size: 0.95rem;">
+            <strong>Note:</strong> After every kernel upgrade, you will need to rerun the commands listed here.
+        </div>
     </div>
 </div>
+
             
 
  <div class="accordion-item">
