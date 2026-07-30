@@ -229,28 +229,38 @@
                 &bull;Security & Counter-Surveillance: Sweeping for unadvertised BLE beacons, unauthorized Wi-Fi access points, or unknown NFC tags in close proximity.<BR>
                 &bull;Developer & Hardware Field Testing: Validating how an Android device's physical radios perform under varying environmental conditions.</p><BR>
                 
-An Ethical hacker is a cybersecurity professional who uses hacking skills with legal authorization to find and fix system weaknesses.
-Potential Uses: RF (Radio Frequency) field survey tool - Ethical use only <BR>
+---<BR>
 <BR>
-&bull;Bypassing Anti-Tracking Protections: Modern smartphones and smartwatches rotate their Bluetooth MAC addresses to prevent people from tracking them. The tool
-explicitly tracks BLE MAC-rotation types and captures BLE Coded PHY (long-range Bluetooth) and Extended Advertisements.<BR>
+## ⚠️ Legal Disclaimer & Acceptable Use Policy<BR>
 <BR>
-&bull;Tracking Industrial or Personal Assets: "LE Coded PHY" is typically used by long-range industrial sensors and high-end personal asset trackers (like hidden 
-GPS/Bluetooth tags on vehicles or cargo).<BR>
+**By downloading, installing, compiling, or using this software, you explicitly agree to the following terms:**<BR>
 <BR>
-&bull;X-Raying Walls with the Magnetometer: The app logs magnetic anomalies outside the normal 25–65 µT Earth-field baseline.<BR>
+1. **Intended Use:** This application is provided solely for **educational, diagnostic, and authorized defensive auditing purposes**. It is designed to assist network engineers, IoT integrators, and security professionals in assessing signal leakage, validating RF deployments, and maintaining physical security compliance (e.g., SOC 2, PCI-DSS) on **owned infrastructure**.
+2. **Authorized Environments Only:** You may only use this tool to survey networks, environments, and devices that you personally own or have **explicit, written authorization** to assess. 
+3. **Privacy & Wiretapping Compliance:** Logging raw RF payloads (including MAC addresses, SSIDs, and Vendor IEs) can implicate local, federal, and international privacy and wiretapping laws. You are entirely responsible for ensuring your use of this software complies with all applicable laws in your jurisdiction.
+4. **No Liability:** The authors and contributors of this repository disclaim any and all liability for misuse, unauthorized tracking, data breaches, or legal repercussions resulting from the use of this software. The tool is provided "AS-IS" without warranties of any kind. **Any action you take based on the data captured by this tool is strictly at your own risk.**
 <BR>
-&bull;Finding Hidden Bugs & Covert Cameras: Many rogue audio bugs, hidden wireless cameras, or eavesdropping gear communicate via Wi-Fi Direct (p2p) or raw Bluetooth 
-rather than connecting to a standard router.<BR>
+*If you do not agree to these terms, do not build or use this software.*<BR>
 <BR>
-&bull;Extracting Hidden Hardware Info (IE 221 / OUI Parsing): Standard Wi-Fi scanners only show the network name (SSID). This app dumps raw Wi-Fi Information Elements,
-specifically looking at Vendor IE 221.<BR>
+---<BR>
 <BR>
-&bull;Precise Physical Distance Ranging (802.11mc): Using 802.11mc (Fine-Timing Measurement), an individual doesn't just guess how far away a network is based on 
-signal strength; they get meter-scale physical distance.<BR>
+## 📡 Primary Use Cases<BR>
 <BR>
-&bull;Building Target Coordinates: By generating clean .kml and .geojson map files with cyan-to-amber signal gradients, an individual could map an entire geography of 
-cell towers, Wi-Fi access points, and Bluetooth environments into QGIS or Google Earth.<BR>
+* **Site Surveys & Signal Leakage Auditing:** Map Wi-Fi and Bluetooth propagation across corporate campuses to ensure sensitive signals do not bleed into public spaces.
+* **Shadow IT & Rogue Device Detection:** Uncover unapproved devices (such as travel routers or smart home gear) operating on corporate premises by inspecting raw Vendor IE 221 payloads and Wi-Fi Direct beacons.
+* **IoT & Hardware Validation:** Troubleshoot complex Bluetooth (LE Coded PHY) and Wi-Fi (6E/7) deployments in industrial or warehouse environments.
+* **Facility Engineering Sweeps:** Utilize fused magnetometer anomaly logging to locate active electrical conduits and magnetic lock mechanisms during authorized facility diagnostics.
+<BR>
+---<BR>
+<BR>
+## 🛠 Features & Capabilities<BR>
+<BR>
+* **Unfiltered Telemetry:** Bypasses consumer-level UI abstractions to provide raw bytes, including Vendor-specific Information Elements and BLE Extended Advertisements.
+* **Spatial Mapping Export:** Automatically generates `survey.kml` and `survey.geojson` files, mapping the strongest observed signal strengths against high-precision L1+L5 GNSS coordinates.
+* **Meter-Scale Ranging:** Supports 802.11mc (Fine-Timing Measurement) against compatible access points for precise physical distance approximation.
+* **Non-Destructive Logging:** All data is appended to local, app-scoped `.jsonl` and `.csv` files. Each detection carries the full raw payload (beacon IEs, BLE adv bytes, NDEF records) ensuring historical data can be re-parsed in the future.
+<BR>
+---<BR>
 <BR>
             <img src="RadioFreqScanner.jpg" alt="Radio Frequency Scanner" style="width: 400px; height: 800px; object-fit: cover;">
                 </div>
