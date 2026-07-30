@@ -206,21 +206,21 @@
         <a href="https://github.com/pcwizardsinc/scanner">GitHub - PCWizardsInc - RF Scanner</a>
             <p> Key Technical Breakdown</p>
                 1. Target Hardware Optimization<BR>
-                Although the app is written to run broadly across the Android ecosystem, it is specifically tuned to leverage the full hardware stack of top-tier modern flagships <BR>
-                like the Galaxy S2x Ultra (Snapdragon 8 Elite / Exynos 2500 RF frontends). Devices in this tier possess advanced modem hardware capable of simultaneous multi-band <BR>
+                Although the app is written to run broadly across the Android ecosystem, it is specifically tuned to leverage the full hardware stack of top-tier modern flagships 
+                like the Galaxy S2x Ultra (Snapdragon 8 Elite / Exynos 2500 RF frontends). Devices in this tier possess advanced modem hardware capable of simultaneous multi-band 
                 monitoring without throttling or severe hardware abstraction bottlenecks.<BR><BR>
                 2. Monitored Wireless TechnologiesDual-Band L1 + L5 GNSS (Satellite Location):L1 Band (1575.42 MHz): Standard legacy GPS/GNSS frequency band.L5 Band (1176.45 MHz): <BR>
                 Advanced signal band offering higher power and lower susceptibility to multipath interference (reflections off buildings).<BR>
-                App capability: Visualizes satellite lock status, carrier-to-noise ratio ($C/N_0$), pseudorange errors, and dual-band multi-constellation (GPS, Galileo, BeiDou, GLONASS) tracking.<BR>
-                Bluetooth 5.x with LE Coded PHY:LE Coded PHY: Introduced in Bluetooth 5, Coded PHY uses Forward Error Correction (FEC) to dramatically extend Bluetooth Low Energy range <BR>
-                (up to 4x traditional BLE distance).App capability: Scans long-range BLE beacons, IoT sensors, and local Bluetooth peripherals that standard scanners miss.Wi-Fi 6E / Wi-Fi 7 <BR>
+                App capability: Visualizes satellite lock status, carrier-to-noise ratio ($C/N_0$), pseudorange errors, and dual-band multi-constellation (GPS, Galileo, BeiDou, GLONASS) tracking.
+                Bluetooth 5.x with LE Coded PHY:LE Coded PHY: Introduced in Bluetooth 5, Coded PHY uses Forward Error Correction (FEC) to dramatically extend Bluetooth Low Energy range 
+                (up to 4x traditional BLE distance).App capability: Scans long-range BLE beacons, IoT sensors, and local Bluetooth peripherals that standard scanners miss.Wi-Fi 6E / Wi-Fi 7 
                 (802.11ax / 802.11be):Supports tri-band Wi-Fi auditing across 2.4 GHz, 5 GHz, and 6 GHz bands.<BR>
-                App capability: Measures RSSI (signal strength), channel bandwidth (up to 320 MHz in Wi-Fi 7), BSSID details, PHY rates, and channel congestion across the spectrum.<BR>
-                Full NFC Controller Integration:App capability: Direct access to the device's NFC adapter for reading ISO/IEC 14443 / 15693 tags, analyzing NDEF records, and observing <BR>
+                App capability: Measures RSSI (signal strength), channel bandwidth (up to 320 MHz in Wi-Fi 7), BSSID details, PHY rates, and channel congestion across the spectrum.
+                Full NFC Controller Integration:App capability: Direct access to the device's NFC adapter for reading ISO/IEC 14443 / 15693 tags, analyzing NDEF records, and observing 
                 near-field communication field interactions.<BR><BR>
                 3. System Requirements & PortabilityMinimum Version: API Level 31 (Android 12) or newer.<BR>
-                Compatibility: While tuned for the S25 Ultra's specific modem capabilities, <BR>
-                it uses standard Android framework APIs (GnssStatus.Callback, BluetoothLeScanner, WifiManager, NfcAdapter), meaning any Android 12+ device with modern RF chipsets will <BR>
+                Compatibility: While tuned for the S25 Ultra's specific modem capabilities, 
+                it uses standard Android framework APIs (GnssStatus.Callback, BluetoothLeScanner, WifiManager, NfcAdapter), meaning any Android 12+ device with modern RF chipsets will 
                 run the software—though features like 6 GHz Wi-Fi or LE Coded PHY naturally require underlying hardware support from the host device.<BR>
                 <BR>
                 Primary Use Cases:<BR>
@@ -229,27 +229,27 @@
                 &bull;Security & Counter-Surveillance: Sweeping for unadvertised BLE beacons, unauthorized Wi-Fi access points, or unknown NFC tags in close proximity.<BR>
                 &bull;Developer & Hardware Field Testing: Validating how an Android device's physical radios perform under varying environmental conditions.</p><BR>
                 
-Ethical hacker is a cybersecurity professional who uses hacking skills with legal authorization to find and fix system weaknesses. <BR>
-Potential Offensive Uses: RF (Radio Frequency) field survey tool - Ethical use only <BR>
+An Ethical hacker is a cybersecurity professional who uses hacking skills with legal authorization to find and fix system weaknesses.
+Potential Uses: RF (Radio Frequency) field survey tool - Ethical use only <BR>
 <BR>
-Bypassing Anti-Tracking Protections: Modern smartphones and smartwatches rotate their Bluetooth MAC addresses to prevent people from tracking them. The tool <BR>
-explicitly notes the app tracks BLE MAC-rotation types and captures BLE Coded PHY (long-range Bluetooth) and Extended Advertisements.<BR>
+&bull;Bypassing Anti-Tracking Protections: Modern smartphones and smartwatches rotate their Bluetooth MAC addresses to prevent people from tracking them. The tool
+explicitly tracks BLE MAC-rotation types and captures BLE Coded PHY (long-range Bluetooth) and Extended Advertisements.<BR>
 <BR>
-Tracking Industrial or Personal Assets: "LE Coded PHY" is typically used by long-range industrial sensors and high-end personal asset trackers (like hidden <BR>
+&bull;Tracking Industrial or Personal Assets: "LE Coded PHY" is typically used by long-range industrial sensors and high-end personal asset trackers (like hidden 
 GPS/Bluetooth tags on vehicles or cargo).<BR>
 <BR>
-X-Raying Walls with the Magnetometer: The app logs magnetic anomalies outside the normal 25–65 µT Earth-field baseline.<BR>
+&bull;X-Raying Walls with the Magnetometer: The app logs magnetic anomalies outside the normal 25–65 µT Earth-field baseline.<BR>
 <BR>
-Finding Hidden Bugs & Covert Cameras: Many rogue audio bugs, hidden wireless cameras, or eavesdropping gear communicate via Wi-Fi Direct (p2p) or raw Bluetooth <BR>
+&bull;Finding Hidden Bugs & Covert Cameras: Many rogue audio bugs, hidden wireless cameras, or eavesdropping gear communicate via Wi-Fi Direct (p2p) or raw Bluetooth 
 rather than connecting to a standard router.<BR>
 <BR>
-Extracting Hidden Hardware Info (IE 221 / OUI Parsing): Standard Wi-Fi scanners only show the network name (SSID). This app dumps raw Wi-Fi Information Elements, <BR>
+&bull;Extracting Hidden Hardware Info (IE 221 / OUI Parsing): Standard Wi-Fi scanners only show the network name (SSID). This app dumps raw Wi-Fi Information Elements,
 specifically looking at Vendor IE 221.<BR>
 <BR>
-Precise Physical Distance Ranging (802.11mc): Using 802.11mc (Fine-Timing Measurement), an individual doesn't just guess how far away a network is based on <BR>
+&bull;Precise Physical Distance Ranging (802.11mc): Using 802.11mc (Fine-Timing Measurement), an individual doesn't just guess how far away a network is based on 
 signal strength; they get meter-scale physical distance.<BR>
 <BR>
-Building Target Coordinates: By generating clean .kml and .geojson map files with cyan-to-amber signal gradients, an individual could map an entire geography of <BR>
+&bull;Building Target Coordinates: By generating clean .kml and .geojson map files with cyan-to-amber signal gradients, an individual could map an entire geography of 
 cell towers, Wi-Fi access points, and Bluetooth environments into QGIS or Google Earth.<BR>
 <BR>
             <img src="RadioFreqScanner.jpg" alt="Radio Frequency Scanner" style="width: 400px; height: 800px; object-fit: cover;">
