@@ -228,6 +228,28 @@
                 Geospatial & GPS Testing: Checking high-precision location lock times, HDOP/VDOP metrics, and L1 vs. L5 signal reception quality.<BR>
                 Security & Counter-Surveillance: Sweeping for unadvertised BLE beacons, unauthorized Wi-Fi access points, or unknown NFC tags in close proximity.<BR>
                 Developer & Hardware Field Testing: Validating how an Android device's physical radios perform under varying environmental conditions.</p><BR>
+                An ethical hacker is a cybersecurity professional who uses hacking skills with legal authorization to find and fix system weaknesses.  <BR><BR>
+                Offensive Uses: RF (Radio Frequency) field survey tool - <BR>
+<BR>
+Bypassing Anti-Tracking Protections: Modern smartphones and smartwatches rotate their Bluetooth MAC addresses to prevent people from tracking them. The tool <BR>
+explicitly notes the app tracks BLE MAC-rotation types and captures BLE Coded PHY (long-range Bluetooth) and Extended Advertisements.<BR>
+<BR>
+Tracking Industrial or Personal Assets: "LE Coded PHY" is typically used by long-range industrial sensors and high-end personal asset trackers (like hidden <BR>
+GPS/Bluetooth tags on vehicles or cargo).<BR>
+<BR>
+X-Raying Walls with the Magnetometer: The app logs magnetic anomalies outside the normal 25–65 µT Earth-field baseline.<BR>
+<BR>
+Finding Hidden Bugs & Covert Cameras: Many rogue audio bugs, hidden wireless cameras, or eavesdropping gear communicate via Wi-Fi Direct (p2p) or raw Bluetooth <BR>
+rather than connecting to a standard router.<BR>
+<BR>
+Extracting Hidden Hardware Info (IE 221 / OUI Parsing): Standard Wi-Fi scanners only show the network name (SSID). This app dumps raw Wi-Fi Information Elements, <BR>
+specifically looking at Vendor IE 221.<BR>
+<BR>
+Precise Physical Distance Ranging (802.11mc): Using 802.11mc (Fine-Timing Measurement), an individual doesn't just guess how far away a network is based on <BR>
+signal strength; they get meter-scale physical distance.<BR>
+<BR>
+Building Target Coordinates: By generating clean .kml and .geojson map files with cyan-to-amber signal gradients, an individual could map an entire geography of <BR>
+cell towers, Wi-Fi access points, and Bluetooth environments into QGIS or Google Earth.<BR>
 <BR>
             <img src="RadioFreqScanner.jpg" alt="Radio Frequency Scanner" style="width: 400px; height: 800px; object-fit: cover;">
                 </div>
