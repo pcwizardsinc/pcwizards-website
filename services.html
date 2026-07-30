@@ -224,7 +224,6 @@
                 run the software—though features like 6 GHz Wi-Fi or LE Coded PHY naturally require underlying hardware support from the host device.<BR>
                 <BR>
                                
----<BR>
 <BR>
 ## ⚠️ Legal Disclaimer & Acceptable Use Policy<BR>
 <BR>
@@ -236,27 +235,21 @@
 4. **No Liability:** The authors and contributors of this repository disclaim any and all liability for misuse, unauthorized tracking, data breaches, or legal repercussions resulting from the use of this software. The tool is provided "AS-IS" without warranties of any kind. **Any action you take based on the data captured by this tool is strictly at your own risk.**
 <BR>
 *If you do not agree to these terms, do not build or use this software.*<BR>
-<BR>
 ---<BR>
-<BR>
 ## 📡 Primary Use Cases<BR>
 <BR>
 * **Site Surveys & Signal Leakage Auditing:** Map Wi-Fi and Bluetooth propagation across corporate campuses to ensure sensitive signals do not bleed into public spaces.
 * **Shadow IT & Rogue Device Detection:** Uncover unapproved devices (such as travel routers or smart home gear) operating on corporate premises by inspecting raw Vendor IE 221 payloads and Wi-Fi Direct beacons.
 * **IoT & Hardware Validation:** Troubleshoot complex Bluetooth (LE Coded PHY) and Wi-Fi (6E/7) deployments in industrial or warehouse environments.
 * **Facility Engineering Sweeps:** Utilize fused magnetometer anomaly logging to locate active electrical conduits and magnetic lock mechanisms during authorized facility diagnostics.
-<BR>
 ---<BR>
-<BR>
 ## 🛠 Features & Capabilities<BR>
 <BR>
 * **Unfiltered Telemetry:** Bypasses consumer-level UI abstractions to provide raw bytes, including Vendor-specific Information Elements and BLE Extended Advertisements.
 * **Spatial Mapping Export:** Automatically generates `survey.kml` and `survey.geojson` files, mapping the strongest observed signal strengths against high-precision L1+L5 GNSS coordinates.
 * **Meter-Scale Ranging:** Supports 802.11mc (Fine-Timing Measurement) against compatible access points for precise physical distance approximation.
 * **Non-Destructive Logging:** All data is appended to local, app-scoped `.jsonl` and `.csv` files. Each detection carries the full raw payload (beacon IEs, BLE adv bytes, NDEF records) ensuring historical data can be re-parsed in the future.
-<BR>
 ---<BR>
-<BR>
             <img src="RadioFreqScanner.jpg" alt="Radio Frequency Scanner" style="width: 400px; height: 800px;">
                 </div>
             </div>
