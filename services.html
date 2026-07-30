@@ -209,17 +209,19 @@
                 Although the app is written to run broadly across the Android ecosystem, it is specifically tuned to leverage the full hardware stack of top-tier modern flagships 
                 like the Galaxy S2x Ultra (Snapdragon 8 Elite / Exynos 2500 RF frontends). Devices in this tier possess advanced modem hardware capable of simultaneous multi-band 
                 monitoring without throttling or severe hardware abstraction bottlenecks.<BR><BR>
-                2. Monitored Wireless TechnologiesDual-Band L1 + L5 GNSS (Satellite Location):L1 Band (1575.42 MHz): Standard legacy GPS/GNSS frequency band.L5 Band (1176.45 MHz): <BR>
+                2. Monitored Wireless TechnologiesDual-Band L1 + L5 GNSS (Satellite Location):L1 Band (1575.42 MHz): Standard legacy GPS/GNSS frequency band.L5 Band (1176.45 MHz):
                 Advanced signal band offering higher power and lower susceptibility to multipath interference (reflections off buildings).<BR>
-                App capability: Visualizes satellite lock status, carrier-to-noise ratio ($C/N_0$), pseudorange errors, and dual-band multi-constellation (GPS, Galileo, BeiDou, GLONASS) tracking.
+                &bull; Visualizes satellite lock status, carrier-to-noise ratio ($C/N_0$), pseudorange errors, and dual-band multi-constellation (GPS, Galileo, BeiDou, GLONASS) tracking.
                 Bluetooth 5.x with LE Coded PHY:LE Coded PHY: Introduced in Bluetooth 5, Coded PHY uses Forward Error Correction (FEC) to dramatically extend Bluetooth Low Energy range 
-                (up to 4x traditional BLE distance).App capability: Scans long-range BLE beacons, IoT sensors, and local Bluetooth peripherals that standard scanners miss.Wi-Fi 6E / Wi-Fi 7 
+                (up to 4x traditional BLE distance).
+                &bull;Scans long-range BLE beacons, IoT sensors, and local Bluetooth peripherals that standard scanners miss.Wi-Fi 6E / Wi-Fi 7 
                 (802.11ax / 802.11be):Supports tri-band Wi-Fi auditing across 2.4 GHz, 5 GHz, and 6 GHz bands.<BR>
-                App capability: Measures RSSI (signal strength), channel bandwidth (up to 320 MHz in Wi-Fi 7), BSSID details, PHY rates, and channel congestion across the spectrum.
-                Full NFC Controller Integration:App capability: Direct access to the device's NFC adapter for reading ISO/IEC 14443 / 15693 tags, analyzing NDEF records, and observing 
+                &bull;Measures RSSI (signal strength), channel bandwidth (up to 320 MHz in Wi-Fi 7), BSSID details, PHY rates, and channel congestion across the spectrum.
+                Full NFC Controller Integration:
+                &bull;Direct access to the device's NFC adapter for reading ISO/IEC 14443 / 15693 tags, analyzing NDEF records, and observing 
                 near-field communication field interactions.<BR><BR>
                 3. System Requirements & PortabilityMinimum Version: API Level 31 (Android 12) or newer.<BR>
-                Compatibility: While tuned for the S25 Ultra's specific modem capabilities, 
+                &bull;While tuned for the S25 Ultra's specific modem capabilities, 
                 it uses standard Android framework APIs (GnssStatus.Callback, BluetoothLeScanner, WifiManager, NfcAdapter), meaning any Android 12+ device with modern RF chipsets will 
                 run the software—though features like 6 GHz Wi-Fi or LE Coded PHY naturally require underlying hardware support from the host device.<BR>
                 <BR>
