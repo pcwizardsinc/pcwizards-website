@@ -189,7 +189,39 @@
 
         <div class="accordion-group">
 
- <!--                                                      BREAK                                                            -->
+
+
+                 <!--                                                      BREAK                                                            -->
+                                                                       
+        <div class="accordion-item">
+                <div class="accordion-header">
+                    <div class="accordion-title-block">
+                        <h3 class="accordion-headline">Walk Through RF Diagnostic Tool </h3>
+                        <span class="accordion-date">Post date: July 31, 2026</span>
+                    </div>
+                    <span class="accordion-icon">▼</span>
+                </div>
+                <div class="accordion-content">
+                    <p><strong>Android AR Scanner:</strong></p>
+        <p><strong>An Android AR tool that turns your phone into a walk-through RF diagnostic. Point the camera at a room and see Wi-Fi access points, Bluetooth devices, and magnetic anomalies as labeled markers floating in physical space, color-coded by signal strength and updating in real time as you move.
+
+Built on ARCore for camera-space tracking and Jetpack Compose for the overlay rendering. Scans Wi-Fi (2.4 / 5 / 6 GHz), Bluetooth Low Energy, and the magnetometer simultaneously, binds each reading to the camera pose at the time the radio actually observed it (not when the callback delivered it), and projects emitter positions onto the live camera feed.
+
+Designed for the Samsung Galaxy S24/S25 Ultra but runs on any ARCore-supported device at API 31 (Android 12) or newer. </strong>
+        <a href="https://github.com/pcwizardsinc/visualizer">GitHub - PCWizardsInc - AR RF Tool</a>
+            <p>Getting useful results
+Walk. The emitter markers start at hash-derived placeholder positions around the camera — an honest "I don't know where this is yet." As you walk, markers for emitters you've passed near migrate to their closest-approach positions. Once the solver has enough baseline (≥1.5 m of path with some height variation), markers jump to multilaterated positions and the quality grade improves.
+
+Vary your height. Range-only multilateration from a constant-height walk gives excellent horizontal accuracy and almost none vertically — measured at 9.3× covariance anisotropy in validation. Raise and lower the phone to resolve the vertical axis.
+
+Short sessions per area. ARCore's world origin drifts over long surveys, and a relocalization event can shift the entire frame at once, silently misaligning everything already accumulated. The app warns on tracking recovery but cannot repair it. Walk one room thoroughly, SAVE, RESET, then move to the next.</p>
+             
+---<BR>
+          <!--  <img src="RadioFreqScanner.jpg" alt="Radio Frequency Scanner" style="width: 400px; height: 800px;"> -->
+                </div>
+            </div>
+
+            <!--                                                      BREAK                                                            -->
 
 
             <div class="accordion-item">
