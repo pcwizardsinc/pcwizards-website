@@ -210,11 +210,11 @@ Built on ARCore for camera-space tracking and Jetpack Compose for the overlay re
 Designed for the Samsung Galaxy S24/S25 Ultra but runs on any ARCore-supported device at API 31 (Android 12) or newer. </strong>
         <a href="https://github.com/pcwizardsinc/visualizer">GitHub - PCWizardsInc - AR RF Tool</a>
             <p>Getting useful results
-Walk. The emitter markers start at hash-derived placeholder positions around the camera — an honest "I don't know where this is yet." As you walk, markers for emitters you've passed near migrate to their closest-approach positions. Once the solver has enough baseline (≥1.5 m of path with some height variation), markers jump to multilaterated positions and the quality grade improves.
+Walk around. The emitter markers start as placeholders - positions around the camera — Once the solver has enough baseline markers, the quality grade improves.
 
-Vary your height. Range-only multilateration from a constant-height walk gives excellent horizontal accuracy and almost none vertically — measured at 9.3× covariance anisotropy in validation. Raise and lower the phone to resolve the vertical axis.
+While walking around, lift your phone overhead, and down low to the floor in oscilating arcs as you walk. Raise and lower the phone to resolve issues where the axis isn't showing correctly.
 
-Short sessions per area. ARCore's world origin drifts over long surveys, and a relocalization event can shift the entire frame at once, silently misaligning everything already accumulated. The app warns on tracking recovery but cannot repair it. Walk one room thoroughly, SAVE, RESET, then move to the next.</p>
+Short sessions per area. The origin overlay will drift over long surveys, and will silently misaligning everything already accumulated. Walk one room thoroughly, SAVE, RESET, then move to the next.</p>
              
 ---<BR>
           <!--  <img src="RadioFreqScanner.jpg" alt="Radio Frequency Scanner" style="width: 400px; height: 800px;"> -->
