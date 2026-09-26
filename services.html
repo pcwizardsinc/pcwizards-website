@@ -189,7 +189,46 @@
 
         <div class="accordion-group">
 
+                  <!--                                                      BREAK                                                            -->
+			
+ <div class="accordion-item">
+                <div class="accordion-header">
+                    <div class="accordion-title-block">
+                        <h3 class="accordion-headline">PowerShell Commands for Terminal Server</h3>
+                        <span class="accordion-date">Post date: September 25, 2026</span>
+                    </div>
+                    <span class="accordion-icon">▼</span>
+                </div>
+                <div class="accordion-content">
+                    <p><strong>RDP Term Services Commands:</strong></p>
+        <p><strong>PowerShell (elevated)</strong>
+        
+<b>Crash Server if PowerShell can open:</b> Get-Process notmyfault64 -ErrorAction SilentlyContinue | Format-Table Id, StartTime, Responding -AutoSize; Get-CimInstance Win32_SystemDriver -Filter "Name='myfault'" | Format-Table Name, State, Status, PathName -AutoSize
+<br>
+<b>quser</b>  = shows Username, SessionName, ID, Active State, Idle Time, and Login Time. (Powershell)
+<br>
+<b>Warning signs (last 24 hours)</b> Get-WinEvent -FilterHashtable @{LogName='System'; Id=10111,10120,7011,7046,7031,7034; StartTime=(Get-Date).AddDays(-1)} -ErrorAction SilentlyContinue | Select-Object TimeCreated, Id, @{n='Detail';e={($_.Message -split "`r?`n")[0]}} | Format-Table -AutoSize -Wrap
+<br>
+<b>Last Reboot Time</b>  (Get-CimInstance Win32_OperatingSystem).LastBootUpTime
+<br>
+<b>Key Services</b>  Get-Service TermService, UmRdpService, SessionEnv, ThinRDPSrv, BlackFogService -ErrorAction SilentlyContinue | Format-Table Name, Status, StartType -AutoSize
+<br>
+<b>Free Memory Space</b>   Get-CimInstance Win32_OperatingSystem | Select-Object @{n='FreeRAM_GB';e={[math]::Round($_.FreePhysicalMemory/1MB,1)}}; Get-PSDrive C | Select-Object @{n='UsedGB';e={[math]::Round($_.Used/1GB)}}, @{n='FreeGB';e={[math]::Round($_.Free/1GB)}}
+<br>
+<b>Recent Updates</b>   Get-HotFix | Sort-Object InstalledOn -Descending | Select-Object -First 5 HotFixID, InstalledOn | Format-Table -AutoSize
+<br>
+<b>What each user is using, memory, proc's and cpu time</b>   Get-Process -IncludeUserName | Where-Object { $_.UserName -and $_.UserName -notmatch '^(NT AUTHORITY|Window Manager|Font Driver Host)' } | Group-Object UserName | ForEach-Object { [pscustomobject]@{ User = $_.Name; Processes = $_.Count; MemMB = [math]::Round(($_.Group | Measure-Object WorkingSet64 -Sum).Sum/1MB); CPUsec = [math]::Round(($_.Group | Measure-Object CPU -Sum).Sum) } } | Sort-Object MemMB -Descending | Format-Table -AutoSize
+<br>
 
+<b>What apps each user has open</b>   Get-Process -IncludeUserName | Where-Object { $_.UserName -and $_.UserName -notmatch '^NT AUTHORITY' -and $_.Path -like 'C:\Program Files*' } | Group-Object UserName | ForEach-Object { [pscustomobject]@{ User = $_.Name; Apps = (($_.Group.Name | Sort-Object -Unique) -join ', ') } } | Format-Table -AutoSize -Wrap
+<br>
+<b>Today's sign in history</b>    Get-WinEvent -FilterHashtable @{LogName='Microsoft-Windows-TerminalServices-LocalSessionManager/Operational'; Id=21,23,24,25; StartTime=(Get-Date).Date} -ErrorAction SilentlyContinue | Sort-Object TimeCreated | Select-Object TimeCreated, @{n='Event';e={switch($_.Id){21{'Logon'}23{'Logoff'}24{'Disconnect'}25{'Reconnect'}}}}, @{n='User';e={$_.Properties[0].Value}}, @{n='Session';e={$_.Properties[1].Value}} | Format-Table -AutoSize
+<br>
+<b>Failed sign ins</b>   Get-WinEvent -FilterHashtable @{LogName='Security'; Id=4625; StartTime=(Get-Date).AddDays(-1)} -ErrorAction SilentlyContinue | Select-Object TimeCreated, @{n='User';e={$_.Properties[5].Value}}, @{n='LogonType';e={$_.Properties[10].Value}}, @{n='Source';e={$_.Properties[19].Value}} | Format-Table -AutoSize
+<br>        
+                </div>
+            </div>
+        <!--                                                      BREAK                                                            -->
 
                  <!--                                                      BREAK                                                            -->
                                                                        
