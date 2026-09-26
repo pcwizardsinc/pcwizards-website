@@ -205,7 +205,7 @@
         
 <b>Crash Server if PowerShell can open:</b> Get-Process notmyfault64 -ErrorAction SilentlyContinue | Format-Table Id, StartTime, Responding -AutoSize; Get-CimInstance Win32_SystemDriver -Filter "Name='myfault'" | Format-Table Name, State, Status, PathName -AutoSize
 <br>
-<b>quser</b>  = shows Username, SessionName, ID, Active State, Idle Time, and Login Time. (Powershell)
+<b>quser</b>  = shows Username, SessionName, ID, Active State, Idle Time, and Login Time. 
 <br>
 <b>Warning signs (last 24 hours)</b> Get-WinEvent -FilterHashtable @{LogName='System'; Id=10111,10120,7011,7046,7031,7034; StartTime=(Get-Date).AddDays(-1)} -ErrorAction SilentlyContinue | Select-Object TimeCreated, Id, @{n='Detail';e={($_.Message -split "`r?`n")[0]}} | Format-Table -AutoSize -Wrap
 <br>
