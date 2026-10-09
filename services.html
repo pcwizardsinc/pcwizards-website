@@ -187,7 +187,107 @@
         <div class="accordion-group">
 
                   <!--                                                      BREAK                                                            -->
-			
+
+ <div class="accordion-item">
+                <div class="accordion-header">
+                    <div class="accordion-title-block">
+                        <h3 class="accordion-headline">PhotoCraft / PhotoShop alternative on Linux</h3>
+                        <span class="accordion-date">Post date: October 9, 2026</span>
+                    </div>
+                    <span class="accordion-icon">▼</span>
+                </div>
+                <div class="accordion-content">
+                    <p><strong>PhotoCraft / Github Suite:</strong></p>
+        <p><strong>Story and Instructions</strong>
+
+# Photoshop's Old Home, Photoshop's New Clone: PhotoCraft on a 2017 iMac Running Fedora<br>
+<br>
+**Post date:** October 9, 2026<br>
+<br>
+*The irony is the point. My 2017 27-inch iMac is now running a Photoshop clone on Linux, and it's beautiful.*<br>
+<br>
+For about two decades, the iMac was *the* Photoshop machine. Walk into any design studio in 2017 and you'd likely see this exact model running Creative Cloud. Apple has since dropped it from macOS support, and Adobe has never supported Linux.<br>
+<br>
+So here's the stack today: Apple hardware Apple gave up on, running Fedora Linux, running an open source Photoshop clone that Adobe had nothing to do with. Every layer has changed except the hardware. That's the story of this post.<br>
+<br>
+---<br>
+<br>
+### The Hardware: Still Plenty of Machine<br>
+<br>
+This is an **iMac18,3**, the 27-inch Retina 5K model from 2017. Without Linux, it would be drifting toward e-waste. <br>
+The specs say otherwise:<br>
+<br>
+| Component | Spec |<br>
+| :--- | :--- |<br>
+| **Model** | iMac18,3 (27-inch, 2017) |<br>
+| **CPU** | Intel Core i7-7700K, 4 cores / 8 threads @ 4.5 GHz |<br>
+| **GPU** | AMD Radeon Pro 580X |<br>
+| **Memory** | 32 GB RAM |<br>
+| **Storage** | ~1 TB, btrfs |<br>
+| **Display** | 27-inch Retina 5K panel |<br>
+<br>
+That's a capable workstation by any reasonable standard. The only thing that aged out was Apple's support window.<br>
+<br>
+---<br>
+<br>
+### Fedora 44 on Apple Hardware<br>
+<br>
+The iMac runs **Fedora 44 Workstation** with GNOME 50 on Wayland, kernel 7.2. It's been rock solid, with multi-day up-time.<br>
+<br>
+The GPU is the quiet hero here. The **Radeon Pro 580X** is an AMD Polaris card, and the open source Mesa drivers support it beautifully out of the box. No proprietary driver wrangling, and Vulkan just works.<br>
+<br>
+> **One honest caveat: the display.** The panel is natively 5K (5120x2880), but under Linux mine runs at 3840x2160 with 1.5x scaling. The 5K iMac panel has long been a sore spot on Linux. Even so, it's a gorgeous screen at 4K, and for photo work it's arguably the sweet spot.<br>
+<br>
+---<br>
+<br>
+### What PhotoCraft Is<br>
+<br>
+**PhotoCraft** is an open source, clean-room reimplementation of Adobe Photoshop, written in Rust. It's one of seven "Crafting Apps" released by the ArtCraft team at the end of September 2026, each recreating an Adobe app: Photoshop, Illustrator, Premiere Pro, Lightroom, After Effects, InDesign, and Acrobat Pro.<br>
+<br>
+The developer credits Anthropic's Claude Opus 5.5 with building them at a startling pace, about a week for all seven. "Clean-room" means they were built from public specifications and observed behavior, not by decompiling Adobe's code.<br>
+<br>
+#### Highlights:<br>
+* **Dual-licensed:** MIT or Apache-2.0, free to download and use.<br>
+* **Cross-platform:** Runs on macOS, Windows, Linux, and in the browser via WebAssembly.<br>
+* **GPU acceleration:** Renders on the GPU through `wgpu` (Vulkan on Linux).<br>
+* **AI Agent Ready:** Ships an MCP (Model Context Protocol) server, so an AI agent can drive the editor directly.<br>
+<br>
+*The project is upfront that it's early alpha and not yet a Photoshop replacement for daily professional work.*<br>
+<br>
+---<br>
+<br>
+### Building PhotoCraft from Source<br>
+<br>
+I built from source rather than grabbing a pre-built binary. Steps used:<br>
+<br>   
+Install required build tools and Rust toolchain:<br>
+<br>
+Bash<br>
+sudo dnf install git gcc cargo rust<br>
+Verification: Run cargo --version to ensure the Rust compiler and package manager are active.<br>
+<br>
+Clone the repository:<br>
+<br>
+Bash<br>
+git clone https://github.com/storytold/photocraft.git<br>
+cd photocraft<br>
+Verification: Run pwd and ls to ensure you are inside the cloned project root containing Cargo.toml.<br>
+<br>
+Build and run PhotoCraft:<br>
+<br>
+Bash<br>
+cargo run --release -p photocraft<br>
+Verification: The application will compile all dependencies and open the PhotoCraft window automatically upon completion.<br>
+<br>
+<br>        
+                </div>
+            </div>
+        <!--                                                      BREAK                                                            -->
+
+
+		
+                  <!--                                                      BREAK                                                            -->
+	
  <div class="accordion-item">
                 <div class="accordion-header">
                     <div class="accordion-title-block">
