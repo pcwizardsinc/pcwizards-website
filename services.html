@@ -279,7 +279,28 @@ Bash<br>
 cargo run --release -p photocraft<br>
 Verification: The application will compile all dependencies and open the PhotoCraft window automatically upon completion.<br>
 <br>
-<br>        
+<br>  
+The IT director's take: great at home, not ready for work<br>
+In my day job I run IT for a nonprofit, so I can't help looking at this through a risk lens. My verdict: wonderful on a home workstation, not on a work machine. Not yet.<br><br>
+Here's why:<br><br>
+It's brand new. The project is weeks old, largely AI-written, and ships updates every few days. No independent security review has happened yet.<br>
+File parsers are attack surface. Image and PDF editors open complex files, a classic exploitation route. Rust helps a lot, but fast-written code hasn't been hardened or fuzzed.<br>
+The agent control channel is a door. The MCP server is the most exciting feature, and also something to lock down before trusting it near real data.<br>
+Alpha means alpha. Imperfect file round-trips could quietly lose layers or fonts in a file headed to a printer.<br>
+I'd revisit for work use once the project has signed releases, a security disclosure process, more maintainers, and a steadier release cadence.<br><br>
+New life for old hardware<br>
+Before I worked in IT, I built boats. You learn there that good bones are worth saving: strip it down, protect what's solid, and it'll go another twenty years.<br>
+This iMac is the same. Apple stopped supporting it, but the hardware never stopped being good. Fedora gave it a modern, secure OS, and PhotoCraft gave it back the job it was built for.<br>
+If you have an old Intel Mac in a closet, give it a try. You might be surprised what it can still do.<br>
+<br><br>
+			Sources:<br>
+			https://github.com/storytold/photocraft<br>
+			https://github.com/storytold/vectorcraft/wiki<br>
+			https://www.winzheng.com/en/article/ai-open-source-adobe-clones<br>
+<br><br><br>
+
+
+			
                 </div>
             </div>
         <!--                                                      BREAK                                                            -->
