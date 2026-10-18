@@ -320,30 +320,94 @@ If you have an old Intel Mac in a closet, give it a try. You might be surprised 
                 <div class="accordion-content">
                     <p><strong>RDP Term Services Commands:</strong></p>
         <p><strong>PowerShell (elevated)</strong>
-        
-<b>Crash Server if PowerShell can open:</b> Get-Process notmyfault64 -ErrorAction SilentlyContinue | Format-Table Id, StartTime, Responding -AutoSize; Get-CimInstance Win32_SystemDriver -Filter "Name='myfault'" | Format-Table Name, State, Status, PathName -AutoSize
-<br>
-<b>quser</b>  = shows Username, SessionName, ID, Active State, Idle Time, and Login Time. 
+<BR>        
+<b>Force Windows to update</b><BR> 
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process -Force<BR> 
+Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201 -Force<BR> 
+Install-Module -Name PSWindowsUpdate -Force -AllowClobber<BR> 
+Import-Module PSWindowsUpdate<BR> 
+Restart-Service -Name wuauserv,bits,msiserver -Force<BR> 
+Get-WindowsUpdate -MicrosoftUpdate -Install -AcceptAll -AutoReboot<BR> 
+<BR>        
+<BR>        
+<BR> 
+<b>Set to high performance</b><BR> 
+powercfg /setactive 8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c<BR> 
+<BR>        
+<BR> 
+<b>Hide Power Options Shutdown, Restart, Sleep, and Hibernate</b><BR> 
+reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer" /v HidePowerOptions /t REG_DWORD /d 1 /f<BR> 
+<BR>        
+<BR> 
+<b>System info & health</b><BR> 
+Get-ComputerInfo | Select-Object WindowsProductName,OsBuildNumber,CsManufacturer,CsModel<BR> 
+(Get-CimInstance Win32_OperatingSystem).LastBootUpTime<BR> 
+Get-PhysicalDisk | Select-Object FriendlyName,MediaType,HealthStatus<BR> 
+<BR>        
+<BR> 
+<b>Disk & storage</b><BR> 
+Get-Volume | Select-Object DriveLetter,FileSystemLabel,SizeRemaining,Size<BR> 
+Clear-RecycleBin -Force<BR> 
+<BR>        
+<BR> 
+<b>Software inventory (winget)</b><BR> 
+winget list<BR> 
+winget upgrade --all --silent --accept-source-agreements --accept-package-agreements<BR> 
+<BR>        
+<BR> 
+<b>Network diagnostics</b><BR> 
+Test-NetConnection -ComputerName 8.8.8.8 -Port 443<BR> 
+Get-NetIPConfiguration<BR> 
+Clear-DnsClientCache<BR> 
+Get-NetAdapter | Select-Object Name,Status,LinkSpeed<BR> 
+<BR>        
+<BR> 
+<b>Event log / recent errors</b><BR> 
+Get-WinEvent -FilterHashtable @{LogName='System';Level=2} -MaxEvents 20 | Select-Object TimeCreated,Id,Message<BR> 
+<BR>        
+<BR> 
+<b>Security posture</b><BR> 
+Get-MpComputerStatus | Select-Object AntivirusEnabled,RealTimeProtectionEnabled,AntivirusSignatureLastUpdated<BR> 
+(Get-BitLockerVolume -MountPoint C:).ProtectionStatus<BR> 
+Get-LocalGroupMember -Group "Administrators"<BR> 
+<BR>        
+<BR> 
+<b>Services & processes</b><BR> 
+Get-Service | Where-Object {$_.Status -eq 'Stopped' -and $_.StartType -eq 'Automatic'}<BR> 
+Get-Process | Sort-Object CPU -Descending | Select-Object -First 10 Name,CPU<BR> 
+<BR>        
+<BR> 
+Rename-Computer -NewName "Normy Name - Serial Number" -Force -Restart<BR> 
+	<BR>        
+	<BR> 	
+<b>Crash Server if PowerShell can open:</b><BR> 
+New-Item -Path 'HKCU:\Software\Sysinternals\NotMyFault' -Force | Out-Null; Set-ItemProperty -Path 'HKCU:\Software\Sysinternals\NotMyFault' -Name EulaAccepted -Value 1 -Type DWord; & 'C:\Temp\notmyfault64.exe' /crash
+<BR>        <BR> 
+<BR> 
+<b>Detect Crash:</b><BR> 
+Get-Process notmyfault64 -ErrorAction SilentlyContinue | Format-Table Id, StartTime, Responding -AutoSize; Get-CimInstance Win32_SystemDriver -Filter "Name='myfault'" | Format-Table Name, State, Status, PathName -AutoSize
+<BR>        <BR> 
+<b>quser</b>  = shows Username, SessionName, ID, Active State, Idle Time, and Login Time. <BR> 
 <br>
 <b>Warning signs (last 24 hours)</b> Get-WinEvent -FilterHashtable @{LogName='System'; Id=10111,10120,7011,7046,7031,7034; StartTime=(Get-Date).AddDays(-1)} -ErrorAction SilentlyContinue | Select-Object TimeCreated, Id, @{n='Detail';e={($_.Message -split "`r?`n")[0]}} | Format-Table -AutoSize -Wrap
 <br>
-<b>Last Reboot Time</b>  (Get-CimInstance Win32_OperatingSystem).LastBootUpTime
+<b>Last Reboot Time</b>  (Get-CimInstance Win32_OperatingSystem).LastBootUpTime<BR> 
 <br>
-<b>Key Services</b>  Get-Service TermService, UmRdpService, SessionEnv, ThinRDPSrv, BlackFogService -ErrorAction SilentlyContinue | Format-Table Name, Status, StartType -AutoSize
+<b>Key Services</b>  Get-Service TermService, UmRdpService, SessionEnv, ThinRDPSrv, BlackFogService -ErrorAction SilentlyContinue | Format-Table Name, Status, StartType -AutoSize<BR> 
 <br>
 <b>Free Memory Space</b>   Get-CimInstance Win32_OperatingSystem | Select-Object @{n='FreeRAM_GB';e={[math]::Round($_.FreePhysicalMemory/1MB,1)}}; Get-PSDrive C | Select-Object @{n='UsedGB';e={[math]::Round($_.Used/1GB)}}, @{n='FreeGB';e={[math]::Round($_.Free/1GB)}}
-<br>
+<br><BR> <BR> 
 <b>Recent Updates</b>   Get-HotFix | Sort-Object InstalledOn -Descending | Select-Object -First 5 HotFixID, InstalledOn | Format-Table -AutoSize
-<br>
+<br><BR> <BR> 
 <b>What each user is using, memory, proc's and cpu time</b>   Get-Process -IncludeUserName | Where-Object { $_.UserName -and $_.UserName -notmatch '^(NT AUTHORITY|Window Manager|Font Driver Host)' } | Group-Object UserName | ForEach-Object { [pscustomobject]@{ User = $_.Name; Processes = $_.Count; MemMB = [math]::Round(($_.Group | Measure-Object WorkingSet64 -Sum).Sum/1MB); CPUsec = [math]::Round(($_.Group | Measure-Object CPU -Sum).Sum) } } | Sort-Object MemMB -Descending | Format-Table -AutoSize
-<br>
-
+<br><BR> <BR> 
+<BR> 
 <b>What apps each user has open</b>   Get-Process -IncludeUserName | Where-Object { $_.UserName -and $_.UserName -notmatch '^NT AUTHORITY' -and $_.Path -like 'C:\Program Files*' } | Group-Object UserName | ForEach-Object { [pscustomobject]@{ User = $_.Name; Apps = (($_.Group.Name | Sort-Object -Unique) -join ', ') } } | Format-Table -AutoSize -Wrap
-<br>
-<b>Today's sign in history</b>    Get-WinEvent -FilterHashtable @{LogName='Microsoft-Windows-TerminalServices-LocalSessionManager/Operational'; Id=21,23,24,25; StartTime=(Get-Date).Date} -ErrorAction SilentlyContinue | Sort-Object TimeCreated | Select-Object TimeCreated, @{n='Event';e={switch($_.Id){21{'Logon'}23{'Logoff'}24{'Disconnect'}25{'Reconnect'}}}}, @{n='User';e={$_.Properties[0].Value}}, @{n='Session';e={$_.Properties[1].Value}} | Format-Table -AutoSize
-<br>
-<b>Failed sign ins</b>   Get-WinEvent -FilterHashtable @{LogName='Security'; Id=4625; StartTime=(Get-Date).AddDays(-1)} -ErrorAction SilentlyContinue | Select-Object TimeCreated, @{n='User';e={$_.Properties[5].Value}}, @{n='LogonType';e={$_.Properties[10].Value}}, @{n='Source';e={$_.Properties[19].Value}} | Format-Table -AutoSize
-<br>        
+<br><BR> <BR> 
+<b>Today's sign in history</b> <BR>    Get-WinEvent -FilterHashtable @{LogName='Microsoft-Windows-TerminalServices-LocalSessionManager/Operational'; Id=21,23,24,25; StartTime=(Get-Date).Date} -ErrorAction SilentlyContinue | Sort-Object TimeCreated | Select-Object TimeCreated, @{n='Event';e={switch($_.Id){21{'Logon'}23{'Logoff'}24{'Disconnect'}25{'Reconnect'}}}}, @{n='User';e={$_.Properties[0].Value}}, @{n='Session';e={$_.Properties[1].Value}} | Format-Table -AutoSize
+<br><BR> <BR> 
+<b>Failed sign ins</b>  <BR>  Get-WinEvent -FilterHashtable @{LogName='Security'; Id=4625; StartTime=(Get-Date).AddDays(-1)} -ErrorAction SilentlyContinue | Select-Object TimeCreated, @{n='User';e={$_.Properties[5].Value}}, @{n='LogonType';e={$_.Properties[10].Value}}, @{n='Source';e={$_.Properties[19].Value}} | Format-Table -AutoSize
+<br>    <BR> <BR>     
                 </div>
             </div>
         <!--                                                      BREAK                                                            -->
